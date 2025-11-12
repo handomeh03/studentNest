@@ -1,0 +1,25 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200..700&display=swap");
+@import "tailwindcss";
+/* === Custom Variables === */
+:root {
+  --primaryfont: "Readex Pro", system-ui, "Segoe UI", "Noto Sans",
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --secoundryfont: system-ui, "Segoe UI", "Noto Sans",
+    "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+
+  --primarycolor: #3f51b5;
+  --secoundrycolor: #3f51b5d0;
+  --headerfontcolor: rgba(0, 0, 0, 0.796);
+  --paragraphcolor: rgba(0, 0, 0, 0.873);
+}
+
+
+/* === Global === */
+body {
+  font-family: var(--primaryfont);
+  /* background: #fff; */
+  color: var(--paragraphcolor);
+}

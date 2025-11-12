@@ -1,0 +1,108 @@
+
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  text-align: center;
+  background-color: #f8f8f8; 
+  color: #333; 
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+
+.errorCode {
+  font-size: 8rem;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-bottom: 20px;
+  animation: bounceIn 1s ease-out; 
+}
+
+.errorMessage {
+  font-size: 2.5rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 30px;
+  color: #777;
+}
+
+.homeButton {
+  display: inline-block;
+  background-color: var(--primarycolor); 
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.illustration {
+  margin-top: 40px;
+}
+
+.illustration img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .errorCode {
+    font-size: 6rem;
+  }
+  .errorMessage {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  .homeButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .errorCode {
+    font-size: 4rem;
+  }
+  .errorMessage {
+    font-size: 1.5rem;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+}
+
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

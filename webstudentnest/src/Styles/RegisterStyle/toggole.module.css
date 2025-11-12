@@ -1,0 +1,19 @@
+.ToggleButton{
+    text-align: center;
+
+}
+.ToggleGroup{
+    border-radius: 0.5rem !important;
+    overflow: hidden;
+}
+.toggle{
+    color: var(--paragraphcolor) !important;
+    padding: 1.1rem !important;
+  
+}
+
+.active{
+    color: white !important;
+    background-color: var(--primarycolor)!important;
+}
+

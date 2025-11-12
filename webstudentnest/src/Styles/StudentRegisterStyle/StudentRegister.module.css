@@ -1,0 +1,27 @@
+.studentContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;  
+    
+}
+
+@media (min-width:549px) {
+    .studentContainer{
+        margin-top: 3rem;
+    } 
+}
+
+
+@media (min-width:1000px) {
+    .studentContainer{
+        margin-top: 5rem;
+    } 
+}
+
+@media (min-width:1550px) {
+    .studentContainer{
+        margin-top: 5rem;
+    } 
+}

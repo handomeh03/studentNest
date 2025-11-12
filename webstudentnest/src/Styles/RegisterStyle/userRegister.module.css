@@ -1,0 +1,21 @@
+.registerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;  
+    
+    
+}
+
+
+@media (min-width:1550px) {
+    .registerContainer{
+        margin-top: 1rem;
+    } 
+}
+@media (min-width:1800px) {
+    .registerContainer{
+        margin-top: 4rem;
+    } 
+}

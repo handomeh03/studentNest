@@ -1,0 +1,54 @@
+
+.UserRegisterHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primarycolor);
+  color: white;
+  font-family:var(--primaryfont);
+  padding: 0.2rem;
+  height: 6rem;
+}
+.UserRegisterHeader img {
+  width: 30%;
+}
+.UserRegisterHeader p {
+  font-weight: 500;
+  font-size: x-large;
+  margin-left: 1rem;
+}
+@media (min-width: 321px) {
+  .UserRegisterHeader {
+    justify-content: space-between;
+  }
+  .UserRegisterHeader p {
+    font-weight: 500;
+    font-size: x-large;
+  }
+  .UserRegisterHeader img {
+    width: 22%;
+  }
+}
+@media (min-width: 540px) {
+ 
+  .UserRegisterHeader p {
+    font-weight: 500;
+    font-size: x-large;
+    margin-right: 2rem;
+  }
+  .UserRegisterHeader img {
+    width: 95px;
+  }
+}
+@media (min-width:1700px) {
+    .UserRegisterHeader p {
+    font-weight: 500;
+    font-size: xx-large;
+    margin-right: 2rem;
+  }
+  .UserRegisterHeader img {
+    width: 120px;
+  }
+}
+
+

@@ -1,0 +1,75 @@
+.StudentForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+}
+.StudentForm form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.8rem; 
+}
+.Field {
+  width: 100%;
+}
+.Button {
+  width: 100%;
+  margin: 0.5rem  auto !important;
+  background-color: var(--primarycolor) !important;
+  padding: 1rem !important;
+  font-weight: 700 !important;
+   
+}
+.StudentForm p{
+  color: var(--paragraphcolor);
+  font-family: var(--secoundryfont);
+  text-transform: capitalize;
+}
+
+
+
+.Button:hover{
+  cursor: pointer;
+  background-color: var(--secoundrycolor) !important;
+}
+
+
+@media (min-width: 550px) {
+  .StudentForm form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .Button {
+    width: 30%;
+  }
+}
+@media (min-width: 900px) {
+  .StudentForm {
+    width: 65%;
+    margin: auto;
+  }
+  .StudentForm form {
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    border-radius: 1rem;
+    
+  }
+ 
+}
+
+@media (min-width: 1100px) {
+    .StudentForm form{
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+  .StudentForm {
+    width: 50%;
+    
+  }
+  
+  
+  
+}

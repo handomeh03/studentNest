@@ -1,0 +1,99 @@
+.communityStatsSection {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: var(--secoundryfont);
+}
+
+
+.sectionTitle {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.sectionSubtitle {
+  font-size: 1.1em;
+  color: var(--secondarycolor); 
+  margin-bottom: 40px;
+}
+
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.statCard {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px 20px;
+  width: 250px;
+  min-height: 180px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  border: 1px solid rgba(99, 84, 65, 0.1); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.statImage {
+  width: 89px; 
+  height: 89px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  margin-bottom: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(99, 84, 65, 0.5); 
+}
+
+
+.statNumber {
+  font-size: 3.5em;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  background: linear-gradient(45deg, #a39485, var(--primarycolor));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+}
+
+.statLabel {
+  font-size: 1em;
+  color: var(--secondary-color);
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+  .communityStatsSection {
+    padding: 40px 15px;
+  }
+  
+  .statsContainer {
+    gap: 20px;
+  }
+
+  .statCard {
+    width: 100%; 
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .statNumber {
+    font-size: 3em;
+  }
+}

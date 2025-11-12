@@ -1,0 +1,11 @@
+.HeaderLandingPage{
+    /* background-color: var(--primarycolor); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 1.5rem; */
+    height: 5rem;
+    
+    
+    
+}
