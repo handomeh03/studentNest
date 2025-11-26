@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import ErrorComp from "../PublicComp/ErrorComp";
 
-export default function LoginForm({ email, password, handleChangeEmail, handleChangePassword }) {
+export default function LoginForm({handleLogin,LoginLoader, email, password, handleChangeEmail, handleChangePassword }) {
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => event.preventDefault();
@@ -64,9 +64,21 @@ export default function LoginForm({ email, password, handleChangeEmail, handleCh
 
       {/* <ErrorComp erorr={"log in error "} /> */}
 
-      <Button className={style.Button} variant="contained" endIcon={<LoginIcon />}>
+        <Link to={"/forgetPassword"} style={{ color: "var(--primarycolor)",width:"100%",marginLeft:"1rem" }}>
+          Forget Passwoord ?
+        </Link>
+
+    
+      {LoginLoader?<Button
+          loading={true}
+          variant="outlined"
+          disabled
+        >
+          Disabled
+        </Button>:<Button onClick={handleLogin} className={style.Button} variant="contained" endIcon={<LoginIcon />}>
         Login
-      </Button>
+      </Button>}
+      
 
       <p style={{ marginBottom: "1rem" }}>
         dont have an account?{" "}

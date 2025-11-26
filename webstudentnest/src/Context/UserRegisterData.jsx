@@ -6,7 +6,7 @@ export default function UserRegisterDataProvider({children}){
     let initValue={
         //for user
          fullname:"",
-         Email:"",
+         Email:JSON.parse(sessionStorage.getItem("email")) || "",
          Dates:"",
          address:"",
          phoneNumber:"",
@@ -18,7 +18,7 @@ export default function UserRegisterDataProvider({children}){
          graduateYear:"",
          universityName:"",
          studentCardId:"",
-         walletAddress:"",
+         verificationFile:"",
          studentGovId:"",
          //for landlord
          cliqAccount:"",
@@ -56,8 +56,8 @@ export default function UserRegisterDataProvider({children}){
                                             return {...state,universityName:action.payload};
                                             case "addStudentCardId":
                                                 return {...state,studentCardId:action.payload};
-                                                case "addWalletAddress":
-                                                    return{...state,walletAddress:action.payload};
+                                                case "addverificationFile":
+                                                    return{...state,verificationFile:action.payload};
                                                     case "studentGovId":
                                                         return {...state,studentGovId:action.payload};
                                                         

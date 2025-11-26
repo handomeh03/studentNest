@@ -26,9 +26,7 @@ export default function HeadOfTable() {
         <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Created At
         </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Actions
-        </th>
+       
       </tr>
     </thead>
   );

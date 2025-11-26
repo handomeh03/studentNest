@@ -10,7 +10,7 @@ export default function Menu() {
   const menuItems = [
     { title: "Home", to: "/" },
     { title: "Apartemts", to: "/apartmets" },
-    { title: "dashborad", to: "/admindashborad" },
+    { title: "Dashborad", to: "/admindashborad" },
     { title: "Log In", to: "/userlogin" },
     { title: "sign up", to: "/userRegister" },
     

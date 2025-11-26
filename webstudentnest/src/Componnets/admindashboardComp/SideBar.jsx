@@ -33,12 +33,8 @@ function classNames(...classes) {
               {/* Sidebar component, swap this element with another sidebar if you like */}
               <div style={{background:"#3f51b5"}} className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4 dark:bg-indigo-800 dark:ring-1 dark:ring-white/10">
                 <div className="flex h-16 shrink-0 items-center">
-                  <img
-                    alt="Your Company"
-                    src="/logo.png"
-                    className="h-16 w-auto"
-                  />
-                  <p className='text-white'>student Nest</p>
+                 
+                  <p className='text-white m-auto'>student Nest</p>
                 </div>
                 <nav className="flex flex-1 flex-col">
                   
@@ -77,9 +73,11 @@ function classNames(...classes) {
                    
 
                    {/* for setting */}
-                    <li className="mt-auto">
+                    <li onClick={()=>{
+                      handleChangeNavigation(10);
+                    }} className="mt-auto">
                       <Link
-                        to={"/seeting"}
+                        to={"setting"}
                         className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-indigo-200 hover:bg-indigo-700 hover:text-white dark:text-indigo-100 dark:hover:bg-indigo-950/25"
                       >
                         <Cog6ToothIcon
@@ -107,12 +105,12 @@ function classNames(...classes) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div style={{background:"#3f51b5"}} className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-4 dark:bg-indigo-800 dark:after:pointer-events-none dark:after:absolute dark:after:inset-y-0 dark:after:right-0 dark:after:w-px dark:after:bg-white/10">
             <div className="flex h-16 shrink-0 items-center">
-              <img
+              {/* <img
                 alt="Your Company"
                 src="./logo.png"
                 className="h-16 w-auto"
-              />
-              <p className='text-white'>student Nest</p>
+              /> */}
+              <p className='text-white m-auto'>student Nest</p>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -151,9 +149,11 @@ function classNames(...classes) {
                 
 
                 {/*setting icon */}
-                <li className="mt-auto">
-                  <a
-                    href="#"
+                <li onClick={()=>{
+                  handleChangeNavigation(10);
+                }} className="mt-auto">
+                  <Link
+                    to="setting"
                     className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-indigo-200 hover:bg-indigo-700 hover:text-white dark:text-indigo-100 dark:hover:bg-indigo-950/25"
                   >
                     <Cog6ToothIcon
@@ -161,7 +161,7 @@ function classNames(...classes) {
                       className="size-6 shrink-0 text-indigo-200 group-hover:text-white dark:text-indigo-100"
                     />
                     Settings
-                  </a>
+                  </Link>
                 </li>
 
 

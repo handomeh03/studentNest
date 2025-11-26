@@ -3,9 +3,16 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 import ErrorComp from "../PublicComp/ErrorComp";
+import { UseLandlordRegister } from "../../Hooks/RegisterHook/useLandlordRegister";
+import { UseUserData } from "../../Context/UserRegisterData";
 
 export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeCliqAccount, handleChangeLandlordGovId }) {
-  
+    let{fullname,Email , Dates,address, phoneNumber, password, role, }=UseUserData();
+  let{ RegisterLandlord, error,setError ,landlordRegisterLoader}=UseLandlordRegister();
+  function handleRegister(e){
+     e.preventDefault();
+    RegisterLandlord(fullname,Email,Dates,address,phoneNumber, password,role,cliqAccount,landlordGovId);
+  }
 
   return (
     <div className={style.LandlordForm}>
@@ -16,7 +23,9 @@ export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeC
           label="Cliq Account"
           type="text"
           value={cliqAccount}
-          onChange={(e) => handleChangeCliqAccount(e.target.value)}
+          onChange={(e) => {
+            setError("");
+            handleChangeCliqAccount(e.target.value)}}
           
         />
         <TextField
@@ -25,20 +34,24 @@ export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeC
           label="Government ID"
           type="text"
           value={landlordGovId}
-          onChange={(e) => handleChangeLandlordGovId(e.target.value)}
+          onChange={(e) => {
+            setError("");
+            handleChangeLandlordGovId(e.target.value)}}
          
         />
       </form>
 
-      <ErrorComp erorr={"landlord Error"} />
+      {error?<ErrorComp erorr={error}/>:""}
 
-      <Button
-        className={style.Button}
-        variant="contained"
-        endIcon={<LoginIcon />}
-      >
-        Register
-      </Button>
+     {landlordRegisterLoader?<Button
+                loading={true}
+                variant="outlined"
+                disabled
+              >
+                Disabled
+              </Button>:<Button onClick={handleRegister} className={style.Button} variant="contained" endIcon={<LoginIcon />}>
+                    Register
+              </Button>}
     </div>
   );
 }

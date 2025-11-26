@@ -1,4 +1,7 @@
+import { useRole } from "../../Context/RoleContext";
+
 export default function HeadOfTable() {
+  let {role}=useRole();
   return (
     <thead>
       <tr>
@@ -26,15 +29,23 @@ export default function HeadOfTable() {
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Status
         </th>
+         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          landlord Sign
+        </th>
+         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+         student Sign
+        </th>
+
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Monthly Rent
         </th>
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Created At
         </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Actions
-        </th>
+
+       {role=="admin" || role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          payment schudele
+        </th>}
       </tr>
     </thead>
   );

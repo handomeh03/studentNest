@@ -3,13 +3,10 @@ import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeade
 import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
 import style from "../Styles/RegisterStyle/userRegister.module.css";
 import RegisterForm from "../Componnets/userRegisterComp/RegisterForm";
-import Loader from "../Componnets/PublicComp/Loader";
-import { UseLoader } from "../Hooks/publicHook/useLoader";
 import { UseUserData } from "../Context/UserRegisterData";
 import { useState } from "react";
 
 export default function UserRegister() {
-  const { loaderFalg } = UseLoader();
   let [FillAllinputValidation, setFillAllinputValidation] = useState("");
   let {fullname,Email,Dates,address,phoneNumber,password,ConfirmPassword, role, userDataDispatch,} = UseUserData();
 
@@ -52,9 +49,7 @@ export default function UserRegister() {
     setFillAllinputValidation(value);
   }
 
-  if (loaderFalg) {
-    return <Loader />;
-  }
+ 
 
   return (
     <div className={style.userRegister}>

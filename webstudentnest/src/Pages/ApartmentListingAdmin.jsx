@@ -1,9 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Useaos } from "../Hooks/publicHook/useaos";
 import ApartmentCard from "../Componnets/ApartmentListing/ApartmentCard";
 
-export default function ApartmentListingAdmin() {
+import DeleteApartmentDialog from "../Componnets/ApartmentListing/DeleteApartmentDialog";
+import SearchuserComp from "../Componnets/ApartmentListing/SearchuserComp";
+import TogoleButton from "../Componnets/LandlordTablepageComp/TogoleButton";
+import { UseTab } from "../Hooks/apartmentListinigHook/useTab";
+import { UseFilterapartment } from "../Hooks/apartmentListinigHook/useFilterApartment";
+import { UsechangeApartment } from "../Hooks/apartmentListinigHook/usechangeApartment";
+import ShowDocumentDialog from "../Componnets/ApartmentListing/ShowDocumentDialog";
+import { useRole } from "../Context/RoleContext";
+import EditStatusdialog from "../Componnets/ApartmentListing/EditStatusdialog";
+import Showdetailsdialog from "../Componnets/ApartmentListing/ShowdetailsDialog";
+import AddDocumnetDialog from "../Componnets/ApartmentListing/AddDocumnetDialog";
+import EditDetailsDialog from "../Componnets/ApartmentListing/editDetailsDialog";
+import EditDocumentDialog from "../Componnets/ApartmentListing/EditDocumentDialog";
+
+
+
+export default function ApartmentListingAdmin({bookedApartment}) {
   Useaos();
+  let{role}=useRole();
+
+  //take it from props from the componnet that use
   const [apartments] = useState([
     {
       id: 1,
@@ -18,7 +37,7 @@ export default function ApartmentListingAdmin() {
       rentTerm: "month",
       isShared: true,
       landlordName: "Ahmad Ali",
-      propertyStatus: "verified",
+      propertyStatus: true,
       href: "#",
     },
     {
@@ -34,7 +53,7 @@ export default function ApartmentListingAdmin() {
       rentTerm: "month",
       isShared: false,
       landlordName: "Sara Omar",
-      propertyStatus: "Not verified",
+      propertyStatus: false,
       href: "#",
     },
     {
@@ -50,7 +69,7 @@ export default function ApartmentListingAdmin() {
       rentTerm: "month",
       isShared: true,
       landlordName: "Khaled Nasser",
-      propertyStatus: "verified",
+      propertyStatus: true,
       href: "#",
     },
     {
@@ -66,7 +85,7 @@ export default function ApartmentListingAdmin() {
       rentTerm: "month",
       isShared: true,
       landlordName: "Khaled Nasser",
-      propertyStatus: "verified",
+      propertyStatus: true,
       href: "#",
     },
     {
@@ -82,23 +101,110 @@ export default function ApartmentListingAdmin() {
       rentTerm: "month",
       isShared: true,
       landlordName: "Khaled Nasser",
-      propertyStatus: "verified",
+      propertyStatus: true,
       href: "#",
     },
   ]);
+
+  let [editDialogFlag,seteditDialogFlag]=useState(false);
+  let[deleteDialogFlag,setDeleteDialogFlag]=useState(false);
+  let[showDocumentFLag,setShowDocumnetFlag]=useState(false);
+  let[showdetailsFlag,setShowdetailsFlag]=useState(false);
+  let[adddocumnetFlag,setAddDocumentFlag]=useState(false);
+  let[editDetailsFlag,seteditdetailsFlag]=useState(false);
+  let[editDocumentDialog,setEditDocumentDialog]=useState(false);
+  let [apartmentId,setApartmentId]=useState(null);
+
+  const [filteredApartments, setfilteredApartments] = useState(apartments);
+
+  //tab for togole
+  const {tabs,setTabs}=UseTab();
+
+  //filter apartments
+   const {verifiedApartment,notVerifiedApartment}=UseFilterapartment(apartments);
+
+  // make change and set filter apartment in setfilterdapartment
+  let{handlechangeApartment}=UsechangeApartment(tabs,apartments,verifiedApartment,notVerifiedApartment,setfilteredApartments);
+
+   //when tabs change current make this function
+  useEffect(() => {
+          handlechangeApartment();
+   }, [tabs]);
+
+   // set togole all apartment when search
+  function handlechangeTogoleWhenSearch(){
+       setTabs(tabs.map((e)=>{
+        if(e.name=="All apartments"){
+          return {...e,current:true};
+        }
+        else{
+          return {...e,current:false};
+        }
+       }))
+}
+
+
+// to change the current value to true when click
+ function handlechangeTogoleOnclick(id){
+   setTabs(tabs.map((e,tabindex)=>{
+             if(tabindex==id){
+                  return {...e,current:true};
+                         }
+             else{
+                  return {...e,current:false}
+                 }
+           }))
+}
+  
+  function handleChangeDeleteDialogFlag(){
+    setDeleteDialogFlag((old)=>!old);
+  }
+
+  function handleChangeEditdialogflag(){
+    seteditDialogFlag((old)=>!old);
+  }
+  function handleChangeShowDocumnetFlag(){
+    setShowDocumnetFlag((old)=>!old);
+  }
+  function handlechageShowDetailsFlag(){
+    setShowdetailsFlag((old)=>!old);
+  }
+  function handlechangeAddDocumentFlag(){
+    setAddDocumentFlag((old)=>!old);
+  }
+   function handleChangeEditdetailFlag(){
+    seteditdetailsFlag((old)=>!old);
+  }
+
+  function handleChangeEditDocumentDialog(){
+    setEditDocumentDialog((old)=>!old);
+  }
+  function handleChangeApartmentId(id){
+    setApartmentId(id);
+  }
+ 
   return (
     <div className="bg-white">
+     {bookedApartment?"": <SearchuserComp handlechangeApartment={handlechangeApartment} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}/>}
+      {role=="student" || role=="" ||bookedApartment?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
       <div className="mx-auto max-w-7xl   sm:px-6 sm:py-5">
         <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
           Apartment Listings
         </h4>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {apartments.map((apartment, index) => (
-            <ApartmentCard apartment={apartment} key={index} />
+          {filteredApartments.map((apartment, index) => (
+            <ApartmentCard bookedApartment={bookedApartment} handleChangeApartmentId={handleChangeApartmentId} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} handleChangeEditDocumentDialog={handleChangeEditDocumentDialog} handleChangeEditdetailFlag={handleChangeEditdetailFlag} handlechangeAddDocumentFlag={handlechangeAddDocumentFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartment={apartment} key={index} />
           ))}
         </div>
       </div>
+      {role=="student"?"": role=="landlord" ?"": <EditStatusdialog editDialogFlag={editDialogFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} apartmentId={apartmentId}/>}
+      {role=="student"?"":<DeleteApartmentDialog deleteDialogFlag={deleteDialogFlag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartmentId={apartmentId}  />}
+      {role=="student"?"":<ShowDocumentDialog showDocumentFLag={showDocumentFLag} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} apartmentId={apartmentId}/>}
+      <Showdetailsdialog showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
+      {role=="student" || role=="admin" ?"":<AddDocumnetDialog adddocumnetFlag={adddocumnetFlag}  handlechangeAddDocumentFlag={handlechangeAddDocumentFlag}  apartmentId={apartmentId}/>}
+      {role=="student" || role==""?"":<EditDetailsDialog editDetailsFlag={editDetailsFlag} handleChangeEditdetailFlag={handleChangeEditdetailFlag}/>}
+      <EditDocumentDialog editDocumentDialog={editDocumentDialog} handleChangeEditDocumentDialog={handleChangeEditDocumentDialog}/>
     </div>
   );
 }

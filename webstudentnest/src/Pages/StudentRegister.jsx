@@ -2,15 +2,10 @@ import style from "../Styles/StudentRegisterStyle/StudentRegister.module.css";
 import StudentForm from "../Componnets/StudentRegister/StudentForm";
 import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
 import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
-import { UseLoader } from "../Hooks/publicHook/useLoader";
-import Loader from "../Componnets/PublicComp/Loader";
 import { UseUserData } from "../Context/UserRegisterData";
 
 export default function StudentRegister() {
-  let { loaderFalg } = UseLoader();
-  if (loaderFalg) {
-    return <Loader />;
-  }
+ 
   let {
     major,
     graduateYear,
@@ -18,9 +13,14 @@ export default function StudentRegister() {
     studentCardId,
     walletAddress,
     studentGovId,
+    verificationFile,
     userDataDispatch,
     
   } = UseUserData();
+  
+  function handlChangeverificationFile(value){
+     userDataDispatch({ type: "addverificationFile", payload: value });
+  }
 
   function handleChangeMajor(value) {
     userDataDispatch({ type: "addMajor", payload: value });
@@ -56,7 +56,9 @@ export default function StudentRegister() {
           studentCardId={studentCardId}
           walletAddress={walletAddress}
           studentGovId={studentGovId}
+          verificationFile={verificationFile}
           handleChangeMajor={handleChangeMajor}
+          handlChangeverificationFile={handlChangeverificationFile}
           handleChangegraduateYear={handleChangegraduateYear}
           handleChangeuniversityName={handleChangeuniversityName}
           handleChangestudentCardId={handleChangestudentCardId}
