@@ -1,6 +1,6 @@
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import style from "../../styles/RegisterStyle/toggole.module.css";
+import style from "../../Styles/RegisterStyle/toggole.module.css";
 
 import SchoolIcon from '@mui/icons-material/School';
 import PersonIcon from '@mui/icons-material/Person';
