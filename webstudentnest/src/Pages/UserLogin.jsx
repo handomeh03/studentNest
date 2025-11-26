@@ -4,10 +4,15 @@ import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeade
 import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
 import style from "../Styles/LoginStyle/UserLogin.module.css"
 import Loader from "../Componnets/PublicComp/Loader";
+
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import { useState } from "react";
+import { UseLogin } from "../Hooks/LoginHook/useLogin";
+import ErrorComp from "../Componnets/PublicComp/ErrorComp";
 export default function UserLogin(){
     let{loaderFalg}=UseLoader();
+
+    let{Login,LoginLoader,error}=UseLogin();
     
     let[email,setEmail]=useState("");
     let[password,setPassword]=useState("");
@@ -19,6 +24,12 @@ export default function UserLogin(){
         setPassword(value);
     }
 
+    function handleLogin(e){
+        e.preventDefault();
+        Login(email,password);
+    }
+  
+
 
         if(loaderFalg){
             return <Loader/>
@@ -28,9 +39,11 @@ export default function UserLogin(){
             <UserRegisterHeader/>
             <div className={style.loginContainer}>
                  <WelcomeHeader title={"welcome back"} description={"log in to discover your ideal accommodation within our community"}/>
-                 <LoginForm email={email} password={password} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword}/>
+                 <LoginForm  handleLogin={handleLogin} LoginLoader={LoginLoader} email={email} password={password} handleChangeEmail={handleChangeEmail} handleChangePassword={handleChangePassword}/>
                   
             </div>
+
+            {error?<ErrorComp erorr={error}/>:""}
 
         </div>
     );

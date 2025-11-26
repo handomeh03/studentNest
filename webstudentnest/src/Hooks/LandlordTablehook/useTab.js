@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function UseTab(){
+export function UseLandlordTab(){
     const [tabs,setTabs]=useState([
           { name: 'All landlords',current:true },
           { name: 'verifed Landlord',current:false},

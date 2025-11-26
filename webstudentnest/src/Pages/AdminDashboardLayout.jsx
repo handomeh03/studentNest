@@ -14,14 +14,14 @@ export default function AdminDashboardLayout() {
   { name: 'students', href: 'students', icon: AcademicCapIcon , current: false },
   { name: 'leases', href: 'lease', icon: DocumentCheckIcon , current: false },
   { name: 'request Lease', href: 'leaserequest', icon: DocumentCheckIcon , current: false },
-  { name: 'receipts', href: '#', icon: ReceiptPercentIcon , current: false },
   { name: 'Notifications', href: 'Notification', icon: BellIcon , current: false },
   { name: 'apartment Lisinting', href: 'apartmentListingadmin', icon: BuildingOfficeIcon  , current: false },
-  { name: 'auditLog', href: '#', icon: ClipboardDocumentListIcon , current: false },
+  { name: 'auditLog', href: 'auditLog', icon: ClipboardDocumentListIcon , current: false },
+  
 ]
 )
 const userNavigation = [
-  { name: 'Your profile', href: '#' },
+  { name: 'Your profile', href: 'setting' },
   { name: 'Sign out', href: '/userlogin' },
 ]
 

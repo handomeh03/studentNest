@@ -3,9 +3,14 @@ import SearchuserComp from "../Componnets/studentTableComp/SearchuserComp";
 import { Useaos } from "../Hooks/publicHook/useaos";
 import HeadOfTable from "../Componnets/studentTableComp/HeadOfTable";
 import RowOfTable from "../Componnets/studentTableComp/RowOfTable";
+import EditStudentDialog from "../Componnets/studentTableComp/EditStudentDialog";
+import DeleteStudentDialog from "../Componnets/studentTableComp/DeleteStudentDialog";
 
 export default function StudentTablePage(){
     Useaos();
+    let[studentId,setstudentId]=useState(null);
+    let[editStudentFlag,setEditStudentFLag]=useState(false);
+    let[deleteStudentFlag,setDeleteStudentFLag]=useState(false);
     const [students] = useState([
     {
       userId: 1,
@@ -93,6 +98,13 @@ export default function StudentTablePage(){
       walletAddress: "5048/2b/c3"
     }
   ]);
+
+ function handleChangeEditStudentFlag(){
+    setEditStudentFLag((old)=>!old);
+  }
+ function handleChangeDeleteStudentDialog(){
+    setDeleteStudentFLag((old)=>!old);
+  }
   
   return(
    <div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
@@ -106,7 +118,7 @@ export default function StudentTablePage(){
    
                  <tbody className="divide-y divide-gray-200   ">
                    {students.map((student,index) => (
-                     <RowOfTable key={index} student={student}/>
+                     <RowOfTable key={index} student={student} handleChangeDeleteStudentDialog={handleChangeDeleteStudentDialog} handleChangeEditStudentFlag={handleChangeEditStudentFlag} setstudentId={setstudentId}/>
                    ))}
                  </tbody>
                </table>
@@ -114,6 +126,9 @@ export default function StudentTablePage(){
              </div>
            </div>
          </div>
+
+            <EditStudentDialog editStudentFlag={editStudentFlag} handleChangeEditStudentFlag={handleChangeEditStudentFlag} studentId={studentId}/>
+               <DeleteStudentDialog deleteStudentFlag={deleteStudentFlag} handleChangeDeleteStudentDialog={handleChangeDeleteStudentDialog} studentId={studentId} />
    
        </div>
 

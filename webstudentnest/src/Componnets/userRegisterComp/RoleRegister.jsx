@@ -8,6 +8,7 @@ export default function RoleRegister({role,handleChangeRole}) {
     const handleChange = (event, newValue) => {
         if (newValue !== null) {  
             handleChangeRole(newValue);
+            
         }
     };
     return (
@@ -24,7 +25,7 @@ export default function RoleRegister({role,handleChangeRole}) {
                     <SchoolIcon style={{ marginRight: "5px", fontSize: "large" }}/>
                     Student
                 </ToggleButton>
-                <ToggleButton className={`${style.toggle} ${role=="landlord"?style.active:""}`} value="landlord">
+                <ToggleButton className={`${style.toggle} ${role=="landloard"?style.active:""}`} value="landloard">
                     <PersonIcon style={{ marginRight: "5px", fontSize: "large" }}/>
                     Landlord
                 </ToggleButton>

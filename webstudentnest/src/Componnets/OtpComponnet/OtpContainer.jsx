@@ -2,9 +2,23 @@ import style from "../../Styles/otpStyle/otpContainer.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
-export default function OtpContainer() {
+import { useState } from "react";
+import { UseConfirmOtp } from "../../Hooks/OtpHooks/useConfirmOtp";
+import { UseUserData } from "../../Context/UserRegisterData";
+import ErrorComp from "../PublicComp/ErrorComp";
+export default function OtpContainer({setError}) {
 
- 
+ let[otp,setOtp]=useState("");
+ let{Email}=UseUserData();
+ let{ confirmOtp, error, ConfirmLoader ,setotpError}=UseConfirmOtp();
+
+function handleChangeOtp(value){
+  setOtp(value);
+ }
+ function confirm(e){
+  e.preventDefault();
+  confirmOtp(Email,otp)
+ }
   
   return (
     <div className={style.otpContainer}>
@@ -19,33 +33,40 @@ export default function OtpContainer() {
                   id="Otp"
                   label="enter OTP"
                   type="text"
-                  // value={cliqAccount}
-                  // onChange={(e) => handleChangeCliqAccount(e.target.value)}
+                  value={otp}
+                  onChange={(e) => {
+                    setError("");
+                    setotpError("");
+                    handleChangeOtp(e.target.value);
+                    
+                  }}
                  
-                />
-       
+                /> 
       </form>
-      
-
+    
       <div className={style.resendOtp}>
-        <p>time</p>
-        <p className={style.resendbtn}>resend OTP</p>
+     
+        <button   className={style.resendbtn}>resend OTP</button>
       </div>
-      <Button
-        className={style.Button}
-        variant="contained"
-        endIcon={<SendIcon/>}
-      >
-        send
-      </Button>
-
-      {/* <Button
+      {ConfirmLoader?  <Button
           loading={true}
           variant="outlined"
           disabled
         >
           Disabled
-        </Button> */}
+        </Button> : <Button
+        onClick={confirm}
+        className={style.Button}
+        variant="contained"
+        endIcon={<SendIcon/>}
+      >
+        send
+      </Button>}
+
+      {error?<ErrorComp erorr={error}/>:""}
+     
+
+     
     </div>
   );
 }
