@@ -12,7 +12,7 @@ import { UsechangeTogole } from "../Hooks/LandlordTablehook/useChangeTogole";
 import { UseLandlordTab } from "../Hooks/LandlordTablehook/useTab";
 import { UseChangeLandlordAfterFilter } from "../Hooks/LandlordTablehook/useChangeLandlordAfterFilter";
 import TogoleButton from "../Components/LandlordTablepageComp/TogoleButton";
-import EditlandlordDialog from "../Components/LandlordTablepageComp/editLandlordDialog";
+import EditlandlordDialog from "../Components/LandlordTablepageComp/EditLandlordDialog";
 import DeleteLandlordDialog from "../Components/LandlordTablepageComp/DeletelandlordDialog";
 
 
