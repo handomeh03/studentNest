@@ -22,7 +22,7 @@ export function UseStudentRegister() {
     try {
       setStudentRegisterLoader(true);
       const res = await fetch(
-        "https://student-nest-production.up.railway.app/api/v1/auth/register/student",
+        `${import.meta.env.VITE_API_URL}/api/v1/auth/register/student`,
         {
           method: "POST",
           body: formData, 

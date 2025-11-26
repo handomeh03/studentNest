@@ -9,7 +9,7 @@ export function UseRegisterOtp(email) {
       try {
         setregisterOtpLoader(true);
         const res = await fetch(
-          "https://student-nest-production.up.railway.app/api/v1/resend-otp",
+          `${import.meta.env.VITE_API_URL}/api/v1/resend-otp`,
           {
             method: "POST",
             body: JSON.stringify({email}),
