@@ -8,7 +8,7 @@ export function UseLandlordRegister() {
     try {
       setlandlordRegisterLoader(true);
       const res = await fetch(
-        "https://student-nest-production.up.railway.app/api/v1/auth/register/landlord",
+        `${import.meta.env.VITE_API_URL}/api/v1/auth/register/landlord`,
         {
           method: "POST",
           body: JSON.stringify({email:String(email),name:String(fullName),address,phoneNumber:String(phoneNumber),dateOfBirth:String(dateOfBirth),role,password,cliQAccount,LandloardGovId}), 

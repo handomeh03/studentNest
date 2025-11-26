@@ -14,7 +14,7 @@ export function UseConfirmOtp() {
       setConfirmLoader(true);
      console.log(email,otpCode);
       const res = await fetch(
-        "https://student-nest-production.up.railway.app/api/v1/verified-otp",
+        `${import.meta.env.VITE_API_URL}/api/v1/verified-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
