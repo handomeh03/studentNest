@@ -10,7 +10,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 
-import style from "../../styles/RegisterStyle/form.module.css";
+import style from "../../Styles/RegisterStyle/form.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { UseUserData } from "../../Context/UserRegisterData";
 import MenuItem from "@mui/material/MenuItem";
