@@ -1,7 +1,6 @@
 // import { useState } from "react";
 // import { useParams } from "react-router-dom";
 import { useState } from "react";
-import EditStatusdialog from "../Components/ApartmentListing/EditStatusdialog";
 import HeadOfTable from "../Components/PaymentschudleComp/HeadOfTable";
 import RowOfTable from "../Components/PaymentschudleComp/RowOfTable";
 import ReciptDialog from "../Components/PaymentschudleComp/ReciptDialog";
