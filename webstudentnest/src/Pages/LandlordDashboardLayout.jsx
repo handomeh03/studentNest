@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Loader from "../Componnets/PublicComp/Loader";
+import Loader from "../Components/PublicComp/Loader";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import {AcademicCapIcon ,HomeIcon,UsersIcon    } from '@heroicons/react/24/outline'
-import SideBar from "../Componnets/admindashboardComp/SideBar";
-import HeaderOfdashboard from "../Componnets/admindashboardComp/HEaderOfdashboard";
+import SideBar from "../Components/admindashboardComp/SideBar";
+import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet } from "react-router-dom";
 
 export default function LandlordDashboardLayout(){

@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { Useaos } from "../Hooks/publicHook/useaos";
-import ApartmentCard from "../Componnets/ApartmentListing/ApartmentCard";
+import ApartmentCard from "../Components/ApartmentListing/ApartmentCard";
 
-import DeleteApartmentDialog from "../Componnets/ApartmentListing/DeleteApartmentDialog";
-import SearchuserComp from "../Componnets/ApartmentListing/SearchuserComp";
-import TogoleButton from "../Componnets/LandlordTablepageComp/TogoleButton";
+import DeleteApartmentDialog from "../Components/ApartmentListing/DeleteApartmentDialog";
+import SearchuserComp from "../Components/ApartmentListing/SearchuserComp";
+import TogoleButton from "../Components/LandlordTablepageComp/TogoleButton";
 import { UseTab } from "../Hooks/apartmentListinigHook/useTab";
 import { UseFilterapartment } from "../Hooks/apartmentListinigHook/useFilterApartment";
 import { UsechangeApartment } from "../Hooks/apartmentListinigHook/usechangeApartment";
-import ShowDocumentDialog from "../Componnets/ApartmentListing/ShowDocumentDialog";
+import ShowDocumentDialog from "../Components/ApartmentListing/ShowDocumentDialog";
 import { useRole } from "../Context/RoleContext";
-import EditStatusdialog from "../Componnets/ApartmentListing/EditStatusdialog";
-import Showdetailsdialog from "../Componnets/ApartmentListing/ShowdetailsDialog";
-import AddDocumnetDialog from "../Componnets/ApartmentListing/AddDocumnetDialog";
-import EditDetailsDialog from "../Componnets/ApartmentListing/editDetailsDialog";
-import EditDocumentDialog from "../Componnets/ApartmentListing/EditDocumentDialog";
+import EditStatusdialog from "../Components/ApartmentListing/EditStatusdialog";
+import Showdetailsdialog from "../Components/ApartmentListing/ShowdetailsDialog";
+import AddDocumnetDialog from "../Components/ApartmentListing/AddDocumnetDialog";
+import EditDetailsDialog from "../Components/ApartmentListing/editDetailsDialog";
+import EditDocumentDialog from "../Components/ApartmentListing/EditDocumentDialog";
 
 
 

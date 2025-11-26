@@ -1,9 +1,9 @@
-import CommunityStats from "../Componnets/LandingPageComp/BodyComp/CommunityStats";
-import Hero from "../Componnets/LandingPageComp/BodyComp/Hero";
-import WhyUs from "../Componnets/LandingPageComp/BodyComp/WhyUs";
-import Footer from "../Componnets/LandingPageComp/Footer/Footer";
-import HeaderLandingPage from "../Componnets/LandingPageComp/Header/HeaderLandingPage";
-import Loader from "../Componnets/PublicComp/Loader";
+import CommunityStats from "../Components/LandingPageComp/BodyComp/CommunityStats";
+import Hero from "../Components/LandingPageComp/BodyComp/Hero";
+import WhyUs from "../Components/LandingPageComp/BodyComp/WhyUs";
+import Footer from "../Components/LandingPageComp/Footer/Footer";
+import HeaderLandingPage from "../Components/LandingPageComp/Header/HeaderLandingPage";
+import Loader from "../Components/PublicComp/Loader";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import style from "../Styles/LandingStyle/LandingPage.module.css";
 export default function LandingPage(){

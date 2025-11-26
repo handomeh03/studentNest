@@ -1,7 +1,7 @@
-import LandlordForm from "../Componnets/LandlordRegister/LandlordForm";
-import Loader from "../Componnets/PublicComp/Loader";
-import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
-import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
+import LandlordForm from "../Components/LandlordRegister/LandlordForm";
+import Loader from "../Components/PublicComp/Loader";
+import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
+import WelcomeHeader from "../Components/userRegisterComp/WelcomeHeader";
 import { UseUserData } from "../Context/UserRegisterData";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import style from "../Styles/LandlordRegisterStyle/LandlordRegister.module.css";

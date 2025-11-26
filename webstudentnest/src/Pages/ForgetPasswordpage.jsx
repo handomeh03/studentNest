@@ -1,5 +1,5 @@
-import ForgetPaswordContainer from "../Componnets/ForgetPasswordComp/ForgetPaswordContainer";
-import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
+import ForgetPaswordContainer from "../Components/ForgetPasswordComp/ForgetPaswordContainer";
+import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
 import style from "../Styles/ForgetpasswordStyle/ForgetPasswordpage.module.css";
 export default function ForgetPasswordpage(){
     return(

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import SearchuserComp from "../Componnets/studentTableComp/SearchuserComp";
+import SearchuserComp from "../Components/studentTableComp/SearchuserComp";
 import { Useaos } from "../Hooks/publicHook/useaos";
-import HeadOfTable from "../Componnets/studentTableComp/HeadOfTable";
-import RowOfTable from "../Componnets/studentTableComp/RowOfTable";
-import EditStudentDialog from "../Componnets/studentTableComp/EditStudentDialog";
-import DeleteStudentDialog from "../Componnets/studentTableComp/DeleteStudentDialog";
+import HeadOfTable from "../Components/studentTableComp/HeadOfTable";
+import RowOfTable from "../Components/studentTableComp/RowOfTable";
+import EditStudentDialog from "../Components/studentTableComp/EditStudentDialog";
+import DeleteStudentDialog from "../Components/studentTableComp/DeleteStudentDialog";
 
 export default function StudentTablePage(){
     Useaos();

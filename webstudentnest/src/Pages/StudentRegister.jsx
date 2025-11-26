@@ -1,7 +1,7 @@
 import style from "../Styles/StudentRegisterStyle/StudentRegister.module.css";
-import StudentForm from "../Componnets/StudentRegister/StudentForm";
-import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
-import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
+import StudentForm from "../Components/StudentRegister/StudentForm";
+import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
+import WelcomeHeader from "../Components/userRegisterComp/WelcomeHeader";
 import { UseUserData } from "../Context/UserRegisterData";
 
 export default function StudentRegister() {

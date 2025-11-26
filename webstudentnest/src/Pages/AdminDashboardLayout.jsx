@@ -1,10 +1,10 @@
 import { useState } from "react";
-import HeaderOfdashboard from "../Componnets/admindashboardComp/HEaderOfdashboard";
+import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet } from "react-router-dom";
 import {BuildingOfficeIcon ,AcademicCapIcon ,HomeIcon,UsersIcon,BellIcon,ClipboardDocumentListIcon,ReceiptPercentIcon ,DocumentCheckIcon    } from '@heroicons/react/24/outline'
-import SideBar from "../Componnets/admindashboardComp/SideBar";
+import SideBar from "../Components/admindashboardComp/SideBar";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
-import Loader from "../Componnets/PublicComp/Loader";
+import Loader from "../Components/PublicComp/Loader";
 
 export default function AdminDashboardLayout() {
  const [sidebarOpen, setSidebarOpen] = useState(false);
