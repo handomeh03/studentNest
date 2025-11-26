@@ -1,6 +1,6 @@
-import HeadOfTable from "../Componnets/LandlordTablepageComp/HeadOfTable";
-import RowOfTable from "../Componnets/LandlordTablepageComp/RowOfTable";
-import SearchuserComp from "../Componnets/LandlordTablepageComp/SearchuserCom";
+import HeadOfTable from "../Components/LandlordTablepageComp/HeadOfTable";
+import RowOfTable from "../Components/LandlordTablepageComp/RowOfTable";
+import SearchuserComp from "../Components/LandlordTablepageComp/SearchuserCom";
 import "aos/dist/aos.css";
 import { Useaos } from "../Hooks/publicHook/useaos";
 
@@ -11,9 +11,9 @@ import { UseChangeTogoleWhenSearch } from "../Hooks/LandlordTablehook/useChangeT
 import { UsechangeTogole } from "../Hooks/LandlordTablehook/useChangeTogole";
 import { UseLandlordTab } from "../Hooks/LandlordTablehook/useTab";
 import { UseChangeLandlordAfterFilter } from "../Hooks/LandlordTablehook/useChangeLandlordAfterFilter";
-import TogoleButton from "../Componnets/LandlordTablepageComp/TogoleButton";
-import EditlandlordDialog from "../Componnets/LandlordTablepageComp/editLandlordDialog";
-import DeleteLandlordDialog from "../Componnets/LandlordTablepageComp/DeletelandlordDialog";
+import TogoleButton from "../Components/LandlordTablepageComp/TogoleButton";
+import EditlandlordDialog from "../Components/LandlordTablepageComp/editLandlordDialog";
+import DeleteLandlordDialog from "../Components/LandlordTablepageComp/DeletelandlordDialog";
 
 
 export default function LandlordTablepage(){

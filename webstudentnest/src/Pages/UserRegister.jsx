@@ -1,8 +1,8 @@
-import RoleRegister from "../Componnets/userRegisterComp/RoleRegister";
-import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
-import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
+import RoleRegister from "../Components/userRegisterComp/RoleRegister";
+import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
+import WelcomeHeader from "../Components/userRegisterComp/WelcomeHeader";
 import style from "../Styles/RegisterStyle/userRegister.module.css";
-import RegisterForm from "../Componnets/userRegisterComp/RegisterForm";
+import RegisterForm from "../Components/userRegisterComp/RegisterForm";
 import { UseUserData } from "../Context/UserRegisterData";
 import { useState } from "react";
 

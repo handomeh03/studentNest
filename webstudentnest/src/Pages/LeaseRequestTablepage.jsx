@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SearchuserComp from "../Componnets/LeaseRequestTableComp/SearchuserComp";
-import HeadOfTable from "../Componnets/LeaseRequestTableComp/HeadOfTable";
-import RowOfTable from "../Componnets/LeaseRequestTableComp/RowOfTable";
+import SearchuserComp from "../Components/LeaseRequestTableComp/SearchuserComp";
+import HeadOfTable from "../Components/LeaseRequestTableComp/HeadOfTable";
+import RowOfTable from "../Components/LeaseRequestTableComp/RowOfTable";
 
 export default function LeaseRequestTablepage(){
       const [leaseRequests] = useState([

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SearchuserComp from "../Componnets/AuditLogTableComp/SearchuserComp";
-import HeadOfTable from "../Componnets/AuditLogTableComp/HeadOfTable";
-import RowOfTable from "../Componnets/AuditLogTableComp/RowOfTable";
+import SearchuserComp from "../Components/AuditLogTableComp/SearchuserComp";
+import HeadOfTable from "../Components/AuditLogTableComp/HeadOfTable";
+import RowOfTable from "../Components/AuditLogTableComp/RowOfTable";
 
 export default function AuditLogTablePage(){
     const [auditLogs] = useState([

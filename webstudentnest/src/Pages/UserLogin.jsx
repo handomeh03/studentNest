@@ -1,14 +1,14 @@
 
-import LoginForm from "../Componnets/userLoginComp/LoginForm";
-import UserRegisterHeader from "../Componnets/userRegisterComp/UserRegisterHeader";
-import WelcomeHeader from "../Componnets/userRegisterComp/WelcomeHeader";
+import LoginForm from "../Components/userLoginComp/LoginForm";
+import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
+import WelcomeHeader from "../Components/userRegisterComp/WelcomeHeader";
 import style from "../Styles/LoginStyle/UserLogin.module.css"
-import Loader from "../Componnets/PublicComp/Loader";
+import Loader from "../Components/PublicComp/Loader";
 
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import { useState } from "react";
 import { UseLogin } from "../Hooks/LoginHook/useLogin";
-import ErrorComp from "../Componnets/PublicComp/ErrorComp";
+import ErrorComp from "../Components/PublicComp/ErrorComp";
 export default function UserLogin(){
     let{loaderFalg}=UseLoader();
 

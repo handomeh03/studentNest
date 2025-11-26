@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddApartmentDialog from "../Componnets/ApartmentListing/AddapartmentDialog";
+import AddApartmentDialog from "../Components/ApartmentListing/AddapartmentDialog";
 import ApartmentListingAdmin from "./apartmentListingAdmin";
 
 export default function MyApartmentsLandLord(){

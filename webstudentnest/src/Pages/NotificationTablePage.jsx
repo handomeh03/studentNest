@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SearchuserComp from "../Componnets/NotifivationTableComp/SearchuserComp";
-import HeadOfTable from "../Componnets/NotifivationTableComp/HeadOfTable";
-import RowOfTable from "../Componnets/NotifivationTableComp/RowOfTable";
+import SearchuserComp from "../Components/NotifivationTableComp/SearchuserComp";
+import HeadOfTable from "../Components/NotifivationTableComp/HeadOfTable";
+import RowOfTable from "../Components/NotifivationTableComp/RowOfTable";
 
 export default function NotifivationTablePage(){
     const [notifications] = useState([

@@ -1,11 +1,11 @@
 // import { useState } from "react";
 // import { useParams } from "react-router-dom";
 import { useState } from "react";
-import EditStatusdialog from "../Componnets/ApartmentListing/EditStatusdialog";
-import HeadOfTable from "../Componnets/PaymentschudleComp/HeadOfTable";
-import RowOfTable from "../Componnets/PaymentschudleComp/RowOfTable";
-import ReciptDialog from "../Componnets/PaymentschudleComp/ReciptDialog";
-import EditVeridedLandlordDialog from "../Componnets/PaymentschudleComp/EditVeridedLandlordDialog";
+import EditStatusdialog from "../Components/ApartmentListing/EditStatusdialog";
+import HeadOfTable from "../Components/PaymentschudleComp/HeadOfTable";
+import RowOfTable from "../Components/PaymentschudleComp/RowOfTable";
+import ReciptDialog from "../Components/PaymentschudleComp/ReciptDialog";
+import EditVeridedLandlordDialog from "../Components/PaymentschudleComp/EditVeridedLandlordDialog";
 
 export default function PaymentSchudlepage(){
     // let{leaseId}=useParams();
