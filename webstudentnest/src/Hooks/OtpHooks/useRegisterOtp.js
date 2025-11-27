@@ -1,39 +1,47 @@
-import {  useEffect, useState } from "react";
-export function UseRegisterOtp(email) {
-  let[success,setSuccess]=useState("");
-  let[successFlag,setSuccessFlag]=useState(false);
-  let [error, setError] = useState("");
-  let [registerOtpLoader, setregisterOtpLoader] = useState(false);
-   useEffect(()=>{
-   const sendRegisterOtp = async () => {
-      try {
-        setregisterOtpLoader(true);
-        const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/v1/resend-otp`,
-          {
-            method: "POST",
-            body: JSON.stringify({email}),
-            headers: { "Content-Type": "application/json" }
+import { useState } from "react";
 
-          }
-        );
-        const data = await res.json();
+export function UseRegisterOtp() {
+  const [success, setSuccess] = useState("");
+  const [successFlag, setSuccessFlag] = useState(false);
+  const [error, setError] = useState("");
+  const [registerOtpLoader, setregisterOtpLoader] = useState(false);
 
-        if (res.ok) {
-           setSuccessFlag(true);
-           setSuccess(data.message);
-           return;
-        } else {
-          throw new Error(data.errors.message);
+  const sendOtp = async (email) => {
+    try {
+      setregisterOtpLoader(true);
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/v1/resend-otp`,
+        {
+          method: "POST",
+          body: JSON.stringify({ email }),
+          headers: { "Content-Type": "application/json" }
         }
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setregisterOtpLoader(false);
-      }
-    };
-    sendRegisterOtp();
-   },[email])
+      );
 
-  return {registerOtpLoader,error,setError,success,setSuccess,successFlag,setSuccessFlag}
+      const data = await res.json();
+
+      if (res.ok) {
+        setSuccessFlag(true);
+        setSuccess(data.message);
+      } else {
+        throw new Error(data?.errors?.message || "Failed to send OTP");
+      }
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setregisterOtpLoader(false);
+    }
+  };
+
+  return {
+    sendOtp,
+    registerOtpLoader,
+    error,
+    setError,
+    success,
+    successFlag,
+    setSuccessFlag
+  };
 }
