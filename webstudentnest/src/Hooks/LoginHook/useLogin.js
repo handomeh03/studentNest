@@ -23,23 +23,18 @@ export function UseLogin() {
       const data = await res.json();
       if (res.ok) {
         setverifiedEmail(data.verifiedEmail);
-        if(data.token && data.verifiedEmail){
-           settoken(data.token);
-          localStorage.setItem("token",JSON.stringify(data.token));
-           navigate("/");
-           
-        }
-        else{
-          sessionStorage.setItem("email",JSON.stringify(email));
+
+        if (data.token && data.verifiedEmail) {
+          settoken(data.token);
+          localStorage.setItem("token", data.token);
+          navigate("/");
+        } else {
+          sessionStorage.setItem("email", email);
           navigate("/otp");
         }
-        return;
       } else {
-        if(data.errors){
-              throw new Error(data.errors[0].message);
-        }
-        throw new Error(data.error);
-       
+        const errorMsg = data.errors?.[0]?.message || data.error || "Unknown error";
+        throw new Error(errorMsg);
       }
     } catch (error) {
       setError(error.message);
