@@ -30,7 +30,6 @@ export function UseConfirmOtp() {
         localStorage.setItem("token",JSON.stringify(data.token));
         return ; 
       } else {
-        console.log(data)
         throw new Error(data.message);
       }
 

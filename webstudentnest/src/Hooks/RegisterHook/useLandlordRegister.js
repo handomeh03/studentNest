@@ -20,17 +20,12 @@ export function UseLandlordRegister() {
       );
       const data = await res.json();
 
-      if (res.ok) {
-        sessionStorage.setItem("email",JSON.stringify(email));
+     if (res.ok) {
+        sessionStorage.setItem("email", email);
         navigate("/otp");
-        return;
       } else {
-    
-        if(data.message=="Too many registration attempts. Please try again later."){
-          throw new Error(data.message);
-        }
-        throw new Error(data.error || data.errors.message);
-       
+        const errorMsg = data.message || data.error || data.errors?.message || "Unknown error";
+        throw new Error(errorMsg);
       }
     } catch (error) {
       setError(error.message);

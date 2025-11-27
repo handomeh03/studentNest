@@ -18,7 +18,7 @@ export default function Otp() {
     if (Email) {
       sendOtp(Email);
     }
-  }, []);
+  }, [Email]);
 
   if (registerOtpLoader) {
     return <Loader />;
