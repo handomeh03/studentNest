@@ -9,7 +9,10 @@ import SuccessComp from "../Components/PublicComp/SucccessComp";
 import { useEffect } from "react";
 
 export default function Otp() {
-  const { Email } = UseUserData();
+const { Email: contextEmail } = UseUserData();
+const Email = contextEmail || sessionStorage.getItem("email");
+
+
 
   const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag} = UseRegisterOtp();
 
