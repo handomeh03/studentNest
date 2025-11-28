@@ -6,7 +6,7 @@ export default function UserRegisterDataProvider({children}){
     let initValue={
         //for user
          fullname:"",
-         Email:sessionStorage.getItem("email") || "",
+         Email:JSON.parse(sessionStorage.getItem("email")) || "",
          Dates:"",
          address:"",
          phoneNumber:"",
