@@ -33,7 +33,7 @@ export function UseStudentRegister() {
       const data = await res.json();
 
      if (res.ok) {
-         sessionStorage.setItem("email", JSON.stringify(email));
+        sessionStorage.setItem("email", JSON.stringify(email));
         navigate("/otp");
         userDataDispatch({action:"restInput"});
       } else {

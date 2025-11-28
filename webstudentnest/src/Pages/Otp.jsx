@@ -1,4 +1,4 @@
-import { UseOtp } from "../Hooks/OtpHooks/useOtp";
+import {  UseResendOtp } from "../Hooks/OtpHooks/useResendOtp";
 import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
 import OtpContainer from "../Components/OtpComponnet/OtpContainer";
 import SuccessComp from "../Components/PublicComp/SucccessComp";
@@ -7,7 +7,9 @@ import Loader from "../Components/PublicComp/Loader";
 import style from "../Styles/otpStyle/Otp.module.css";
 
 export default function Otp() {
-  const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag } = UseOtp();
+
+  // here after register you want to resend opt if otp expire time   its left up state 
+  const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag } = UseResendOtp();
   if (registerOtpLoader) return <Loader />;
 
   return (
