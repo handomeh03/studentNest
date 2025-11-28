@@ -66,6 +66,8 @@ export default function UserRegisterDataProvider({children}){
                                                             return {...state,cliqAccount:action.payload};
                                                             case "addLandlordGovId":
                                                                 return {...state,landlordGovId:action.payload};
+                                                                case "restInput":
+                                                                    return{...state,fullname:"",Email:"",Dates:"",address:"",phoneNumber:"",password:"",ConfirmPassword:"",major:"",graduateYear:"",universityName:"",studentCardId:"",verificationFile:"",studentGovId:"",cliqAccount:"",landlordGovId:""};
 
 
                                                  
