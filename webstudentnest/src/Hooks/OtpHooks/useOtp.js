@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function UseRegisterOtp() {
+export function UseOtp() {
   const [success, setSuccess] = useState("");
   const [successFlag, setSuccessFlag] = useState(false);
   const [error, setError] = useState("");
