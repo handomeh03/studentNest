@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { UseUserData } from "../Context/UserRegisterData";
 import { UseRegisterOtp } from "../Hooks/OtpHooks/useRegisterOtp";
 import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
@@ -12,9 +12,12 @@ export default function Otp() {
   const { Email } = UseUserData();
   const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag } = UseRegisterOtp();
 
+  const hasSentOtp = useRef(false);
+
   useEffect(() => {
-    if (Email) {
+    if (Email && !hasSentOtp.current) {
       sendOtp(Email);
+      hasSentOtp.current = true;
     }
   }, [Email]);
 
