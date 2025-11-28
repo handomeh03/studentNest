@@ -6,7 +6,7 @@ import { useState } from "react";
 import { UseConfirmOtp } from "../../Hooks/OtpHooks/useConfirmOtp";
 import { UseUserData } from "../../Context/UserRegisterData";
 import ErrorComp from "../PublicComp/ErrorComp";
-export default function OtpContainer({setError}) {
+export default function OtpContainer({sendOtp,setError}) {
 
  let[otp,setOtp]=useState("");
  let{Email}=UseUserData();
@@ -46,7 +46,9 @@ function handleChangeOtp(value){
     
       <div className={style.resendOtp}>
      
-        <button   className={style.resendbtn}>resend OTP</button>
+        <button onClick={()=>{
+          sendOtp(Email);
+        }}   className={style.resendbtn}>resend OTP</button>
       </div>
       {ConfirmLoader?  <Button
           loading={true}

@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
-import { UseUserData } from "../Context/UserRegisterData";
-import { UseRegisterOtp } from "../Hooks/OtpHooks/useRegisterOtp";
+import { UseOtp } from "../Hooks/OtpHooks/useOtp";
 import UserRegisterHeader from "../Components/userRegisterComp/UserRegisterHeader";
 import OtpContainer from "../Components/OtpComponnet/OtpContainer";
 import SuccessComp from "../Components/PublicComp/SucccessComp";
@@ -9,18 +7,7 @@ import Loader from "../Components/PublicComp/Loader";
 import style from "../Styles/otpStyle/Otp.module.css";
 
 export default function Otp() {
-  const { Email } = UseUserData();
-  const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag } = UseRegisterOtp();
-
-  const hasSentOtp = useRef(false);
-
-  useEffect(() => {
-    if (Email && !hasSentOtp.current) {
-      sendOtp(Email);
-      hasSentOtp.current = true;
-    }
-  }, [Email]);
-
+  const { sendOtp, registerOtpLoader, error, setError, success, successFlag, setSuccessFlag } = UseOtp();
   if (registerOtpLoader) return <Loader />;
 
   return (
@@ -32,7 +19,7 @@ export default function Otp() {
           <SuccessComp measage={success} setSuccessFlag={setSuccessFlag} />
         )}
 
-        <OtpContainer setError={setError} />
+        <OtpContainer sendOtp={sendOtp} setError={setError} />
       </div>
 
       {error && <ErrorComp erorr={error} />}
