@@ -31,7 +31,7 @@ export function UseStudentRegister() {
       const data = await res.json();
 
      if (res.ok) {
-        sessionStorage.setItem("email", email);
+         sessionStorage.setItem("email", JSON.stringify(email));
         navigate("/otp");
       } else {
         const errorMsg = data.message || data.error || data.errors?.message || "Unknown error";
