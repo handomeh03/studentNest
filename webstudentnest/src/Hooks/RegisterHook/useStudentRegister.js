@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UseUserData } from "../../Context/UserRegisterData";
 export function UseStudentRegister() {
   let [error, setError] = useState("");
   let [StudentRegisterLoader, setStudentRegisterLoader] = useState(false);
+  let{userDataDispatch}=UseUserData();
   let navigate=useNavigate();
   async function RegisterStudent(fullName,email,dateOfBirth,address,phoneNumber, password,role,major,graduateYear,universityName,studentCardId,GovId,verificationFile) {
     const formData = new FormData();
@@ -33,6 +35,7 @@ export function UseStudentRegister() {
      if (res.ok) {
          sessionStorage.setItem("email", JSON.stringify(email));
         navigate("/otp");
+        userDataDispatch({action:"restInput"});
       } else {
         const errorMsg = data.message || data.error || data.errors?.message || "Unknown error";
         throw new Error(errorMsg);

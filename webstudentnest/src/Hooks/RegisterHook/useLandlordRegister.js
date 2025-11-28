@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UseUserData } from "../../Context/UserRegisterData";
 export function UseLandlordRegister() {
   let [error, setError] = useState("");
   let [landlordRegisterLoader, setlandlordRegisterLoader] = useState(false);
+  let {userDataDispatch}=UseUserData();
   let navigate=useNavigate();
   async function RegisterLandlord(fullName,email,dateOfBirth,address,phoneNumber, password,role,cliQAccount,LandloardGovId) {
     try {
@@ -23,6 +25,7 @@ export function UseLandlordRegister() {
      if (res.ok) {
         sessionStorage.setItem("email", JSON.stringify(email));
         navigate("/otp");
+        userDataDispatch({action:"restInput"});
       } else {
         const errorMsg = data.message || data.error || data.errors?.message || "Unknown error";
         throw new Error(errorMsg);
