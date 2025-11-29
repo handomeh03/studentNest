@@ -11,7 +11,7 @@ export function UseConfirmOtpPassword() {
       setConfirmLoader(true);
      console.log(email,otpCode);
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/v1/verified-otp`,
+        `${import.meta.env.VITE_API_URL}/api/v1/password-recovery/verified-otp`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
