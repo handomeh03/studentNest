@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
 export default function ForgetPaswordContainer({OtpLoader,setError,email,handleChangeEmail,handlesubmit}){
-
+  
     return(
         
              <div className={style.forgetPasswordContainer}>

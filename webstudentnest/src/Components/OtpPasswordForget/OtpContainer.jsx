@@ -47,6 +47,7 @@ function handleChangeOtp(value){
       <div className={style.resendOtp}>
      
         <button onClick={()=>{
+          console.log(Email);
           sendOtp(Email);
         }}   className={style.resendbtn}>resend OTP</button>
       </div>

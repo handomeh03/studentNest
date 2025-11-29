@@ -4,11 +4,11 @@ export function UseResendOtpForgetPassword() {
   const [success, setSuccess] = useState("");
   const [successFlag, setSuccessFlag] = useState(false);
   const [error, setError] = useState("");
-  const [OtpLoader, setOtpLoader] = useState(false);
+  const [resenForgetPasswordLoader, setresenForgetPasswordLoader] = useState(false);
 
   async function sendOtp(email) {
     try {
-      setOtpLoader(true);
+      setresenForgetPasswordLoader(true);
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/password-recovery/resent-otp`, {
         method: "POST",
         body: JSON.stringify({ email }),
@@ -30,9 +30,9 @@ export function UseResendOtpForgetPassword() {
       setSuccess("");
       setSuccessFlag(false);
     } finally {
-      setOtpLoader(false);
+      setresenForgetPasswordLoader(false);
     }
   }
 
-  return { sendOtp, success, setSuccess, successFlag, setSuccessFlag, error, setError, OtpLoader };
+  return { sendOtp, success, setSuccess, successFlag, setSuccessFlag, error, setError, resenForgetPasswordLoader };
 }
