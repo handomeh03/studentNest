@@ -9,7 +9,6 @@ export function UseConfirmOtpPassword() {
   async function confirmOtp(email, otpCode) {
     try {
       setConfirmLoader(true);
-     console.log(email,otpCode);
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/api/v1/password-recovery/verified-otp`,
         {
@@ -25,8 +24,8 @@ export function UseConfirmOtpPassword() {
         alert("success");
         return ; 
       } else {
-        throw new Error(data.message);
-      }
+        throw new Error(data.err || data.errors?.message || "OTP verification failed");
+      } 
 
     } catch (error) {
       setotpError(error.message);
