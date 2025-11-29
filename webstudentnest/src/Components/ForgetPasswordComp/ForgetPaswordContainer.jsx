@@ -35,7 +35,8 @@ export default function ForgetPaswordContainer({OtpLoader,setError,email,handleC
                     >
                       Disabled
                     </Button> :<Button
-                    onClick={()=>{
+                    onClick={(e)=>{
+                      e.preventDefault();
                         handlesubmit();
                     }}
                     className={style.Button}
