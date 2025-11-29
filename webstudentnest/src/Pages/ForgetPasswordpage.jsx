@@ -10,8 +10,8 @@ export default function ForgetPasswordpage(){
     function handleChangeEmail(value){
         setEmail(value);
     }
-    function handlesubmit(e){
-        e.preventDefault();
+    function handlesubmit(){
+        
         sendOtpForgetPassword(email);
     }
     return(
