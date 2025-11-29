@@ -24,10 +24,10 @@ export function UseConfirmOtp() {
 
       const data = await res.json();
 
-      if (res.ok) {
-        navigate("/");
+      if (res.ok) {    
         settoken(data.token);
         localStorage.setItem("token",JSON.stringify(data.token));
+        navigate("/");
         return ; 
       } else {
         throw new Error(data.message);
