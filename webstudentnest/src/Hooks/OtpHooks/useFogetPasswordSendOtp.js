@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UseUserData } from "../../Context/UserRegisterData";
 
 export function UseFogetPasswordSendOtp(){
       const [error, setError] = useState("");
       const [OtpLoader, setOtpLoader] = useState(false);
+      let{userDataDispatch}=UseUserData();
       let navigate=useNavigate();
     
       async function sendOtpForgetPassword(email) {
@@ -19,6 +21,7 @@ export function UseFogetPasswordSendOtp(){
     
           if (res.ok) {
             setError(""); 
+            userDataDispatch({ type: "addEmail", payload: email });
             sessionStorage.setItem("email",JSON.stringify(email));   
             navigate("/OtpPassword");
             
