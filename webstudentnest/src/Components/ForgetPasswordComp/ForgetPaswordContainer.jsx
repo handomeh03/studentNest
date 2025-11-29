@@ -2,9 +2,8 @@ import style from "../../Styles/ForgetpasswordStyle/ForgetPasswordContainer.modu
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
-import { useNavigate } from "react-router-dom";
-export default function ForgetPaswordContainer(){
-    let navigate=useNavigate();
+export default function ForgetPaswordContainer({OtpLoader,setError,email,handleChangeEmail,handlesubmit}){
+
     return(
         
              <div className={style.forgetPasswordContainer}>
@@ -18,32 +17,33 @@ export default function ForgetPaswordContainer(){
                               id="email"
                               label="email"
                               type="email"
-                              // value={cliqAccount}
-                              // onChange={(e) => handleChangeCliqAccount(e.target.value)}
+                              value={email}
+                              onChange={(e) => {
+                                setError("");
+                                handleChangeEmail(e.target.value)
+                              }}
                              
                             />
                    
                   </form>
                   
-         
-                  <Button
+
+                  {OtpLoader?<Button
+                      loading={true}
+                      variant="outlined"
+                      disabled
+                    >
+                      Disabled
+                    </Button> :<Button
                     onClick={()=>{
-                        navigate("/Otp")
+                        handlesubmit();
                     }}
                     className={style.Button}
                     variant="contained"
                     endIcon={<SendIcon/>}
                   >
                     send
-                  </Button>
-            
-                  {/* <Button
-                      loading={true}
-                      variant="outlined"
-                      disabled
-                    >
-                      Disabled
-                    </Button> */}
+                  </Button>}
                 </div>
         
     );

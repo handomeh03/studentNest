@@ -27,6 +27,7 @@ import PaymentSchudlepage from './Pages/PaymentSchudlepage'
 import MyRequestLeasepage from './Pages/MyRequestLeasepage'
 import ApartmentLeasespage from './Pages/ApartmentLeasespage'
 import ForgetPasswordpage from './Pages/ForgetPasswordpage'
+import PasswordOtp from './Pages/PasswordOtp'
 function App() {    
   return (
     <div className='App' >
@@ -39,6 +40,7 @@ function App() {
         <Route path='/landlordRegister' element={<LandlordRegister/>}/>
         <Route path='/otp' element={<Otp/>}/>
         <Route path="/forgetPassword" element={<ForgetPasswordpage/>}/>
+        <Route path="/OtpPassword" element={<PasswordOtp/>}/>
         
 
        <Route path="/admindashborad" element={<AdminDashboardLayout/>}>
