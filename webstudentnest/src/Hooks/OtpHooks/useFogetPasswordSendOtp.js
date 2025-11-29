@@ -19,9 +19,9 @@ export function UseFogetPasswordSendOtp(){
     
           if (res.ok) {
             setError(""); 
+            sessionStorage.setItem("email",JSON.stringify(email));   
             navigate("/OtpPassword");
-           
-            sessionStorage.setItem("email",JSON.stringify(email));     
+            
           } else {
             throw new Error(data.error || data.errors?.message || "Failed to send OTP");
           }
