@@ -4,7 +4,7 @@ const AuthContext=createContext();
 
 export default function AuthProvider({children}){
     let [token,settoken]=useState(() => {
-    return JSON.parse(localStorage.getItem("token")) || "";
+    return JSON.parse(sessionStorage.getItem("token")) || "";
   });
   let [isVerefied,setverifiedEmail]=useState(null);
     return(

@@ -26,7 +26,7 @@ export function UseLogin() {
 
         if (data.token && data.verifiedEmail) {
           settoken(data.token);
-          localStorage.setItem("token", JSON.stringify(data.token));
+          sessionStorage.setItem("token", JSON.stringify(data.token));
           navigate("/");
         } else {
           sessionStorage.setItem("email", email);
