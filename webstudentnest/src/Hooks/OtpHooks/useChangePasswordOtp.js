@@ -2,29 +2,35 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function UseChangePasswordOtp() {
-    let [error, setError] = useState("");
-    let [changeLoader, setChangeLoader] = useState(false);
-    let navigate=useNavigate();
-    async function changePasswordOtp(email,password){
-        try {
-            setChangeLoader(true);
-            const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/password-recovery/forget-password`,{
-                method:"PATCH",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify({email,password})
-            });
-            const data=await res.json();
+    const [error, setError] = useState("");
+    const [changeLoader, setChangeLoader] = useState(false);
+    const navigate = useNavigate();
 
-            if(res.ok){
+    async function changePasswordOtp(email, password) {
+        setError("");
+        setChangeLoader(true);
+
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/password-recovery/forget-password`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
                 navigate("/login");
-            }else{
-                throw new Error(data.message ||data.errors.message|| "failed to change password");
+            } else {
+                const errorMsg = data?.message || data?.errors?.message || "Failed to change password";
+                throw new Error(errorMsg);
             }
-        } catch (error) {
-            setError(error.message);
-        }finally{
+        } catch (err) {
+            setError(err instanceof Error ? err.message : "Something went wrong");
+        } finally {
             setChangeLoader(false);
         }
     }
-    return {changePasswordOtp,error,setError,changeLoader};
+
+    return { changePasswordOtp, error, setError, changeLoader };
 }
