@@ -11,6 +11,7 @@ export default function Menu() {
   const { user, userDispatch } = useUserContext();
   const { role } = useRole();
   const navigate = useNavigate();
+  
 
   const getDashboardLink = () => {
     switch (user?.role || role) {
@@ -18,7 +19,7 @@ export default function Menu() {
         return "/admindashborad";
       case "student":
         return "/studentdashboard";
-      case "landloard": // صححت الاسم
+      case "landloard":
         return "/landlordDashboard";
       default:
         return "/"; 
@@ -46,18 +47,19 @@ export default function Menu() {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("user");
       userDispatch({ type: "CLEAR_USER", payload: null });
+        navigate(item.to); 
     }
-    navigate(item.to);
+    
     setMenuFlag(false); 
   };
-
   return (
     <div className={style.Menu}>
+      
       <div onClick={() => setMenuFlag(prev => !prev)} className={style.menuButton}>
         <MenuIcon style={{ color: "white", marginRight: "6px" }} />
       </div>
 
-      {/* Small Menu */}
+      
       <div className={`${style.SmallMenu} ${menuFlag ? style.open : ""}`}>
         <button onClick={() => setMenuFlag(false)}>
           <CloseIcon />
@@ -65,12 +67,11 @@ export default function Menu() {
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <button
-                onClick={() => handleClick(item)}
-                className={style.link}
-              >
+              <Link to={item.to} onClick={()=>{
+                handleClick(item);
+              }} className={style.link}>
                 {item.title}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -81,12 +82,11 @@ export default function Menu() {
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <button
-                onClick={() => handleClick(item)}
-                className={style.link}
-              >
+              <Link to={item.to} onClick={()=>{
+                handleClick(item);
+              }}className={style.link}>
                 {item.title}
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
