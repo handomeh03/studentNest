@@ -20,10 +20,6 @@ export default function AdminDashboardLayout() {
   
 ]
 )
-const userNavigation = [
-  { name: 'Your profile', href: 'setting' },
-  { name: 'Sign out', href: '/userlogin' },
-]
 
 function handleChangeNavigation(id){
   setnavigation(navigation.map((e,index)=>{
@@ -46,7 +42,7 @@ if(loaderFalg){
   return (
       <div >
        <SideBar  sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} navigation={navigation} handleChangeNavigation={handleChangeNavigation} />
-       <HeaderOfdashboard setSidebarOpen={setSidebarOpen} userNavigation={userNavigation} />
+       <HeaderOfdashboard setSidebarOpen={setSidebarOpen}  />
 
        <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}  className="py-10 lg:pl-72">
         <div  className="px-4 ml-3 mr-3 w-full rounded-4xl  overflow-hidden  sm:px-6 lg:px-8">

@@ -11,7 +11,7 @@ export function useUser() {
     useEffect(()=>{
         async function fetchUser() {
             try {
-                console.log(token);
+                
                 setLoader(true);
                 const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/me/profile`,{
                     method:"GET",
@@ -24,7 +24,6 @@ export function useUser() {
                 if(res.ok){
                     userDispatch({type:"SET_USER",payload:data});
                     sessionStorage.setItem("user",JSON.stringify(data));
-                    console.log(data);
                 }
                 else{
                     throw new Error(data.error || "Failed to fetch user data");

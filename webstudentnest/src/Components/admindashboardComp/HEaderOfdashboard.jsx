@@ -1,11 +1,19 @@
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
-export default function HeaderOfdashboard({ setSidebarOpen, userNavigation }) {
-  let {user}=useUserContext();
+export default function HeaderOfdashboard({ setSidebarOpen }) {
+  let {user,userDispatch}=useUserContext();
+  let navigate=useNavigate();
+
+
+const userNavigation = [
+      { name: 'Your profile', href: 'setting' },
+      { name: 'Sign out', href: '/userlogin' },
+    ]
+
   return (
     <div className="lg:pl-72">
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
@@ -58,12 +66,19 @@ export default function HeaderOfdashboard({ setSidebarOpen, userNavigation }) {
             >
               {userNavigation.map((item) => (
                 <MenuItem key={item.name}>
-                  <Link
-                    to={item.href}
+                  <button
+                    onClick={() => {
+                      if (item.name === "Sign out") {
+                        sessionStorage.removeItem("token");
+                        sessionStorage.removeItem("user");
+                       userDispatch({type:"CLEAR_USER"});
+                      }
+                      navigate(item.href);
+                    }}
                     className="block px-3 py-1 text-sm/6 text-white data-[focus]:bg-blue-800  m-1 rounded-2xl data-[focus]:outline-none "
                   >
                     {item.name}
-                  </Link>
+                  </button>
                 </MenuItem>
               ))}
             </MenuItems>
