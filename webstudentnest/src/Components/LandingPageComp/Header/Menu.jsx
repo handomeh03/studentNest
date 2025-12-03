@@ -19,7 +19,7 @@ export default function Menu() {
         return "/admindashborad";
       case "student":
         return "/studentdashboard";
-      case "landlord":
+      case "landloard":
         return "/landlordDashboard";
       default:
         return "/"; 
