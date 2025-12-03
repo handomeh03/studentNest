@@ -29,6 +29,7 @@ import ApartmentLeasespage from './Pages/ApartmentLeasespage'
 import ForgetPasswordpage from './Pages/ForgetPasswordpage'
 import PasswordOtp from './Pages/PasswordOtp'
 import ChangePasswordOtp from './Pages/changePasswordOtp'
+
 function App() {    
   return (
     <div className='App' >
