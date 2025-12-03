@@ -10,6 +10,8 @@ export function UseChangePasswordOtp() {
         setError("");
         setChangeLoader(true);
 
+        console.log(email,password);
+
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/password-recovery/forget-password`, {
                 method: "PATCH",
