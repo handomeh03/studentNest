@@ -22,9 +22,9 @@ export function UseChangePasswordOtp() {
             const data = await res.json();
 
             if (res.ok) {
-                navigate("/login");
+                navigate("/userlogin");
             } else {
-                const errorMsg = data?.message || data?.errors?.message || "Failed to change password";
+                const errorMsg = data?.message || data?.errors?.errors.message || "Failed to change password";
                 throw new Error(errorMsg);
             }
         } catch (err) {
