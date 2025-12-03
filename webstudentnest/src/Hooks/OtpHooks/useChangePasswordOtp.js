@@ -18,7 +18,7 @@ export function UseChangePasswordOtp() {
             if(res.ok){
                 navigate("/login");
             }else{
-                throw new Error(data.message ||data.errors.message|| "Failed to change password");
+                throw new Error(data.message ||data.errors.message|| "failed to change password");
             }
         } catch (error) {
             setError(error.message);
