@@ -2,8 +2,10 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function HeaderOfdashboard({ setSidebarOpen, userNavigation }) {
+  let {user}=useUserContext();
   return (
     <div className="lg:pl-72">
       <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
@@ -39,7 +41,7 @@ export default function HeaderOfdashboard({ setSidebarOpen, userNavigation }) {
                   aria-hidden="true"
                   className="ml-4 text-sm/6 font-semibold text-zinc-800 "
                 >
-                  Tom Cook
+                  {user?.name || "User"}
                 </span>
                 <ChevronDownIcon
                   aria-hidden="true"

@@ -4,11 +4,11 @@ import WhyUs from "../Components/LandingPageComp/BodyComp/WhyUs";
 import Footer from "../Components/LandingPageComp/Footer/Footer";
 import HeaderLandingPage from "../Components/LandingPageComp/Header/HeaderLandingPage";
 import Loader from "../Components/PublicComp/Loader";
-import { UseLoader } from "../Hooks/publicHook/useLoader";
+import { useUser } from "../Hooks/UserHook/UseUser";
 import style from "../Styles/LandingStyle/LandingPage.module.css";
 export default function LandingPage(){
-    let { loaderFalg } = UseLoader();
-      if (loaderFalg) {
+    let {loader}=useUser();
+      if (loader) {
         return <Loader/>;
       }
     return(
