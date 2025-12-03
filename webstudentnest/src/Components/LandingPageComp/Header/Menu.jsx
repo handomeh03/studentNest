@@ -2,47 +2,62 @@ import { useState } from "react";
 import style from "../../../Styles/LandingStyle/Menu.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../Context/UserContext/UserContext";
 import { useRole } from "../../../Context/RoleContext";
 
 export default function Menu() {
   const [menuFlag, setMenuFlag] = useState(false);
-  const { user } = useUserContext(); 
-  
+  const { user, userDispatch } = useUserContext();
+  const { role } = useRole();
+  const navigate = useNavigate();
 
-  const {role}=useRole();
-
-  
   const getDashboardLink = () => {
     switch (user?.role || role) {
       case "admin":
         return "/admindashborad";
       case "student":
         return "/studentdashboard";
-      case "landloard":
+      case "landloard": // صححت الاسم
         return "/landlordDashboard";
       default:
         return "/"; 
     }
   };
 
+  
   const menuItems = [
     { title: "Home", to: "/" },
     { title: "Apartments", to: "/apartments" },
     { title: "Dashboard", to: getDashboardLink() },
-    { title: "Log In", to: "/userlogin" },
-    { title: "Sign Up", to: "/userRegister" },
+    
+    ...(!user
+      ? [
+          { title: "Log In", to: "/userlogin" },
+          { title: "Sign Up", to: "/userRegister" },
+        ]
+      : []),
+    
+    ...(user ? [{ title: "Sign Out", to: "/userlogin" }] : []),
   ];
+
+  const handleClick = (item) => {
+    if (item.title === "Sign Out") {
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("user");
+      userDispatch({ type: "CLEAR_USER", payload: null });
+    }
+    navigate(item.to);
+    setMenuFlag(false); 
+  };
 
   return (
     <div className={style.Menu}>
-      
       <div onClick={() => setMenuFlag(prev => !prev)} className={style.menuButton}>
         <MenuIcon style={{ color: "white", marginRight: "6px" }} />
       </div>
 
-      
+      {/* Small Menu */}
       <div className={`${style.SmallMenu} ${menuFlag ? style.open : ""}`}>
         <button onClick={() => setMenuFlag(false)}>
           <CloseIcon />
@@ -50,9 +65,12 @@ export default function Menu() {
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link to={item.to} className={style.link}>
+              <button
+                onClick={() => handleClick(item)}
+                className={style.link}
+              >
                 {item.title}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
@@ -63,9 +81,12 @@ export default function Menu() {
         <ul>
           {menuItems.map((item, index) => (
             <li key={index}>
-              <Link to={item.to} className={style.link}>
+              <button
+                onClick={() => handleClick(item)}
+                className={style.link}
+              >
                 {item.title}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
