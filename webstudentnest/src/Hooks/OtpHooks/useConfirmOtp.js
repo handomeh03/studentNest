@@ -26,7 +26,7 @@ export function UseConfirmOtp() {
 
       if (res.ok) {    
         settoken(data.token);
-        localStorage.setItem("token",JSON.stringify(data.token));
+        sessionStorage.setItem("token",JSON.stringify(data.token));
         navigate("/");
         return ; 
       } else {

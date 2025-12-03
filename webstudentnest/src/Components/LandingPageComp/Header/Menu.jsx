@@ -46,6 +46,7 @@ export default function Menu() {
     if (item.title === "Sign Out") {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("user");
+      sessionStorage.removeItem("email");
       userDispatch({ type: "CLEAR_USER", payload: null });
         navigate(item.to); 
     }
