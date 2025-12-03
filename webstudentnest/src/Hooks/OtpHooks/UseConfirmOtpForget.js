@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export function UseConfirmOtpPassword() {
   let [error, setotpError] = useState("");
   let [ConfirmLoader, setConfirmLoader] = useState(false);
+  let navigate=useNavigate();
   
 
   async function confirmOtp(email, otpCode) {
@@ -19,9 +21,8 @@ export function UseConfirmOtpPassword() {
       );
 
       const data = await res.json();
-
       if (res.ok) {
-        alert("success");
+        navigate('/changePassword');
         return ; 
       } else {
         throw new Error(data.err || data.errors?.message || "OTP verification failed");
