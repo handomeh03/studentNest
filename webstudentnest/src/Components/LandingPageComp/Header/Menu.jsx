@@ -4,17 +4,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../Context/UserContext/UserContext";
-import { useRole } from "../../../Context/RoleContext";
+
 
 export default function Menu() {
   const [menuFlag, setMenuFlag] = useState(false);
   const { user, userDispatch } = useUserContext();
-  const { role } = useRole();
+  
   const navigate = useNavigate();
   
-
   const getDashboardLink = () => {
-    switch (user?.role || role) {
+    switch (user?.role) {
       case "admin":
         return "/admindashborad";
       case "student":
@@ -47,7 +46,7 @@ export default function Menu() {
       sessionStorage.removeItem("token");
       sessionStorage.removeItem("user");
       sessionStorage.removeItem("email");
-      userDispatch({ type: "CLEAR_USER", payload: null });
+      userDispatch({ type: "CLEAR_USER"});
         navigate(item.to); 
     }
     

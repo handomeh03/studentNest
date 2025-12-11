@@ -1,7 +1,9 @@
-import { useRole } from "../../Context/RoleContext";
+
+import { useUserContext } from "../../Context/UserContext/UserContext";
+
 
 export default function HeadOfTable() {
-  let {role}=useRole();
+  let {user}=useUserContext();
   return (
     <thead>
       <tr>
@@ -43,7 +45,7 @@ export default function HeadOfTable() {
           Created At
         </th>
 
-       {role=="admin" || role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+       {user?.role=="admin" || user?.role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           payment schudele
         </th>}
       </tr>

@@ -9,18 +9,21 @@ import { UseTab } from "../Hooks/apartmentListinigHook/useTab";
 import { UseFilterapartment } from "../Hooks/apartmentListinigHook/useFilterApartment";
 import { UsechangeApartment } from "../Hooks/apartmentListinigHook/usechangeApartment";
 import ShowDocumentDialog from "../Components/ApartmentListing/ShowDocumentDialog";
-import { useRole } from "../Context/RoleContext";
+
 import EditStatusdialog from "../Components/ApartmentListing/EditStatusdialog";
 import Showdetailsdialog from "../Components/ApartmentListing/ShowdetailsDialog";
 import AddDocumnetDialog from "../Components/ApartmentListing/AddDocumnetDialog";
 import EditDetailsDialog from "../Components/ApartmentListing/editDetailsDialog";
 import EditDocumentDialog from "../Components/ApartmentListing/EditDocumentDialog";
+import { useUserContext } from "../Context/UserContext/UserContext";
 
 
 
 export default function ApartmentListingAdmin({bookedApartment}) {
+
+  // ال booked apartment يعني ال apremtnet ال محجوزة للlandlord وهي بس كفلاج
   Useaos();
-  let{role}=useRole();
+  let{user}=useUserContext();
 
   //take it from props from the componnet that use
   const [apartments] = useState([
@@ -186,7 +189,7 @@ export default function ApartmentListingAdmin({bookedApartment}) {
   return (
     <div className="bg-white">
      {bookedApartment?"": <SearchuserComp handlechangeApartment={handlechangeApartment} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}/>}
-      {role=="student" || role=="" ||bookedApartment?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
+      {user?.role=="student" || user?.role=="" ||bookedApartment?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
       <div className="mx-auto max-w-7xl   sm:px-6 sm:py-5">
         <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
           Apartment Listings
@@ -198,12 +201,12 @@ export default function ApartmentListingAdmin({bookedApartment}) {
           ))}
         </div>
       </div>
-      {role=="student"?"": role=="landlord" ?"": <EditStatusdialog editDialogFlag={editDialogFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} apartmentId={apartmentId}/>}
-      {role=="student"?"":<DeleteApartmentDialog deleteDialogFlag={deleteDialogFlag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartmentId={apartmentId}  />}
-      {role=="student"?"":<ShowDocumentDialog showDocumentFLag={showDocumentFLag} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} apartmentId={apartmentId}/>}
+      {user?.role=="student"?"": user?.role=="landlord" ?"": <EditStatusdialog editDialogFlag={editDialogFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} apartmentId={apartmentId}/>}
+      {user?.role=="student"?"":<DeleteApartmentDialog deleteDialogFlag={deleteDialogFlag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartmentId={apartmentId}  />}
+      {user?.role=="student"?"":<ShowDocumentDialog showDocumentFLag={showDocumentFLag} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} apartmentId={apartmentId}/>}
       <Showdetailsdialog showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
-      {role=="student" || role=="admin" ?"":<AddDocumnetDialog adddocumnetFlag={adddocumnetFlag}  handlechangeAddDocumentFlag={handlechangeAddDocumentFlag}  apartmentId={apartmentId}/>}
-      {role=="student" || role==""?"":<EditDetailsDialog editDetailsFlag={editDetailsFlag} handleChangeEditdetailFlag={handleChangeEditdetailFlag}/>}
+      {user?.role=="student" || user?.role=="admin" ?"":<AddDocumnetDialog adddocumnetFlag={adddocumnetFlag}  handlechangeAddDocumentFlag={handlechangeAddDocumentFlag}  apartmentId={apartmentId}/>}
+      {user?.role=="student" || user?.role==""?"":<EditDetailsDialog editDetailsFlag={editDetailsFlag} handleChangeEditdetailFlag={handleChangeEditdetailFlag}/>}
       <EditDocumentDialog editDocumentDialog={editDocumentDialog} handleChangeEditDocumentDialog={handleChangeEditDocumentDialog}/>
     </div>
   );

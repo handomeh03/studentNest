@@ -71,7 +71,8 @@ const userNavigation = [
                       if (item.name === "Sign out") {
                         sessionStorage.removeItem("token");
                         sessionStorage.removeItem("user");
-                       userDispatch({type:"CLEAR_USER"});
+                        sessionStorage.removeItem("email");
+                        userDispatch({ type: "CLEAR_USER"});
                       }
                       navigate(item.href);
                     }}
