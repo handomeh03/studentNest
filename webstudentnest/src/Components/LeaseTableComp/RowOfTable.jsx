@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { useRole } from "../../Context/RoleContext";
+
+
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function RowOfTable({ lease }) {
-  let{role}=useRole();
+  let{user}=useUserContext();
   let navigate=useNavigate();
   return (
     <tr key={lease.leaseId}>
@@ -65,7 +67,7 @@ export default function RowOfTable({ lease }) {
       </td>
       
   
-     {role=="landlord"? <td className="whitespace-nowrap px-3 py-5 text-sm ">
+     {user?.role=="landloard"? <td className="whitespace-nowrap px-3 py-5 text-sm ">
           <button onClick={()=>{
               navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`);
           }} className=" hover:cursor-pointer bg-indigo-500 p-2  rounded-3xl text-white hover:bg-indigo-400 ">

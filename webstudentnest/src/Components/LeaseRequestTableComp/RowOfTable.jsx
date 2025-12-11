@@ -1,8 +1,9 @@
-import { useRole } from "../../Context/RoleContext";
+
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function RowOfTable({ leaserequest }) {
   const { student, landlord, apartment, leaseRequest } = leaserequest;
-  let{role}=useRole();
+  let{user}=useUserContext();
 
   return (
     <tr key={leaserequest.id}>
@@ -67,7 +68,7 @@ export default function RowOfTable({ leaserequest }) {
       </td>
 
       {/* Actions */}
-      {role=="landlord"?<td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-sm font-medium">
+      {user?.role=="landlord"?<td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-sm font-medium">
         <button className="hover:text-green-500 hover:cursor-pointer text-green-800">
           {/* Edit icon */}
           <svg

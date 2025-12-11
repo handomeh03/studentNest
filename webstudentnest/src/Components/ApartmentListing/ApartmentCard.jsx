@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useRole } from "../../Context/RoleContext";
+
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function ApartmentCard({bookedApartment,apartment,handleChangeShowDocumnetFlag,handleChangeEditDocumentDialog,handleChangeEditdetailFlag,handlechangeAddDocumentFlag,handlechageShowDetailsFlag,handleChangeEditdialogflag,handleChangeApartmentId,handleChangeDeleteDialogFlag}){
-  let{role}=useRole();
+  const { user } = useUserContext();
   let navigatie=useNavigate();
     return(
          <div
@@ -18,7 +19,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
             className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
           />
           
-         {role=="student" || role=="" ||bookedApartment?"": <span
+         {user?.role=="student" || user?.role=="" ||bookedApartment?"": <span
             className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
               apartment.propertyStatus === true
                 ? "bg-green-100 text-green-800"
@@ -51,7 +52,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
           <div className="flex gap-2 flex-wrap ">
         <div className="flex gap-2 flex-wrap m-auto">
 
-  {role=="student"|| role=="landlord"||role=="" ?"":<button onClick={()=>{
+  {user?.role=="student"|| user?.role=="landloard"||user?.role=="" ?"":<button onClick={()=>{
     handleChangeEditdialogflag();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -59,14 +60,14 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
   </button>}
 
 
-  {role=="student" ||bookedApartment|| role==""?"":<button onClick={()=>{
+  {user?.role=="student" ||bookedApartment|| user?.role==""?"":<button onClick={()=>{
     handleChangeDeleteDialogFlag();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm font-medium text-white bg-[#3f51b5] hover:cursor-pointer rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Delete
   </button>}
 
-  {role=="student" ||!bookedApartment|| role==""?"":<button onClick={()=>{
+  {user?.role=="student" ||!bookedApartment|| user?.role==""?"":<button onClick={()=>{
     navigatie(`/landlordDashboard/apartemnt/${apartment.id}/leases`)
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -74,7 +75,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
   </button>}
   
 
-  {role=="student" ||bookedApartment|| role==""?"":  <button onClick={()=>{
+  {user?.role=="student" ||bookedApartment|| user?.role==""?"":  <button onClick={()=>{
     handleChangeShowDocumnetFlag();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -83,7 +84,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
 
 
 
-  {role=="student" || role=="admin" ||bookedApartment|| role==""?"":<button onClick={()=>{
+  {user?.role=="student" || user?.role=="admin" ||bookedApartment|| user?.role==""?"":<button onClick={()=>{
     handlechangeAddDocumentFlag();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -91,7 +92,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
   </button>}
 
 
-  {role=="landlord" ||role=="admin" ?"":<button onClick={()=>{
+  {user?.role=="landloard" ||user?.role=="admin" ?"":<button onClick={()=>{
     
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -107,14 +108,14 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
   </button>
 
 
-   {role=="student" ||bookedApartment || role==""?"":<button onClick={()=>{
+   {user?.role=="student" ||bookedApartment || user?.role==""?"":<button onClick={()=>{
     handleChangeEditdetailFlag();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     edit detailts
   </button>}
 
- {role=="student" ||bookedApartment|| role==""?"":  <button onClick={()=>{
+ {user?.role=="student" ||bookedApartment|| user?.role==""?"":  <button onClick={()=>{
     handleChangeEditDocumentDialog();
     handleChangeApartmentId(apartment.id);
   }} className="flex-1 px-3 py-2 text-sm hover:cursor-pointer  font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">

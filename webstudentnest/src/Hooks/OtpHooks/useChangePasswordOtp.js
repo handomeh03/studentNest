@@ -22,6 +22,7 @@ export function UseChangePasswordOtp() {
             const data = await res.json();
 
             if (res.ok) {
+                sessionStorage.removeItem("email");
                 navigate("/userlogin");
             } else {
                 const errorMsg = data?.message || data?.errors?.errors.message || "Failed to change password";
