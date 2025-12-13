@@ -9,13 +9,16 @@ export default function UseSearchLandlordForAdmin(email) {
   
 
   useEffect(() => {
-    if (!email) return;
     const delayDebounceFn = setTimeout(() => {
       
       const controller = new AbortController();
       const signal = controller.signal;
-
+     
       const search = async () => {
+        if(email==""){
+              adminForlandlordDispatch({type:"restToOrginal"});
+              return;
+          }
         try {
           const res = await fetch(
             `${import.meta.env.VITE_API_URL}/api/v1/admin/users/search/${email}`,
@@ -30,11 +33,14 @@ export default function UseSearchLandlordForAdmin(email) {
 
           const data = await res.json();
           if (res.ok) {
-            adminForlandlordDispatch({type:"search",payload:[data]});
-            console.log(data);
+          
+          
+                adminForlandlordDispatch({type:"searchLandlord",payload:[data]}); 
+            
+        
             
           } else {
-            adminForlandlordDispatch({type:"search",payload:[]});
+            adminForlandlordDispatch({type:"searchLandlord",payload:[]});
             throw new Error(data.errors || "No landlord found");
           }
         } catch (error) {

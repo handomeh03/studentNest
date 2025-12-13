@@ -70,7 +70,7 @@ export default function RowOfTable({landlord,setLandlordId,handleChangeEditLandl
                       </a>
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {landlord.createdAt || "5-5-2025"}
+                      {landlord?.user?.createdAt.split("T")[0] || "5-5-2025"}
                     </td>
                     <td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                       <button onClick={()=>{
