@@ -29,8 +29,11 @@ import ApartmentLeasespage from './Pages/ApartmentLeasespage'
 import ForgetPasswordpage from './Pages/ForgetPasswordpage'
 import PasswordOtp from './Pages/PasswordOtp'
 import ChangePasswordOtp from './Pages/changePasswordOtp'
+import LandlordTableContainer from './Pages/LandlordTableContainer'
+import NotVerifedPage from './Pages/NotVerivedPage'
 
-function App() {    
+function App() {  
+   
   return (
     <div className='App' >
        <Routes>
@@ -47,7 +50,7 @@ function App() {
         
 
        <Route path="/admindashborad" element={<AdminDashboardLayout/>}>
-            <Route index element={<LandlordTablepage />} />  
+            <Route index element={<LandlordTableContainer />} />  
             <Route path="lease" element={<LeaseTablePage/>} />
             <Route path='students' element={<StudentTablePage/>}/>
             <Route path='leaserequest' element={<LeaseRequestTablepage/>}/>
@@ -66,6 +69,7 @@ function App() {
           <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
           <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
           <Route path='notification' element={<NotifivationTablePage/>}/>
+          <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
 
         <Route path='*' element={<NotFound/>}/>

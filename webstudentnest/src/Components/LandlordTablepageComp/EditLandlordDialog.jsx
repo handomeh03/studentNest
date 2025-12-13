@@ -5,8 +5,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import MenuItem from "@mui/material/MenuItem";
+import { useState } from "react";
+import { UseEditLandlordStatus } from "../../Hooks/AdminHooks/UseEditLandlordStatus";
+import ErrorComp from "../PublicComp/ErrorComp";
 
-export default function EditlandlordDialog({editlandlordFlag,handleChangeEditLandlordFlag}){
+export default function EditlandlordDialog({editlandlordFlag,handleChangeEditLandlordFlag,landlordId}){
    const mainColor = "#3f51b5";
      const hoverColor = "#5c6bc0";
    
@@ -26,6 +29,15 @@ export default function EditlandlordDialog({editlandlordFlag,handleChangeEditLan
          backgroundColor: hoverColor,
        },
      };
+
+     let [status,setStatus]=useState("true");
+     const {editStatus,error,loader}=UseEditLandlordStatus();
+
+     function onedit(e){
+      e.preventDefault();
+      console.log(status);
+      editStatus(landlordId,status,handleChangeEditLandlordFlag);
+     }
    
      return (
        <Dialog style={{ zIndex: "12345675" }} open={editlandlordFlag}>
@@ -43,6 +55,8 @@ export default function EditlandlordDialog({editlandlordFlag,handleChangeEditLan
                name="adminVerifed"
                label="admin Verifed"
                variant="outlined"
+               value={status}
+               onChange={(e)=>{setStatus(e.target.value)}}
                sx={{
                  ...textFieldStyle,
                  width: {
@@ -60,22 +74,31 @@ export default function EditlandlordDialog({editlandlordFlag,handleChangeEditLan
                  },
                }}
              >
-               <MenuItem value="verifed">verifed</MenuItem>
-               <MenuItem value="notverifed">not verifed</MenuItem>
+               <MenuItem value="true">verifed</MenuItem>
+               <MenuItem value="false">not verifed</MenuItem>
              </TextField>
            </form>
          </DialogContent>
+         {error?<ErrorComp erorr={error}/>:""}
    
          <DialogActions>
            <Button onClick={handleChangeEditLandlordFlag} sx={{ color: mainColor }}>cancel</Button>
-           <Button
+           {loader?<Button
+                     loading={true}
+                     variant="outlined"
+                     disabled
+                   >
+                     Disabled
+                   </Button>:<Button
              type="submit"
              form="subscription-form"
              sx={buttonStyle}
+             onClick={onedit}
              
            >
              edit
-           </Button>
+           </Button>}
+           
          </DialogActions>
        </Dialog>
      );

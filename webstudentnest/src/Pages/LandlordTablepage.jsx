@@ -15,18 +15,25 @@ import TogoleButton from "../Components/LandlordTablepageComp/TogoleButton";
 import EditlandlordDialog from "../Components/LandlordTablepageComp/EditLandlordDialog";
 import DeleteLandlordDialog from "../Components/LandlordTablepageComp/DeletelandlordDialog";
 
+import ErrorComp from "../Components/PublicComp/ErrorComp";
 
-export default function LandlordTablepage(){
+
+
+export default function LandlordTablepage({Landlords,error}){
 
 Useaos();
+let [email,setemail]=useState("");
 
-const[landlordId,setLandlordId]=useState(null);
+
+const[landlordId,setLandlordId]=useState("");
 
 const[editlandlordFlag,seteditLandlordFlag]=useState(false);
 const[deletelanlordFlag,setDeleteLandlordFLag]=useState(false);
 
-const {Landlords}=Uselandlord();
-const [filteredLandlords, setFilteredLandlords] = useState(Landlords);
+
+
+
+const [filteredLandlords, setFilteredLandlords] = useState(Landlords || []);
 let{tabs,setTabs}=UseLandlordTab();
 
 //filter the landlord
@@ -38,8 +45,8 @@ let {handlechangeLandlords}=UseChangeLandlordAfterFilter(tabs,Landlords,verified
 
 //excute the filteration when tab change
 useEffect(() => {
-  handlechangeLandlords();
-}, [tabs]);
+       handlechangeLandlords();
+}, [tabs,Landlords]);
 
 //when search of all landlord set togole all landlord
 let{handlechangeTogoleWhenSearch}=UseChangeTogoleWhenSearch(tabs,setTabs);
@@ -53,9 +60,11 @@ function handleChangeDeletelandlordDialog(){
   setDeleteLandlordFLag((old)=>!old);
 }
 
+
     return(
-     <div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
-       <SearchuserComp handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch} handlechangeLandlords={handlechangeLandlords}/>
+    <div>
+      {error ?<ErrorComp erorr={error || "no landlord found"}/>: <div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
+       <SearchuserComp email={email} setemail={setemail} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch} handlechangeLandlords={handlechangeLandlords}/>
      
 
         <TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick}/>
@@ -63,7 +72,7 @@ function handleChangeDeletelandlordDialog(){
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-            <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
+           {filteredLandlords.length==0 ?<ErrorComp erorr={"no landlord found"}/>: <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
                <HeadOfTable/>  
 
               <tbody className="divide-y divide-gray-200   ">
@@ -71,13 +80,17 @@ function handleChangeDeletelandlordDialog(){
                   <RowOfTable key={index} landlord={landlord} handleChangeDeletelandlordDialog={handleChangeDeletelandlordDialog} handleChangeEditLandlordFlag={handleChangeEditLandlordFlag} setLandlordId={setLandlordId}/>
                 ))}
               </tbody>
-            </table>
+            </table>}
 
           </div>
         </div>
       </div>
       <EditlandlordDialog editlandlordFlag={editlandlordFlag} handleChangeEditLandlordFlag={handleChangeEditLandlordFlag} landlordId={landlordId}/>
       <DeleteLandlordDialog deletelanlordFlag={deletelanlordFlag} handleChangeDeletelandlordDialog={handleChangeDeletelandlordDialog} landlordId={landlordId} />
+    </div>}
     </div>
     );
 }
+
+
+
