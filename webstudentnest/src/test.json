@@ -1,0 +1,180 @@
+[
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "4d58cc75-78f7-4076-9cfc-8f05bc8cd790",
+            "name": {
+                "userName": "JohnDoe"
+            },
+            "dateOfBirth": {
+                "value": "2000"
+            },
+            "phoneNumber": {
+                "value": "0797774077"
+            },
+            "email": {
+                "value": "202110142@stu.meu.edu.jo"
+            },
+            "role": "landloard",
+            "address": "amman,khalda"
+        },
+        "cliQAccount": "cliQAccount123",
+        "landlordGovId": {
+            "value": "1234567890"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/dppl6flqwyqztrfcyu9n?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    },
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "9abecb7f-a581-4448-a574-0ae9f2018b8b",
+            "name": {
+                "userName": "abood"
+            },
+            "dateOfBirth": {
+                "value": "1999"
+            },
+            "phoneNumber": {
+                "value": "0797774077"
+            },
+            "email": {
+                "value": "alkayyaliabdalrahman2@gmail.com"
+            },
+            "role": "landloard"
+        },
+        "cliQAccount": "cliQAccount123",
+        "landlordGovId": {
+            "value": "1234567890"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/yneh5jgvtz9109w7ir7b?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    },
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "a7e46631-9fdc-4290-95f7-f24127f200b4",
+            "name": {
+                "userName": "Jameel"
+            },
+            "dateOfBirth": {
+                "value": "2002"
+            },
+            "phoneNumber": {
+                "value": "0799474063"
+            },
+            "email": {
+                "value": "jameel.jalal@gmail.com"
+            },
+            "role": "landloard",
+            "address": "Amman"
+        },
+        "cliQAccount": "82772727",
+        "landlordGovId": {
+            "value": "2000626311"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/dppl6flqwyqztrfcyu9n?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    },
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "c6debd1c-4c1a-44bd-8c26-9b798325d948",
+            "name": {
+                "userName": "abdalrahmanAlkayyali"
+            },
+            "dateOfBirth": {
+                "value": "2002"
+            },
+            "phoneNumber": {
+                "value": "079 7774077"
+            },
+            "email": {
+                "value": "abdalrahmanalkayyali48@gmail.com"
+            },
+            "role": "landloard"
+        },
+        "cliQAccount": "1234567890",
+        "landlordGovId": {
+            "value": "1234567880"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/dppl6flqwyqztrfcyu9n?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    },
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "d4c8902b-d12e-4097-ba8e-ad37d8bdf9dd",
+            "name": {
+                "userName": "Abdalrazaq"
+            },
+            "dateOfBirth": {
+                "value": "2004"
+            },
+            "phoneNumber": {
+                "value": "0777245661"
+            },
+            "email": {
+                "value": "abooddweik@gamil.com"
+            },
+            "role": "landloard",
+            "address": "Amman"
+        },
+        "cliQAccount": "1456322",
+        "landlordGovId": {
+            "value": "2000526421"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/dppl6flqwyqztrfcyu9n?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    },
+    {
+        "user": {
+            "accountStats": "activate",
+            "emailVerified": false,
+            "resetPasswordVerified": false,
+            "userId": "fe1abfdd-a24b-4499-a0bf-66e20e663092",
+            "name": {
+                "userName": "Abed"
+            },
+            "dateOfBirth": {
+                "value": "1998"
+            },
+            "phoneNumber": {
+                "value": "0775378401"
+            },
+            "email": {
+                "value": "puzzlechess8@gmail.com"
+            },
+            "role": "landloard",
+            "address": "Amman "
+        },
+        "cliQAccount": "0775378401",
+        "landlordGovId": {
+            "value": "9981037468"
+        },
+        "document": {
+            "value": "https://res.cloudinary.com/dslw4fppr/image/upload/c_fill,g_auto,h_500,w_500/f_auto,q_auto/v1/app_uploads/dppl6flqwyqztrfcyu9n?_a=BAMAMiRk0"
+        },
+        "verifiedLandlord": false
+    }
+]

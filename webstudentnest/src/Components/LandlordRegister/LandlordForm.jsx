@@ -6,12 +6,32 @@ import ErrorComp from "../PublicComp/ErrorComp";
 import { UseLandlordRegister } from "../../Hooks/RegisterHook/useLandlordRegister";
 import { UseUserData } from "../../Context/UserRegisterData";
 
-export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeCliqAccount, handleChangeLandlordGovId }) {
-    let{fullname,Email , Dates,address, phoneNumber, password, role, }=UseUserData();
-  let{ RegisterLandlord, error,setError ,landlordRegisterLoader}=UseLandlordRegister();
-  function handleRegister(e){
-     e.preventDefault();
-    RegisterLandlord(fullname,Email,Dates,address,phoneNumber, password,role,cliqAccount,landlordGovId);
+export default function LandlordForm({
+  verificationFile,
+  cliqAccount,
+  landlordGovId,
+  handleChangeCliqAccount,
+  handleChangeLandlordGovId,
+  handlChangeverificationFile,
+}) {
+  let { fullname, Email, Dates, address, phoneNumber, password, role } =
+    UseUserData();
+  let { RegisterLandlord, error, setError, landlordRegisterLoader } =
+    UseLandlordRegister();
+  function handleRegister(e) {
+    e.preventDefault();
+    RegisterLandlord(
+      fullname,
+      Email,
+      Dates,
+      address,
+      phoneNumber,
+      password,
+      role,
+      cliqAccount,
+      landlordGovId,
+      verificationFile
+    );
   }
 
   return (
@@ -25,8 +45,8 @@ export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeC
           value={cliqAccount}
           onChange={(e) => {
             setError("");
-            handleChangeCliqAccount(e.target.value)}}
-          
+            handleChangeCliqAccount(e.target.value);
+          }}
         />
         <TextField
           className={style.Field}
@@ -36,22 +56,45 @@ export default function LandlordForm({ cliqAccount, landlordGovId, handleChangeC
           value={landlordGovId}
           onChange={(e) => {
             setError("");
-            handleChangeLandlordGovId(e.target.value)}}
-         
+            handleChangeLandlordGovId(e.target.value);
+          }}
         />
+        <Button variant="outlined" component="label">
+          upload landlord verevication
+          <input
+            hidden
+            accept="image/*"
+            type="file"
+            onChange={(e) => handlChangeverificationFile(e.target.files[0])}
+          />
+        </Button>
+        {verificationFile && (
+          <div style={{ marginTop: "15px" }}>
+            <img
+              src={URL.createObjectURL(verificationFile)}
+              alt="verificationFile "
+              style={{ borderRadius: "8px", width: "100%" }}
+            />
+          </div>
+        )}
       </form>
 
-      {error?<ErrorComp erorr={error}/>:""}
+      {error ? <ErrorComp erorr={error} /> : ""}
 
-     {landlordRegisterLoader?<Button
-                loading={true}
-                variant="outlined"
-                disabled
-              >
-                Disabled
-              </Button>:<Button onClick={handleRegister} className={style.Button} variant="contained" endIcon={<LoginIcon />}>
-                    Register
-              </Button>}
+      {landlordRegisterLoader ? (
+        <Button loading={true} variant="outlined" disabled>
+          Disabled
+        </Button>
+      ) : (
+        <Button
+          onClick={handleRegister}
+          className={style.Button}
+          variant="contained"
+          endIcon={<LoginIcon />}
+        >
+          Register
+        </Button>
+      )}
     </div>
   );
 }

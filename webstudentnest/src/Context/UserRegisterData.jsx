@@ -4,7 +4,7 @@ const UserDataContext=createContext();
 
 export default function UserRegisterDataProvider({children}){
     let initValue={
-        //for user
+        
          fullname:"",
          Email:JSON.parse(sessionStorage.getItem("email")) || "",
          Dates:"",
@@ -13,14 +13,14 @@ export default function UserRegisterDataProvider({children}){
          password:"",
          ConfirmPassword:"",
          role:"student",
-         //for student
+         
          major:"",
          graduateYear:"",
          universityName:"",
          studentCardId:"",
          verificationFile:"",
          studentGovId:"",
-         //for landlord
+         
          cliqAccount:"",
          landlordGovId:""
     

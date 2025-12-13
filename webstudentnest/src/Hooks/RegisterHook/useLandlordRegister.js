@@ -6,18 +6,28 @@ export function UseLandlordRegister() {
   let [landlordRegisterLoader, setlandlordRegisterLoader] = useState(false);
   let {userDataDispatch}=UseUserData();
   let navigate=useNavigate();
-  async function RegisterLandlord(fullName,email,dateOfBirth,address,phoneNumber, password,role,cliQAccount,LandloardGovId) {
+  async function RegisterLandlord(fullName,email,dateOfBirth,address,phoneNumber, password,role,cliQAccount,LandloardGovId,verificationFile) {
+       const formData = new FormData();
+         formData.append("role",String(role));
+          formData.append("phoneNumber",String(phoneNumber));
+          formData.append("password",String(password));
+          formData.append("name",String(fullName));
+          formData.append("LandloardGovId",String(LandloardGovId));
+          formData.append("email",String(email));
+          formData.append("document",verificationFile);
+          formData.append("dateOfBirth",String(dateOfBirth));
+          formData.append("cliQAccount",String(cliQAccount));
+          formData.append("address",String(address));
+
+       
     try {
       setlandlordRegisterLoader(true);
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/api/v1/auth/register/landlord`,
         {
           method: "POST",
-          body: JSON.stringify({email:String(email),name:String(fullName),address,phoneNumber:String(phoneNumber),dateOfBirth:String(dateOfBirth),role,password,cliQAccount,LandloardGovId}), 
-         headers: {
-            "Content-Type": "application/json"
-          }
-
+          body: formData,
+         
         }
       );
       const data = await res.json();

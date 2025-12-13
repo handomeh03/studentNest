@@ -8,7 +8,7 @@ import style from "../Styles/LandlordRegisterStyle/LandlordRegister.module.css";
 export default function LandlordRegister() {
     let{loaderFalg}=UseLoader();
 
-    let {cliqAccount,landlordGovId,userDataDispatch} = UseUserData();
+    let {cliqAccount,landlordGovId,userDataDispatch,verificationFile} = UseUserData();
 
     function handleChangeCliqAccount(value){
           userDataDispatch({type:"addCliqAccount",payload:value});
@@ -16,6 +16,10 @@ export default function LandlordRegister() {
     function handleChangeLandlordGovId(value){
       userDataDispatch({type:"addLandlordGovId",payload:value});
     }
+    function handlChangeverificationFile(value){
+     userDataDispatch({ type: "addverificationFile", payload: value });
+  }
+
 
     if(loaderFalg){
         return <Loader/>
@@ -28,7 +32,7 @@ export default function LandlordRegister() {
             title={"Landlord Register"}
           description={"complete register for Landlord"}
         />
-        <LandlordForm cliqAccount={cliqAccount} landlordGovId={landlordGovId} handleChangeCliqAccount={handleChangeCliqAccount} handleChangeLandlordGovId={handleChangeLandlordGovId}/>
+        <LandlordForm cliqAccount={cliqAccount} landlordGovId={landlordGovId} verificationFile={verificationFile} handleChangeCliqAccount={handleChangeCliqAccount} handleChangeLandlordGovId={handleChangeLandlordGovId} handlChangeverificationFile={handlChangeverificationFile}/>
       </div>
     </div>
   );

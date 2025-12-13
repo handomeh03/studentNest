@@ -17,7 +17,6 @@ export default function StudentForm({
   handleChangegraduateYear,
   handleChangeuniversityName,
   handleChangestudentCardId,
-  
   handleChangeStudentGovId,
 }) {
   
@@ -119,8 +118,8 @@ export default function StudentForm({
             <div style={{ marginTop: "15px"}}>
               <img
                 src={URL.createObjectURL(verificationFile)}
-                alt="receipt preview"
-                style={{ borderRadius: "8px",width:"50%" }}
+                alt="verificationFile "
+                style={{ borderRadius: "8px",width:"100%" }}
               />
             </div>
           )}
