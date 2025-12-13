@@ -20,7 +20,7 @@ export function UseGetLandlord(){
           const data=await res.json();
     
           if(res.ok){
-            // sessionStorage.setItem("landlords",JSON.stringify(data));
+            
             adminForlandlordDispatch({type:"getAllLandlord",payload:data});
           }else{
             throw new Error(data.errors);
@@ -33,7 +33,7 @@ export function UseGetLandlord(){
         }
       }
       fetchlandlord();
-    },[token]);
+    },[token,adminForlandlordDispatch]);
 
     return {loader,error}
 }
