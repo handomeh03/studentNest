@@ -5,11 +5,12 @@ import {AcademicCapIcon ,HomeIcon,UsersIcon    } from '@heroicons/react/24/outli
 import SideBar from "../Components/admindashboardComp/SideBar";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthContext/AuthContext";
+
+import { useUserContext } from "../Context/UserContext/UserContext";
 
 export default function LandlordDashboardLayout(){
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    let{isVerefied}=useAuth();
+    let{user}=useUserContext();
     let navigate=useNavigate();
      const [navigation,setnavigation] = useState([
       { name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -24,10 +25,10 @@ export default function LandlordDashboardLayout(){
     )
 
     useEffect(()=>{
-         if(!isVerefied){
+         if(user.verifiedLandlord==false){
             navigate("notverivedPage");
          }
-    },[navigation,isVerefied])
+    },[navigation,])
     
     
     function handleChangeNavigation(id){

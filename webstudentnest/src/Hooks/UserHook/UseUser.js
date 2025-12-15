@@ -24,6 +24,7 @@ export function useUser() {
                 if(res.ok){
                     userDispatch({type:"SET_USER",payload:data});
                     sessionStorage.setItem("user",JSON.stringify(data));
+                    
                 }
                 else{
                     throw new Error(data.error || "Failed to fetch user data");
