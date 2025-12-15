@@ -31,6 +31,7 @@ import PasswordOtp from './Pages/PasswordOtp'
 import ChangePasswordOtp from './Pages/changePasswordOtp'
 import LandlordTableContainer from './Pages/LandlordTableContainer'
 import NotVerifedPage from './Pages/NotVerivedPage'
+import ApartmentPage from './Pages/AprtmentsPage'
 
 function App() {  
    
@@ -47,6 +48,7 @@ function App() {
         <Route path="/forgetPassword" element={<ForgetPasswordpage/>}/>
         <Route path="/OtpPassword" element={<PasswordOtp/>}/>
         <Route path="/changePassword" element={<ChangePasswordOtp/>}/>
+        <Route path='/apartments' element={<ApartmentPage/>}/>
         
 
        <Route path="/admindashborad" element={<AdminDashboardLayout/>}>

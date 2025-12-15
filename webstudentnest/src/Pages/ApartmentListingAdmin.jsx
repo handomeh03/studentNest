@@ -19,7 +19,7 @@ import { useUserContext } from "../Context/UserContext/UserContext";
 
 
 
-export default function ApartmentListingAdmin({bookedApartment}) {
+export default function ApartmentListingAdmin({bookedApartment,forall}) {
 
   // ال booked apartment يعني ال apremtnet ال محجوزة للlandlord وهي بس كفلاج
   Useaos();
@@ -188,8 +188,8 @@ export default function ApartmentListingAdmin({bookedApartment}) {
  
   return (
     <div className="bg-white">
-     {bookedApartment?"": <SearchuserComp handlechangeApartment={handlechangeApartment} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}/>}
-      {user?.role=="student" || user?.role=="" ||bookedApartment?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
+     {bookedApartment || forall?"": <SearchuserComp handlechangeApartment={handlechangeApartment} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}/>}
+      {user?.role=="student" || user?.role=="" ||bookedApartment || forall?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
       <div className="mx-auto max-w-7xl   sm:px-6 sm:py-5">
         <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
           Apartment Listings
