@@ -13,7 +13,7 @@ export default function Menu() {
   const navigate = useNavigate();
   
   const getDashboardLink = () => {
-    switch (user?.role) {
+    switch (user?.user?.role) {
       case "admin":
         return "/admindashborad";
       case "student":

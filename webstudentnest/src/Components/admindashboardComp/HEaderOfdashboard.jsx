@@ -49,7 +49,7 @@ const userNavigation = [
                   aria-hidden="true"
                   className="ml-4 text-sm/6 font-semibold text-zinc-800 "
                 >
-                  {user?.name || "User"}
+                  {user?.user?.name || "User"}
                 </span>
                 <ChevronDownIcon
                   aria-hidden="true"

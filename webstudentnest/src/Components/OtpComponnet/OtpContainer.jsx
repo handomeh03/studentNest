@@ -2,12 +2,13 @@ import style from "../../Styles/otpStyle/otpContainer.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from '@mui/icons-material/Send';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UseConfirmOtp } from "../../Hooks/OtpHooks/useConfirmOtp";
 import { UseUserData } from "../../Context/UserRegisterData";
 import ErrorComp from "../PublicComp/ErrorComp";
+import { useAuth } from "../../Context/AuthContext/AuthContext";
 export default function OtpContainer({sendOtp,setError}) {
-
+ let{isVerefied}=useAuth();
  let[otp,setOtp]=useState("");
  let{Email}=UseUserData();
  let{ confirmOtp, error, ConfirmLoader ,setotpError}=UseConfirmOtp();
@@ -19,6 +20,14 @@ function handleChangeOtp(value){
   e.preventDefault();
   confirmOtp(Email,otp)
  }
+
+  useEffect(()=>{
+    console.log("hello"+Email);
+    console.log(isVerefied);
+       if(isVerefied==false){
+         sendOtp(Email);
+       }
+   },[])
   
   return (
     <div className={style.otpContainer}>

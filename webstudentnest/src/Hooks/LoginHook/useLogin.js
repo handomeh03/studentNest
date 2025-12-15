@@ -23,13 +23,14 @@ export function UseLogin() {
       const data = await res.json();
       if (res.ok) {
         setverifiedEmail(data.verifiedEmail);
+        sessionStorage.setItem("email", JSON.stringify(email));
 
         if (data.token && data.verifiedEmail) {
           settoken(data.token);
           sessionStorage.setItem("token", JSON.stringify(data.token));
           navigate("/");
         } else {
-          sessionStorage.setItem("email", email);
+          // sessionStorage.setItem("email", JSON.stringify(email));
           navigate("/otp");
         }
       } else {

@@ -9,10 +9,12 @@ import RoleProvider from "./Context/RoleContext.jsx";
 import AuthProvider from "./Context/AuthContext/AuthContext.jsx";
 import UserContextProvider from "./Context/UserContext/UserContext.jsx";
 import AdminForLandlordProvider from "./Context/landlordForadminContext/AdminforlandlordContext.jsx";
+import StudentForAdmin from "./Context/studentForAdmin/StudentForadmin.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AdminForLandlordProvider>
+    <StudentForAdmin>
+      <AdminForLandlordProvider>
           <AuthProvider>
       <UserContextProvider>
         <RoleProvider>
@@ -25,6 +27,9 @@ createRoot(document.getElementById("root")).render(
       </UserContextProvider>
     </AuthProvider>
     </AdminForLandlordProvider>
+
+    </StudentForAdmin>
+    
     
   </StrictMode>
 );

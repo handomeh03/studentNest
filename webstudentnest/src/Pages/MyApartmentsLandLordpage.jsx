@@ -2,8 +2,10 @@ import { useState } from "react";
 import AddApartmentDialog from "../Components/ApartmentListing/AddApartmentDialog";
 import ApartmentListingAdmin from "./ApartmentListingAdmin";
 
+
 export default function MyApartmentsLandLord(){
     let [addApartmentflag,setAddApartmentFlag]=useState(false);
+   
     function handlechangeAddApartemntFlag(){
         setAddApartmentFlag((old)=>!old);
     }
