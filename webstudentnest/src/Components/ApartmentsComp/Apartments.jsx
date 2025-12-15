@@ -13,7 +13,7 @@ export default function ApartmentsForall() {
   return (
     <div >
       <div className="w-full ">
-       <div className="w-full  mx-auto my-3.5 p-2 flex gap-1.5 justify-center items-center">
+       <div className="w-full  mx-auto my-3.5 p-2 flex gap-1 justify-center items-center">
          <div className="w-full sm:w-1/2">
           <SearchuserComp />
         </div>
