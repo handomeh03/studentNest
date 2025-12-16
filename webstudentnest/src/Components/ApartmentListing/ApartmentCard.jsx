@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
-export default function ApartmentCard({bookedApartment,apartment,handleChangeShowDocumnetFlag,handleChangeEditDocumentDialog,handleChangeEditdetailFlag,handlechangeAddDocumentFlag,handlechageShowDetailsFlag,handleChangeEditdialogflag,handleChangeApartmentId,handleChangeDeleteDialogFlag}){
+export default function ApartmentCard({forall,bookedApartment,apartment,handleChangeShowDocumnetFlag,handleChangeEditDocumentDialog,handleChangeEditdetailFlag,handlechangeAddDocumentFlag,handlechageShowDetailsFlag,handleChangeEditdialogflag,handleChangeApartmentId,handleChangeDeleteDialogFlag}){
   const { user } = useUserContext();
   let navigatie=useNavigate();
     return(
@@ -19,7 +19,7 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
             className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
           />
           
-         {user?.user?.role=="student" || user?.user?.role=="" ||bookedApartment?"": <span
+         {user?.user?.role=="student" || user?.user?.role=="" ||bookedApartment || forall?"": <span
             className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
               apartment.propertyStatus === true
                 ? "bg-green-100 text-green-800"
@@ -52,73 +52,73 @@ export default function ApartmentCard({bookedApartment,apartment,handleChangeSho
           <div className="flex gap-2 flex-wrap ">
         <div className="flex gap-2 flex-wrap m-auto">
 
-  {user?.user?.role=="student"|| user?.user?.role=="landloard"||user?.user?.role=="" ?"":<button onClick={()=>{
+  {user?.user?.role=="student"|| user?.user?.role=="landloard"||user?.user?.role ||forall ?"":<button onClick={()=>{
     handleChangeEditdialogflag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Edit status
   </button>}
 
 
-  {user?.user?.role=="student" ||bookedApartment||user?.user?.role==""?"":<button onClick={()=>{
+  {user?.user?.role=="student" ||bookedApartment||user?.user?.role=="" ||forall?"":<button onClick={()=>{
     handleChangeDeleteDialogFlag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm font-medium text-white bg-[#3f51b5] hover:cursor-pointer rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm font-medium text-white bg-[#3f51b5] hover:cursor-pointer rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Delete
   </button>}
 
-  {user?.user?.role=="student" ||!bookedApartment|| user?.user?.role==""?"":<button onClick={()=>{
+  {user?.user?.role=="student" ||!bookedApartment|| user?.user?.role=="" || forall?"":<button onClick={()=>{
     navigatie(`/landlordDashboard/apartemnt/${apartment.id}/leases`)
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     leases
   </button>}
   
 
-  {user?.user?.role=="student" ||bookedApartment|| user?.user?.role==""?"":  <button onClick={()=>{
+  {user?.user?.role=="student" ||bookedApartment|| user?.user?.role==""||forall?"":  <button onClick={()=>{
     handleChangeShowDocumnetFlag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Show Document
   </button>}
 
 
 
-  {user?.user?.role=="student" || user?.role=="admin" ||bookedApartment|| user?.user?.role==""?"":<button onClick={()=>{
+  {user?.user?.role=="student" || user?.role=="admin" ||bookedApartment|| user?.user?.role=="" ||forall?"":<button onClick={()=>{
     handlechangeAddDocumentFlag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     add Document
   </button>}
 
 
-  {user?.user?.role=="landloard" ||user?.user?.role=="admin" ?"":<button onClick={()=>{
+  <button onClick={()=>{
     
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     request lease
-  </button>}
+  </button>
 
   
   <button onClick={()=>{
     handlechageShowDetailsFlag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1  text-sm w-30 p-3  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Show details
   </button>
 
 
-   {user?.user?.role=="student" ||bookedApartment || user?.user?.role==""?"":<button onClick={()=>{
+   {user?.user?.role=="student" ||bookedApartment || user?.user?.role=="" ||forall?"":<button onClick={()=>{
     handleChangeEditdetailFlag();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     edit detailts
   </button>}
 
- {user?.user?.role=="student" ||bookedApartment|| user?.user?.role?"":  <button onClick={()=>{
+ {user?.user?.role=="student" ||bookedApartment|| user?.user?.role =="admin" || forall ?"":  <button onClick={()=>{
     handleChangeEditDocumentDialog();
     handleChangeApartmentId(apartment.id);
-  }} className="flex-1 px-3 py-2 text-sm hover:cursor-pointer  font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="flex-1 w-30 p-3 text-sm hover:cursor-pointer  font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     edit Document
   </button>}
  

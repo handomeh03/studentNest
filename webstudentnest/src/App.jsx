@@ -7,9 +7,6 @@ import LandlordRegister from './Pages/LandlordRegister'
 import Otp from './Pages/Otp'
 import LandingPage from './Pages/LandingPage'
 import NotFound from './Pages/NotFound'
-
-
-import LandlordTablepage from './Pages/LandlordTablepage'
 import StudentTablePage from './Pages/StudentTablePage'
 import LeaseRequestTablepage from './Pages/LeaseRequestTablepage'
 import AdminDashboardLayout from './Pages/AdminDashboardLayout'
