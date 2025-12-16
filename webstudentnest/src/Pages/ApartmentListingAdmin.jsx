@@ -189,7 +189,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall}) {
   return (
     <div className="bg-white">
      {bookedApartment || forall?"": <SearchuserComp handlechangeApartment={handlechangeApartment} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}/>}
-      {user?.role=="student" || user?.role=="" ||bookedApartment || forall?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
+      {user?.user?.role=="student" || user?.user?.role=="" ||bookedApartment || forall?"":<TogoleButton tabs={tabs} handlechangeTogoleOnclick={handlechangeTogoleOnclick} />}
       <div className="mx-auto max-w-7xl   sm:px-6 sm:py-5">
         <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
           Apartment Listings
@@ -197,7 +197,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall}) {
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredApartments.map((apartment, index) => (
-            <ApartmentCard bookedApartment={bookedApartment} handleChangeApartmentId={handleChangeApartmentId} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} handleChangeEditDocumentDialog={handleChangeEditDocumentDialog} handleChangeEditdetailFlag={handleChangeEditdetailFlag} handlechangeAddDocumentFlag={handlechangeAddDocumentFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartment={apartment} key={index} />
+            <ApartmentCard forall={forall} bookedApartment={bookedApartment} handleChangeApartmentId={handleChangeApartmentId} handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag} handleChangeEditDocumentDialog={handleChangeEditDocumentDialog} handleChangeEditdetailFlag={handleChangeEditdetailFlag} handlechangeAddDocumentFlag={handlechangeAddDocumentFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} handleChangeEditdialogflag={handleChangeEditdialogflag} handleChangeDeleteDialogFlag={handleChangeDeleteDialogFlag} apartment={apartment} key={index} />
           ))}
         </div>
       </div>

@@ -9,7 +9,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 export default function ApartmentSwiper(){
     return(
-         <div className="w-full  h-svh  mx-auto p-3   ">
+         <div className="w-full  h-[calc(100vh-9rem)]  mx-auto    ">
+          
         <Swiper
      spaceBetween={30}
         centeredSlides={true}
@@ -25,7 +26,7 @@ export default function ApartmentSwiper(){
         className=" overflow-hidden h-full  " 
     >
        <SwiperSlide>
-        <div className="w-full h-full bg-blue-500 flex items-center justify-center rounded-4xl overflow-hidden">
+        <div className="w-full h-full bg-blue-500 flex items-center justify-center ">
             <img className='h-full w-full object-cover ' src='https://i.pinimg.com/1200x/7c/b8/5e/7cb85e524b8abb56a15e6b70de261597.jpg'/>
           </div>
            <div className='absolute top-0 left-0 w-full h-full  z-40  '></div>
@@ -37,7 +38,7 @@ export default function ApartmentSwiper(){
 
       </SwiperSlide>
       <SwiperSlide>
-        <div className="w-full h-full bg-blue-500 flex items-center justify-center rounded-4xl overflow-hidden">
+        <div className="w-full h-full bg-blue-500 flex items-center justify-center ">
             <img className='h-full w-full object-cover' src='https://i.pinimg.com/1200x/7c/b8/5e/7cb85e524b8abb56a15e6b70de261597.jpg'/>
           </div>
            <div className='absolute top-0 left-0 w-full h-full  z-50'></div>
@@ -49,7 +50,7 @@ export default function ApartmentSwiper(){
 
       </SwiperSlide>
       <SwiperSlide>
-        <div className="w-full h-full bg-blue-500 flex items-center justify-center rounded-4xl overflow-hidden">
+        <div className="w-full h-full bg-blue-500 flex items-center justify-center ">
             <img className='h-full w-full object-cover' src='https://i.pinimg.com/1200x/7c/b8/5e/7cb85e524b8abb56a15e6b70de261597.jpg'/>
           </div>
            <div className='absolute top-0 left-0 w-full h-full  z-50'></div>

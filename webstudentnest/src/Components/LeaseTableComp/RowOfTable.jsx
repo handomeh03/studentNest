@@ -67,7 +67,7 @@ export default function RowOfTable({ lease }) {
       </td>
       
   
-     {user?.role=="landloard"? <td className="whitespace-nowrap px-3 py-5 text-sm ">
+     {user?.user?.role=="landloard"? <td className="whitespace-nowrap px-3 py-5 text-sm ">
           <button onClick={()=>{
               navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`);
           }} className=" hover:cursor-pointer bg-indigo-500 p-2  rounded-3xl text-white hover:bg-indigo-400 ">
