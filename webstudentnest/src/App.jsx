@@ -30,8 +30,7 @@ import LandlordTableContainer from './Pages/LandlordTableContainer'
 import NotVerifedPage from './Pages/NotVerivedPage'
 import ApartmentPage from './Pages/AprtmentsPage'
 
-function App() {  
-   
+function App() {     
   return (
     <div className='App' >
        <Routes>

@@ -21,7 +21,7 @@ export default function UseSearchLandlordForAdmin(email) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/admin/users/search/${email}`,
+            `${import.meta.env.VITE_API_URL}/api/v1/admin/users/search/landloard/${email}`,
             {
               method: "GET",
               headers: {
@@ -35,7 +35,7 @@ export default function UseSearchLandlordForAdmin(email) {
           if (res.ok) {
           
           
-                adminForlandlordDispatch({type:"searchLandlord",payload:[data]}); 
+                adminForlandlordDispatch({type:"searchLandlord",payload:data}); 
             
         
             
