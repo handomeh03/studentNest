@@ -1,16 +1,25 @@
-import * as React from 'react';
+
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
+
 
 import DialogTitle from '@mui/material/DialogTitle';
+import { UseDeleteStudent } from '../../Hooks/AdminHooks/UseDeleteStudent';
+import ErrorComp from '../PublicComp/ErrorComp';
 
-export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDeleteStudentDialog}) {
+
+export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDeleteStudentDialog,studentId}) {
   const mainColor = "#3f51b5"; 
   const hoverColor = "#5c6bc0";
   const cancelColor = "#000"; 
+  const {deleteLandlord,loader,error}=UseDeleteStudent();
+ 
 
+  function deleteStudent(e){
+    e.preventDefault();
+   deleteLandlord(studentId,handleChangeDeleteStudentDialog);
+  }
   return (
     
       <Dialog
@@ -35,7 +44,8 @@ export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDelet
           {"Are you sure you want to delete this student?"}
         </DialogTitle>
 
-        
+        {error?<ErrorComp erorr={error}/>:""}
+
 
         <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
           <Button
@@ -52,9 +62,16 @@ export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDelet
             Cancel
           </Button>
 
-          <Button
+            {loader?<Button
+          loading={true}
+          variant="outlined"
+          disabled
+        >
+          Disabled
+        </Button>:
+         <Button
             autoFocus
-           
+            onClick={deleteStudent}
             sx={{
               backgroundColor: mainColor,
               color: "white",
@@ -66,6 +83,7 @@ export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDelet
           >
             Confirm
           </Button>
+        }
         </DialogActions>
       </Dialog>
     

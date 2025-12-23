@@ -1,30 +1,33 @@
 import { createContext, useContext, useReducer } from "react";
 
-const LeaseContForAdmin=createContext();
+const LeaseContx=createContext();
 
-export default function LeaseAdminProvider({children}){
-
-
-    function reduce(state,action){
-        switch(action.type){
-            default :
-              return state;
-        }
+export default function LeaseProvider({children}){
+    const reduce=(state,action)=>{
+          switch (action.type){
+            case "getAllLease":
+                return {...state,Leases:action.payload,copyLease:action.payload};
+            case "searchLease":
+        return { ...state, Leases: action.payload };
+      case "restToOrginal":
+        return { ...state, Leases: state.copyLease };    
+            default:
+                return state;
+             
+          }
     }
-
-    const[state,leaseAdmindispatch]=useReducer(reduce,{lease:[],copyLease:[]})
+    let [state,leaseDipattch]=useReducer(reduce,{Leases:[],copyLease:[]});
     return(
-        <LeaseContForAdmin.Provider value={{...state,leaseAdmindispatch}}>
+        <LeaseContx.Provider value={{...state,leaseDipattch}}>
             {children}
-        </LeaseContForAdmin.Provider>
+        </LeaseContx.Provider>
     );
 }
 
-export function UseLeaseAdmin(){
-    const context=useContext(LeaseContForAdmin);
+export function UseLease(){
+    const context=useContext(LeaseContx);
     if(!context){
         throw new Error("error");
     }
     return context;
 }
-

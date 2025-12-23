@@ -40,9 +40,9 @@ const userNavigation = [
               <span className="absolute -inset-1.5" />
               <span className="sr-only">Open user menu</span>
               <img
-                alt=""
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                className="h-12 w-12 rounded-full bg-gray-50 outline outline-1 -outline-offset-1 outline-black/5 dark:bg-gray-800 dark:outline-white/10"
+                alt={user?.user?.name}
+                src="https://static.vecteezy.com/system/resources/previews/011/490/381/original/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-white-background-vector.jpg"
+                className="h-12 w-12 rounded-full bg-gray-50 outline outline-1 -outline-offset-1 outline-black/5 "
               />
               <span className="hidden lg:flex lg:items-center">
                 <span
