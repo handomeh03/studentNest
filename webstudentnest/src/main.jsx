@@ -10,26 +10,32 @@ import AuthProvider from "./Context/AuthContext/AuthContext.jsx";
 import UserContextProvider from "./Context/UserContext/UserContext.jsx";
 import AdminForLandlordProvider from "./Context/landlordForadminContext/AdminforlandlordContext.jsx";
 import StudentForAdmin from "./Context/studentForAdmin/StudentForadmin.jsx";
+import LeaseProvider from "./Context/LeaseForAdmin/LeaseForAdmin.jsx";
+import LeaseRequestProvider from "./Context/LeaseRequestContext/LeaseRequestAdmin.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <StudentForAdmin>
+    <LeaseRequestProvider>
+       <LeaseProvider>
+        <StudentForAdmin>
       <AdminForLandlordProvider>
-          <AuthProvider>
-      <UserContextProvider>
-        <RoleProvider>
-         <UserRegisterDataProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </UserRegisterDataProvider>
-        </RoleProvider>
-      </UserContextProvider>
-    </AuthProvider>
-    </AdminForLandlordProvider>
-
+        <AuthProvider>
+          <UserContextProvider>
+            <RoleProvider>
+              <UserRegisterDataProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </UserRegisterDataProvider>
+            </RoleProvider>
+          </UserContextProvider>
+        </AuthProvider>
+      </AdminForLandlordProvider>
     </StudentForAdmin>
-    
-    
+
+    </LeaseProvider>
+    </LeaseRequestProvider>
+ 
+  
   </StrictMode>
 );

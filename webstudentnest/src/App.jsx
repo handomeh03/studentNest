@@ -7,10 +7,9 @@ import LandlordRegister from './Pages/LandlordRegister'
 import Otp from './Pages/Otp'
 import LandingPage from './Pages/LandingPage'
 import NotFound from './Pages/NotFound'
-import StudentTablePage from './Pages/StudentTablePage'
-import LeaseRequestTablepage from './Pages/LeaseRequestTablepage'
+
+
 import AdminDashboardLayout from './Pages/AdminDashboardLayout'
-import LeaseTablePage from './Pages/LeaseTablePage'
 import NotifivationTablePage from './Pages/NotificationTablePage'
 import ApartmentListingAdmin from './Pages/ApartmentListingAdmin'
 import AuditLogTablePage from './Pages/AuditLogTablePage'
@@ -29,6 +28,9 @@ import ChangePasswordOtp from './Pages/changePasswordOtp'
 import LandlordTableContainer from './Pages/LandlordTableContainer'
 import NotVerifedPage from './Pages/NotVerivedPage'
 import ApartmentPage from './Pages/AprtmentsPage'
+import StudentTableContainer from './Pages/StudentTableContainer'
+import LeaseTableContainer from './Pages/LeaseTableContainer'
+import LeaseRequestContainer from './Pages/LeaseRequestContainer'
 
 function App() {     
   return (
@@ -49,9 +51,9 @@ function App() {
 
        <Route path="/admindashborad" element={<AdminDashboardLayout/>}>
             <Route index element={<LandlordTableContainer />} />  
-            <Route path="lease" element={<LeaseTablePage/>} />
-            <Route path='students' element={<StudentTablePage/>}/>
-            <Route path='leaserequest' element={<LeaseRequestTablepage/>}/>
+            <Route path="lease" element={<LeaseTableContainer/>} />
+            <Route path='students' element={<StudentTableContainer/>}/>
+            <Route path='leaserequest' element={<LeaseRequestContainer/>}/>
             <Route path='Notification' element={<NotifivationTablePage/>}/>
             <Route path='apartmentListingadmin' element={<ApartmentListingAdmin/>}/>
             <Route path='auditLog' element={<AuditLogTablePage/>}/>

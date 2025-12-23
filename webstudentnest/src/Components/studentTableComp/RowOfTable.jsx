@@ -2,7 +2,7 @@ export default function RowOfTable({student,setstudentId,handleChangeEditStudent
     return(
         <tr key={student.userId}>
                      <td className="whitespace-nowrap px-3 py-5  text-sm  ">
-                      <div className="text-balck ">{student.userId}</div>
+                      <div className="text-balck ">{student?.user?.userId.slice(30)}</div>
                       
                     </td>
                     <td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
@@ -10,33 +10,33 @@ export default function RowOfTable({student,setstudentId,handleChangeEditStudent
                         <div className="size-11 shrink-0">
                           <img
                             alt=""
-                            src={student.image}
+                            src={student?.user?.photo ||"https://static.vecteezy.com/system/resources/previews/011/490/381/original/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-white-background-vector.jpg" }
                             className="size-11 rounded-full dark:outline dark:outline-1 dark:outline-white/10"
                           />
                         </div>
                         <div className="ml-4">
-                          <div className="font-medium text-black">{student.name}</div>
-                          <div className="mt-1 text-gray-600 ">{student.email}</div>
+                          <div className="font-medium text-black">{student?.user?.name}</div>
+                          <div className="mt-1 text-gray-600 ">{student?.user?.email}</div>
                         </div>
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm  ">
-                      <div className="text-balck ">{student.dateOfbirth}</div>
+                      <div className="text-balck ">{student?.user?.dateOfBirth}</div>
                       
                     </td>
                     
                      <td className="whitespace-nowrap px-3 py-5 text-sm  ">
-                      <div className="text-balck ">{student.phoneNumber}</div>
+                      <div className="text-balck ">{student?.user?.phoneNumber}</div>
                       
                     </td>
                      <td className="whitespace-nowrap px-3 py-5 text-sm  ">
-                      <div className="text-balck ">{student.address}</div>
+                      <div className="text-balck ">{student?.user?.address}</div>
                       
                     </td>
 
                     <td className="whitespace-nowrap px-3 py-5 text-sm ">
                       {
-                        student.emailVerifed? <span className="inline-flex items-center rounded-md bg-green-800 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ">
+                        student?.user?.emailVerfied? <span className="inline-flex items-center rounded-md bg-green-800 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ">
                         Yes
                       </span>: <span className="inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ">
                         No
@@ -47,29 +47,34 @@ export default function RowOfTable({student,setstudentId,handleChangeEditStudent
                 
 
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.role}
+                      {student?.user?.role}
                     </td>
                      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.studentGovId}
+                      {student?.userGovId}
                     </td>
                      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.major}
+                      {student?.Major}
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.studentCardId}
+                      {student?.studentCardID}
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.graduateYear}
+                      {student?.GraduationYear}
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.walletAddress}
+                      {student?.universityName}
+                    </td>
+                   <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+                      <a href={student?.studentValidateDocument}>
+                         <img  className="w-full" width={50} src={student?.studentValidateDocument}/>
+                      </a>
                     </td>
                     <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      {student.createdAt}
+                      {student?.user?.createdAt.split("T")[0]}
                     </td>
                     <td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                       <button onClick={()=>{
-                        setstudentId(student.userId);
+                        setstudentId(student?.user?.userId);
                         handleChangeEditStudentFlag();
                       }} className=" hover:cursor-pointer hover:text-green-500  text-green-800 ">
                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -77,7 +82,7 @@ export default function RowOfTable({student,setstudentId,handleChangeEditStudent
                        </svg>
                       </button>
                         <button onClick={()=>{
-                        setstudentId(student.userId);
+                        setstudentId(student?.user?.userId);
                         handleChangeDeleteStudentDialog();
                       }} className=" hover:cursor-pointer hover:text-red-500  text-red-600 ">
                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

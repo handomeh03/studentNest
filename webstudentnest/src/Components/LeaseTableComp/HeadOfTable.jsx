@@ -23,10 +23,13 @@ export default function HeadOfTable() {
           Apartment Title
         </th>
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          Term
+        </th>
+        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Start Date
         </th>
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Rent Term
+          End date
         </th>
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Status
@@ -41,11 +44,17 @@ export default function HeadOfTable() {
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Monthly Rent
         </th>
+          <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          house rule
+        </th>
+         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+          include Utilities
+        </th>
         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Created At
         </th>
 
-       {user?.role=="admin" || user?.role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+       {user?.user?.role=="admin" || user?.user?.role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           payment schudele
         </th>}
       </tr>

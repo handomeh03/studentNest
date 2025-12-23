@@ -12,16 +12,16 @@ export default function HeadOfTable(){
                     Name
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    date Of birth
+                    date
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                   phone Number
+                   phoneNumber
                   </th>
                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
                   address
                   </th>
                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                   email Verifed
+                   emailVerifed
                   </th>
                    
                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
@@ -40,10 +40,16 @@ export default function HeadOfTable(){
                     graduateYear
                   </th>
                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    walletAddress
+                    universityName
+                  </th>
+                  <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
+                    Documnet
                   </th>
                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
                     createdAt
+                  </th>
+                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
+                    actions
                   </th>
                  
                 </tr>
