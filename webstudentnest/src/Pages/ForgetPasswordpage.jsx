@@ -20,7 +20,7 @@ export default function ForgetPasswordpage(){
              <div className={style.ForgetPasswordC}>
                              <ForgetPaswordContainer OtpLoader={OtpLoader} setError={setError} email={email} handleChangeEmail={handleChangeEmail} handlesubmit={handlesubmit} />
               </div>
-              {error?<ErrorComp erorr={error}/>:""}
+              {error?<ErrorComp error={error}/>:""}
         </div>
     );
 }

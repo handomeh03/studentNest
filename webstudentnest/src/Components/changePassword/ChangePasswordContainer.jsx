@@ -74,7 +74,7 @@ export default function ChangePasswordContainer({changePasswordOtp,handleChangeE
           
     
     
-          {error?<ErrorComp erorr={error}/>:""}
+          {error?<ErrorComp error={error}/>:""}
          
     
          

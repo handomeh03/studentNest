@@ -4,9 +4,12 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-export default function ShowDocumentDialog({showDocumentFLag,handleChangeShowDocumnetFlag}){
+import ErrorComp from '../PublicComp/ErrorComp';
+export default function ShowDocumentDialog({showDocumentFLag,handleChangeShowDocumnetFlag,document,error}){
+  
     return(
-  <Dialog
+  <div>
+    {error?<ErrorComp error={"no document found"}/>:<Dialog
   open={showDocumentFLag}
   aria-labelledby="alert-dialog-title"
   aria-describedby="alert-dialog-description"
@@ -36,7 +39,7 @@ export default function ShowDocumentDialog({showDocumentFLag,handleChangeShowDoc
   >
     
     <img 
-      src="/student.jpg" 
+      src={document?.documentUrl} 
       alt="Document"
       style={{ width: '100%', height: 'auto', maxHeight: '300px', objectFit: 'contain', borderRadius: '8px' }}
     />
@@ -46,7 +49,7 @@ export default function ShowDocumentDialog({showDocumentFLag,handleChangeShowDoc
       id="alert-dialog-description"
       sx={{ textAlign: 'center', wordBreak: 'break-word', color: '#3f51b5', fontWeight: '500' }}
     >
-      <strong>Type:</strong> PDF <br />
+      <strong>Type:</strong> {document?.apartmentType} <br />
       <strong>Uploaded at:</strong> 2025-11-14 17:00
     </DialogContentText>
   </DialogContent>
@@ -59,7 +62,8 @@ export default function ShowDocumentDialog({showDocumentFLag,handleChangeShowDoc
       Close
     </Button>
   </DialogActions>
-</Dialog>
+</Dialog>}
+  </div>
 
 
     );

@@ -79,7 +79,7 @@ export default function LandlordForm({
         )}
       </form>
 
-      {error ? <ErrorComp erorr={error} /> : ""}
+      {error ? <ErrorComp error={error} /> : ""}
 
       {landlordRegisterLoader ? (
         <Button loading={true} variant="outlined" disabled>

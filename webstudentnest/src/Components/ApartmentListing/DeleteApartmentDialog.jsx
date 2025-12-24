@@ -5,11 +5,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
 import DialogTitle from '@mui/material/DialogTitle';
+import { UseDeleteApartment } from '../../Hooks/AdminHooks/UseDeleteApartment';
+import ErrorComp from '../PublicComp/ErrorComp';
 
-export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,deleteDialogFlag}) {
+export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,deleteDialogFlag,apartmentId}) {
   const mainColor = "#3f51b5"; 
   const hoverColor = "#5c6bc0";
   const cancelColor = "#000"; 
+
+  let{DeleteApartment,loader,error}=UseDeleteApartment();
 
   return (
     <React.Fragment>
@@ -36,6 +40,7 @@ export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,dele
         </DialogTitle>
 
         <DialogContent></DialogContent>
+        {error?<ErrorComp error={error || "no apartment found"}/>:""}
 
         <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
           <Button
@@ -51,12 +56,18 @@ export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,dele
           >
             Cancel
           </Button>
-
-          <Button
+         {loader?<Button
+                              loading={true}
+                              variant="outlined"
+                              disabled
+                            >
+                              Disabled
+                            </Button>:<Button
             autoFocus
             onClick={(e)=>{
                 e.preventDefault();
                 handleChangeDeleteDialogFlag();
+                DeleteApartment(apartmentId)
             }}
             sx={{
               backgroundColor: mainColor,
@@ -68,7 +79,8 @@ export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,dele
             }}
           >
             Confirm
-          </Button>
+          </Button>}
+          
         </DialogActions>
       </Dialog>
     </React.Fragment>

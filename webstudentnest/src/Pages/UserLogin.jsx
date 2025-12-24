@@ -43,7 +43,7 @@ export default function UserLogin(){
                   
             </div>
 
-            {error?<ErrorComp erorr={error}/>:""}
+            {error?<ErrorComp error={error}/>:""}
 
         </div>
     );

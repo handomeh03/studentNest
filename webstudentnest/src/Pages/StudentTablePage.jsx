@@ -30,7 +30,7 @@ export default function StudentTablePage({students,error}){
         {error?<ErrorComp error={error || "no student Found"}/>: <div className="mt-8 flow-root">
            <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
              <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-              {students.length==0?<ErrorComp erorr={"no students found"}/>: <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
+              {students.length==0?<ErrorComp error={"no students found"}/>: <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
                   <HeadOfTable/>  
    
                  <tbody className="divide-y divide-gray-200   ">

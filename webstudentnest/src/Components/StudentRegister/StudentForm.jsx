@@ -125,7 +125,7 @@ export default function StudentForm({
           )}
       </form>
 
-      {error?<ErrorComp erorr={error}/>:""}
+      {error?<ErrorComp error={error}/>:""}
 
        {StudentRegisterLoader?<Button
                 loading={true}

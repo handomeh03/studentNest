@@ -11,14 +11,12 @@ export default function HeadOfTable() {
         <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Message
         </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Type
-        </th>
+        
         <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Sender Name
         </th>
         <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-           phoneNumber
+           receive Name
         </th>
         <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
           Status

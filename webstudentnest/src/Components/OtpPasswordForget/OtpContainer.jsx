@@ -66,7 +66,7 @@ function handleChangeOtp(value){
         send
       </Button>}
 
-      {error?<ErrorComp erorr={error}/>:""}
+      {error?<ErrorComp error={error}/>:""}
      
 
      

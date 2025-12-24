@@ -209,7 +209,7 @@ export default function RegisterForm({
         </FormControl>
       </form>
 
-      {FillAllinputValidation && <ErrorComp erorr={FillAllinputValidation} />}
+      {FillAllinputValidation && <ErrorComp error={FillAllinputValidation} />}
 
       <Button onClick={handleClick} className={style.Button} variant="contained" endIcon={<LoginIcon />}>
         Next
