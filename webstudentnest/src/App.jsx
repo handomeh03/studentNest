@@ -31,6 +31,8 @@ import ApartmentPage from './Pages/AprtmentsPage'
 import StudentTableContainer from './Pages/StudentTableContainer'
 import LeaseTableContainer from './Pages/LeaseTableContainer'
 import LeaseRequestContainer from './Pages/LeaseRequestContainer'
+import NotificationTableContainer from './Pages/NotificationTableContainer'
+import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainerforadmin'
 
 function App() {     
   return (
@@ -54,8 +56,8 @@ function App() {
             <Route path="lease" element={<LeaseTableContainer/>} />
             <Route path='students' element={<StudentTableContainer/>}/>
             <Route path='leaserequest' element={<LeaseRequestContainer/>}/>
-            <Route path='Notification' element={<NotifivationTablePage/>}/>
-            <Route path='apartmentListingadmin' element={<ApartmentListingAdmin/>}/>
+            <Route path='Notification' element={<NotificationTableContainer/>}/>
+            <Route path='apartmentListingadmin' element={<ApartmentListingContainerForAdmin/>}/>
             <Route path='auditLog' element={<AuditLogTablePage/>}/>
             <Route path='setting' element={<AdminSettingPage/>}/>
         </Route>

@@ -28,7 +28,7 @@ export default function Otp() {
         <OtpContainer sendOtp={sendOtp} setError={setError} />
       </div>
 
-      {error && <ErrorComp erorr={error} />}
+      {error && <ErrorComp error={error} />}
     </div>
   );
 }

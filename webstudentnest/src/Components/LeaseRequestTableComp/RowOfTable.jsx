@@ -2,73 +2,72 @@
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function RowOfTable({ leaserequest }) {
-  const { student, landlord, apartment, leaseRequest } = leaserequest;
   let{user}=useUserContext();
 
   return (
-    <tr key={leaserequest.id}>
+    <tr key={leaserequest?.requestLeaseId}>
       {/* ID */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaserequest.id}
+        {leaserequest?.requestLeaseId}
       </td>
 
       {/* Student Name */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {student.name}
+        {leaserequest?.studentName}
       </td>
 
       {/* Major */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-600">
-        {student.major}
+        {leaserequest?.Major}
       </td>
 
       {/* Landlord Name */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {landlord.name}
+        {leaserequest?.landlordName}
       </td>
 
       {/* Apartment Title */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {apartment.title}
+        {leaserequest?.apartmentTitle}
       </td>
 
       {/* Price (JD) */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {apartment.price}
+        {leaserequest?.apartmentPrice}
       </td>
 
       {/* Start Date */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaseRequest.startDate}
+        {leaserequest?.startDate}
       </td>
 
       {/* Rent Term */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaseRequest.rentTerm}
+        {leaserequest?.rentTerm}
       </td>
 
       {/* Status */}
       <td className="whitespace-nowrap px-3 py-5 text-sm">
         <span
           className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ${
-            leaseRequest.status === "Accepted"
+            leaserequest?.requestStatus === "Accept"
               ? "bg-green-800"
-              : leaseRequest.status === "Rejected"
+              : leaserequest?.requestStatus === "Reject"
               ? "bg-red-600"
               : "bg-yellow-600"
           }`}
         >
-          {leaseRequest.status}
+          {leaserequest?.requestStatus}
         </span>
       </td>
 
       {/* Created At */}
       <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaseRequest.createdAt}
+        {leaserequest?.createAt.split("T")[0]}
       </td>
 
       {/* Actions */}
-      {user?.role=="landlord"?<td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-sm font-medium">
+      {user?.user?.role=="landlord"?<td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-sm font-medium">
         <button className="hover:text-green-500 hover:cursor-pointer text-green-800">
           {/* Edit icon */}
           <svg

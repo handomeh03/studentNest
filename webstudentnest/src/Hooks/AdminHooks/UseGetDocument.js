@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
-import { useAdminForLandlord } from "../../Context/landlordForadminContext/AdminforlandlordContext";
+import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 
-export function UseGetLandlord(){
+export function UseGetDocument(id){
     let{token}=useAuth();
     let[error,seterror]=useState("");
-    let[loader,setloader]=useState(false);
-
-    let{adminForlandlordDispatch}=useAdminForLandlord();
+    let[loader,setloader]=useState(false);  
+    let{apartmentDispatch}=UseApatment();  
     useEffect(()=>{
         setloader(true);
-      const fetchlandlord=async()=>{
+      const fetchDocument=async()=>{
         try {
-          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users/landloard`,{
+          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartment-document/${id}`,{
             headers:{
                "Authorization": `Bearer ${token}`, 
             }
@@ -20,7 +19,7 @@ export function UseGetLandlord(){
           const data=await res.json();
     
           if(res.ok){
-            adminForlandlordDispatch({type:"getAllLandlord",payload:data});
+            apartmentDispatch({type:"getDocument",payload:data});
           }else{
             throw new Error(data.errors);
           }
@@ -31,8 +30,8 @@ export function UseGetLandlord(){
             setloader(false);
         }
       }
-      fetchlandlord();
-    },[token]);
+      fetchDocument();
+    },[token,id]);
 
     return {loader,error}
 }

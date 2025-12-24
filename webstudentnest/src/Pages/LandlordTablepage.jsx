@@ -63,7 +63,7 @@ function handleChangeDeletelandlordDialog(){
 
     return(
     <div>
-      {error ?<ErrorComp erorr={error || "no landlord found"}/>: <div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
+      {error ?<ErrorComp error={error || "no landlord found"}/>: <div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
        <SearchuserComp email={email} setemail={setemail} handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch} handlechangeLandlords={handlechangeLandlords}/>
      
 
@@ -72,7 +72,7 @@ function handleChangeDeletelandlordDialog(){
       <div className="mt-8 flow-root">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-           {filteredLandlords.length==0 ?<ErrorComp erorr={"no landlord found"}/>: <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
+           {filteredLandlords.length==0 ?<ErrorComp error={"no landlord found"}/>: <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
                <HeadOfTable/>  
 
               <tbody className="divide-y divide-gray-200   ">

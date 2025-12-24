@@ -5,6 +5,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import MenuItem from "@mui/material/MenuItem";
+import { UseEditStatusApartment } from "../../Hooks/AdminHooks/UseEditStatusApartment";
+import { useState } from "react";
+import ErrorComp from "../PublicComp/ErrorComp";
 
 
 
@@ -28,6 +31,9 @@ export default function EditStatusdialog({editDialogFlag,handleChangeEditdialogf
       backgroundColor: hoverColor,
     },
   };
+  let [verifed,setVerifed]=useState(true);
+  let {editApartmentStatus,error,loader}=UseEditStatusApartment();
+
 
   return (
     <Dialog style={{ zIndex: "12345675" }} open={editDialogFlag}>
@@ -63,29 +69,43 @@ export default function EditStatusdialog({editDialogFlag,handleChangeEditdialogf
       disablePortal: true,
     },
   }}
+  value={verifed}
+  onChange={(e)=>{
+    setVerifed(e.target.value);
+  }}
 >
-  <MenuItem value="verifed">verifed</MenuItem>
-  <MenuItem value="Notverifed">Not verifed </MenuItem>
+  <MenuItem value={true}>verifed</MenuItem>
+  <MenuItem value={false}>Not verifed </MenuItem>
   
 </TextField>
 
         </form>
       </DialogContent>
 
+      {error?<ErrorComp error={error}/>:""}
+
       <DialogActions>
         <Button onClick={handleChangeEditdialogflag} sx={{ color: mainColor }}>cancel</Button>
-        <Button
+        {loader?<Button
+                     loading={true}
+                     variant="outlined"
+                     disabled
+                   >
+                     Disabled
+                   </Button>:<Button
           type="submit"
           form="subscription-form"
           sx={buttonStyle}
           onClick={(e)=>{
+          
             handleChangeEditdialogflag();
-            console.log(apartmentId)
             e.preventDefault();
+            editApartmentStatus(apartmentId,verifed);
           }}
         >
           edit
-        </Button>
+        </Button>}
+        
       </DialogActions>
     </Dialog>
   );
