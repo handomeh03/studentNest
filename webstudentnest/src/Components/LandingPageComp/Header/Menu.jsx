@@ -13,7 +13,7 @@ export default function Menu() {
     switch (user?.user?.role) {
       case "admin": return "/admindashborad";
       case "student": return "/studentdashboard";
-      case "landloard": return "/landlordDashboard";
+      case "landlord": return "/landlordDashboard";
       default: return "/";
     }
   };
@@ -39,7 +39,7 @@ export default function Menu() {
 
   return (
     <nav>
-      {/* Desktop Menu - لا تغيير هنا */}
+      
       <ul className="hidden md:flex items-center gap-8">
         {menuItems.map((item, index) => (
           <li key={index}>

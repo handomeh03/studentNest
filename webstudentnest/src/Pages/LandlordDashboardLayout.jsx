@@ -28,7 +28,7 @@ export default function LandlordDashboardLayout(){
          if(user.verifiedLandlord==false){
             navigate("notverivedPage");
          }
-    },[navigation,])
+    },[navigation])
     
     
     function handleChangeNavigation(id){

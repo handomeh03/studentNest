@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { useUserContext } from "../../Context/UserContext/UserContext"; 
-import { UseGetDocument } from "../../Hooks/AdminHooks/UseGetDocument";
+
 
 export default function ApartmentCard({forall,bookedApartment,apartment,handleChangeShowDocumnetFlag,handleChangeEditDocumentDialog,handleChangeEditdetailFlag,handlechangeAddDocumentFlag,handlechageShowDetailsFlag,handleChangeEditdialogflag,handleChangeApartmentId,handleChangeDeleteDialogFlag}){
   const { user } = useUserContext();
@@ -52,7 +52,7 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
           <div className="flex gap-2 flex-wrap ">
         <div className="flex gap-2 flex-wrap m-auto">
 
-  {user?.user?.role=="student"|| user?.user?.role=="landloard" ||forall ?"":<button onClick={()=>{
+  {user?.user?.role=="student"|| user?.user?.role=="landlord" ||forall ?"":<button onClick={()=>{
     handleChangeEditdialogflag();
     handleChangeApartmentId(apartment?.apartmentId);
   }} className="flex-1 w-30 p-3 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">

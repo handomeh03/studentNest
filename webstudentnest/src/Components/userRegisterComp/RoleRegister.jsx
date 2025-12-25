@@ -25,7 +25,7 @@ export default function RoleRegister({role,handleChangeRole}) {
                     <SchoolIcon style={{ marginRight: "5px", fontSize: "large" }}/>
                     Student
                 </ToggleButton>
-                <ToggleButton className={`${style.toggle} ${role=="landloard"?style.active:""}`} value="landloard">
+                <ToggleButton className={`${style.toggle} ${role=="landlord"?style.active:""}`} value="landlord">
                     <PersonIcon style={{ marginRight: "5px", fontSize: "large" }}/>
                     Landlord
                 </ToggleButton>
