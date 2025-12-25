@@ -18,7 +18,7 @@ export function UseSearchStudentAdmin(email){
               }
             try {
               const res = await fetch(
-                `${import.meta.env.VITE_API_URL}/api/v1/admin/users/search/student/${email}`,
+                `${import.meta.env.VITE_API_URL}/api/v1/admin/users/student/search?q=${email}`,
                 {
                   method: "GET",
                   headers: {

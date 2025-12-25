@@ -22,7 +22,7 @@ export default function UseSearchLease(id) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/admin/lease/${id}`,
+            `${import.meta.env.VITE_API_URL}/api/v1/admin/lease/search?q=${id}`,
             {
               method: "GET",
               headers: {

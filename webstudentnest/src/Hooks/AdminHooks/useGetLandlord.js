@@ -12,7 +12,7 @@ export function UseGetLandlord(){
         setloader(true);
       const fetchlandlord=async()=>{
         try {
-          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users/landloard`,{
+          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users/landlord`,{
             headers:{
                "Authorization": `Bearer ${token}`, 
             }

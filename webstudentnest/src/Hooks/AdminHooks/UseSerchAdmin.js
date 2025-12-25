@@ -21,7 +21,7 @@ export default function UseSearchLandlordForAdmin(email) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/admin/users/search/landloard/${email}`,
+            `${import.meta.env.VITE_API_URL}/api/v1/admin/users/landlord/search?q=${email}`,
             {
               method: "GET",
               headers: {
