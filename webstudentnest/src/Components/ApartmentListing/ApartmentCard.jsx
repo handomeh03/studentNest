@@ -84,7 +84,7 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
 
 
 
-  {user?.user?.role=="student" || user?.role=="admin" ||bookedApartment|| user?.user?.role=="" ||forall?"":<button onClick={()=>{
+  {user?.user?.role=="student" || user?.user?.role=="admin" ||bookedApartment|| user?.user?.role=="" ||forall?"":<button onClick={()=>{
     handlechangeAddDocumentFlag();
     handleChangeApartmentId(apartment?.apartmentId);
   }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
@@ -108,7 +108,7 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
   </button>
 
 
-   {user?.user?.role=="student" ||bookedApartment || user?.user?.role=="" ||forall?"":<button onClick={()=>{
+   {user?.user?.role=="student" ||bookedApartment || user?.user?.role=="admin" ||forall?"":<button onClick={()=>{
     handleChangeEditdetailFlag();
     handleChangeApartmentId(apartment?.apartmentId);
   }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
