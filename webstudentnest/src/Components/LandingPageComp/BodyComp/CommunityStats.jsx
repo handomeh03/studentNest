@@ -69,6 +69,7 @@ export default function CommunityStats() {
             >
               
               <img
+              loading="lazy"
                 src={stat.image}
                 className="absolute inset-0 w-full h-full object-cover  transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
                 alt={stat.label}

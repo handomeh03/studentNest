@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import {BuildingOfficeIcon ,AcademicCapIcon ,HomeIcon,UsersIcon,BellIcon,ClipboardDocumentListIcon,ReceiptPercentIcon ,DocumentCheckIcon    } from '@heroicons/react/24/outline'
 import SideBar from "../Components/admindashboardComp/SideBar";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import Loader from "../Components/PublicComp/Loader";
+import { useUserContext } from "../Context/UserContext/UserContext";
+
 
 export default function AdminDashboardLayout() {
+  let{user}=useUserContext();
+  let navigate=useNavigate();
  const [sidebarOpen, setSidebarOpen] = useState(false);
  const [navigation,setnavigation] = useState([
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
@@ -20,6 +24,12 @@ export default function AdminDashboardLayout() {
   
 ]
 )
+useEffect(()=>{
+         if(user==null || !user){
+             navigate("/");
+         }
+        
+    },[])
 
 function handleChangeNavigation(id){
   setnavigation(navigation.map((e,index)=>{

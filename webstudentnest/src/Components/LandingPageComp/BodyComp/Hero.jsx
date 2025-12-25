@@ -9,6 +9,7 @@ export default function Hero() {
       
       <div className="absolute inset-0 z-0">
         <img 
+        loading="lazy"
           src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070" 
           alt="Hero Background"
           className="w-full h-full object-cover"

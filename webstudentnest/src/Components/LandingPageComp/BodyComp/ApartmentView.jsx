@@ -38,7 +38,7 @@ export default function ApartmentView() {
   return (
     <section className="bg-gray-50 py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* العناوين */}
+        
         <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6" data-aos="fade-up">
           <div className="text-center md:text-left">
             <h2 className="text-4xl font-black text-gray-900 mb-2">
@@ -49,7 +49,7 @@ export default function ApartmentView() {
           <div className="hidden md:block w-32 h-1 rounded-full" style={{ backgroundColor: primaryColor }}></div>
         </div>
 
-        {/* شبكة الشقق */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
           {apartments.map((apt, index) => (
             <div
@@ -58,9 +58,10 @@ export default function ApartmentView() {
               data-aos-delay={index * 100}
               className="group bg-white rounded-[2.5rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
             >
-              {/* صورة الشقة */}
+              
               <div className="relative h-64 overflow-hidden">
                 <img
+                loading="lazy"
                   src={apt.image}
                   alt={apt.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -70,7 +71,7 @@ export default function ApartmentView() {
                 </div>
               </div>
 
-              {/* تفاصيل الشقة */}
+              
               <div className="p-8">
                 <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#3f51b5] transition-colors">
                   {apt.title}
@@ -101,7 +102,7 @@ export default function ApartmentView() {
           ))}
         </div>
 
-        {/* زر View More */}
+        
         <div className="flex justify-center" data-aos="zoom-in">
           <button
             className="group relative flex items-center gap-3 px-10 py-4 rounded-full text-white font-bold overflow-hidden transition-all hover:pr-14 active:scale-95 shadow-xl shadow-indigo-200"
