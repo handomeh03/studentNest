@@ -33,6 +33,7 @@ import LeaseTableContainer from './Pages/LeaseTableContainer'
 import LeaseRequestContainer from './Pages/LeaseRequestContainer'
 import NotificationTableContainer from './Pages/NotificationTableContainer'
 import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainerforadmin'
+import AudlitLogContainer from './Pages/AudiltLogContainer'
 
 function App() {     
   return (
@@ -58,7 +59,7 @@ function App() {
             <Route path='leaserequest' element={<LeaseRequestContainer/>}/>
             <Route path='Notification' element={<NotificationTableContainer/>}/>
             <Route path='apartmentListingadmin' element={<ApartmentListingContainerForAdmin/>}/>
-            <Route path='auditLog' element={<AuditLogTablePage/>}/>
+            <Route path='auditLog' element={<AudlitLogContainer/>}/>
             <Route path='setting' element={<AdminSettingPage/>}/>
         </Route>
 

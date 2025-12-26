@@ -38,7 +38,7 @@ export default function UseSearchLease(id) {
                   leaseDipattch({type:"searchLease",payload:[]}); 
                   return;
                }
-                leaseDipattch({type:"searchLease",payload:[data]}); 
+                leaseDipattch({type:"searchLease",payload:data}); 
                 
             
           } else {

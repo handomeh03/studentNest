@@ -1,17 +1,14 @@
-import { useEffect, useState} from "react";
+import {  useState} from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export function useUser() {
     let {token}=useAuth();
     let[loader,setLoader]=useState(false);
-    let{userDispatch}=useUserContext();
-
+    let{userDispatch}=useUserContext();    
     
-    useEffect(()=>{
         async function fetchUser() {
-            try {
-                
+            try {    
                 setLoader(true);
                 const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/me/profile`,{
                     method:"GET",
@@ -35,8 +32,6 @@ export function useUser() {
                 setLoader(false);
             }
         }
-        fetchUser();
-
-    },[token]);
-    return {loader};
+        
+    return {fetchUser,loader};
 }

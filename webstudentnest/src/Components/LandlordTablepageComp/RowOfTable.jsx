@@ -65,7 +65,7 @@ export default function RowOfTable({landlord,setLandlordId,handleChangeEditLandl
                       {landlord?.cliQAccount}
                     </td>
                      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      <a href={landlord?.document}>
+                      <a target="_blank" rel="noopener noreferrer"  href={landlord?.document}>
                          <img  className="w-full" width={50} src={landlord?.document}/>
                       </a>
                     </td>

@@ -65,7 +65,7 @@ export default function RowOfTable({ lease }) {
       </td>
 
       <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.createAt.split("T")[0]}</div>
+        <div className="text-black ">{lease?.createAt.split("T")[0] || lease?.createAt}</div>
       </td>
       
   
