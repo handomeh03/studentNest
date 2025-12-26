@@ -16,7 +16,13 @@ export default function NotificationProvider({children}){
                     else{
                         return e;
                     }
-                })}   
+                })} ;  
+      case "deleteById":
+         return {...state,notification:state.notification.filter((e)=>{
+            return e.notifyId!=action.payload;
+         })}
+         case "deleteALLNotification":
+            return {...state,notification:[]}
             default: 
         return state;
         }

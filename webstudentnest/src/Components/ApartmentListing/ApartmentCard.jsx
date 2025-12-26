@@ -92,12 +92,12 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
   </button>}
 
 
-  <button onClick={()=>{
+  {user?.user?.role=="admin" || user?.user?.role=="landlord" ?"":<button onClick={()=>{
     
     handleChangeApartmentId(apartment?.apartmentId);
   }} className="flex-1 w-30 p-3 text-sm  font-medium hover:cursor-pointer text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     request lease
-  </button>
+  </button>}
 
   
   <button onClick={()=>{

@@ -39,7 +39,7 @@ export default function HeaderOfdashboard({ setSidebarOpen }) {
               <span className="sr-only">Open user menu</span>
               <img
                 alt={user?.user?.name}
-                src="https://static.vecteezy.com/system/resources/previews/011/490/381/original/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-white-background-vector.jpg"
+                src={user?.user?.photo ||"https://static.vecteezy.com/system/resources/previews/011/490/381/original/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-white-background-vector.jpg"}
                 className="h-10 w-10 rounded-full object-cover border-2 border-white ring-2 ring-[#3f51b5]/10 shadow-sm"
               />
               <span className="hidden lg:flex lg:items-center">

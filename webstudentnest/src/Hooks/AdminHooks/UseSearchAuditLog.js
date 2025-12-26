@@ -1,15 +1,10 @@
 import { useEffect } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
+import { UseAuditLog } from "../../Context/AuditLogContext/AuditLogContext";
 
-import { UseLease } from "../../Context/LeaseForAdmin/LeaseForAdmin";
-import { UseLeaseRequest } from "../../Context/LeaseRequestContext/LeaseRequestAdmin";
-
-export default function UseSearchLeaseRequest(id) {
+export default function UseSearchAudit(audit) {
   const { token } = useAuth();
-  const{leaseRequestDipattch}=UseLeaseRequest();
-
-  
-
+  const{AuditLogDipattch}=UseAuditLog();
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       
@@ -17,13 +12,13 @@ export default function UseSearchLeaseRequest(id) {
       const signal = controller.signal;
      
       const search = async () => {
-        if(id==""){
-              leaseRequestDipattch({type:"restToOrginal"});
+        if(audit==""){
+              AuditLogDipattch({type:"restToOrginal"});
               return;
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/admin/lease-request/search?q=${id}`,
+            `${import.meta.env.VITE_API_URL}/api/v1/admin/audit-log/search?q=${audit}`,
             {
               method: "GET",
               headers: {
@@ -35,16 +30,17 @@ export default function UseSearchLeaseRequest(id) {
 
           const data = await res.json();
           if (res.ok) {
+            
                if(data==null){
-                  leaseRequestDipattch({type:"seasearchLeaseRequestrchLease",payload:[]}); 
+                  AuditLogDipattch({type:"searchAuditLog",payload:[]}); 
                   return;
                }
-                leaseRequestDipattch({type:"searchLeaseRequest",payload:data}); 
+                AuditLogDipattch({type:"searchAuditLog",payload:data}); 
                 
             
           } else {
-            leaseRequestDipattch({type:"searchLeaseRequest",payload:[]});
-            throw new Error(data.errors || "No Lease found");
+            AuditLogDipattch({type:"searchAuditLog",payload:[]});
+            throw new Error(data.errors || "No log found");
           }
         } catch (error) {
           if (error.name !== "AbortError") {
@@ -62,7 +58,7 @@ export default function UseSearchLeaseRequest(id) {
 
     
     return () => clearTimeout(delayDebounceFn);
-  }, [id, token]);
+  }, [audit, token]);
 
   
 }

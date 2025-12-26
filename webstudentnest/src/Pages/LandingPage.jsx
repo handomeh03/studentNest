@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import ApartmentView from "../Components/LandingPageComp/BodyComp/ApartmentView";
 import CommunityStats from "../Components/LandingPageComp/BodyComp/CommunityStats";
 import Hero from "../Components/LandingPageComp/BodyComp/Hero";
@@ -7,7 +8,10 @@ import HeaderLandingPage from "../Components/LandingPageComp/Header/HeaderLandin
 import { useUser } from "../Hooks/UserHook/UseUser";
 
 export default function LandingPage() {
-  useUser();
+  let{fetchUser}=useUser();
+  useEffect(()=>{
+    fetchUser();
+  },[])
   return (
     <div className="bg-white selection:bg-[#3f51b5] selection:text-white">
       <div className="relative">

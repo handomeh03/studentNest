@@ -65,7 +65,7 @@ export default function RowOfTable({student,setstudentId,handleChangeEditStudent
                       {student?.universityName}
                     </td>
                    <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-                      <a href={student?.studentValidateDocument}>
+                      <a target="_blank" rel="noopener noreferrer" href={student?.studentValidateDocument}>
                          <img  className="w-full" width={50} src={student?.studentValidateDocument}/>
                       </a>
                     </td>

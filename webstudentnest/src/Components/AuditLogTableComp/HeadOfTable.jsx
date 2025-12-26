@@ -2,6 +2,7 @@ export default function HeadOfTable() {
   return (
     <thead>
       <tr>
+        
         <th
           scope="col"
           className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
@@ -9,20 +10,23 @@ export default function HeadOfTable() {
           Log ID
         </th>
 
+        
         <th
           scope="col"
           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
         >
-          created by
+          User
         </th>
 
+        
         <th
           scope="col"
           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
         >
-          Action
+          Action Type
         </th>
 
+        
         <th
           scope="col"
           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -30,14 +34,21 @@ export default function HeadOfTable() {
           Description
         </th>
 
+        
         <th
           scope="col"
           className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
         >
-          Created At
+          IP Address
         </th>
 
-       
+        {/* Created At -> actionTimestamp */}
+        <th
+          scope="col"
+          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+        >
+          Timestamp
+        </th>
       </tr>
     </thead>
   );
