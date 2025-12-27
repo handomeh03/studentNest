@@ -18,6 +18,7 @@ import EditDocumentDialog from "../Components/ApartmentListing/EditDocumentDialo
 import { useUserContext } from "../Context/UserContext/UserContext";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 import ShowDocumentContainer from "../Components/ApartmentListing/ShowdocumentContainer";
+import ShowdetailsContainer from "../Components/ApartmentListing/ShowdetailsContainer";
 
 
 
@@ -173,7 +174,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
             apartmentId={apartmentId}
           />:""}
           {showDocumentFLag? <ShowDocumentContainer
-          key={apartmentId} 
+            key={apartmentId} 
             showDocumentFLag={showDocumentFLag}
             handleChangeShowDocumnetFlag={handleChangeShowDocumnetFlag}
             apartmentId={apartmentId}
@@ -182,8 +183,8 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
         </>
       )}
 
-      {showdetailsFlag?  <Showdetailsdialog
-      key={apartmentId} 
+      {showdetailsFlag?  <ShowdetailsContainer
+        key={apartmentId} 
         showdetailsFlag={showdetailsFlag}
         handlechageShowDetailsFlag={handlechageShowDetailsFlag}
         apartmentId={apartmentId}
