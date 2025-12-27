@@ -32,6 +32,8 @@ export default function ApartmentProvider({children}){
 
                     case "getDocument":
                         return {...state,document:action.payload}
+                         case "getDetails":
+                        return {...state,details:action.payload}
                  case "searchApartment":
         return { ...state, Apartments: action.payload };
       case "restToOrginal":
@@ -41,7 +43,7 @@ export default function ApartmentProvider({children}){
         }
     }
 
-    let [state,apartmentDispatch]=useReducer(reduce,{Apartments:[],copyApartments:[],document:{}});
+    let [state,apartmentDispatch]=useReducer(reduce,{Apartments:[],copyApartments:[],document:{},details:{}});
     return(
         <ApartmentContx.Provider value={{...state,apartmentDispatch}}>
             {children}

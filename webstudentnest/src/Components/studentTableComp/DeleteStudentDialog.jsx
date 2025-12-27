@@ -44,7 +44,7 @@ export default function DeleteStudentDialog({deleteStudentFlag,handleChangeDelet
           {"Are you sure you want to delete this student?"}
         </DialogTitle>
 
-        {error?<ErrorComp erorr={error}/>:""}
+        {error?<ErrorComp error={error}/>:""}
 
 
         <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
