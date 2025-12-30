@@ -21,12 +21,7 @@ export default function RowOfTable({ notification }) {
       </td>
 
       
-      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">
-        <span className="flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-blue-400"></div>
-          {notification?.sender?.name}
-        </span>
-      </td>
+     
 
       
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">
