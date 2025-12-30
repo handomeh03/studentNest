@@ -1,92 +1,92 @@
-
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function RowOfTable({ leaserequest }) {
-  let{user}=useUserContext();
+  let { user } = useUserContext();
 
   return (
-    <tr key={leaserequest?.requestLeaseId}>
-      {/* ID */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaserequest?.requestLeaseId}
-      </td>
+    <tr key={leaserequest?.requestLeaseId} className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-none">
+     
 
-      {/* Student Name */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm font-semibold text-gray-900">
         {leaserequest?.studentName}
       </td>
 
-      {/* Major */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-600">
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-indigo-600 font-medium">
         {leaserequest?.Major}
       </td>
 
-      {/* Landlord Name */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">
         {leaserequest?.landlordName}
       </td>
 
-      {/* Apartment Title */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm font-medium text-gray-800">
         {leaserequest?.apartmentTitle}
       </td>
 
-      {/* Price (JD) */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaserequest?.apartmentPrice}
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm font-bold text-gray-900">
+        {leaserequest?.apartmentPrice} <span className="text-xs font-normal text-gray-500">JD</span>
       </td>
 
-      {/* Start Date */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">
         {leaserequest?.startDate}
       </td>
 
-      {/* Rent Term */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
-        {leaserequest?.rentTerm}
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">
+        <span className="px-2 py-1 bg-gray-100 rounded text-xs font-medium">
+          {leaserequest?.rentTerm}
+        </span>
       </td>
 
-      {/* Status */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
+
+      <td className="whitespace-nowrap px-4 py-5 text-sm">
         <span
-          className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ${
+          className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-bold shadow-sm ring-1 ring-inset ${
             leaserequest?.requestStatus === "Accept"
-              ? "bg-green-800"
+              ? "bg-green-100 text-green-700 ring-green-200"
               : leaserequest?.requestStatus === "Reject"
-              ? "bg-red-600"
-              : "bg-yellow-600"
+              ? "bg-red-100 text-red-700 ring-red-200"
+              : "bg-amber-100 text-amber-700 ring-amber-200"
           }`}
         >
           {leaserequest?.requestStatus}
         </span>
       </td>
 
-      {/* Created At */}
-      <td className="whitespace-nowrap px-3 py-5 text-sm text-black">
+    
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-500">
         {leaserequest?.createAt.split("T")[0]}
       </td>
 
-      {/* Actions */}
-      {user?.user?.role=="landlord"?<td className="whitespace-nowrap flex gap-3 py-5 pl-3 pr-4 text-sm font-medium">
-        <button className="hover:text-green-500 hover:cursor-pointer text-green-800">
-          {/* Edit icon */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-            />
-          </svg>
-        </button>
-
-      </td>:""}
+      
+      {user?.user?.role === "landlord" ? (
+        <td className="whitespace-nowrap flex gap-3 px-4 py-5 text-sm font-medium">
+          <button className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all active:scale-90 hover:cursor-pointer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+              />
+            </svg>
+          </button>
+        </td>
+      ) : (
+        ""
+      )}
     </tr>
   );
 }

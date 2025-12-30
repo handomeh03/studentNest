@@ -14,7 +14,7 @@ export function UseGetALlApartmentLisitningforAdmin(){
               const fetchLeaseRequest=async()=>{
                 setLoader(true);
               try {
-                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartments`,{
+                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments`,{
                 headers:{
                    "Authorization": `Bearer ${token}`, 
                 }

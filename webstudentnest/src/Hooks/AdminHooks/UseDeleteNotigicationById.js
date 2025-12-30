@@ -12,7 +12,8 @@ export function UseDeleteNotificatioById(){
         setloader(true);
         
         try {
-            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/notification/${id}`,{
+            console.log("Deleting notification with ID:", id);
+            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/notifications/${id}`,{
                 method:"DELETE",
                  headers:{
                "Authorization": `Bearer ${token}`, 

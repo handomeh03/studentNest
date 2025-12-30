@@ -1,82 +1,63 @@
 import { useNavigate } from "react-router-dom";
-
-
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function RowOfTable({ lease }) {
-  let{user}=useUserContext();
-  let navigate=useNavigate();
+  let { user } = useUserContext();
+  let navigate = useNavigate();
+
   return (
-    <tr key={lease?.leaseId}>
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.leaseId}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.studentName}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.landlordName}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.apartmentTitle}</div>
-      </td>
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.leaseTerm}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.leaseStartDate}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm">
-        <div className="text-black ">{lease?.leaseEndDate}</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        {lease?.LeaseActivationStatus ? (
-          <span className="inline-flex items-center rounded-md bg-green-800 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ">
-            Active
-          </span>
-        ) : (
-          <span className="inline-flex items-center rounded-md bg-red-600 px-2 py-1 text-xs font-medium text-white ring-1 ring-inset ">
-            Terminated
-          </span>
-          
-        )}
-      </td>
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.isLandlordSigned?"sign":"not sign"} </div>
-      </td>
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.isStudentSigned?"sign":"not sign"} </div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.monthlyRent} JD</div>
-      </td>
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.houseRule} JD</div>
-      </td>
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.includeUtilities} JD</div>
-      </td>
-
-      <td className="whitespace-nowrap px-3 py-5 text-sm ">
-        <div className="text-black ">{lease?.createAt.split("T")[0] || lease?.createAt}</div>
-      </td>
+    <tr key={lease?.leaseId} className="hover:bg-gray-50/80 transition-colors border-b border-gray-100 last:border-none">
       
-  
-     {user?.user?.role=="landlord"? <td className="whitespace-nowrap px-3 py-5 text-sm ">
-          <button onClick={()=>{
-              navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`);
-          }} className=" hover:cursor-pointer bg-indigo-500 p-2  rounded-3xl text-white hover:bg-indigo-400 ">
-           payment schudele
-        </button>
-      </td>:""}
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">{lease?.studentName}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">{lease?.landlordName}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600 font-medium">{lease?.apartmentTitle}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600 text-center">{lease?.leaseTerm}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.leaseStartDate}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.leaseEndDate}</td>
+
       
+      <td className="whitespace-nowrap px-4 py-5 text-sm">
+        <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+          lease?.LeaseActivationStatus 
+          ? "bg-green-100 text-green-700 border border-green-200" 
+          : "bg-red-100 text-red-700 border border-red-200"
+        }`}>
+          {lease?.LeaseActivationStatus ? "Active" : "Terminated"}
+        </span>
+      </td>
+
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm">
+        <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${lease?.isLandlordSigned ? "bg-blue-50 text-blue-700" : "bg-gray-100 text-gray-600"}`}>
+          {lease?.isLandlordSigned ? "Signed" : "Not Signed"}
+        </span>
+      </td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm">
+        <span className={`px-2 py-0.5 rounded-md text-xs font-medium ${lease?.isStudentSigned ? "bg-blue-50 text-blue-700" : "bg-gray-100 text-gray-600"}`}>
+          {lease?.isStudentSigned ? "Signed" : "Not Signed"}
+        </span>
+      </td>
+
+      
+      <td className="whitespace-nowrap px-4 py-5 text-sm font-bold text-gray-900">{lease?.monthlyRent} JD</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.houseRule} JD</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.includeUtilities} JD</td>
+
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-500">
+        {lease?.createAt?.split("T")[0] || lease?.createAt}
+      </td>
+
+      
+      {user?.user?.role === "landlord" && (
+        <td className="whitespace-nowrap px-4 py-5 text-sm">
+          <button
+            onClick={() => navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`)}
+            className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-sm hover:bg-indigo-700 hover:shadow-indigo-200 transition-all active:scale-95"
+          >
+            Payment Schedule
+          </button>
+        </td>
+      )}
     </tr>
   );
 }

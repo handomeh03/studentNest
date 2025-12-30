@@ -1,58 +1,35 @@
-export default function HeadOfTable(){
-    return(
-         <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0 "
-                  >
-                    ID
-                  </th>
-                  <th scope="col" className="px-3 py-3.5  text-left text-sm font-semibold text-gray-900 ">
-                    Name
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    date
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                   phoneNumber
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                  address
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                   emailVerifed
-                  </th>
-                   
-                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    role
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    studentGovId
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    major
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    studentCardId
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    graduateYear
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    universityName
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    Documnet
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    createdAt
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 ">
-                    actions
-                  </th>
-                 
-                </tr>
-              </thead>
-    );
+export default function HeadOfTable() {
+  const headers = [
+    
+    { name: "Name", align: "text-left" },
+    { name: "Date", align: "text-left" },
+    { name: "Phone Number", align: "text-left" },
+    { name: "Address", align: "text-left" },
+    { name: "Email Verified", align: "text-left" },
+    { name: "Role", align: "text-left" },
+    { name: "Student Gov ID", align: "text-left" },
+    { name: "Major", align: "text-left" },
+    { name: "Student Card ID", align: "text-left" },
+    { name: "Graduate Year", align: "text-left" },
+    { name: "University", align: "text-left" },
+    { name: "Document", align: "text-center" },
+    { name: "Created At", align: "text-left" },
+    { name: "Actions", align: "text-left" },
+  ];
+
+  return (
+    <thead className="bg-gray-50 border-b border-gray-200">
+      <tr>
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-3 py-4 ${header.align} text-xs font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap`}
+          >
+            {header.name}
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
 }

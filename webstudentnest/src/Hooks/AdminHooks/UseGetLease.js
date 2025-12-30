@@ -12,7 +12,7 @@ export function UseGetLease(){
           const fetchLease=async()=>{
             setLoader(true);
           try {
-            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/leases`,{
+            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/leases`,{
             headers:{
                "Authorization": `Bearer ${token}`, 
             }
@@ -20,10 +20,12 @@ export function UseGetLease(){
             const data=await res.json();
 
             if(res.ok){
+              
                 leaseDipattch({type:"getAllLease",payload:data})
                 
             }
             else{
+              console.error(data);
                 throw new Error(data.errors);
             }
             

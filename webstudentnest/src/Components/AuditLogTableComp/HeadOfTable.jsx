@@ -1,54 +1,28 @@
 export default function HeadOfTable() {
+  const headers = [
+    { name: "Log ID", align: "text-left" },
+    { name: "Target User", align: "text-left" },
+    { name: "Role", align: "text-center" },
+    { name: "Action", align: "text-left" },
+    { name: "Record", align: "text-center" },
+    { name: "Description", align: "text-left" },
+    { name: "Location / IP", align: "text-left" },
+    { name: "Device Info", align: "text-left" },
+    { name: "Timestamp", align: "text-right" },
+  ];
+
   return (
-    <thead>
+    <thead className="bg-gray-100 border-b-2 border-gray-300 shadow-sm">
       <tr>
-        
-        <th
-          scope="col"
-          className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-        >
-          Log ID
-        </th>
-
-        
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          User
-        </th>
-
-        
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Action Type
-        </th>
-
-        
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Description
-        </th>
-
-        
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          IP Address
-        </th>
-
-        {/* Created At -> actionTimestamp */}
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Timestamp
-        </th>
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-4 py-4 ${header.align} text-xs font-black text-black uppercase tracking-widest whitespace-nowrap`}
+          >
+            {header.name}
+          </th>
+        ))}
       </tr>
     </thead>
   );

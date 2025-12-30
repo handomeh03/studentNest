@@ -13,7 +13,7 @@ export function UseDeleteApartment(){
         setloader(true);
         
         try {
-            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartment/${id}`,{
+            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments/${id}`,{
                 method:"DELETE",
                  headers:{
                "Authorization": `Bearer ${token}`, 

@@ -20,7 +20,7 @@ export default function UseSearchApartment(name) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/admin/apartments/search?q=${name}`,
+            `${import.meta.env.VITE_API_URL}/api/v1/apartments/search?q=${name}`,
             {
               method: "GET",
               headers: {

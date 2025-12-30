@@ -12,7 +12,7 @@ export function UseGetALLNotifiction(){
               const fetchNotification=async()=>{
                 setLoader(true);
               try {
-                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/notifications`,{
+                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/notifications`,{
                 headers:{
                    "Authorization": `Bearer ${token}`, 
                 }

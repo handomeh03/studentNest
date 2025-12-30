@@ -1,68 +1,29 @@
 export default function HeadOfTable() {
+  const headers = [
+    
+    { name: "Student Name", align: "text-left" },
+    { name: "Major", align: "text-left" },
+    { name: "Landlord Name", align: "text-left" },
+    { name: "Apartment Title", align: "text-left" },
+    { name: "Price (JD)", align: "text-center" },
+    { name: "Start Date", align: "text-center" },
+    { name: "Rent Term", align: "text-center" },
+    { name: "Status", align: "text-center" },
+    { name: "Created At", align: "text-center" },
+  ];
+
   return (
-    <thead>
+    <thead className="bg-gray-50 border-b border-gray-200">
       <tr>
-        <th
-          scope="col"
-          className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-        >
-         Lease request ID
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Student Name
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Major
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Landlord Name
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Apartment Title
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Price (JD)
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Start Date
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Rent Term
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Status
-        </th>
-        <th
-          scope="col"
-          className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-        >
-          Created At
-        </th>
-       
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-4 py-4 ${header.align} text-xs font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap`}
+          >
+            {header.name}
+          </th>
+        ))}
       </tr>
     </thead>
   );
