@@ -3,7 +3,7 @@ export default function HeadOfTable() {
     
     { name: "Title", align: "text-left" },
     { name: "Message", align: "text-left" },
-    { name: "Sender Name", align: "text-left" },
+    
     { name: "Receiver Name", align: "text-left" },
     { name: "Status", align: "text-left" },
     { name: "Created At", align: "text-left" },
