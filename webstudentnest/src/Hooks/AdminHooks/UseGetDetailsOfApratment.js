@@ -12,7 +12,7 @@ export function UseGetDetailsOfApratment(id){
       const fetchDetails=async()=>{
         
         try {
-          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartment/${id}`,{
+          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments/${id}`,{
             headers:{
                "Authorization": `Bearer ${token}`, 
             }

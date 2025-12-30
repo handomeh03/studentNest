@@ -1,62 +1,49 @@
-
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
-
 export default function HeadOfTable() {
-  let {user}=useUserContext();
+  const { user } = useUserContext();
+  const role = user?.user?.role;
+
+  
+  const headers = [
+    
+    { label: "Student Name", align: "text-left" },
+    { label: "Landlord Name", align: "text-left" },
+    { label: "Apartment Title", align: "text-left" },
+    { label: "Term", align: "text-center" },
+    { label: "Start Date", align: "text-center" },
+    { label: "End Date", align: "text-center" },
+    { label: "Status", align: "text-center" },
+    { label: "Landlord Sign", align: "text-center" },
+    { label: "Student Sign", align: "text-center" },
+    { label: "Monthly Rent", align: "text-center" },
+    { label: "House Rules", align: "text-center" },
+    { label: "Utilities", align: "text-center" },
+    { label: "Created At", align: "text-center" },
+  ];
+
   return (
-    <thead>
+    <thead className="bg-gray-50 border-b border-gray-200">
       <tr>
-        <th
-          scope="col"
-          className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-        >
-          Lease ID
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Student Name
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Landlord Name
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Apartment Title
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Term
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Start Date
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          End date
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Status
-        </th>
-         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          landlord Sign
-        </th>
-         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-         student Sign
-        </th>
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-3 py-4 ${header.align} text-xs font-bold text-gray-500 uppercase tracking-wider`}
+          >
+            {header.label}
+          </th>
+        ))}
 
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Monthly Rent
-        </th>
-          <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          house rule
-        </th>
-         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          include Utilities
-        </th>
-        <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Created At
-        </th>
-
-       {user?.user?.role=="admin" || user?.user?.role =="student"?"": <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          payment schudele
-        </th>}
+        
+        {!(role === "admin" || role === "student") && (
+          <th
+            scope="col"
+            className="px-3 py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-indigo-50 text-indigo-700"
+          >
+            Payment Schedule
+          </th>
+        )}
       </tr>
     </thead>
   );

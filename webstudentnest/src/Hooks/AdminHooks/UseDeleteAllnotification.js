@@ -12,7 +12,7 @@ export function UseDeleteAllNotification(){
         setloader(true);
         
         try {
-            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/notifications`,{
+            const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/notifications`,{
                 method:"DELETE",
                  headers:{
                "Authorization": `Bearer ${token}`, 

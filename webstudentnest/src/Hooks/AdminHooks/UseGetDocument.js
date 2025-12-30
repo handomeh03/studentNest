@@ -11,7 +11,7 @@ export function UseGetDocument(id){
         setloader(true);
       const fetchDocument=async()=>{
         try {
-          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartment-document/${id}`,{
+          const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments/${id}/documents`,{
             headers:{
                "Authorization": `Bearer ${token}`, 
             }

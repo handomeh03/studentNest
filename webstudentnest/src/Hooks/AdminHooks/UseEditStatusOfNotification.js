@@ -10,7 +10,7 @@ export function UseEditStatusOfNotification() {
   async function editNotification(id) {
     try {
       setLoader(true);
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/notifications-status/${id}`,
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/notifications/${id}/notifications-status`,
         {
           method: "PATCH",
           body:JSON.stringify({isRead:true}),

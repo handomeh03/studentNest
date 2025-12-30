@@ -49,6 +49,7 @@ function App() {
         <Route path="/forgetPassword" element={<ForgetPasswordpage/>}/>
         <Route path="/OtpPassword" element={<PasswordOtp/>}/>
         <Route path="/changePassword" element={<ChangePasswordOtp/>}/>
+        
         <Route path='/apartments' element={<ApartmentPage/>}/>
         
 
@@ -66,12 +67,20 @@ function App() {
         <Route path='/landlordDashboard' element={<LandlordDashboardLayout/>}>
           <Route index element={<MyApartmentsLandLord/>}/>
           <Route path='myleasse' element={<MyLeasesLandlordPage/>}/>
+
           <Route path='mybookedapartments' element={<MybookedApartmentsLandlordPage/>}/>
+        
           <Route path='requestlease' element={<MyRequestLeasepage/>}/>
+
           <Route path='setting' element={<LandlordSettingPage/>}/> 
+
           <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
+           
           <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
+
+
           <Route path='notification' element={<NotifivationTablePage/>}/>
+
           <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
 

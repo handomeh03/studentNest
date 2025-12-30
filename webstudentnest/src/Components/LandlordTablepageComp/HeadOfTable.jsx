@@ -1,51 +1,32 @@
-export default function HeadOfTable(){
-    return(
-        <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    className="py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 sm:pl-0 "
-                  >
-                    ID
-                  </th>
-                  <th scope="col" className="px-3 py-3.5  text-center text-sm font-semibold text-gray-900 ">
-                    Name
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    date 
-                  </th>
-                  <th scope="col" className="px-3 py-3.5  text-sm text-center font-semibold text-gray-900 ">
-                   phone Number
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                  address
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                   email Verifed
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                   adminVerifed
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    role
-                  </th>
-                   <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    landlordGoId
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    cliqAccount
-                  </th>
-                  <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    Documnet
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    createdAt
-                  </th>
-                    <th scope="col" className="px-3 py-3.5 text-center text-sm font-semibold text-gray-900 ">
-                    actions
-                  </th>
-                 
-                </tr>
-              </thead>
-    );
+export default function HeadOfTable() {
+  const headers = [
+    { name: "Name", align: "text-left" },
+    { name: "Date", align: "text-center" },
+    { name: "Phone Number", align: "text-center" },
+    { name: "Address", align: "text-center" },
+    { name: "Email Verified", align: "text-center" },
+    { name: "Admin Verified", align: "text-center" },
+    { name: "Role", align: "text-center" },
+    { name: "Gov ID", align: "text-center" },
+    { name: "Cliq Account", align: "text-center" },
+    { name: "Document", align: "text-center" },
+    { name: "Created At", align: "text-center" },
+    { name: "Actions", align: "text-right" },
+  ];
+
+  return (
+    <thead className="bg-gray-50 border-b border-gray-200">
+      <tr>
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-4 py-4 ${header.align} text-xs font-bold text-gray-500 uppercase tracking-wider`}
+          >
+            {header.name}
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
 }

@@ -5,8 +5,7 @@ import RowOfTable from "../Components/LeaseTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 
 export default function LeaseTablePage({Leases,error}){
-  
-   
+
    
     return(
         <div>

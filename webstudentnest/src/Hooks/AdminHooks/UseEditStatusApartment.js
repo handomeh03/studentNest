@@ -13,7 +13,7 @@ export function UseEditStatusApartment(){
         setloader(true);
         
         try {
-            const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartment/${id}/verify`,
+            const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/apartments/${id}/verify`,
                 {
                     method:"PATCH",
                     body:JSON.stringify({Verified:verifed}),

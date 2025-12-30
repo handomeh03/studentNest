@@ -1,32 +1,27 @@
 export default function HeadOfTable() {
+  const headers = [
+    
+    { name: "Title", align: "text-left" },
+    { name: "Message", align: "text-left" },
+    { name: "Sender Name", align: "text-left" },
+    { name: "Receiver Name", align: "text-left" },
+    { name: "Status", align: "text-left" },
+    { name: "Created At", align: "text-left" },
+    { name: "Action", align: "text-left" },
+  ];
+
   return (
-    <thead>
+    <thead className="bg-gray-50 border-b border-gray-200">
       <tr>
-        <th className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-          ID
-        </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Title
-        </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Message
-        </th>
-        
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Sender Name
-        </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-           receive Name
-        </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Status
-        </th>
-        <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          Created At
-        </th>
-       <th className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-          action
-        </th>
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            scope="col"
+            className={`px-4 py-4 ${header.align} text-xs font-bold text-gray-500 uppercase tracking-wider whitespace-nowrap`}
+          >
+            {header.name}
+          </th>
+        ))}
       </tr>
     </thead>
   );

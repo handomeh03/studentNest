@@ -13,7 +13,7 @@ export function UseGetAllLeaseRequest(){
               const fetchLeaseRequest=async()=>{
                 setLoader(true);
               try {
-                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/lease-requests`,{
+                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/leases-request`,{
                 headers:{
                    "Authorization": `Bearer ${token}`, 
                 }
