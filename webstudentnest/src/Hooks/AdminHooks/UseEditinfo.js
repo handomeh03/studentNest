@@ -5,13 +5,17 @@ export function UseEditInfo(){
     let [loader,setloader]=useState(false);
     let [error,setError]=useState("");
 
-    async function editInfo(name,email,phoneNumber,dateOfBirth,address,photo,fetchUser) {
+    async function editInfo(role,name,email,phoneNumber,dateOfBirth,address,photo,cliQAccount,fetchUser) {
         const formData=new FormData();
         formData.append("name",name);
         formData.append("dateOfBirth",dateOfBirth);
         formData.append("phoneNumber",phoneNumber);
         formData.append("address",address);
         formData.append("photo",photo);
+        if(role=="landlord"){
+
+            formData.append("cliQAccount",cliQAccount);
+        }
         setloader(true);
         
         try {
@@ -28,6 +32,7 @@ export function UseEditInfo(){
             if(res.ok){
                 fetchUser();
             }else{
+                console.log(data)
                 throw new Error(data.error);
             }
             

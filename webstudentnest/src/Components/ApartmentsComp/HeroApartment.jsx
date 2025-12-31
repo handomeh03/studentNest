@@ -1,5 +1,5 @@
 
-import { ShieldCheck } from 'lucide-react';
+import GppGoodIcon from '@mui/icons-material/GppGood';
 import { Useaos } from '../../Hooks/publicHook/useaos';
 
 export default function HeroApartment() {
@@ -25,7 +25,7 @@ export default function HeroApartment() {
           data-aos-delay="200"
           className="mb-6 flex items-center gap-2 rounded-full bg-[#3f51b555] border border-[#3f51b5] px-4 py-2 text-white backdrop-blur-md"
         >
-          <ShieldCheck size={20} />
+          <GppGoodIcon  size={20} />
           <span className="text-sm font-bold tracking-wide">Safe & Certified Student Housing</span>
         </div>
 
