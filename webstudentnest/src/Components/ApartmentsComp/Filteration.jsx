@@ -65,7 +65,7 @@ export default function Filteration() {
       
       <div className="flex-1 mb-4 lg:mb-0">
         <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">
-          Price: ${priceRange[0]} - ${priceRange[1]}
+          Price: {priceRange[0]} - {priceRange[1]}
         </label>
         <Range
           step={10} min={350} max={1400} values={priceRange}

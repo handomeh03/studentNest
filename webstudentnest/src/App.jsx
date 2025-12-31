@@ -79,7 +79,7 @@ function App() {
           <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
 
 
-          <Route path='notification' element={<NotifivationTablePage/>}/>
+          <Route path='notification' element={<NotificationTableContainer/>}/>
 
           <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
