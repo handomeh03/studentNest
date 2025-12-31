@@ -22,7 +22,6 @@ export default function Showdetailsdialog({
   const data = details || {};
   const primaryColor = "#3f51b5";
   
-  // فحص حجم الشاشة باستخدام Material UI Hooks
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
@@ -40,18 +39,18 @@ export default function Showdetailsdialog({
   return (
     <Dialog
       open={showdetailsFlag}
-      fullScreen={isMobile} // كامل الشاشة فقط على الموبايل
+      fullScreen={isMobile}
       maxWidth="md"
       fullWidth
-      scroll="body"
       onClose={handlechageShowDetailsFlag}
       PaperProps={{
-        // الحواف دائرية فقط في الشاشات الكبيرة
-        className: "lg:!rounded-[32px] overflow-hidden shadow-2xl",
+        
+        className: "lg:!rounded-[32px] lg:h-[90vh] overflow-x-hidden overflow-y-hidden shadow-2xl",
       }}
     >
-      <DialogContent className="p-0 bg-white relative">
-        {/* زر الإغلاق العائم */}
+      <DialogContent className="p-0 bg-white h-full flex flex-col relative overflow-x-hidden">
+        
+        
         <div className="absolute top-4 right-4 z-50">
           <IconButton
             onClick={handlechageShowDetailsFlag}
@@ -61,31 +60,31 @@ export default function Showdetailsdialog({
           </IconButton>
         </div>
 
-        {/* الحاوية الرئيسية: عمودية في الموبايل، أفقية في الكمبيوتر */}
-        <div className="flex flex-col lg:flex-row">
+        
+        <div className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar">
           
-          {/* الجانب الأيسر: الصور */}
-          <div className="w-full lg:w-1/2 bg-slate-100 border-r border-slate-100">
-            <TabGroup className="h-full flex flex-col">
-              <TabPanels className="aspect-[4/3] lg:aspect-auto lg:h-[500px]">
+          
+          <div className="w-full bg-slate-100 border-b border-slate-100 overflow-x-hidden">
+            <TabGroup className="w-full">
+              <TabPanels className="aspect-video lg:h-[480px]">
                 {displayImages.map((img, idx) => (
                   <TabPanel key={idx} className="h-full outline-none">
                     <img
                       src={img.img}
-                      className="w-full h-full object-cover transition-transform duration-500"
+                      className="w-full h-full object-cover"
                       alt="Apartment"
                     />
                   </TabPanel>
                 ))}
               </TabPanels>
               
-              {/* الصور المصغرة */}
-              <div className="p-4 overflow-x-auto scrollbar-hide">
-                <TabList className="flex gap-2 justify-start lg:justify-center">
+              
+              <div className="p-4 bg-white/50 backdrop-blur-sm">
+                <TabList className="flex gap-2 overflow-x-auto scrollbar-hide justify-start lg:justify-center">
                   {displayImages.map((img, idx) => (
                     <Tab
                       key={idx}
-                      className="relative min-w-[70px] h-14 outline-none rounded-xl overflow-hidden border-2 border-transparent ui-selected:border-[#3f51b5] transition-all"
+                      className="relative min-w-[80px] h-16 outline-none rounded-xl overflow-hidden border-2 border-transparent ui-selected:border-[#3f51b5] transition-all flex-shrink-0"
                     >
                       <img src={img.img} className="w-full h-full object-cover" />
                     </Tab>
@@ -95,11 +94,12 @@ export default function Showdetailsdialog({
             </TabGroup>
           </div>
 
-          {/* الجانب الأيمن: البيانات */}
-          <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
-            <div className="space-y-6">
-              {/* العناوين */}
-              <div className="space-y-2">
+          
+          <div className="p-6 sm:p-8 lg:p-10 space-y-8 overflow-x-hidden">
+            
+            
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
+              <div className="space-y-3">
                 <div className="flex items-center gap-2">
                   <span 
                     className="text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded"
@@ -110,7 +110,7 @@ export default function Showdetailsdialog({
                   {data.Verified && <VerifiedUserIcon className="text-emerald-500 text-sm" />}
                 </div>
                 
-                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
+                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight break-words">
                   {data.title}
                 </h2>
                 
@@ -120,41 +120,46 @@ export default function Showdetailsdialog({
                 </div>
               </div>
 
-              {/* السعر */}
-              <div className="inline-flex flex-col border-l-4 pl-4" style={{ borderColor: primaryColor }}>
-                <span className="text-sm font-bold text-slate-400 uppercase tracking-tighter">Rent Price</span>
+              <div className="inline-flex flex-col border-l-4 pl-4 flex-shrink-0" style={{ borderColor: primaryColor }}>
+                <span className="text-sm font-bold text-slate-400 uppercase tracking-tighter">monthly Price</span>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-black" style={{ color: primaryColor }}>{data.price}</span>
-                  <span className="text-sm font-bold text-slate-500">JOD / Month</span>
+                  <span className="text-sm font-bold text-slate-500">JOD</span>
                 </div>
               </div>
+            </div>
 
-              {/* الوصف */}
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-                <div className="flex items-center gap-2 mb-2 text-slate-800 font-bold text-sm">
-                  <InfoIcon style={{ color: primaryColor }} fontSize="inherit" />
-                  Description
-                </div>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {data.description}
-                </p>
+            {/* 2. الوصف */}
+            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+              <div className="flex items-center gap-2 mb-3 text-slate-800 font-bold text-base">
+                <InfoIcon style={{ color: primaryColor }} fontSize="small" />
+                Description
               </div>
+              <p className="text-slate-600 text-sm leading-relaxed break-words">
+                {data.description}
+              </p>
+            </div>
 
-              {/* شبكة الميزات (Feature Grid) */}
-              <div className="grid grid-cols-2 gap-4">
-                <FeatureItem icon={<MeetingRoomIcon />} label="Rooms" value={data.numberOfRoom} color={primaryColor} />
-                <FeatureItem icon={<KingBedIcon />} label="Beds" value={data.numberOfBed} color={primaryColor} />
-                <FeatureItem icon={<PersonIcon />} label="Landlord" value={data.landlordName} color={primaryColor} />
-                <FeatureItem 
-                  icon={<VerifiedUserIcon />} 
-                  label="Status" 
-                  value={data.propertyStatus ? "Active" : "Booked"} 
-                  color={data.propertyStatus ? "#10b981" : "#ef4444"}
-                />
-              </div>
+            {/* 3. شبكة الميزات */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <FeatureItem icon={<MeetingRoomIcon />} label="Rooms" value={data.numberOfRoom} color={primaryColor} />
+              <FeatureItem icon={<KingBedIcon />} label="Beds" value={data.numberOfBed} color={primaryColor} />
+              <FeatureItem icon={<PersonIcon />} label="Landlord" value={data.landlordName} color={primaryColor} />
+              <FeatureItem 
+                icon={<VerifiedUserIcon />} 
+                label="Status" 
+                value={data.propertyStatus ? "Active" : "Booked"} 
+                color={data.propertyStatus ? "#10b981" : "#ef4444"}
+              />
+            </div>
 
-              {/* الخريطة */}
-              <div className="h-40 lg:h-48 rounded-[2rem] overflow-hidden border-2 border-slate-50 shadow-inner">
+            {/* 4. الخريطة */}
+            <div className="space-y-3">
+              <h3 className="font-bold text-slate-800 text-sm flex items-center gap-2">
+                <LocationOnIcon style={{ color: primaryColor }} fontSize="inherit" />
+                Location on Map
+              </h3>
+              <div className="h-64 rounded-[2rem] overflow-hidden border-2 border-slate-50 shadow-inner">
                 <iframe
                   width="100%"
                   height="100%"
@@ -165,8 +170,8 @@ export default function Showdetailsdialog({
               </div>
             </div>
 
-            {/* زر الإغلاق السفلي */}
-            <div className="mt-8">
+            {/* 5. زر الإغلاق */}
+            <div className="pt-4">
               <button
                 onClick={handlechageShowDetailsFlag}
                 className="w-full bg-slate-900 hover:opacity-90 text-white py-4 rounded-2xl font-bold transition-all shadow-xl active:scale-[0.98] cursor-pointer"
@@ -184,13 +189,17 @@ export default function Showdetailsdialog({
 
 function FeatureItem({ icon, label, value, color }) {
   return (
-    <div className="flex items-center gap-3 p-3 bg-white border border-slate-50 rounded-2xl shadow-sm transition-hover hover:border-slate-200">
+    <div className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-2xl shadow-sm">
       <div className="p-2 rounded-xl" style={{ backgroundColor: `${color}10`, color: color }}>
         {icon}
       </div>
-      <div>
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter leading-none mb-1">{label}</p>
-        <p className="text-sm font-black text-slate-800 leading-none">{value}</p>
+      <div className="min-w-0">
+        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter leading-none mb-1">
+          {label}
+        </p>
+        <p className="text-sm font-black text-slate-800 leading-none truncate">
+          {value}
+        </p>
       </div>
     </div>
   );
