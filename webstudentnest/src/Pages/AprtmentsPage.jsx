@@ -1,9 +1,11 @@
 import ApartmentsForall from '../Components/ApartmentsComp/Apartments';
-import ApartmentSwiper from '../Components/ApartmentsComp/Swiper';
+import HeroApartment from '../Components/ApartmentsComp/HeroApartment';
+import ApartmentSwiper from '../Components/ApartmentsComp/HeroApartment';
 import Footer from '../Components/LandingPageComp/Footer/Footer';
 import HeaderLandingPage from '../Components/LandingPageComp/Header/HeaderLandingPage';
 import Loader from '../Components/PublicComp/Loader';
 import { UseLoader } from '../Hooks/publicHook/useLoader';
+
 
 
 
@@ -18,12 +20,12 @@ export default function ApartmentPage() {
   
   return (
     <div >
-      <div className=' '>
-        <div className='bg-[#3f51b5]   '>
+      <div >
+        <div className='bg-[#3f51b5] '>
              <HeaderLandingPage/>
 
       </div>
-        {/* <ApartmentSwiper/> */}
+        <HeroApartment/>
         <ApartmentsForall/>
 
       </div>
