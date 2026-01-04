@@ -30,9 +30,9 @@ export default function RowOfTable({ student, setstudentId, handleChangeEditStud
       
       <td className="whitespace-nowrap px-4 py-5 text-sm">
         <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium shadow-sm ${
-          student?.user?.emailVerfied ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+          student?.user?.emailVerified ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
         }`}>
-          {student?.user?.emailVerfied ? "Verified" : "Pending"}
+          {student?.user?.emailVerified ? "Verified" : "Pending"}
         </span>
       </td>
 

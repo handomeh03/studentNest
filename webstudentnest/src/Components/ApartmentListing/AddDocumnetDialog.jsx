@@ -1,25 +1,16 @@
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import MenuItem from "@mui/material/MenuItem";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useState } from "react";
+import { UseAddDocument } from "../../Hooks/LandlordHook/UseAddDocument";
+import ErrorComp from "../PublicComp/ErrorComp";
 
-export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocumentFlag}) {
+export default function AddDocumentDialog({ apartmentId, adddocumnetFlag, handlechangeAddDocumentFlag }) {
   const mainColor = "#3f51b5";
   const hoverColor = "#303f9f";
-
-  const textFieldStyle = {
-    "& label.Mui-focused": { color: mainColor },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": { borderColor: mainColor + "99" },
-      "&:hover fieldset": { borderColor: mainColor },
-      "&.Mui-focused fieldset": { borderColor: mainColor },
-    },
-    "& .MuiInputBase-input": { fontSize: "0.95rem" },
-  };
 
   const buttonStyle = {
     backgroundColor: mainColor,
@@ -29,16 +20,24 @@ export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocume
     textTransform: "none",
   };
 
-  const [documentType, setDocumentType] = useState("");
+  let { addDocument, loader, error } = UseAddDocument();
   const [documentImage, setDocumentImage] = useState(null);
 
   function handleDocumentImageChange(e) {
     setDocumentImage(e.target.files[0]);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (documentImage) {
+      addDocument(apartmentId, documentImage, handlechangeAddDocumentFlag);
+    }
+  }
+
   return (
     <Dialog
       open={adddocumnetFlag}
+      onClose={handlechangeAddDocumentFlag}
       fullWidth
       maxWidth="sm"
       PaperProps={{
@@ -63,37 +62,15 @@ export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocume
       </DialogTitle>
 
       <DialogContent sx={{ mt: 2 }}>
-        <form id="add-document-form" className="space-y-4">
-          {/* Document Type */}
-          <TextField
-            style={{marginTop:"1rem"}}
-            select
-            required
-            fullWidth
-            label="Document Type"
-            value={documentType}
-            onChange={(e) => setDocumentType(e.target.value)}
-            variant="outlined"
-            sx={textFieldStyle}
-            SelectProps={{
-              MenuProps: {
-                disablePortal: true,
-                anchorOrigin: { vertical: "bottom", horizontal: "left" },
-              },
-            }}
-          >
-            <MenuItem value="ID">ID</MenuItem>
-            <MenuItem value="Lease">Lease</MenuItem>
-            <MenuItem value="Contract">Contract</MenuItem>
-          </TextField>
-
-          {/* Upload Document Image */}
+        <form id="add-document-form" className="space-y-4" onSubmit={handleSubmit}>
+          
           <Button
             variant="outlined"
             component="label"
+            disabled={loader}
             sx={{
               width: "100%",
-              marginTop:"1rem",
+              marginTop: "1rem",
               borderColor: mainColor,
               color: mainColor,
               borderRadius: 2,
@@ -101,7 +78,7 @@ export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocume
               textTransform: "none",
             }}
           >
-            Upload Document
+            {documentImage ? "Change Document" : "Upload Document"}
             <input
               hidden
               accept="image/*"
@@ -110,7 +87,7 @@ export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocume
             />
           </Button>
 
-          {/* Preview */}
+          
           {documentImage && (
             <div className="mt-3 flex justify-center">
               <img
@@ -123,16 +100,36 @@ export default function AddDocumentDialog({adddocumnetFlag,handlechangeAddDocume
         </form>
       </DialogContent>
 
+      
+      {error && (
+        <div style={{ padding: '0 24px' }}>
+          <ErrorComp error={error} />
+        </div>
+      )}
+
       <DialogActions sx={{ justifyContent: "space-between", p: 2 }}>
         <Button
           onClick={handlechangeAddDocumentFlag}
+          disabled={loader}
           sx={{ color: mainColor, fontWeight: "bold", textTransform: "none" }}
         >
           Cancel
         </Button>
-        <Button type="submit" form="add-document-form" sx={buttonStyle}>
-          Save
-        </Button>
+
+        
+        {loader ? (
+          <Button variant="outlined" disabled startIcon={<CircularProgress size={20} />}>
+            Uploading...
+          </Button>
+        ) : (
+          <Button 
+            type="submit" 
+            form="add-document-form" 
+            sx={buttonStyle}    
+          >
+            Save Document
+          </Button>
+        )}
       </DialogActions>
     </Dialog>
   );

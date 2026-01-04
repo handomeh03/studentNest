@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Useaos } from "../../../Hooks/publicHook/useaos";
 
 export default function WhyUse() {
   const primaryColor = '#3f51b5';
@@ -38,9 +39,7 @@ export default function WhyUse() {
     },
   ];
 
-  useEffect(() => {
-    AOS.init({ duration: 1000, once: true });
-  }, []);
+  Useaos();
 
   return (
     <section className="bg-[#fcfdfe] py-24 px-6 overflow-hidden">

@@ -1,18 +1,29 @@
 import { XCircleIcon } from '@heroicons/react/20/solid'
-export default function ErrorComp({error}){
-    return(
-       <div className="rounded-md   bg-red-200 p-4 md:w-1/2 m-auto lg:w-1/2 m-auto">
-      <div className="flex">
-        <div className="shrink-0">
-          <XCircleIcon aria-hidden="true" className="size-5 text-red-400" />
-        </div>
-        <div className="ml-3">
-          <h3 className="text-sm font-medium text-red-800 ">
-            {error}
-          </h3>
+
+export default function ErrorComp({ error }) {
+  return (
+    <div className="w-full px-4 sm:px-6 lg:px-8 my-6">
+      {/* Container with max-width for desktop but 100% width on mobile */}
+      <div className="mx-auto max-w-4xl rounded-lg border border-red-200 bg-red-50 p-4 shadow-sm transition-all">
+        <div className="flex items-start">
+          {/* Icon stays fixed to the top left */}
+          <div className="shrink-0">
+            <XCircleIcon aria-hidden="true" className="h-5 w-5 text-red-500" />
+          </div>
           
+          <div className="ml-3 flex-1 md:flex md:justify-between">
+            <div>
+             
+              <p className="mt-1 text-sm text-red-700 leading-relaxed">
+                {error || "An unexpected error occurred. Please try again later."}
+              </p>
+            </div>
+            
+            
+           
+          </div>
         </div>
       </div>
     </div>
-    );
+  )
 }

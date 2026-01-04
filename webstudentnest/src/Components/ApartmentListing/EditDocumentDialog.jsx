@@ -1,51 +1,48 @@
 import { useState } from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import MenuItem from "@mui/material/MenuItem";
+import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, CircularProgress, Box } from "@mui/material";
+import { UseUpdateDocument } from "../../Hooks/LandlordHook/UseUpdateDocument";
+import ErrorComp from "../PublicComp/ErrorComp";
 
-export default function EditDocumentDialog({editDocumentDialog,handleChangeEditDocumentDialog}){
-    const mainColor = "#3f51b5";
-      const hoverColor = "#303f9f";
-    
-      const textFieldStyle = {
-        "& label.Mui-focused": { color: mainColor },
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": { borderColor: mainColor + "99" },
-          "&:hover fieldset": { borderColor: mainColor },
-          "&.Mui-focused fieldset": { borderColor: mainColor },
-        },
-        "& .MuiInputBase-input": { fontSize: "0.95rem" },
-      };
-    
-      const buttonStyle = {
-        backgroundColor: mainColor,
-        color: "white",
-        fontWeight: "bold",
-        "&:hover": { backgroundColor: hoverColor },
-        textTransform: "none",
-      };
-    
-      const [documentType, setDocumentType] = useState("");
-      const [documentImage, setDocumentImage] = useState(null);
-    
-      function handleDocumentImageChange(e) {
-        setDocumentImage(e.target.files[0]);
-      }
-    return(
-     <Dialog
+
+export default function EditDocumentDialog({ editDocumentDialog, handleChangeEditDocumentDialog, apartmentId }) {
+  const mainColor = "#3f51b5";
+  const hoverColor = "#303f9f";
+
+
+  const buttonStyle = {
+    backgroundColor: mainColor,
+    color: "white",
+    fontWeight: "bold",
+    minWidth: "100px",
+    "&:hover": { backgroundColor: hoverColor },
+    "&:disabled": { backgroundColor: "#ccc" },
+    textTransform: "none",
+  };
+
+  
+  const [documentImage, setDocumentImage] = useState(null);
+
+  
+  let { updateDocument, loader, error } = UseUpdateDocument();
+
+  function handleDocumentImageChange(e) {
+    if (e.target.files && e.target.files[0]) {
+      setDocumentImage(e.target.files[0]);
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    updateDocument(apartmentId, documentImage, handleChangeEditDocumentDialog);
+  }
+
+  return (
+    <Dialog
       open={editDocumentDialog}
       fullWidth
       maxWidth="sm"
       PaperProps={{
-        sx: {
-          borderRadius: 3,
-          p: 2,
-          "@media (max-width:600px)": { p: 1 },
-        },
+        sx: { borderRadius: 3, p: 2, "@media (max-width:600px)": { p: 1 } },
       }}
     >
       <DialogTitle
@@ -62,38 +59,23 @@ export default function EditDocumentDialog({editDocumentDialog,handleChangeEditD
       </DialogTitle>
 
       <DialogContent sx={{ mt: 2 }}>
-        <h2 style={{textAlign:"center",textTransform:"capitalize"}}>you cant edit if apartment is Verified</h2>
-        <form id="add-document-form" className="space-y-4">
-          {/* Document Type */}
-          <TextField
-            style={{marginTop:"1rem"}}
-            select
-            required
-            fullWidth
-            label="Document Type"
-            value={documentType}
-            onChange={(e) => setDocumentType(e.target.value)}
-            variant="outlined"
-            sx={textFieldStyle}
-            SelectProps={{
-              MenuProps: {
-                disablePortal: true,
-                anchorOrigin: { vertical: "bottom", horizontal: "left" },
-              },
-            }}
-          >
-            <MenuItem value="ID">ID</MenuItem>
-            <MenuItem value="Lease">Lease</MenuItem>
-            <MenuItem value="Contract">Contract</MenuItem>
-          </TextField>
+        
+       
 
-          {/* Upload Document Image */}
+        <h2 style={{ textAlign: "center", textTransform: "capitalize", color: "#666", marginBottom: "1rem" }}>
+          You can't edit if apartment is Verified
+        </h2>
+
+        <form id="edit-document-form" onSubmit={handleSubmit} className="space-y-4">
+       
+
           <Button
             variant="outlined"
             component="label"
+            disabled={loader}
             sx={{
               width: "100%",
-              marginTop:"1rem",
+              mt: 2,
               borderColor: mainColor,
               color: mainColor,
               borderRadius: 2,
@@ -101,39 +83,50 @@ export default function EditDocumentDialog({editDocumentDialog,handleChangeEditD
               textTransform: "none",
             }}
           >
-            Upload Document
-            <input
-              hidden
-              accept="image/*"
-              type="file"
-              onChange={handleDocumentImageChange}
-            />
+            {documentImage ? "Change Image" : "Upload Document Image"}
+            <input hidden accept="image/*" type="file" onChange={handleDocumentImageChange} />
           </Button>
 
-          {/* Preview */}
           {documentImage && (
-            <div className="mt-3 flex justify-center">
+            <Box mt={2} display="flex" justifyContent="center">
               <img
                 src={URL.createObjectURL(documentImage)}
-                alt="document-preview"
+                alt="preview"
                 className="rounded-md shadow-md object-cover w-full max-w-xs h-40 sm:h-52"
               />
-            </div>
+            </Box>
           )}
         </form>
+         {error && (
+          <Box mb={2}>
+            <ErrorComp error={error} />
+          </Box>
+        )}
       </DialogContent>
 
-      <DialogActions sx={{ justifyContent: "space-between", p: 2 }}>
+      <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
         <Button
           onClick={handleChangeEditDocumentDialog}
-          sx={{ color: mainColor, fontWeight: "bold", textTransform: "none" }}
+          disabled={loader}
+          sx={{ color: "#777", fontWeight: "bold", textTransform: "none" }}
         >
           Cancel
         </Button>
-        <Button type="submit" form="add-document-form" sx={buttonStyle}>
-          Edit
+        
+        <Button 
+          type="submit" 
+          form="edit-document-form" 
+          sx={buttonStyle}
+          
+        >
+          {loader ? (
+            <CircularProgress size={24} sx={{ color: "white" }} />
+          ) : (
+            "Save Changes"
+          )}
         </Button>
+        
       </DialogActions>
     </Dialog>
-    );
+  );
 }

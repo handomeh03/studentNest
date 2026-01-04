@@ -31,9 +31,9 @@ export default function RowOfTable({
       
       <td className="px-4 py-4 text-center">
         <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium shadow-sm ${
-          landlord?.user?.emailVerfied ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+          landlord?.user?.emailVerified ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
         }`}>
-          {landlord?.user?.emailVerfied ? "Verified" : "Pending"}
+          {landlord?.user?.emailVerified ? "Verified" : "Pending"}
         </span>
       </td>
 

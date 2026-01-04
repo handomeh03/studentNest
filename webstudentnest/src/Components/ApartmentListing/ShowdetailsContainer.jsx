@@ -12,7 +12,7 @@ export default function ShowdetailsContainer({showdetailsFlag, handlechageShowDe
     }
     return(
         <div>
-            <Showdetailsdialog details={details} error={error} showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
+             <Showdetailsdialog details={details} error={error} showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
         </div>
     );
 }

@@ -9,7 +9,7 @@ export function UseEditStatusApartment(){
     let [error,setError]=useState("");
     let {apartmentDispatch}=UseApatment();
     
-    async function editApartmentStatus(id,verifed) {
+    async function editApartmentStatus(id,verifed,handleChangeEditdialogflag) {
         setloader(true);
         
         try {
@@ -25,8 +25,8 @@ export function UseEditStatusApartment(){
             )
             const data=await res.json();
             if(res.ok){
-                console.log(id)
                 apartmentDispatch({type:"editstatus",payload:{id,verifed}});
+                handleChangeEditdialogflag();
             }else{
                 throw new Error(data.error || "edit fail");
             }

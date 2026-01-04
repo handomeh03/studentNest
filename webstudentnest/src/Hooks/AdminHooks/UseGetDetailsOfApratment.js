@@ -21,8 +21,10 @@ export function UseGetDetailsOfApratment(id){
     
           if(res.ok){
             
+             
             apartmentDispatch({type:"getDetails",payload:data});
           }else{
+             apartmentDispatch({type:"getDetails",payload:{}});
             throw new Error(data.errors);
           }
           
@@ -33,7 +35,7 @@ export function UseGetDetailsOfApratment(id){
         }
       }
       fetchDetails();
-    },[token,id]);
+    },[token,id,apartmentDispatch]);
 
     return {loader,error}
 }

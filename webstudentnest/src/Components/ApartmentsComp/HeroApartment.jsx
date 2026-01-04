@@ -5,7 +5,7 @@ import { Useaos } from '../../Hooks/publicHook/useaos';
 export default function HeroApartment() {
   Useaos();
   return (
-    <section className="relative h-screen w-full overflow-hidden font-sans" dir="ltr">
+    <section className="relative mt-2 h-screen w-full overflow-hidden font-sans sm:mt-0 " dir="ltr">
       
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
@@ -17,13 +17,13 @@ export default function HeroApartment() {
       </div>
 
       
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white">
+      <div className="relative z-10 flex h-screen flex-col items-center justify-center px-6 text-center text-white">
         
         
         <div 
           data-aos="fade-down"
           data-aos-delay="200"
-          className="mb-6 flex items-center gap-2 rounded-full bg-[#3f51b555] border border-[#3f51b5] px-4 py-2 text-white backdrop-blur-md"
+          className="mb-6 mt-10 flex items-center gap-2 rounded-full bg-[#3f51b555] border border-[#3f51b5] px-4 py-2 text-white backdrop-blur-md"
         >
           <GppGoodIcon  size={20} />
           <span className="text-sm font-bold tracking-wide">Safe & Certified Student Housing</span>
