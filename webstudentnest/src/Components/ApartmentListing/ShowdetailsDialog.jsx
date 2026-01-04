@@ -13,15 +13,17 @@ import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import PersonIcon from "@mui/icons-material/Person";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import InfoIcon from "@mui/icons-material/Info";
+import ErrorComp from "../PublicComp/ErrorComp";
 
 export default function Showdetailsdialog({
   details,
   showdetailsFlag,
   handlechageShowDetailsFlag,
+  error
 }) {
   const data = details || {};
   const primaryColor = "#3f51b5";
-  
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
@@ -44,143 +46,161 @@ export default function Showdetailsdialog({
       fullWidth
       onClose={handlechageShowDetailsFlag}
       PaperProps={{
-        
-        className: "lg:!rounded-[32px] lg:h-[90vh] overflow-x-hidden overflow-y-hidden shadow-2xl",
+        className: "lg:!rounded-[40px] lg:h-[95vh] overflow-hidden shadow-2xl",
       }}
     >
-      <DialogContent className="p-0 bg-white h-full flex flex-col relative overflow-x-hidden">
+      <DialogContent className="p-0 bg-white h-full flex flex-col relative overflow-hidden">
         
-        
-        <div className="absolute top-4 right-4 z-50">
+        {/* Close Button */}
+        <div className="absolute top-5 right-5 z-[60]">
           <IconButton
             onClick={handlechageShowDetailsFlag}
-            className="bg-white/90 backdrop-blur-md hover:bg-white shadow-xl border border-slate-100 transition-all"
+            className="bg-white/80 backdrop-blur-xl hover:bg-white shadow-2xl border border-white/50 transition-all active:scale-90"
           >
             <CloseIcon style={{ color: primaryColor }} />
           </IconButton>
         </div>
 
-        
-        <div className="flex-1 overflow-y-auto overflow-x-hidden scroll-smooth custom-scrollbar">
+        <div className="flex-1 overflow-y-auto scroll-smooth custom-scrollbar">
           
-          
-          <div className="w-full bg-slate-100 border-b border-slate-100 overflow-x-hidden">
-            <TabGroup className="w-full">
-              <TabPanels className="aspect-video lg:h-[480px]">
-                {displayImages.map((img, idx) => (
-                  <TabPanel key={idx} className="h-full outline-none">
-                    <img
-                      src={img.img}
-                      className="w-full h-full object-cover"
-                      alt="Apartment"
-                    />
-                  </TabPanel>
-                ))}
-              </TabPanels>
-              
-              
-              <div className="p-4 bg-white/50 backdrop-blur-sm">
-                <TabList className="flex gap-2 overflow-x-auto scrollbar-hide justify-start lg:justify-center">
-                  {displayImages.map((img, idx) => (
-                    <Tab
-                      key={idx}
-                      className="relative min-w-[80px] h-16 outline-none rounded-xl overflow-hidden border-2 border-transparent ui-selected:border-[#3f51b5] transition-all flex-shrink-0"
-                    >
-                      <img src={img.img} className="w-full h-full object-cover" />
-                    </Tab>
-                  ))}
-                </TabList>
+          {error ? (
+            /* حالة الخطأ فقط */
+            <div className="h-full w-full flex items-center justify-center p-10 min-h-[400px]">
+              <div className="max-w-md w-full text-center">
+                <ErrorComp error={error} />
+                <button
+                  onClick={handlechageShowDetailsFlag}
+                  className="mt-6 px-8 py-3 bg-slate-100 rounded-2xl font-bold text-slate-600 hover:bg-slate-200 transition-all"
+                >
+                  Close
+                </button>
               </div>
-            </TabGroup>
-          </div>
+            </div>
+          ) : (
+            /* عرض البيانات مباشرة */
+            <>
+              {/* Media Section */}
+              <div className="relative w-full lg:h-[650px] flex flex-col ">
+                <TabGroup className="h-full w-full">
+                  <TabPanels className="h-full w-full">
+                    {displayImages.map((img, idx) => (
+                      <TabPanel 
+                        key={idx} 
+                        className="h-full w-full outline-none relative flex items-center justify-center overflow-hidden"
+                      >
+                        <img
+                          src={img.img}
+                          className="relative z-10 w-full h-full object-contain animate-in fade-in zoom-in duration-700"
+                        />
+                      </TabPanel>
+                    ))}
+                  </TabPanels>
+                  
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 w-auto ">
+                    <TabList className="flex gap-3 p-2 bg-black/20 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl overflow-x-auto max-w-[90vw] scrollbar-hide">
+                      {displayImages.map((img, idx) => (
+                        <Tab
+                          key={idx}
+                          className="relative min-w-[60px] h-[60px] rounded-xl overflow-hidden border-2 border-transparent ui-selected:border-white ui-selected:scale-105 transition-all duration-300"
+                        >
+                          <img src={img.img} className="w-full h-full object-cover" />
+                        </Tab>
+                      ))}
+                    </TabList>
+                  </div>
+                </TabGroup>
+              </div>
 
-          
-          <div className="p-6 sm:p-8 lg:p-10 space-y-8 overflow-x-hidden">
-            
-            
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-6">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <span 
-                    className="text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded"
-                    style={{ backgroundColor: `${primaryColor}15`, color: primaryColor }}
+              {/* Content Section */}
+              <div className="p-6 sm:p-8 lg:p-10 space-y-10">
+                
+                <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 border-b border-slate-100 pb-8">
+                  <div className="space-y-3 max-w-2xl">
+                    <div className="flex items-center gap-3">
+                      <span 
+                        className="text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full shadow-sm"
+                        style={{ backgroundColor: `${primaryColor}10`, color: primaryColor }}
+                      >
+                        Premium Property
+                      </span>
+                      {data.Verified && (
+                        <div className="flex items-center gap-1 text-emerald-600 font-bold text-[10px] bg-emerald-50 px-2 py-1 rounded-full border border-emerald-100 uppercase">
+                          <VerifiedUserIcon className="text-sm" />
+                          Verified
+                        </div>
+                      )}
+                    </div>
+                    
+                    <h2 className="text-3xl sm:text-5xl font-black text-slate-900 leading-tight tracking-tight">
+                      {data.title}
+                    </h2>
+                    
+                    <div className="flex items-center text-slate-400 font-semibold text-base">
+                      <LocationOnIcon className="mr-1.5 text-blue-500" fontSize="small" />
+                      {data.address}
+                    </div>
+                  </div>
+
+                  <div className="bg-slate-50 p-5 rounded-3xl flex flex-col items-center justify-center min-w-[160px] border border-slate-100 shadow-inner">
+                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Monthly</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-black text-slate-900">{data.price}</span>
+                      <span className="text-xs font-black text-blue-600 uppercase">JOD</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  <FeatureItem icon={<MeetingRoomIcon />} label="Rooms" value={data.numberOfRoom} color={primaryColor} />
+                  <FeatureItem icon={<KingBedIcon />} label="Beds" value={data.numberOfBed} color={primaryColor} />
+                  <FeatureItem icon={<PersonIcon />} label="Landlord" value={data.landlordName} color={primaryColor} />
+                  <FeatureItem 
+                    icon={<VerifiedUserIcon />} 
+                    label="Status" 
+                    value={data.isVisible ? "Available" : "not Available"} 
+                    color={data.isVisible ? "#10b981" : "#ef4444"}
+                  />
+                </div>
+
+                <div className="relative p-6 rounded-3xl bg-slate-50 border border-slate-100">
+                  <div className="absolute -top-3 left-6 bg-white px-3 py-0.5 rounded-full border border-slate-100 shadow-sm flex items-center gap-2 text-slate-800 font-bold text-[10px] uppercase tracking-tighter">
+                    <InfoIcon style={{ color: primaryColor }} className="text-xs" />
+                    Description
+                  </div>
+                  <p className="text-slate-600 text-base leading-relaxed font-medium italic overflow-x-hidden">
+                    "{data.description}"
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-black text-slate-900 text-lg flex items-center gap-2">
+                    <div className="w-1.5 h-6 rounded-full" style={{ backgroundColor: primaryColor }} />
+                    Map Location
+                  </h3>
+                  <div className="h-80 rounded-[2.5rem] overflow-hidden border-4 border-slate-50 shadow-xl">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      allowFullScreen
+                      src={`https://maps.google.com/maps?q=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                    ></iframe>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    onClick={handlechageShowDetailsFlag}
+                    className="w-full hover:opacity-90 text-white py-5 rounded-3xl font-black text-lg transition-all shadow-xl active:scale-[0.98] cursor-pointer flex items-center justify-center gap-3 uppercase tracking-widest"
+                    style={{ backgroundColor: primaryColor }}
                   >
-                    Premium Apartment
-                  </span>
-                  {data.Verified && <VerifiedUserIcon className="text-emerald-500 text-sm" />}
-                </div>
-                
-                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight break-words">
-                  {data.title}
-                </h2>
-                
-                <div className="flex items-center text-slate-500 text-sm font-semibold">
-                  <LocationOnIcon style={{ color: primaryColor }} className="mr-1" fontSize="small" />
-                  {data.address}
+                    Close Details
+                  </button>
                 </div>
               </div>
-
-              <div className="inline-flex flex-col border-l-4 pl-4 flex-shrink-0" style={{ borderColor: primaryColor }}>
-                <span className="text-sm font-bold text-slate-400 uppercase tracking-tighter">monthly Price</span>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-black" style={{ color: primaryColor }}>{data.price}</span>
-                  <span className="text-sm font-bold text-slate-500">JOD</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 2. الوصف */}
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-              <div className="flex items-center gap-2 mb-3 text-slate-800 font-bold text-base">
-                <InfoIcon style={{ color: primaryColor }} fontSize="small" />
-                Description
-              </div>
-              <p className="text-slate-600 text-sm leading-relaxed break-words">
-                {data.description}
-              </p>
-            </div>
-
-            {/* 3. شبكة الميزات */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              <FeatureItem icon={<MeetingRoomIcon />} label="Rooms" value={data.numberOfRoom} color={primaryColor} />
-              <FeatureItem icon={<KingBedIcon />} label="Beds" value={data.numberOfBed} color={primaryColor} />
-              <FeatureItem icon={<PersonIcon />} label="Landlord" value={data.landlordName} color={primaryColor} />
-              <FeatureItem 
-                icon={<VerifiedUserIcon />} 
-                label="Status" 
-                value={data.propertyStatus ? "Active" : "Booked"} 
-                color={data.propertyStatus ? "#10b981" : "#ef4444"}
-              />
-            </div>
-
-            {/* 4. الخريطة */}
-            <div className="space-y-3">
-              <h3 className="font-bold text-slate-800 text-sm flex items-center gap-2">
-                <LocationOnIcon style={{ color: primaryColor }} fontSize="inherit" />
-                Location on Map
-              </h3>
-              <div className="h-64 rounded-[2rem] overflow-hidden border-2 border-slate-50 shadow-inner">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  src={`https://maps.google.com/maps?q=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&z=15&output=embed`}
-                ></iframe>
-              </div>
-            </div>
-
-            {/* 5. زر الإغلاق */}
-            <div className="pt-4">
-              <button
-                onClick={handlechageShowDetailsFlag}
-                className="w-full bg-slate-900 hover:opacity-90 text-white py-4 rounded-2xl font-bold transition-all shadow-xl active:scale-[0.98] cursor-pointer"
-                style={{ backgroundColor: primaryColor }}
-              >
-                Close Details
-              </button>
-            </div>
-          </div>
+            </>
+          )}
         </div>
       </DialogContent>
     </Dialog>
@@ -189,15 +209,15 @@ export default function Showdetailsdialog({
 
 function FeatureItem({ icon, label, value, color }) {
   return (
-    <div className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-2xl shadow-sm">
-      <div className="p-2 rounded-xl" style={{ backgroundColor: `${color}10`, color: color }}>
+    <div className="flex flex-col items-center text-center gap-2 p-4 bg-white border border-slate-100 rounded-[2rem] hover:shadow-lg transition-all duration-300">
+      <div className="p-3 rounded-full shadow-sm" style={{ backgroundColor: `${color}10`, color: color }}>
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter leading-none mb-1">
+        <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-0.5">
           {label}
         </p>
-        <p className="text-sm font-black text-slate-800 leading-none truncate">
+        <p className="text-base font-black text-slate-800 truncate">
           {value}
         </p>
       </div>

@@ -5,7 +5,7 @@ import ShowDocumentDialog from "./ShowDocumentDialog";
 
 export default function ShowDocumentContainer({showDocumentFLag,handleChangeShowDocumnetFlag,apartmentId}){
 
-    let {loader,error}=UseGetDocument(apartmentId);  
+     let {loader,error}=UseGetDocument(apartmentId);  
       let {document}=UseApatment();
       
       if(loader){

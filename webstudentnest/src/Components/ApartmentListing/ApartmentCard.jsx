@@ -15,18 +15,18 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
         
         <div className="relative w-full h-64">
           <img
-            src={apartment.imageSrc ||"https://cdn.openart.ai/stable_diffusion/75ccca62ecffde343bf38fef8838cb3a4695a49a_2000x2000.webp"}
+            src={apartment?.apartmentPhoto[0].photoUrl ||"https://cdn.openart.ai/stable_diffusion/75ccca62ecffde343bf38fef8838cb3a4695a49a_2000x2000.webp"}
             className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
           />
           
          {user?.user?.role=="student" || user?.user?.role=="" ||bookedApartment || forall?"": <span
             className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
-              apartment?.Verified === true
+              apartment?.isVerified === true
                 ? "bg-green-100 text-green-800"
                 : "bg-red-100 text-red-800"
             }`}
           >
-            {apartment.Verified?"Verified":"Not Verified"}
+            {apartment.isVerified?"Verified":"Not Verified"}
           </span>}
         </div>
 
@@ -55,7 +55,7 @@ export default function ApartmentCard({forall,bookedApartment,apartment,handleCh
   {user?.user?.role=="student"|| user?.user?.role=="landlord" ||forall ?"":<button onClick={()=>{
     handleChangeEditdialogflag();
     handleChangeApartmentId(apartment?.apartmentId);
-  }} className="flex-1 w-30 p-3 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
+  }} className="cursor-pointer flex-1 w-30 p-3 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:shadow-lg transition">
     Edit status
   </button>}
 

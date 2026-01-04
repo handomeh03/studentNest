@@ -130,7 +130,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
       
       <div className="mx-auto max-w-7xl sm:px-6 sm:py-5">
         {filteredApartments&&filteredApartments.length === 0 ? (
-          <ErrorComp error={"No Apartment Found"} />
+          <div className="mt-2 sm:mt-0"><ErrorComp error={"No Apartment Found"} /></div>
         ) : (
           <>
             <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
@@ -189,9 +189,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
         handlechageShowDetailsFlag={handlechageShowDetailsFlag}
         apartmentId={apartmentId}
       />:""}
-    
-
-      
+       
       {user?.role !== "student" && user?.role !== "" && (
         <>
         {adddocumnetFlag? <AddDocumnetDialog
@@ -201,9 +199,10 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
             apartmentId={apartmentId}
           />:""}
          {editDetailsFlag?  <EditDetailsDialog
-         key={apartmentId} 
+          key={apartmentId} 
             editDetailsFlag={editDetailsFlag}
             handleChangeEditdetailFlag={handleChangeEditdetailFlag}
+            apartmentId={apartmentId}
           />:""}
         
         </>
@@ -213,6 +212,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
       key={apartmentId} 
         editDocumentDialog={editDocumentDialog}
         handleChangeEditDocumentDialog={handleChangeEditDocumentDialog}
+        apartmentId={apartmentId}
       />:""}
      
     </div>

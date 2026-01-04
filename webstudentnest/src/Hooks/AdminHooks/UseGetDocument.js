@@ -19,8 +19,10 @@ export function UseGetDocument(id){
           const data=await res.json();
     
           if(res.ok){
-            apartmentDispatch({type:"getDocument",payload:data});
+            apartmentDispatch({type:"getDocument",payload:data[0]});
+            console.log(data[0]);
           }else{
+            apartmentDispatch({type:"getDocument",payload:{}});
             throw new Error(data.errors);
           }
           
@@ -31,7 +33,7 @@ export function UseGetDocument(id){
         }
       }
       fetchDocument();
-    },[token,id]);
+    },[token,id,apartmentDispatch]);
 
     return {loader,error}
 }

@@ -1,9 +1,12 @@
 import "aos/dist/aos.css";
 import { Useaos } from "../../../Hooks/publicHook/useaos";
+import { useNavigate } from "react-router-dom";
 
 export default function ApartmentView() {
   const primaryColor = "#3f51b5";
   Useaos();
+
+  let navigate=useNavigate();
 
   const apartments = [
     {
@@ -105,7 +108,10 @@ export default function ApartmentView() {
         
         <div className="flex justify-center" data-aos="zoom-in">
           <button
-            className="group relative flex items-center gap-3 px-10 py-4 rounded-full text-white font-bold overflow-hidden transition-all hover:pr-14 active:scale-95 shadow-xl shadow-indigo-200"
+            onClick={()=>{
+              navigate("/apartments")
+            }}
+            className=" cursor-pointer group relative flex items-center gap-3 px-10 py-4 rounded-full text-white font-bold overflow-hidden transition-all hover:pr-14 active:scale-95 shadow-xl shadow-indigo-200"
             style={{ backgroundColor: primaryColor }}
           >
             <span className="relative z-10">View More Apartments</span>

@@ -12,7 +12,7 @@ export default function Footer() {
               StudentNest
             </h3>
             <p className="text-blue-100/80 max-w-xs mx-auto md:mx-0 leading-relaxed">
-              The smartest way for students to find safe housing and the perfect roommates.
+              The smartest way for students to find safe housing and the perfect roommates
             </p>
           </div>
 
@@ -28,7 +28,7 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                support@studentnest.com
+                info@studentnest.cloud
               </li>
               <li className="flex items-center justify-center md:justify-start gap-3 text-white/90 hover:text-white transition-colors cursor-pointer group">
                 <div className="p-2 bg-white/10 rounded-lg group-hover:bg-white/20 transition-all">
@@ -36,7 +36,7 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </div>
-                +962 78 000 0000
+                +962 78 258 4258
               </li>
             </ul>
           </div>
@@ -67,7 +67,7 @@ export default function Footer() {
           </p>
           
           
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             {[
               { name: 'FB', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z' },
               { name: 'TW', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
@@ -83,7 +83,7 @@ export default function Footer() {
                 </svg>
               </a>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
