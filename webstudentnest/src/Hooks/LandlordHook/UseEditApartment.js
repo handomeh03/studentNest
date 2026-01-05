@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
+import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 export function UseEditApartment() {
     let [loader,setLoader]=useState(false);
     let [error,setError]=useState("");
     let{token}=useAuth();
+    let {apartmentDispatch}=UseApatment();
     async function editApartment(apartmentId,title,description,address,price,numberOfBed,numberOfRoom,isJoin,images,handleChangeEditdetailFlag) {
         const formdata = new FormData();   
         formdata.append("title",String(title));
@@ -28,7 +30,8 @@ export function UseEditApartment() {
         });
         const data=await res.json();
         if(res.ok){
-            console.log("Document updated successfully");
+            apartmentDispatch({type:"editApartment",payload:data});
+            console.log(data);
             handleChangeEditdetailFlag();
             
         }

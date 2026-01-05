@@ -64,7 +64,7 @@ export default function Showdetailsdialog({
         <div className="flex-1 overflow-y-auto scroll-smooth custom-scrollbar">
           
           {error ? (
-            /* حالة الخطأ فقط */
+            
             <div className="h-full w-full flex items-center justify-center p-10 min-h-[400px]">
               <div className="max-w-md w-full text-center">
                 <ErrorComp error={error} />
@@ -77,7 +77,7 @@ export default function Showdetailsdialog({
               </div>
             </div>
           ) : (
-            /* عرض البيانات مباشرة */
+            
             <>
               {/* Media Section */}
               <div className="relative w-full lg:h-[650px] flex flex-col ">
@@ -154,6 +154,7 @@ export default function Showdetailsdialog({
                   <FeatureItem icon={<MeetingRoomIcon />} label="Rooms" value={data.numberOfRoom} color={primaryColor} />
                   <FeatureItem icon={<KingBedIcon />} label="Beds" value={data.numberOfBed} color={primaryColor} />
                   <FeatureItem icon={<PersonIcon />} label="Landlord" value={data.landlordName} color={primaryColor} />
+                
                   <FeatureItem 
                     icon={<VerifiedUserIcon />} 
                     label="Status" 

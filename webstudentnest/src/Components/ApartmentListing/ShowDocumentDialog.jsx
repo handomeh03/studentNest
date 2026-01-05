@@ -6,7 +6,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import ErrorComp from '../PublicComp/ErrorComp';
 import { Box, Typography, Divider, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close'; // تأكد من تثبيت icons
+import CloseIcon from '@mui/icons-material/Close'; 
 
 export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowDocumnetFlag, document, error }) {
   
@@ -83,17 +83,14 @@ export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowD
               />
             </Box>
 
-            {/* تفاصيل المستند */}
+            
             <Box sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                  <Typography variant="body2" color="text.secondary">Document Type</Typography>
                  <Typography variant="body2" fontWeight="700" color="primary">{document?.apartmentType || 'N/A'}</Typography>
               </Box>
               <Divider sx={{ my: 1, borderStyle: 'dashed' }} />
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                 <Typography variant="body2" color="text.secondary">Uploaded Date</Typography>
-                 <Typography variant="body2" fontWeight="600">2025-11-14</Typography>
-              </Box>
+            
             </Box>
           </Box>
         )}
