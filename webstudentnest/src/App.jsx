@@ -83,6 +83,13 @@ function App() {
 
           <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
+        {/* <Route path='/studentDashboard' element={<studentDashboardLayout/>}>
+         <Route index element={<LeaseStudentContainer/>}/>
+         <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
+         <Route path='leaseRequest' element={<leaseRequestcontainer/>}/>
+         <Route path='notification' element={<NotificationTableContainer/>}/>
+         
+        </Route> */}
 
         <Route path='*' element={<NotFound/>}/>
        </Routes>

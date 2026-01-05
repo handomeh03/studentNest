@@ -28,6 +28,25 @@ export default function ApartmentProvider({ children }) {
             }
           }),
         };
+        case "editApartment":
+          return {...state,
+            Apartments:state.Apartments.map((e)=>{
+              if(e.apartmentId==action.payload.apartmentId){
+                return action.payload;
+              }
+              else{
+                return e;
+              }
+            }),
+            copyApartments:state.copyApartments.map((e)=>{
+              if(e.apartmentId==action.payload.apartmentId){
+                return action.payload;
+              }
+              else{
+                return e;
+              }
+            }),
+          };
       case "addApartment":
         return {
           ...state,
