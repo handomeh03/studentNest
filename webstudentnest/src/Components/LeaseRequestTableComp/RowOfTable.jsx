@@ -1,6 +1,6 @@
 import { useUserContext } from "../../Context/UserContext/UserContext";
 
-export default function RowOfTable({ leaserequest }) {
+export default function RowOfTable({ leaserequest,handleChangeLeaseId,handleChangeEditdialogflag }) {
   let { user } = useUserContext();
 
   return (
@@ -67,7 +67,10 @@ export default function RowOfTable({ leaserequest }) {
       
       {user?.user?.role === "landlord" ? (
         <td className="whitespace-nowrap flex gap-3 px-4 py-5 text-sm font-medium">
-          <button className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all active:scale-90 hover:cursor-pointer">
+          <button onClick={()=>{
+            handleChangeEditdialogflag();
+            handleChangeLeaseId(leaserequest?.requestLeaseId);
+          }} className="p-1.5 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all active:scale-90 hover:cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

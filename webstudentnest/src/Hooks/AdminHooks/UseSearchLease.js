@@ -3,7 +3,7 @@ import { useAuth } from "../../Context/AuthContext/AuthContext";
 
 import { UseLease } from "../../Context/LeaseForAdmin/LeaseForAdmin";
 
-export default function UseSearchLease(id) {
+export default function UseSearchLease(id,url) {
   const { token } = useAuth();
   const{leaseDipattch}=UseLease();
 
@@ -14,6 +14,7 @@ export default function UseSearchLease(id) {
       
       const controller = new AbortController();
       const signal = controller.signal;
+      console.log(`${import.meta.env.VITE_API_URL}${url}${id}`)
      
       const search = async () => {
         if(id==""){
@@ -22,7 +23,7 @@ export default function UseSearchLease(id) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/leases/search?q=${id}`,
+            `${import.meta.env.VITE_API_URL}${url}${id}`,
             {
               method: "GET",
               headers: {

@@ -4,7 +4,7 @@ import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { UseLease } from "../../Context/LeaseForAdmin/LeaseForAdmin";
 import { UseLeaseRequest } from "../../Context/LeaseRequestContext/LeaseRequestAdmin";
 
-export default function UseSearchLeaseRequest(id) {
+export default function UseSearchLeaseRequest(id,searchUrl) {
   const { token } = useAuth();
   const{leaseRequestDipattch}=UseLeaseRequest();
 
@@ -15,6 +15,7 @@ export default function UseSearchLeaseRequest(id) {
       
       const controller = new AbortController();
       const signal = controller.signal;
+      console.log(`${import.meta.env.VITE_API_URL}${searchUrl}${id}`);
      
       const search = async () => {
         if(id==""){
@@ -23,7 +24,7 @@ export default function UseSearchLeaseRequest(id) {
           }
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/v1/leases-request/search?q=${id}`,
+            `${import.meta.env.VITE_API_URL}${searchUrl}${id}`,
             {
               method: "GET",
               headers: {

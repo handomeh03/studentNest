@@ -4,7 +4,7 @@ import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/AdminHooks/UseGetA
 import ApartmentListingAdmin from "./ApartmentListingAdmin";
 
 export default function ApartmentListingContainerForAdmin(){
-    let {loader,error}=UseGetALlApartmentLisitningforAdmin();
+    let {loader,error}=UseGetALlApartmentLisitningforAdmin("/api/v1/apartments");
     let {Apartments}=UseApatment();
     if(loader){
         return <Loader/>

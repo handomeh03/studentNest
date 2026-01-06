@@ -1,11 +1,20 @@
 
+import Loader from "../Components/PublicComp/Loader";
+import { UseLease } from "../Context/LeaseForAdmin/LeaseForAdmin";
+import { UseGetLease } from "../Hooks/AdminHooks/UseGetLease";
 import LeaseTablePage from "./LeaseTablePage";
 
 export default function MyLeasesLandlordPage(){ 
+    const {loader,error}= UseGetLease();
+       const {Leases}=UseLease();
+        const url="/api/v1/leases/search?q=";
+       if(loader){
+        return <Loader/>
+       }
     
     return(
         <div>
-            <LeaseTablePage/>       
+            <LeaseTablePage Leases={Leases} error={error} url={url} />       
         </div>
     );
 }

@@ -11,6 +11,21 @@ export default function LeaseRequestProvider({ children }) {
           LeaseRequest: action.payload,
           copyLeaseRequest: action.payload,
         };
+        case "editstatusLeaseRequest":
+          return{...state,LeaseRequest:state.LeaseRequest.map((e)=>{
+            if(e.requestLeaseId===action.payload.LeaseId){
+              return{...e,requestStatus:action.payload.status};
+            }else{
+              return e;
+            }
+
+          }),copyLeaseRequest:state.copyLeaseRequest.map((e)=>{
+            if(e.requestLeaseId===action.payload.LeaseId){
+              return{...e,requestStatus:action.payload.status};
+            }else{
+              return e;
+            } 
+          })};
       case "searchLeaseRequest":
         return { ...state, LeaseRequest: action.payload };
       case "restToOrginal":

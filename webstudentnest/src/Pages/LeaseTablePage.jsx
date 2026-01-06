@@ -4,13 +4,13 @@ import HeadOfTable from "../Components/LeaseTableComp/HeadOfTable";
 import RowOfTable from "../Components/LeaseTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 
-export default function LeaseTablePage({Leases,error}){
+export default function LeaseTablePage({Leases,error,url}){
 
    
     return(
         <div>
           {error?<ErrorComp error={error}/>:<div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">
-              <SearchuserComp />
+              <SearchuserComp url={url}/>
         
              <div className="mt-8 flow-root">
                <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
