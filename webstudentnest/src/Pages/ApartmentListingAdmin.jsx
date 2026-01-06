@@ -133,9 +133,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
           <div className="mt-2 sm:mt-0"><ErrorComp error={"No Apartment Found"} /></div>
         ) : (
           <>
-            <h4 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-8">
-              Apartment Listings
-            </h4>
+           
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {filteredApartments?.map((apartment, index) => (
                 <ApartmentCard

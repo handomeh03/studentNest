@@ -8,7 +8,7 @@ import Loader from "../Components/PublicComp/Loader";
 
 export default function MyApartmentsLandLord(){
     let [addApartmentflag,setAddApartmentFlag]=useState(false);
-     let {loader,error}=UseGetALlApartmentLisitningforAdmin();
+     let {loader,error}=UseGetALlApartmentLisitningforAdmin("/api/v1/apartments");
      let {Apartments}=UseApatment();
    
     function handlechangeAddApartemntFlag(){

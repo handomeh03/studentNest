@@ -50,7 +50,7 @@ export default function HeaderOfdashboard({ setSidebarOpen }) {
               </span>
             </MenuButton>
 
-            {/* Dropdown Menu */}
+            
             <MenuItems
               className="absolute right-0 z-10 mt-2.5 w-44 origin-top-right rounded-xl bg-[#3f51b5] p-1.5 shadow-xl ring-1 ring-black/5 focus:outline-none"
             >

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import UseSearchLease from "../../Hooks/AdminHooks/UseSearchLease";
 
-export default function SearchuserComp(){
+export default function SearchuserComp({url}){
   let[id,setId]=useState("");
-  UseSearchLease(id);
+  UseSearchLease(id,url);
     return(
          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
         <div className="flex flex-col sm:flex-row flex-1 gap-2 ">

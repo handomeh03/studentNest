@@ -26,7 +26,7 @@ export default function AdminDashboardLayout() {
 )
 useEffect(()=>{
          if(user==null || !user){
-             navigate("/");
+             navigate("/userlogin", { replace: true });
          }
         
     },[])

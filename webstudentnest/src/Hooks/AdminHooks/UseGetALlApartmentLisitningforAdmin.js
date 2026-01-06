@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 
-export function UseGetALlApartmentLisitningforAdmin(){
+export function UseGetALlApartmentLisitningforAdmin(url){
      let {token}=useAuth();
       let [loader,setLoader]=useState(false);
       let[error,setError]=useState("");
@@ -14,7 +14,7 @@ export function UseGetALlApartmentLisitningforAdmin(){
               const fetchLeaseRequest=async()=>{
                 setLoader(true);
               try {
-                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments`,{
+                const res= await fetch(`${import.meta.env.VITE_API_URL}${url}`,{
                 headers:{
                    "Authorization": `Bearer ${token}`, 
                 }

@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { UseLeaseRequest } from "../../Context/LeaseRequestContext/LeaseRequestAdmin";
 
-export function UseGetAllLeaseRequest(){
+export function UseGetAllLeaseRequest(url){
      let {token}=useAuth();
       let [loader,setLoader]=useState(false);
       let[error,setError]=useState("");
       let{leaseRequestDipattch}=UseLeaseRequest();
-      
         useEffect(()=>{
            
               const fetchLeaseRequest=async()=>{
                 setLoader(true);
               try {
-                const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/leases-request`,{
+                const res= await fetch(`${import.meta.env.VITE_API_URL}${url}`,{
                 headers:{
                    "Authorization": `Bearer ${token}`, 
                 }
@@ -25,7 +24,7 @@ export function UseGetAllLeaseRequest(){
                 }
                 else{
                     
-                    throw new Error(data.errors);
+                    throw new Error(data.error);
                     
                 }
                 

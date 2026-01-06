@@ -34,6 +34,7 @@ import LeaseRequestContainer from './Pages/LeaseRequestContainer'
 import NotificationTableContainer from './Pages/NotificationTableContainer'
 import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainerforadmin'
 import AudlitLogContainer from './Pages/AudiltLogContainer'
+import ApartmentLeaseRequest from './Pages/ApartmentLeaseRequest'
 
 function App() {     
   return (
@@ -49,7 +50,6 @@ function App() {
         <Route path="/forgetPassword" element={<ForgetPasswordpage/>}/>
         <Route path="/OtpPassword" element={<PasswordOtp/>}/>
         <Route path="/changePassword" element={<ChangePasswordOtp/>}/>
-        
         <Route path='/apartments' element={<ApartmentPage/>}/>
         
 
@@ -77,6 +77,8 @@ function App() {
           <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
            
           <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
+
+          <Route path='apartemnt/:apartmentIdleasereq/leaserequest' element={<ApartmentLeaseRequest/>}/>
 
 
           <Route path='notification' element={<NotificationTableContainer/>}/>

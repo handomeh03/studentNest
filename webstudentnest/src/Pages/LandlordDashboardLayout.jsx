@@ -26,11 +26,11 @@ export default function LandlordDashboardLayout(){
 
     useEffect(()=>{
          if(user==null || !user){
-             navigate("/");
+             navigate("/userlogin",{replace:true});
              return;
          }
          if(user.verifiedLandlord==false){
-            navigate("notverivedPage");
+            navigate("notverivedPage",  {replace:true});
             return;
             
          }
