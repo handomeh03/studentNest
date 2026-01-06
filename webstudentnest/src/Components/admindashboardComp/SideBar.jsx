@@ -40,7 +40,7 @@ export default function SideBar({ sidebarOpen, setSidebarOpen, navigation, handl
                   <li>
                     <ul role="list" className="-mx-2 space-y-1">
                       {navigation.map((item, index) => (
-                        <li key={item.name} onClick={() => handleChangeNavigation(index)}>
+                        <li key={item.name} onClick={() => {handleChangeNavigation(index);setSidebarOpen(false)}}>
                           <Link
                             to={item.href}
                             className={classNames(
