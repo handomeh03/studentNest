@@ -35,6 +35,7 @@ import NotificationTableContainer from './Pages/NotificationTableContainer'
 import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainerforadmin'
 import AudlitLogContainer from './Pages/AudiltLogContainer'
 import ApartmentLeaseRequest from './Pages/ApartmentLeaseRequest'
+import PaymentScheduleContainer from './Pages/PaymentSchudleContainer'
 
 function App() {     
   return (
@@ -74,7 +75,7 @@ function App() {
 
           <Route path='setting' element={<LandlordSettingPage/>}/> 
 
-          <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
+          <Route path='lease/:leaseId/paymentschudle' element={<PaymentScheduleContainer/>}/>
            
           <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
 
