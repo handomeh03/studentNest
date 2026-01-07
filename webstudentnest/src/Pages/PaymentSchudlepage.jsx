@@ -1,36 +1,18 @@
-// import { useState } from "react";
-// import { useParams } from "react-router-dom";
+
+
 import { useState } from "react";
 import HeadOfTable from "../Components/PaymentschudleComp/HeadOfTable";
 import RowOfTable from "../Components/PaymentschudleComp/RowOfTable";
 import ReciptDialog from "../Components/PaymentschudleComp/ReciptDialog";
 import EditVeridedLandlordDialog from "../Components/PaymentschudleComp/EditVeridedLandlordDialog";
+import ErrorComp from "../Components/PublicComp/ErrorComp";
 
-export default function PaymentSchudlepage(){
-    // let{leaseId}=useParams();
-    let[paymentId,setPaymentId]=useState(null);
+export default function PaymentSchudlepage({error,payments}){
+    
+    let[paymentId,setPaymentId]=useState("");
     let[ReciptDialogFlag,setReciptDialogflag]=useState(false);
     let[EditVeridedLandlordFlag,setEditVeridedLandlordFlag]=useState(false);
-    const payments = [
-    {
-      paymentId: "P1001",
-      status: true,
-      landlordVerified:true,
-      amount: "100 JOD",
-    },
-    {
-      paymentId: "P1002",
-      landlordVerified:true,
-      status: true,
-      amount: "120 JOD",
-    },
-    {
-      paymentId: "P1003",
-      landlordVerified:false,
-      status: true,
-      amount: "90 JOD",
-    },
-  ];
+  
   function handlechangePaymentId(id){
     setPaymentId(id);
   }
@@ -41,11 +23,12 @@ export default function PaymentSchudlepage(){
     setEditVeridedLandlordFlag((old)=>!old);
   }
     return(
-        <div>
+      <div>
+        {error ? <ErrorComp error={error}/>:  <div>
              <div className="mt-8 flow-root">
                     <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                       <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                        <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
+                     {payments.length==0? <ErrorComp error={"no payment found "}/>:   <table className="relative min-w-full divide-y divide-gray-300 dark:divide-white/15">
                            <HeadOfTable/>
             
                           <tbody className="divide-y divide-gray-200   ">
@@ -53,7 +36,7 @@ export default function PaymentSchudlepage(){
                               <RowOfTable handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} handlechangePaymentId={handlechangePaymentId} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} key={index} payment={payment}/>
                             ))}
                           </tbody>
-                        </table>
+                        </table> }
             
                       </div>
                     </div>
@@ -61,6 +44,7 @@ export default function PaymentSchudlepage(){
 
                   <ReciptDialog handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} ReciptDialogFlag={ReciptDialogFlag} paymentId={paymentId}/>
                   <EditVeridedLandlordDialog EditVeridedLandlordFlag={EditVeridedLandlordFlag} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} paymentId={paymentId} />
-        </div>
+        </div>}
+      </div>
     );
 }

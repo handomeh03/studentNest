@@ -15,10 +15,12 @@ import LeaseRequestProvider from "./Context/LeaseRequestContext/LeaseRequestAdmi
 import NotificationProvider from "./Context/NotificationContext/NotificationContext.jsx";
 import ApartmentProvider from "./Context/ApartmentLisitingContext/ApartmentLisitingContext.jsx";
 import AuditLogProvider from "./Context/AuditLogContext/AuditLogContext.jsx";
+import { PaymentSchudleContextProvider } from "./Context/PaymentSchudleContext/PaymentSchudleContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <AuditLogProvider>
+    <PaymentSchudleContextProvider>
+        <AuditLogProvider>
        <ApartmentProvider>
 
           <NotificationProvider>
@@ -48,6 +50,9 @@ createRoot(document.getElementById("root")).render(
     </ApartmentProvider>
     </AuditLogProvider>
    
+
+    </PaymentSchudleContextProvider>
+  
 
     
  
