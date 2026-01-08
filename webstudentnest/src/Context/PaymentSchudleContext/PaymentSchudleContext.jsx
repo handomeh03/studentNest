@@ -8,6 +8,15 @@ export function PaymentSchudleContextProvider({children}){
                 return {...state,payments:action.payload};
                 case "getReceipt":
                 return {...state,receipt:action.payload};
+                case "editLandlordVerifed":
+                return {...state,payments:state.payments.map((e)=>{
+                    if(e.paymentId===action.payload.paymentId){
+                        return {...e,verifiedByLandlord:action.payload.status};
+                    }else{
+                        return e;
+                    }
+                    
+                })};
             default:
                 return state;
         }
@@ -20,7 +29,7 @@ export function PaymentSchudleContextProvider({children}){
         </paymentSchudleContext.Provider>
     );
 }
-export function usePaymentSchudle(){
+export function UsePaymentSchudle(){
     const context=useContext(paymentSchudleContext);
     if(!context){
         throw new Error("error");
