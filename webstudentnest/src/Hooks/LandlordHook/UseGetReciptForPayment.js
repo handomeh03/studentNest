@@ -3,17 +3,19 @@ import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { usePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
 
 
-export function UseGetPaymentSchudele(leaseId){
+export function UseGetReciptForPayment(leaseId,paymentId){
         let{token}=useAuth();
         let[error,seterror]=useState("");
         let[loader,setloader]=useState(false);
-        let {paymentSchudleDispatch}=usePaymentSchudle();
+     let {paymentSchudleDispatch}=usePaymentSchudle();
+
+     
         
    useEffect(()=>{
-      const getPaymentSchudle=async()=>{
+      const getPaymentReceipt=async()=>{
          try{
             setloader(true);
-            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/landlord/payment/${leaseId}`,{
+            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/landlord/payment/${leaseId}/${paymentId}/receipt`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -22,8 +24,7 @@ export function UseGetPaymentSchudele(leaseId){
             });
             const data=await res.json();
             if(res.ok){
-                paymentSchudleDispatch({type:"getPayments",payload:data});
-                
+                paymentSchudleDispatch({type:"getReceipt",payload:data});
                 
             }else{
                 throw new Error(data.errors);
@@ -35,7 +36,7 @@ export function UseGetPaymentSchudele(leaseId){
             setloader(false);
         }
       }
-      getPaymentSchudle();
-   },[token,leaseId]);
+      getPaymentReceipt();
+   },[token,leaseId,paymentId]);
     return {error,loader};
 }

@@ -6,21 +6,20 @@ export default function RowOfTable({
   handlechangePaymentId, 
   handlechangesetReciptDialogflag, 
   handlechangeEditVeridedLandlordFlag,
-  handleOpenUploadModal, // دالة لفتح مودال الرفع
-  handleChangeStatus      // دالة لتغيير الحالة
+  handleOpenUploadModal
 }) {
     const { user } = useUserContext();
 
   return (
     <tr className="hover:bg-gray-50 transition-colors border-b border-gray-100">
-      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">#{payment.paymentId}</td>
+      {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">#{payment.paymentId}</td> */}
       
       {/* Status Badge */}
       <td className="whitespace-nowrap px-3 py-4 text-sm">
         <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
-          payment.status ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+          payment?.paymentStatus ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
         }`}>
-          {payment.status ? "Paid" : "Unpaid"}
+          {payment.paymentStatus ? "Paid" : "Unpaid"}
         </span>
       </td>
 
@@ -42,7 +41,7 @@ export default function RowOfTable({
             handlechangesetReciptDialogflag();
             handlechangePaymentId(payment.paymentId);
           }}
-          className="text-indigo-600 hover:text-indigo-900 font-medium underline decoration-indigo-200"
+          className="cursor-pointer text-indigo-600 hover:text-indigo-900 font-medium underline decoration-indigo-200"
         >
           View Receipt
         </button>
@@ -56,7 +55,7 @@ export default function RowOfTable({
                 handlechangePaymentId(payment.paymentId);
                 handleOpenUploadModal(); 
             }}
-            className="flex items-center gap-1 bg-gray-800 text-white px-3 py-1.5 rounded-md hover:bg-gray-700 transition-all text-xs"
+            className="cursor-pointer flex items-center gap-1 bg-gray-800 text-white px-3 py-1.5 rounded-md hover:bg-gray-700 transition-all text-xs"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3.5 h-3.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
@@ -79,7 +78,7 @@ export default function RowOfTable({
                     handlechangePaymentId(payment.paymentId);
                     handlechangeEditVeridedLandlordFlag();
                 }} 
-                className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all"
+                className=" cursor-pointer p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-all"
                 title="Edit Verification"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

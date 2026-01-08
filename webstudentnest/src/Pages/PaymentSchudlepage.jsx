@@ -6,8 +6,9 @@ import RowOfTable from "../Components/PaymentschudleComp/RowOfTable";
 import ReciptDialog from "../Components/PaymentschudleComp/ReciptDialog";
 import EditVeridedLandlordDialog from "../Components/PaymentschudleComp/EditVeridedLandlordDialog";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import ReciptDialogConationer from "../Components/PaymentschudleComp/ReciptDialogContainer";
 
-export default function PaymentSchudlepage({error,payments}){
+export default function PaymentSchudlepage({leaseId,error,payments}){
     
     let[paymentId,setPaymentId]=useState("");
     let[ReciptDialogFlag,setReciptDialogflag]=useState(false);
@@ -42,8 +43,10 @@ export default function PaymentSchudlepage({error,payments}){
                     </div>
                   </div>
 
-                  <ReciptDialog handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} ReciptDialogFlag={ReciptDialogFlag} paymentId={paymentId}/>
-                  <EditVeridedLandlordDialog EditVeridedLandlordFlag={EditVeridedLandlordFlag} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} paymentId={paymentId} />
+                  {ReciptDialogFlag ?<ReciptDialogConationer handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} ReciptDialogFlag={ReciptDialogFlag} paymentId={paymentId} leaseId={leaseId}/>:""}
+                  {EditVeridedLandlordFlag ? <EditVeridedLandlordDialog EditVeridedLandlordFlag={EditVeridedLandlordFlag} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} paymentId={paymentId} leaseId={leaseId} />:""}
+                  
+              
         </div>}
       </div>
     );
