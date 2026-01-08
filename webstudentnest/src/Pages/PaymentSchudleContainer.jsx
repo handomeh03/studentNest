@@ -2,12 +2,12 @@ import { useParams } from "react-router-dom";
 import PaymentSchudlepage from "./PaymentSchudlepage";
 import { UseGetPaymentSchudele } from "../Hooks/LandlordHook/UseGetPaymentSchudele";
 import Loader from "../Components/PublicComp/Loader";
-import { usePaymentSchudle } from "../Context/PaymentSchudleContext/PaymentSchudleContext";
+import { UsePaymentSchudle } from "../Context/PaymentSchudleContext/PaymentSchudleContext";
 
 export default function PaymentScheduleContainer(){
     let{leaseId}=useParams();
     const {error,loader}=UseGetPaymentSchudele(leaseId);
-    const {payments}=usePaymentSchudle();
+    const {payments}=UsePaymentSchudle();
     if(loader){
         return <Loader/>;
     }

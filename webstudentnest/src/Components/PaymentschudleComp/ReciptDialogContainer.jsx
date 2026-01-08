@@ -1,11 +1,11 @@
-import { usePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
+import { UsePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
 import { UseGetReciptForPayment } from "../../Hooks/LandlordHook/UseGetReciptForPayment";
 import Loader from "../PublicComp/Loader";
 import ReciptDialog from "./ReciptDialog";
 
 export default function ReciptDialogConationer({handlechangesetReciptDialogflag,ReciptDialogFlag,paymentId,leaseId}){
     const {error,loader}=UseGetReciptForPayment(leaseId,paymentId);
-    const {receipt}=usePaymentSchudle();
+    const {receipt}=UsePaymentSchudle();
     if(loader){
         return <Loader/>;
     }

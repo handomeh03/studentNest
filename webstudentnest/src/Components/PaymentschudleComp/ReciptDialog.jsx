@@ -63,7 +63,7 @@ export default function ReciptDialog({
               }}
             >
               <img
-                src={receipt || "https://www.shutterstock.com/shutterstock/photos/2271572825/display_1500/stock-vector-set-of-realistic-sales-receipts-cash-receipts-bummy-silent-store-receipt-with-a-barcode-account-2271572825.jpg"}
+                src={receipt?.ReceiptUrl || "https://www.shutterstock.com/shutterstock/photos/2271572825/display_1500/stock-vector-set-of-realistic-sales-receipts-cash-receipts-bummy-silent-store-receipt-with-a-barcode-account-2271572825.jpg"}
                 alt="receipt-preview"
                 style={{
                   maxWidth: "100%",

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
-import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
+import { UseGetPaymentSchudele } from "./UseGetPaymentSchudele";
+import { UsePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
+
 export function UseEditLandlordVerifedForPayment() {
     let [loader,setLoader]=useState(false);
     let [error,setError]=useState("");
     let{token}=useAuth();
+    let {paymentSchudleDispatch}=UsePaymentSchudle();
     
     async function EditLandlordVerifed(leaseId,paymentId,status,handlechangeEditVeridedLandlordFlag) {
       
@@ -22,7 +25,7 @@ export function UseEditLandlordVerifedForPayment() {
         const data=await res.json();
         if(res.ok){
         
-            
+             paymentSchudleDispatch({type:"editLandlordVerifed",payload:{paymentId,status}});
             handlechangeEditVeridedLandlordFlag();
                
         }

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
-import { usePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
+import {  UsePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
 
 
 export function UseGetReciptForPayment(leaseId,paymentId){
         let{token}=useAuth();
         let[error,seterror]=useState("");
         let[loader,setloader]=useState(false);
-     let {paymentSchudleDispatch}=usePaymentSchudle();
+     let {paymentSchudleDispatch}=UsePaymentSchudle();
 
      
         
@@ -25,6 +25,7 @@ export function UseGetReciptForPayment(leaseId,paymentId){
             const data=await res.json();
             if(res.ok){
                 paymentSchudleDispatch({type:"getReceipt",payload:data});
+               
                 
             }else{
                 throw new Error(data.errors);
