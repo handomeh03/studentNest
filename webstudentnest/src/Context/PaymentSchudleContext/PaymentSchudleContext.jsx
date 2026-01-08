@@ -6,11 +6,13 @@ export function PaymentSchudleContextProvider({children}){
         switch(action.type){
             case "getPayments":
                 return {...state,payments:action.payload};
+                case "getReceipt":
+                return {...state,receipt:action.payload};
             default:
                 return state;
         }
     }
-    let [state,paymentSchudleDispatch]=useReducer(reduce,{payments:[]});
+    let [state,paymentSchudleDispatch]=useReducer(reduce,{payments:[],receipt:{}});
    
     return(
         <paymentSchudleContext.Provider value={{...state,paymentSchudleDispatch}}>

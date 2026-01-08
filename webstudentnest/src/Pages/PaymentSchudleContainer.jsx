@@ -13,7 +13,7 @@ export default function PaymentScheduleContainer(){
     }
     return(
         <div>
-            <PaymentSchudlepage error={error} payments={payments} />
+            <PaymentSchudlepage leaseId={leaseId} error={error} payments={payments} />
         </div>
     );
 }
