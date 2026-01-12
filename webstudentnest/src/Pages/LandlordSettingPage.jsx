@@ -58,7 +58,7 @@ export default function LandlordSettingPage() {
     }
 
 
-    editInfo("landlord", name, email, phoneNumber, dateOfBirth, address, photo, cliqAccount,fetchUser);
+    editInfo("landlord", name, email, phoneNumber, dateOfBirth, address, photo, cliqAccount,fetchUser,"","","","");
   }
 
   return (

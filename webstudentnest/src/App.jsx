@@ -36,6 +36,8 @@ import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainer
 import AudlitLogContainer from './Pages/AudiltLogContainer'
 import ApartmentLeaseRequest from './Pages/ApartmentLeaseRequest'
 import PaymentScheduleContainer from './Pages/PaymentSchudleContainer'
+import StudentDashboardLayout from './Pages/studentDashboardLayout'
+import StudentSetting from './Pages/StudentSetting'
 
 function App() {     
   return (
@@ -86,13 +88,14 @@ function App() {
 
           <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
-        {/* <Route path='/studentDashboard' element={<studentDashboardLayout/>}>
-         <Route index element={<LeaseStudentContainer/>}/>
-         <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/>
-         <Route path='leaseRequest' element={<leaseRequestcontainer/>}/>
+        <Route path='/studentDashboard' element={<StudentDashboardLayout/>}>
+         {/* <Route index element={<LeaseStudentContainer/>}/> */}
+         {/* <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/> */}
+         {/* <Route path='leaseRequest' element={<leaseRequestcontainer/>}/> */}
          <Route path='notification' element={<NotificationTableContainer/>}/>
+         <Route path='setting' element={<StudentSetting/>}/> 
          
-        </Route> */}
+        </Route>
 
         <Route path='*' element={<NotFound/>}/>
        </Routes>

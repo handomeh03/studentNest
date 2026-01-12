@@ -12,7 +12,7 @@ export default function Menu() {
   const getDashboardLink = () => {
     switch (user?.user?.role) {
       case "admin": return "/admindashborad";
-      case "student": return "/studentdashboard";
+      case "student": return "/studentDashboard";
       case "landlord": return "/landlordDashboard";
       default: return "/";
     }
