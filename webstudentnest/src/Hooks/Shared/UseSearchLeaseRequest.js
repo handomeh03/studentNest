@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
-
-import { UseLease } from "../../Context/LeaseForAdmin/LeaseForAdmin";
 import { UseLeaseRequest } from "../../Context/LeaseRequestContext/LeaseRequestAdmin";
 
 export default function UseSearchLeaseRequest(id,searchUrl) {

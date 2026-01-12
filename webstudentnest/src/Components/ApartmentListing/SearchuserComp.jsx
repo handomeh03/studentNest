@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UseSearchApartment from "../../Hooks/AdminHooks/UseSearchApartmnet";
+import UseSearchApartment from "../../Hooks/Shared/UseSearchApartmnet";
 
 export default function SearchuserComp({handlechangeApartment,handlechangeTogoleWhenSearch}){
    let [name,setname]=useState("");

@@ -1,7 +1,8 @@
 import Loader from "../Components/PublicComp/Loader";
 import { UseAuditLog } from "../Context/AuditLogContext/AuditLogContext";
 import { UseGetALLAuditLog } from "../Hooks/AdminHooks/UseGetAllAudiltLog";
-import AuditLogTablePage from "./AuditLogTablePage";
+import AuditLogTablePage from "../Pages/AuditLogTablePage";
+
 
 export default function AudlitLogContainer(){
 

@@ -1,7 +1,8 @@
 import Loader from "../Components/PublicComp/Loader";
 import { UseApatment } from "../Context/ApartmentLisitingContext/ApartmentLisitingContext";
-import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/AdminHooks/UseGetALlApartmentLisitningforAdmin";
-import ApartmentListingAdmin from "./ApartmentListingAdmin";
+import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/Shared/UseGetALlApartmentLisitningforAdmin";
+import ApartmentListingAdmin from "../Pages/ApartmentListingAdmin";
+
 
 export default function ApartmentListingContainerForAdmin(){
     let {loader,error}=UseGetALlApartmentLisitningforAdmin("/api/v1/apartments");

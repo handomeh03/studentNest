@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useUserContext } from "../Context/UserContext/UserContext";
-import { UseEditInfo } from "../Hooks/AdminHooks/UseEditinfo";
+import { UseEditInfo } from "../Hooks/Shared/UseEditinfo";
 import { useUser } from "../Hooks/UserHook/UseUser";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 

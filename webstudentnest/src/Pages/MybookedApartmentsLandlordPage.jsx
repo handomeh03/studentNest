@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ApartmentListingAdmin from "./ApartmentListingAdmin";
-import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/AdminHooks/UseGetALlApartmentLisitningforAdmin";
+import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/Shared/UseGetALlApartmentLisitningforAdmin";
 import { UseApatment } from "../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 import Loader from "../Components/PublicComp/Loader";
 

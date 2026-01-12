@@ -2,7 +2,7 @@ import { useState } from "react";
 import AddApartmentDialog from "../Components/ApartmentListing/AddApartmentDialog";
 import ApartmentListingAdmin from "./ApartmentListingAdmin";
 import { UseApatment } from "../Context/ApartmentLisitingContext/ApartmentLisitingContext";
-import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/AdminHooks/UseGetALlApartmentLisitningforAdmin";
+import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/Shared/UseGetALlApartmentLisitningforAdmin";
 import Loader from "../Components/PublicComp/Loader";
 
 

@@ -1,10 +1,9 @@
 
-import SearchuserComp from "../Components/NotifivationTableComp/SearchuserComp";
 import HeadOfTable from "../Components/NotifivationTableComp/HeadOfTable";
 import RowOfTable from "../Components/NotifivationTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
-import Button from '@mui/material/Button';
-import {  UseDeleteAllNotification } from "../Hooks/AdminHooks/UseDeleteAllnotification";
+import { UseDeleteAllNotification } from "../Hooks/Shared/UseDeleteAllnotification";
+
 
 export default function NotifivationTablePage({notification,error}){
   let {DeleteAllNotification}=UseDeleteAllNotification();

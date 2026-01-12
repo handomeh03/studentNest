@@ -3,17 +3,22 @@ import { Link } from "react-router-dom";
 export default function Hero() {
   const primaryColor = "#3f51b5";
 
+
+  const optimizedBg = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=60&w=1600";
+
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       
-      
+     
       <div className="absolute inset-0 z-0">
         <img 
-        loading="lazy"
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070" 
-          alt="Hero Background"
+        
+          fetchpriority="high"
+          src={optimizedBg} 
+          alt="Students studying together - Student Nest Housing"
           className="w-full h-full object-cover"
         />
+        
         
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/40 backdrop-blur-[2px]"></div>
       </div>
@@ -21,14 +26,12 @@ export default function Hero() {
       
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto flex flex-col items-center">
         
-        
         <h1 
           className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 sm:mb-6 tracking-tighter uppercase italic leading-[1.1]"
           data-aos="fade-down"
         >
           Student <span style={{ color: primaryColor }}>Nest</span>
         </h1>
-        
         
         <p 
           className="text-base sm:text-xl md:text-2xl text-gray-200 mb-8 sm:mb-12 font-medium leading-relaxed max-w-xl sm:max-w-2xl"
@@ -38,7 +41,6 @@ export default function Hero() {
           Your safest and easiest way to find verified student housing and the perfect roommates.
         </p>
 
-        
         <div data-aos="zoom-in" data-aos-delay="400" className="w-full sm:w-auto">
           <Link 
             to="/apartments"

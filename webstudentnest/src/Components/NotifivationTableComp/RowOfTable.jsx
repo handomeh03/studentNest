@@ -1,5 +1,5 @@
-import { UseDeleteNotificatioById } from "../../Hooks/AdminHooks/UseDeleteNotigicationById";
-import { UseEditStatusOfNotification } from "../../Hooks/AdminHooks/UseEditStatusOfNotification";
+import { UseDeleteNotificatioById } from "../../Hooks/Shared/UseDeleteNotigicationById";
+import { UseEditStatusOfNotification } from "../../Hooks/Shared/UseEditStatusOfNotification";
 
 export default function RowOfTable({ notification }) {
   let { editNotification } = UseEditStatusOfNotification();

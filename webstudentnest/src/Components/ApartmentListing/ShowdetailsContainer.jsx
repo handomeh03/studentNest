@@ -1,5 +1,5 @@
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
-import { UseGetDetailsOfApratment } from "../../Hooks/AdminHooks/UseGetDetailsOfApratment";
+import { UseGetDetailsOfApratment } from "../../Hooks/Shared/UseGetDetailsOfApratment";
 import Loader from "../PublicComp/Loader";
 import Showdetailsdialog from "./ShowdetailsDialog";
 

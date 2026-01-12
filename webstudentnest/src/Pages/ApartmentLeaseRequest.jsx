@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Loader from "../Components/PublicComp/Loader";
 import { UseLeaseRequest } from "../Context/LeaseRequestContext/LeaseRequestAdmin";
-import { UseGetAllLeaseRequest } from "../Hooks/AdminHooks/UseGetallLeaseRequest";
+import { UseGetAllLeaseRequest } from "../Hooks/Shared/UseGetallLeaseRequest";
 import LeaseRequestTablepage from "./LeaseRequestTablepage";
 
 export default function ApartmentLeaseRequest(){

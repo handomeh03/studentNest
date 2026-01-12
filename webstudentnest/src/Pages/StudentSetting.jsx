@@ -6,7 +6,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useUserContext } from "../Context/UserContext/UserContext";
 import { useState } from "react";
-import { UseEditInfo } from "../Hooks/AdminHooks/UseEditinfo";
+import { UseEditInfo } from "../Hooks/Shared/UseEditinfo";
 import { useUser } from "../Hooks/UserHook/UseUser";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 

@@ -102,7 +102,7 @@ export default function ApartmentCard({forall, bookedApartment, apartment, handl
               <FileText size={14}/> Leases
             </button>
           }
-          {user?.user?.role=="student" || user?.user?.role=="" || forall?"":
+          {user?.user?.role=="student" || user?.user?.role=="" ||user?.user?.role=="admin" || forall?"":
             <button onClick={()=>{ navigatie(`/landlordDashboard/apartemnt/${apartment?.apartmentId}/leaserequest`); handleChangeApartmentId(apartment?.apartmentId); }} 
               className={`${buttonBaseClass} text-indigo-700 bg-indigo-50 border-indigo-100 hover:bg-indigo-100`}>
               <FileText size={14}/> Lease requests
