@@ -36,7 +36,7 @@ import ApartmentListingContainerForAdmin from './Pages/ApartmentLisningContainer
 import AudlitLogContainer from './Pages/AudiltLogContainer'
 import ApartmentLeaseRequest from './Pages/ApartmentLeaseRequest'
 import PaymentScheduleContainer from './Pages/PaymentSchudleContainer'
-import StudentDashboardLayout from './Pages/studentDashboardLayout'
+import StudentDashboardLayout from './Pages/StudentDashboardLayout'
 import StudentSetting from './Pages/StudentSetting'
 
 function App() {     
