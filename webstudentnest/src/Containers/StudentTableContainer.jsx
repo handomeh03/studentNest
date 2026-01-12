@@ -1,7 +1,8 @@
 import Loader from "../Components/PublicComp/Loader";
 import { UseStudentForAdmin } from "../Context/studentForAdmin/StudentForadmin";
 import { UseGetStudentForAdmin } from "../Hooks/AdminHooks/useGetStudentforAdmin";
-import StudentTablePage from "./StudentTablePage";
+import StudentTablePage from "../Pages/StudentTablePage";
+
 
 export default function StudentTableContainer(){
     let {loader,error}=UseGetStudentForAdmin();

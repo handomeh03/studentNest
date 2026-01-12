@@ -1,35 +1,37 @@
-
 import GppGoodIcon from '@mui/icons-material/GppGood';
 import { Useaos } from '../../Hooks/publicHook/useaos';
 
 export default function HeroApartment() {
   Useaos();
+
+  const optimizedImageUrl = "https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=60&fm=webp";
+
   return (
-    <section className="relative mt-2 h-screen w-full overflow-hidden font-sans sm:mt-0 " dir="ltr">
+    <section className="relative h-screen w-full overflow-hidden font-sans" dir="ltr">
       
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
-        style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')` 
-        }}
-      >
+      <div className="absolute inset-0 z-0">
+        <img 
+          src={optimizedImageUrl}
+          alt="Modern Student Housing"
+          className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
+          loading="eager" 
+          fetchpriority="high" 
+        />
+        
         <div className="absolute inset-0 bg-slate-900/60 shadow-inner"></div>
       </div>
 
-      
       <div className="relative z-10 flex h-screen flex-col items-center justify-center px-6 text-center text-white">
-        
         
         <div 
           data-aos="fade-down"
           data-aos-delay="200"
           className="mb-6 mt-10 flex items-center gap-2 rounded-full bg-[#3f51b555] border border-[#3f51b5] px-4 py-2 text-white backdrop-blur-md"
         >
-          <GppGoodIcon  size={20} />
+          <GppGoodIcon className="text-[20px]" />
           <span className="text-sm font-bold tracking-wide">Safe & Certified Student Housing</span>
         </div>
 
-        
         <h1 
           data-aos="zoom-in"
           data-aos-delay="400"
@@ -38,7 +40,6 @@ export default function HeroApartment() {
           Your Safe Haven.. Focus Only on <span className="text-[#3f51b5] font-black">Your Success</span>
         </h1>
 
-        
         <p 
           data-aos="fade-up"
           data-aos-delay="600"
@@ -49,8 +50,6 @@ export default function HeroApartment() {
           and your family ultimate peace of mind.
         </p>
 
-       
-        
       </div>
     </section>
   );

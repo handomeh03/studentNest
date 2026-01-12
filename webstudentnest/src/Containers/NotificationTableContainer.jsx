@@ -1,7 +1,8 @@
 import Loader from "../Components/PublicComp/Loader";
 import { UseNotification } from "../Context/NotificationContext/NotificationContext";
-import { UseGetALLNotifiction } from "../Hooks/AdminHooks/UseGetAllNotification";
-import NotifivationTablePage from "./NotificationTablePage";
+import { UseGetALLNotifiction } from "../Hooks/Shared/UseGetAllNotification";
+import NotifivationTablePage from "../Pages/NotificationTablePage";
+
 
 export default function NotificationTableContainer(){
     let{loader,error}=UseGetALLNotifiction();

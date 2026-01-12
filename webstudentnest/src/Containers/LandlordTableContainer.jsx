@@ -1,7 +1,8 @@
 import Loader from "../Components/PublicComp/Loader";
 import { useAdminForLandlord } from "../Context/landlordForadminContext/AdminforlandlordContext";
 import { UseGetLandlord } from "../Hooks/AdminHooks/useGetLandlord";
-import LandlordTablepage from "./LandlordTablepage";
+import LandlordTablepage from "../Pages/LandlordTablepage";
+
 
 export default function LandlordTableContainer(){
 const{loader,error}=UseGetLandlord();

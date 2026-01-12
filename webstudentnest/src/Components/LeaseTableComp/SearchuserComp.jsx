@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UseSearchLease from "../../Hooks/AdminHooks/UseSearchLease";
+import UseSearchLease from "../../Hooks/Shared/UseSearchLease";
 
 export default function SearchuserComp({url}){
   let[id,setId]=useState("");
