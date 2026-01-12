@@ -42,7 +42,7 @@ export default function AdminSettingPage() {
       setInputError("Address must be at least 3 characters long");
       return;
     }
-    editInfo("Admin", name, email, phoneNumber, dateOfBirth, address, photo, "", fetchUser);
+    editInfo("Admin", name, email, phoneNumber, dateOfBirth, address, photo, "", fetchUser,"","","","");
   }
 
   return (

@@ -5,7 +5,7 @@ export function UseEditInfo(){
     let [loader,setloader]=useState(false);
     let [error,setError]=useState("");
 
-    async function editInfo(role,name,email,phoneNumber,dateOfBirth,address,photo,cliQAccount,fetchUser) {
+    async function editInfo(role,name,email,phoneNumber,dateOfBirth,address,photo,cliQAccount,fetchUser,universityName,major,graduateYear,studentCardId) {
         const formData=new FormData();
         formData.append("name",name);
         formData.append("dateOfBirth",dateOfBirth);
@@ -15,6 +15,12 @@ export function UseEditInfo(){
         if(role=="landlord"){
 
             formData.append("cliQAccount",cliQAccount);
+        }
+        if(role=="student"){
+            formData.append("universityName",universityName);
+            formData.append("major",major);
+            formData.append("gradateYear",graduateYear);
+            formData.append("studentCardId",studentCardId);
         }
         setloader(true);
         
