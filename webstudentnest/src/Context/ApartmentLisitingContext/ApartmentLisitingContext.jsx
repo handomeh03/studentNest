@@ -72,6 +72,10 @@ export default function ApartmentProvider({ children }) {
         return { ...state, Apartments: action.payload };
       case "restToOrginal":
         return { ...state, Apartments: state.copyApartments };
+        case "getallAvaibleApartemnt":
+          return {...state, Apartments: action.payload,copyApartments: action.payload};
+          case "GetRandomApartment":
+          return {...state, Apartments: action.payload,copyApartments: action.payload};
       default:
         return state;
     }

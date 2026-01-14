@@ -8,10 +8,10 @@ import TogoleButton from "../Components/LandlordTablepageComp/TogoleButton";
 import { UseTab } from "../Hooks/apartmentListinigHook/useTab";
 import { UseFilterapartment } from "../Hooks/apartmentListinigHook/useFilterApartment";
 import { UsechangeApartment } from "../Hooks/apartmentListinigHook/usechangeApartment";
-import ShowDocumentDialog from "../Components/ApartmentListing/ShowDocumentDialog";
+
 
 import EditStatusdialog from "../Components/ApartmentListing/EditStatusdialog";
-import Showdetailsdialog from "../Components/ApartmentListing/ShowdetailsDialog";
+
 import AddDocumnetDialog from "../Components/ApartmentListing/AddDocumnetDialog";
 import EditDetailsDialog from "../Components/ApartmentListing/editDetailsDialog";
 import EditDocumentDialog from "../Components/ApartmentListing/EditDocumentDialog";
@@ -22,7 +22,7 @@ import ShowdetailsContainer from "../Components/ApartmentListing/ShowdetailsCont
 
 
 
-export default function ApartmentListingAdmin({bookedApartment,forall,Apartments,error}) {
+export default function ApartmentListingAdmin({randomApartment,bookedApartment,forall,Apartments,error}) {
 
   // ال booked apartment يعني ال apremtnet ال محجوزة للlandlord وهي بس كفلاج
   Useaos();
@@ -115,7 +115,7 @@ export default function ApartmentListingAdmin({bookedApartment,forall,Apartments
   ) : (
     <div className="bg-white">
       
-      {!bookedApartment && !forall && (
+      {!bookedApartment && !forall && !randomApartment&& (
         <SearchuserComp
           handlechangeApartment={handlechangeApartment}
           handlechangeTogoleWhenSearch={handlechangeTogoleWhenSearch}

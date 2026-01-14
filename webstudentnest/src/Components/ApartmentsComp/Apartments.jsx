@@ -1,14 +1,20 @@
-import { useState } from "react";
+import {  useState } from "react";
 import ApartmentListingAdmin from "../../Pages/ApartmentListingAdmin";
 import SearchuserComp from "../ApartmentListing/SearchuserComp";
 import Filteration from "./Filteration";
+import UseGetAllAvaibleApartment from "../../Hooks/Shared/UseGetAllAvaibleApartment";
+import Loader from "../PublicComp/Loader";
+import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
+
 
 
 export default function ApartmentsForall() {
   let [forall] = useState(true);
 
   let[fliterFlag,setFilterFlag]=useState(false);
-   
+
+   const {error,loader}=UseGetAllAvaibleApartment();
+   const {Apartments}=UseApatment();
   
   return (
     <div >
@@ -39,9 +45,9 @@ export default function ApartmentsForall() {
 
        
       </div>
-      <div className="p-2 sm:p-0">
-        <ApartmentListingAdmin forall={forall} />
-      </div>
+      {loader?<Loader/>: <div className="p-2 sm:p-0">
+        <ApartmentListingAdmin Apartments={Apartments} forall={forall} error={error}/>
+      </div>}
     </div>
   );
 }
