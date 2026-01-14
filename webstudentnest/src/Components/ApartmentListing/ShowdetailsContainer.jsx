@@ -7,12 +7,10 @@ export default function ShowdetailsContainer({showdetailsFlag, handlechageShowDe
     let {loader,error}=UseGetDetailsOfApratment(apartmentId);
     let {details}=UseApatment();
     
-    if(loader){
-        return <Loader/>
-    }
+   
     return(
         <div>
-             <Showdetailsdialog details={details} error={error} showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
+             <Showdetailsdialog loader={loader} details={details} error={error} showdetailsFlag={showdetailsFlag} handlechageShowDetailsFlag={handlechageShowDetailsFlag} apartmentId={apartmentId}/>
         </div>
     );
 }

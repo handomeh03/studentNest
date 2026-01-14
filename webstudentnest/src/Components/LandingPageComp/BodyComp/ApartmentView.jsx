@@ -12,7 +12,7 @@ export default function ApartmentView() {
 
   let navigate=useNavigate();
 
-  const {error,loader}=UseGetRandomApartment();
+  const {error}=UseGetRandomApartment();
   const {Apartments}=UseApatment();
 
   return (

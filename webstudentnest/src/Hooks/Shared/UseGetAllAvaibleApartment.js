@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
+import { useAuth } from "../../Context/AuthContext/AuthContext";
 
 export default function UseGetAllAvaibleApartment(){
     let {apartmentDispatch}=UseApatment();
     let [error,setError]=useState("");
     let [loader,setLoader]=useState(false);
-
+    let{token}=useAuth();
      useEffect(()=>{
         const fetchAvaibleApartment=async()=>{
           try {
@@ -31,7 +32,7 @@ export default function UseGetAllAvaibleApartment(){
           }
         }
         fetchAvaibleApartment();
-       },[])
+       },[token,apartmentDispatch])
 
        return {error,loader};
       

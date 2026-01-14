@@ -3,7 +3,8 @@ import {
   DialogContent,
   IconButton,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Skeleton
 } from "@mui/material";
 import { Tab, TabGroup, TabList, TabPanels, TabPanel } from "@headlessui/react";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,6 +17,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import ErrorComp from "../PublicComp/ErrorComp";
 
 export default function Showdetailsdialog({
+  loader,
   details,
   showdetailsFlag,
   handlechageShowDetailsFlag,
@@ -63,7 +65,42 @@ export default function Showdetailsdialog({
 
         <div className="flex-1 overflow-y-auto scroll-smooth custom-scrollbar">
           
-          {error ? (
+        
+          {loader ? (
+            <div className="flex flex-col h-full">
+              <Skeleton 
+                variant="rectangular" 
+                width="100%" 
+                height={isMobile ? 300 : 650} 
+                animation="wave" 
+              />
+              
+              <div className="p-6 sm:p-8 lg:p-10 space-y-10">
+                <div className="space-y-4">
+                  <Skeleton variant="text" width="150px" height={30} className="rounded-full" />
+                  <Skeleton variant="text" width="80%" height={60} />
+                  <Skeleton variant="text" width="40%" height={30} />
+                </div>
+                
+                {/* هيكل الأيقونات المميزة */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <Skeleton 
+                      key={i} 
+                      variant="rounded" 
+                      width="100%" 
+                      height={100} 
+                      className="rounded-[2rem]" 
+                    />
+                  ))}
+                </div>
+
+             
+                <Skeleton variant="rounded" width="100%" height={120} className="rounded-3xl" />
+                <Skeleton variant="rounded" width="100%" height={320} className="rounded-[2.5rem]" />
+              </div>
+            </div>
+          ) : error ? (
             
             <div className="h-full w-full flex items-center justify-center p-10 min-h-[400px]">
               <div className="max-w-md w-full text-center">
@@ -77,7 +114,7 @@ export default function Showdetailsdialog({
               </div>
             </div>
           ) : (
-            
+          
             <>
               {/* Media Section */}
               <div className="relative w-full lg:h-[650px] flex flex-col ">
@@ -90,6 +127,7 @@ export default function Showdetailsdialog({
                       >
                         <img
                           src={img.img}
+                          alt={`Apartment view ${idx + 1}`}
                           className="relative z-10 w-full h-full object-contain animate-in fade-in zoom-in duration-700"
                         />
                       </TabPanel>
@@ -103,7 +141,7 @@ export default function Showdetailsdialog({
                           key={idx}
                           className="relative min-w-[60px] h-[60px] rounded-xl overflow-hidden border-2 border-transparent ui-selected:border-white ui-selected:scale-105 transition-all duration-300"
                         >
-                          <img src={img.img} className="w-full h-full object-cover" />
+                          <img src={img.img} className="w-full h-full object-cover" alt="Thumbnail" />
                         </Tab>
                       ))}
                     </TabList>
@@ -111,7 +149,7 @@ export default function Showdetailsdialog({
                 </TabGroup>
               </div>
 
-              {/* Content Section */}
+             
               <div className="p-6 sm:p-8 lg:p-10 space-y-10">
                 
                 <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 border-b border-slate-100 pb-8">
@@ -180,12 +218,14 @@ export default function Showdetailsdialog({
                   </h3>
                   <div className="h-80 rounded-[2.5rem] overflow-hidden border-4 border-slate-50 shadow-xl">
                     <iframe
+                      title="Google Map Location"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       loading="lazy"
                       allowFullScreen
-                      src={`https://maps.google.com/maps?q=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                      src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&zoom=15`}
+                     
                     ></iframe>
                   </div>
                 </div>

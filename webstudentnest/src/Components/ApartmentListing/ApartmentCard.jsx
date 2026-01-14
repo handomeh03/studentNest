@@ -137,7 +137,7 @@ export default function ApartmentCard({forall, bookedApartment, apartment, handl
             </button>
           }
 
-          {user?.user?.role=="admin" || user?.user?.role=="landlord" ?"":
+          {user?.user?.role=="admin" || user?.user?.role=="landlord" ?<p className=" col-span-2 flex items-center justify-center gap-2 p-3 text-xs font-bold text-[#3f51b5] border-2 border-[#3f51b5] rounded-xl  transition-all active:scale-95 h-11">yor are not Allowed to Request Lease</p>:
             <button onClick={()=>{ handleChangeApartmentId(apartment?.apartmentId); }} 
               className="cursor-pointer col-span-2 flex items-center justify-center gap-2 p-3 text-xs font-bold text-[#3f51b5] border-2 border-[#3f51b5] rounded-xl hover:bg-indigo-50 transition-all active:scale-95 h-11">
               Request Lease

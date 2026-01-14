@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../Context/AuthContext/AuthContext";
+
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 
 export function UseGetDetailsOfApratment(id){
-    let{token}=useAuth();
+    
     let[error,seterror]=useState("");
     let[loader,setloader]=useState(false);  
     let{apartmentDispatch}=UseApatment();  
@@ -13,19 +13,18 @@ export function UseGetDetailsOfApratment(id){
         
         try {
           const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/apartments/${id}`,{
-            headers:{
-               "Authorization": `Bearer ${token}`, 
-            }
+            method:"GET"
           })
           const data=await res.json();
     
           if(res.ok){
             
-             
             apartmentDispatch({type:"getDetails",payload:data});
           }else{
              apartmentDispatch({type:"getDetails",payload:{}});
-            throw new Error(data.errors);
+             
+            throw new Error(data.error);
+
           }
           
         } catch (error) {
@@ -35,7 +34,7 @@ export function UseGetDetailsOfApratment(id){
         }
       }
       fetchDetails();
-    },[token,id,apartmentDispatch]);
+    },[id,apartmentDispatch]);
 
     return {loader,error}
 }
