@@ -12,7 +12,7 @@ export function UseLandlordRegister() {
           formData.append("phoneNumber",String(phoneNumber));
           formData.append("password",String(password));
           formData.append("name",String(fullName));
-          formData.append("LandloardGovId",String(LandloardGovId));
+          formData.append("LandlordGovId",String(LandloardGovId));
           formData.append("email",String(email));
           formData.append("document",verificationFile);
           formData.append("dateOfBirth",String(dateOfBirth));
