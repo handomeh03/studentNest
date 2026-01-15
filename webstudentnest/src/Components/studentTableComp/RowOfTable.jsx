@@ -1,6 +1,6 @@
 export default function RowOfTable({ student, setstudentId, handleChangeEditStudentFlag, handleChangeDeleteStudentDialog }) {
   return (
-    <tr key={student.userId} className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-none">
+    <tr key={student?.user?.userId} className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-none">
       
 
       
@@ -74,7 +74,7 @@ export default function RowOfTable({ student, setstudentId, handleChangeEditStud
           </button> */}
 
           <button 
-            onClick={() => { setstudentId(student?.user?.userId); handleChangeDeleteStudentDialog(); }}
+            onClick={() => { setstudentId(student?.user?.userId); handleChangeDeleteStudentDialog();}}
             className="p-1.5 text-red-600 hover:bg-red-50 rounded-md transition-colors"
             title="Delete Student"
           >
