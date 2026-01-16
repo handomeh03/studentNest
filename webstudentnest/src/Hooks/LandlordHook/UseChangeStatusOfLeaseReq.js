@@ -12,6 +12,7 @@ export function UseChangeStatusOfLeaseReq() {
       try {
         setLoader(true);
         setError("");
+        console.log(status);
         const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/landlord/leases-request/${LeaseId}/status`, {
             method: "PATCH",
             body: JSON.stringify({ status }),

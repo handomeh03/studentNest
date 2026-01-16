@@ -1,10 +1,16 @@
+import { useMemo } from "react";
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
+import { useUserContext } from "../../Context/UserContext/UserContext";
 import { UseGetDetailsOfApratment } from "../../Hooks/Shared/UseGetDetailsOfApratment";
-import Loader from "../PublicComp/Loader";
+
 import Showdetailsdialog from "./ShowdetailsDialog";
 
 export default function ShowdetailsContainer({showdetailsFlag, handlechageShowDetailsFlag, apartmentId}){
-    let {loader,error}=UseGetDetailsOfApratment(apartmentId);
+    let {user}=useUserContext();
+    let url= useMemo(()=>{
+         return user?"/api/v1/apartments":"/api/v1/apartments/detail"
+    },[user])
+    let {loader,error}=UseGetDetailsOfApratment(apartmentId,url);
     let {details}=UseApatment();
     
    

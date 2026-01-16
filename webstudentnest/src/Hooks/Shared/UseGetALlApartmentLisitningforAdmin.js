@@ -22,6 +22,7 @@ export function UseGetALlApartmentLisitningforAdmin(url){
                 const data=await res.json();
     
                 if(res.ok){
+                  
                  apartmentDispatch({type:"getApartments",payload:data});
                 }
                 else{  

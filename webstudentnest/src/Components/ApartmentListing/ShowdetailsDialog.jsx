@@ -224,7 +224,7 @@ export default function Showdetailsdialog({
                       style={{ border: 0 }}
                       loading="lazy"
                       allowFullScreen
-                      src={`https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&zoom=15`}
+                      src={`https://maps.google.com/maps?q=${data.googleMapLocation?.latitude},${data.googleMapLocation?.longitude}&z=15&output=embed`}
                      
                     ></iframe>
                   </div>
