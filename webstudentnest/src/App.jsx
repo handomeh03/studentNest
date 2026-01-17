@@ -10,17 +10,12 @@ import NotFound from './Pages/NotFound'
 import AdminDashboardLayout from './Pages/AdminDashboardLayout'
 import AdminSettingPage from './Pages/AdminSettingPage'
 import LandlordDashboardLayout from './Pages/LandlordDashboardLayout'
-import MyApartmentsLandLord from './Pages/MyApartmentsLandLordpage'
-import MybookedApartmentsLandlordPage from './Pages/MybookedApartmentsLandlordPage'
 import LandlordSettingPage from './Pages/LandlordSettingPage'
-import MyRequestLeasepage from './Pages/MyRequestLeasepage'
-import ApartmentLeasespage from './Pages/ApartmentLeasespage'
 import ForgetPasswordpage from './Pages/ForgetPasswordpage'
 import PasswordOtp from './Pages/PasswordOtp'
 import ChangePasswordOtp from './Pages/changePasswordOtp'
 import NotVerifedPage from './Pages/NotVerivedPage'
 import ApartmentPage from './Pages/AprtmentsPage'
-import ApartmentLeaseRequest from './Pages/ApartmentLeaseRequest'
 import StudentDashboardLayout from './Pages/StudentDashboardLayout'
 import StudentSetting from './Pages/StudentSetting'
 import LandlordTableContainer from './Containers/LandlordTableContainer'
@@ -32,6 +27,14 @@ import ApartmentListingContainerForAdmin from './Containers/ApartmentLisningCont
 import AudlitLogContainer from './Containers/AudiltLogContainer'
 import PaymentScheduleContainer from './Containers/PaymentSchudleContainer'
 import MyLeasesLandlordContainer from './Containers/MyLeasesLandlordContainer'
+import MyApartmentsLandLordContainer from './Containers/MyApartmentsLandLordContainer'
+import MybookedApartmentsLandlordContainer from './Containers/MybookedApartmentsLandlordContainer'
+
+
+import ApartmentLeaseRequestcontainer from './Containers/ApartmentLeaseRequestcontainer'
+import ApartmentLeasesContainer from './Containers/ApartmentLeasesContainer'
+import MyRequestLeaseContainer from './Containers/MyRequestLeaseContainer'
+import MyLeasesContainer from './Containers/MyLeasesLandlordContainer'
 
 function App() {     
   return (
@@ -62,23 +65,23 @@ function App() {
         </Route>
        {/* landlord */}
         <Route path='/landlordDashboard' element={<LandlordDashboardLayout/>}>
-          <Route index element={<MyApartmentsLandLord/>}/>
-          <Route path='myleasse' element={<MyLeasesLandlordContainer/>}/>
-          <Route path='mybookedapartments' element={<MybookedApartmentsLandlordPage/>}/>
-          <Route path='requestlease' element={<MyRequestLeasepage/>}/>
-          <Route path='setting' element={<LandlordSettingPage/>}/> 
+          <Route index element={<MyApartmentsLandLordContainer/>}/>
+          <Route path='myleasse' element={<MyLeasesContainer/>}/>
+          <Route path='mybookedapartments' element={<MybookedApartmentsLandlordContainer/>}/>
+          <Route path='requestlease' element={<MyRequestLeaseContainer/>}/>
           <Route path='lease/:leaseId/paymentschudle' element={<PaymentScheduleContainer/>}/>
-          <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasespage/>}/>
-          <Route path='apartemnt/:apartmentIdleasereq/leaserequest' element={<ApartmentLeaseRequest/>}/>
+          <Route path='apartemnt/:apartmentId/leases' element={<ApartmentLeasesContainer/>}/>
+          <Route path='apartemnt/:apartmentIdleasereq/leaserequest' element={<ApartmentLeaseRequestcontainer/>}/>
           <Route path='notification' element={<NotificationTableContainer/>}/>
+          <Route path='setting' element={<LandlordSettingPage/>}/> 
           <Route path='notverivedPage' element={<NotVerifedPage/>}/>
         </Route>
 
      {/* student */}
         <Route path='/studentDashboard' element={<StudentDashboardLayout/>}>
-         {/* <Route index element={<LeaseStudentContainer/>}/> */}
-         {/* <Route path='lease/:leaseId/paymentschudle' element={<PaymentSchudlepage/>}/> */}
-         {/* <Route path='leaseRequest' element={<leaseRequestcontainer/>}/> */}
+          
+          <Route index element={<MyRequestLeaseContainer/>}/>
+          <Route path='myleasse' element={<MyLeasesContainer/>}/>
          <Route path='notification' element={<NotificationTableContainer/>}/>
          <Route path='setting' element={<StudentSetting/>}/> 
          

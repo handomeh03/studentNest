@@ -1,10 +1,10 @@
 import { useState } from "react";
-import ApartmentListingAdmin from "./ApartmentListingAdmin";
+import ApartmentListingAdmin from "../Pages/ApartmentListingAdmin";
 import { UseGetALlApartmentLisitningforAdmin } from "../Hooks/Shared/UseGetALlApartmentLisitningforAdmin";
 import { UseApatment } from "../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 import Loader from "../Components/PublicComp/Loader";
 
-export default function MybookedApartmentsLandlordPage(){
+export default function MybookedApartmentsLandlordContainer(){
     let[bookedApartment]=useState(true);
     let {loader,error}=UseGetALlApartmentLisitningforAdmin("/api/v1/landlord/apartments/booked");
         let {Apartments}=UseApatment();

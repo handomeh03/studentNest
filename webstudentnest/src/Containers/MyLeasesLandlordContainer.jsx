@@ -4,7 +4,7 @@ import { UseLease } from "../Context/LeaseForAdmin/LeaseForAdmin";
 import { UseGetLease } from "../Hooks/Shared/UseGetLease";
 import LeaseTablePage from "../Pages/LeaseTablePage";
 
-export default function MyLeasesLandlordContainer(){ 
+export default function MyLeasesContainer(){ 
     const {loader,error}= UseGetLease();
        const {Leases}=UseLease();
         const url="/api/v1/leases/search?q=";

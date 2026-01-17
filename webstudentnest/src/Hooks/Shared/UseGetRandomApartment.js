@@ -22,6 +22,7 @@ export default function UseGetRandomApartment(){
             if(res.ok){
               console.log(data);
               apartmentDispatch({type:"GetRandomApartment",payload:data});
+              
             }
             else{
               throw new Error(data.error || "No Apartment Found")

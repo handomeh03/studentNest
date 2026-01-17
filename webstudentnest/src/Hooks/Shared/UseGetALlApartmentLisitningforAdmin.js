@@ -24,6 +24,7 @@ export function UseGetALlApartmentLisitningforAdmin(url){
                 if(res.ok){
                   
                  apartmentDispatch({type:"getApartments",payload:data});
+                 
                 }
                 else{  
                     throw new Error(data.errors);

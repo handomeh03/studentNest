@@ -3,6 +3,27 @@ import { useUserContext } from "../../Context/UserContext/UserContext";
 export default function RowOfTable({ leaserequest,handleChangeLeaseId,handleChangeEditdialogflag }) {
   let { user } = useUserContext();
 
+  function rentTerfomat(rentTerm){
+    const [day,month,years]=rentTerm.split(",");
+    let format="";
+    if(day && month && years){
+      if(years!="00"){
+       format=format+`${years[0]==0?years[1]:years} year `;
+    }
+    if(month!="00"){
+      format=format+`${month[0]==0?month[1]:month} months `
+    }
+    if(day!="00"){
+      format=format+`${day[0]==0?day[1]:day} days`
+    }
+    }
+    else{
+      format ="rent term not found";
+    }
+
+    return format;
+  }
+
   return (
     <tr key={leaserequest?.requestLeaseId} className="hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-none">
      
@@ -40,7 +61,7 @@ export default function RowOfTable({ leaserequest,handleChangeLeaseId,handleChan
       
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">
         <span className="px-2 py-1 bg-gray-100 rounded text-xs font-medium">
-          {leaserequest?.rentTerm}
+          {rentTerfomat(leaserequest?.rentTerm)}
         </span>
       </td>
 
