@@ -14,9 +14,10 @@ export default function StudentDashboardLayout(){
     let navigate=useNavigate();
      const [navigation,setnavigation] = useState([
       { name: 'Home', href: '/', icon: HomeIcon, current: false },
+      {name:'my request Lease',href:'/studentDashboard',icon: HomeIcon,current:true},
     //   { name: 'My Apartment', href: '/landlordDashboard', icon: UsersIcon, current: true },
     //   { name: 'Request leases', href: 'requestlease', icon: UsersIcon, current: false },
-    //   { name: 'My Leases', href: 'myleasse', icon: AcademicCapIcon , current: false },
+      { name: 'My Leases', href: 'myleasse', icon: AcademicCapIcon , current: false },
     //   { name: 'My booked apartments', href: 'mybookedapartments', icon: AcademicCapIcon , current: false },
       { name: 'Notification', href: 'notification', icon: AcademicCapIcon , current: false },
       

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../Context/UserContext/UserContext"; 
 import { Eye, Trash2, FileText, Settings, PlusCircle, Edit3, MapPin, Bed, Home, CheckCircle2, AlertCircle, User, Users } from "lucide-react";
 
-export default function ApartmentCard({forall, bookedApartment, apartment, handleChangeShowDocumnetFlag, handleChangeEditDocumentDialog, handleChangeEditdetailFlag, handlechangeAddDocumentFlag,handleChangeRequestLeaseDialog, handlechageShowDetailsFlag, handleChangeEditdialogflag, handleChangeApartmentId, handleChangeDeleteDialogFlag}){
+export default function ApartmentCard({forall, bookedApartment, apartment, handleChangeShowDocumnetFlag,handlechangeLandlordId, handleChangeEditDocumentDialog, handleChangeEditdetailFlag, handlechangeAddDocumentFlag,handleChangeRequestLeaseDialog, handlechageShowDetailsFlag, handleChangeEditdialogflag, handleChangeApartmentId, handleChangeDeleteDialogFlag}){
   const { user } = useUserContext();
   let navigatie = useNavigate();
 
@@ -138,7 +138,7 @@ export default function ApartmentCard({forall, bookedApartment, apartment, handl
           }
 
           {user?.user?.role=="admin" || user?.user?.role=="landlord" ?<p className=" col-span-2 flex items-center justify-center gap-2 p-3 text-xs font-bold text-[#3f51b5] border-2 border-[#3f51b5] rounded-xl  transition-all active:scale-95 h-11">yor are not Allowed to Request Lease</p>:
-            <button onClick={()=>{ handleChangeApartmentId(apartment?.apartmentId);handleChangeRequestLeaseDialog(); }} 
+            <button onClick={()=>{ handleChangeApartmentId(apartment?.apartmentId);handleChangeRequestLeaseDialog();handlechangeLandlordId(apartment?.landlordId) }} 
               className="cursor-pointer col-span-2 flex items-center justify-center gap-2 p-3 text-xs font-bold text-[#3f51b5] border-2 border-[#3f51b5] rounded-xl hover:bg-indigo-50 transition-all active:scale-95 h-11">
               Request Lease
             </button>

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import { UseGetLeaseByApartmentId } from "../Hooks/LandlordHook/UseGetLeaseByApartmentId";
-import LeaseTablePage from "./LeaseTablePage";
+
 import Loader from "../Components/PublicComp/Loader";
 import { UseLease } from "../Context/LeaseForAdmin/LeaseForAdmin";
+import LeaseTablePage from "../Pages/LeaseTablePage";
 
-export default function ApartmentLeasespage(){
+export default function ApartmentLeasesContainer(){
     let {apartmentId}=useParams();
     const {error,loader}=UseGetLeaseByApartmentId(apartmentId);
     const {Leases}=UseLease();

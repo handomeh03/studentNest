@@ -40,6 +40,7 @@ export default function ApartmentListingAdmin({
   let [editDocumentDialog, setEditDocumentDialog] = useState(false);
   let [requestLeaseFlagDialog, setReqestLeaseFlagDialog] = useState(false);
   let [apartmentId, setApartmentId] = useState(null);
+  let [landlordId,setLandlordId]=useState(null);
 
   const [filteredApartments, setfilteredApartments] = useState(
     Apartments || []
@@ -119,9 +120,13 @@ export default function ApartmentListingAdmin({
   function handleChangeApartmentId(id) {
     setApartmentId(id);
   }
+  function handlechangeLandlordId(id){
+    setLandlordId(id);
+  }
   function handleChangeRequestLeaseDialog() {
     setReqestLeaseFlagDialog((old) => !old);
   }
+  
 
   return (
     <div>
@@ -159,6 +164,7 @@ export default function ApartmentListingAdmin({
                       forall={forall}
                       bookedApartment={bookedApartment}
                       handleChangeApartmentId={handleChangeApartmentId}
+                      handlechangeLandlordId={handlechangeLandlordId}
                       handleChangeShowDocumnetFlag={
                         handleChangeShowDocumnetFlag
                       }
@@ -188,6 +194,7 @@ export default function ApartmentListingAdmin({
               requestLeaseFlagDialog={requestLeaseFlagDialog}
               handleChangeRequestLeaseDialog={handleChangeRequestLeaseDialog}
               apartmentId={apartmentId}
+              landlordId={landlordId}
             />
           ) : (
             ""

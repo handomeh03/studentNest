@@ -4,19 +4,30 @@ import {
   TextField, Box, Button, Typography, CircularProgress
 } from "@mui/material";
 import ErrorComp from '../PublicComp/ErrorComp';
+import { UseCreateLeaseRequest } from '../../Hooks/StudentHooks/UseCreateLeaseRequest';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Context/AuthContext/AuthContext';
 
 export default function RequestLeaseDialog({ 
   requestLeaseFlagDialog, 
   handleChangeRequestLeaseDialog, 
-  apartmentId 
+  apartmentId ,
+  landlordId
 }) {
   const primaryColor = "#3f51b5";
+  
+  
   const [requestMessage, setRequestMessage] = useState("");
   const [startDate, setStartDate] = useState("");
   const [rentTerm, setRentTerm] = useState("");
   
+
   const [inputError, setInputError] = useState("");
-  const [loader, setLoader] = useState(false); 
+
+  
+  const { createLeaseRequest, loader, error } = UseCreateLeaseRequest();
+  let navigate=useNavigate();
+  let{token}=useAuth();
 
   const textFieldStyle = {
     mb: 2,
@@ -28,11 +39,11 @@ export default function RequestLeaseDialog({
     },
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setInputError("");
 
-    // التحقق من البيانات
+    
     if (!startDate) {
       setInputError("Please select the date you intend to move in.");
       return;
@@ -45,16 +56,21 @@ export default function RequestLeaseDialog({
       setInputError("Please write a short message (at least 10 characters) to the owner.");
       return;
     }
+    if(token==null || token==""){
+        navigate("/userlogin");
+         return;
+       }
 
     
+    createLeaseRequest(apartmentId, requestMessage, startDate, rentTerm,landlordId,handleChangeRequestLeaseDialog);
     
-    console.log(apartmentId)
    
   };
 
   return (
     <Dialog 
       open={requestLeaseFlagDialog} 
+      onClose={handleChangeRequestLeaseDialog} 
       fullWidth 
       maxWidth="xs" 
       PaperProps={{ sx: { borderRadius: 3 } }}
@@ -69,7 +85,6 @@ export default function RequestLeaseDialog({
             Fill in the details below to send a lease request for this apartment
           </Typography>
 
-          {/* Start Date Field */}
           <TextField
             label="Start Date"
             type="date"
@@ -80,7 +95,6 @@ export default function RequestLeaseDialog({
             sx={textFieldStyle}
           />
 
-          {/* Rent Term Field */}
           <TextField
             label="Rent Term (Months)"
             type="number"
@@ -91,7 +105,6 @@ export default function RequestLeaseDialog({
             sx={textFieldStyle}
           />
 
-          {/* Request Message Field */}
           <TextField
             label="Request Message"
             placeholder="Tell the Landlord a bit about yourself..."
@@ -104,14 +117,15 @@ export default function RequestLeaseDialog({
             sx={textFieldStyle}
           />
 
-          {inputError && (
-           <ErrorComp error={inputError}/>
+          
+          {(inputError || error) && (
+            <ErrorComp error={inputError || error} />
           )}
         </Box>
       </DialogContent>
 
       <DialogActions sx={{ p: 2, px: 3 }}>
-        <Button onClick={handleChangeRequestLeaseDialog} sx={{ color: '#888' }}>
+        <Button onClick={handleChangeRequestLeaseDialog} sx={{ color: '#888' }} disabled={loader}>
           Cancel
         </Button>
         <Button 
@@ -126,7 +140,7 @@ export default function RequestLeaseDialog({
             '&:hover': { backgroundColor: '#303f9f' }
           }}
         >
-          {loader ? <CircularProgress size={24} color="white" /> : "Send Request"}
+          {loader ? <CircularProgress size={24} sx={{ color: "white" }} /> : "Send Request"}
         </Button>
       </DialogActions>
     </Dialog>
