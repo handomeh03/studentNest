@@ -25,7 +25,7 @@ export function UseEditLandlordStatus(){
             if(res.ok){
                 adminForlandlordDispatch({type:"editstatus",payload:{id,status}});
                 handleChangeEditLandlordFlag();
-                console.log("ok verfied")
+                
             }else{
                 throw new Error(data.error);
             }

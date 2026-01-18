@@ -31,7 +31,7 @@ export function UseEditApartment() {
         const data=await res.json();
         if(res.ok){
             apartmentDispatch({type:"editApartment",payload:data});
-            console.log(data);
+            
             handleChangeEditdetailFlag();
             
         }

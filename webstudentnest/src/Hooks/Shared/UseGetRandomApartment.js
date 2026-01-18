@@ -20,7 +20,7 @@ export default function UseGetRandomApartment(){
             })
             const data =await res.json();
             if(res.ok){
-              console.log(data);
+              
               apartmentDispatch({type:"GetRandomApartment",payload:data});
               
             }

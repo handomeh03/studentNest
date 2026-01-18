@@ -82,6 +82,7 @@ function App() {
           
           <Route index element={<MyRequestLeaseContainer/>}/>
           <Route path='myleasse' element={<MyLeasesContainer/>}/>
+          <Route path='lease/:leaseId/paymentschudle' element={<PaymentScheduleContainer/>}/>
          <Route path='notification' element={<NotificationTableContainer/>}/>
          <Route path='setting' element={<StudentSetting/>}/> 
          

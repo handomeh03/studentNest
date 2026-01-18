@@ -3,16 +3,18 @@
 import { useState } from "react";
 import HeadOfTable from "../Components/PaymentschudleComp/HeadOfTable";
 import RowOfTable from "../Components/PaymentschudleComp/RowOfTable";
-import ReciptDialog from "../Components/PaymentschudleComp/ReciptDialog";
+
 import EditVeridedLandlordDialog from "../Components/PaymentschudleComp/EditVeridedLandlordDialog";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 import ReciptDialogConationer from "../Components/PaymentschudleComp/ReciptDialogContainer";
+import UploadReciptFlagDialog from "../Components/PaymentschudleComp/UploadReciptDialog";
 
 export default function PaymentSchudlepage({leaseId,error,payments}){
     
     let[paymentId,setPaymentId]=useState("");
     let[ReciptDialogFlag,setReciptDialogflag]=useState(false);
     let[EditVeridedLandlordFlag,setEditVeridedLandlordFlag]=useState(false);
+    let[uploadReciptFlag,setUploadReciptFlag]=useState(false);
   
   function handlechangePaymentId(id){
     setPaymentId(id);
@@ -22,6 +24,9 @@ export default function PaymentSchudlepage({leaseId,error,payments}){
   }
   function handlechangeEditVeridedLandlordFlag(){
     setEditVeridedLandlordFlag((old)=>!old);
+  }
+  function handleChangeuploadReciptFlag(){
+    setUploadReciptFlag((old)=>!old);
   }
     return(
       <div>
@@ -34,7 +39,7 @@ export default function PaymentSchudlepage({leaseId,error,payments}){
             
                           <tbody className="divide-y divide-gray-200   ">
                             {payments.map((payment,index) => (
-                              <RowOfTable handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} handlechangePaymentId={handlechangePaymentId} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} key={index} payment={payment}/>
+                              <RowOfTable handleChangeuploadReciptFlag={handleChangeuploadReciptFlag} handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} handlechangePaymentId={handlechangePaymentId} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} key={index} payment={payment}/>
                             ))}
                           </tbody>
                         </table> }
@@ -45,7 +50,7 @@ export default function PaymentSchudlepage({leaseId,error,payments}){
 
                   {ReciptDialogFlag ?<ReciptDialogConationer handlechangesetReciptDialogflag={handlechangesetReciptDialogflag} ReciptDialogFlag={ReciptDialogFlag} paymentId={paymentId} leaseId={leaseId}/>:""}
                   {EditVeridedLandlordFlag ? <EditVeridedLandlordDialog EditVeridedLandlordFlag={EditVeridedLandlordFlag} handlechangeEditVeridedLandlordFlag={handlechangeEditVeridedLandlordFlag} paymentId={paymentId} leaseId={leaseId} />:""}
-                  
+                  {uploadReciptFlag? <UploadReciptFlagDialog uploadReciptFlag={uploadReciptFlag} handleChangeuploadReciptFlag={handleChangeuploadReciptFlag}  paymentId={paymentId} leaseId={leaseId}/>:""}
               
         </div>}
       </div>

@@ -17,6 +17,15 @@ export function PaymentSchudleContextProvider({children}){
                     }
                     
                 })};
+                case "editPaymentStatus":
+                    return {...state,payments:state.payments.map((e)=>{
+                        if(e.paymentId==action.payload){
+                            return {...e,paymentStatus:"Paid"}
+                        }
+                        else{
+                            return e;
+                        }
+                    })}
             default:
                 return state;
         }

@@ -15,6 +15,7 @@ export default function ReciptDialog({
   receipt,
 }) {
   const mainColor = "#4f46e5"; 
+  
 
   return (
     <Dialog
