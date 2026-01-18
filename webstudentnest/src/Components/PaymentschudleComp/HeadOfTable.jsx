@@ -11,12 +11,12 @@ export default function HeadOfTable() {
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Amount</th>
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">View Receipt</th>
         
-        {/* عمود الرفع للمستأجر فقط */}
+        
         {role === "student" && (
           <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Upload</th>
         )}
         
-        <th className="px-3 py-4 text-center text-xs font-bold uppercase tracking-wider text-gray-500">Actions</th>
+        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Actions</th>
       </tr>
     </thead>
   );

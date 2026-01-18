@@ -15,7 +15,8 @@ export function UseGetReciptForPayment(leaseId,paymentId){
       const getPaymentReceipt=async()=>{
          try{
             setloader(true);
-            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/landlord/payment/${leaseId}/${paymentId}/receipt`,{
+                          
+            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/payments/${leaseId}/${paymentId}/receipt`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",
@@ -24,6 +25,7 @@ export function UseGetReciptForPayment(leaseId,paymentId){
             });
             const data=await res.json();
             if(res.ok){
+                
                 paymentSchudleDispatch({type:"getReceipt",payload:data});
                
                 

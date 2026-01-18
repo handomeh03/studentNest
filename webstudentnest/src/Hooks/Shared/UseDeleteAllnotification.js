@@ -24,7 +24,7 @@ export function UseDeleteAllNotification(){
                 NotificationDispatch({type:"deleteALLNotification"})
                 
             }else{
-                console.log(data.message);
+                
                 throw new Error(data.errors || "Notifications not found");
             }
             

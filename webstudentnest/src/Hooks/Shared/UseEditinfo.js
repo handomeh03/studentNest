@@ -38,7 +38,7 @@ export function UseEditInfo(){
             if(res.ok){
                 fetchUser();
             }else{
-                console.log(data)
+                
                 throw new Error(data.error);
             }
             

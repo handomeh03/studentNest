@@ -13,7 +13,7 @@ export function UseGetPaymentSchudele(leaseId){
       const getPaymentSchudle=async()=>{
          try{
             setloader(true);
-            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/landlord/payment/${leaseId}`,{
+            let res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/payments/${leaseId}`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json",

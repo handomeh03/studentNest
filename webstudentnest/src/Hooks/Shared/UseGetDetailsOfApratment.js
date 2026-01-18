@@ -23,7 +23,7 @@ export function UseGetDetailsOfApratment(id,url){
           const data=await res.json();
     
           if(res.ok){
-            console.log(data);
+            
             apartmentDispatch({type:"getDetails",payload:data});
           }else{
              apartmentDispatch({type:"getDetails",payload:{}});

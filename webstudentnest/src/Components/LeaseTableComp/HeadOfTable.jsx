@@ -34,16 +34,14 @@ export default function HeadOfTable() {
             {header.label}
           </th>
         ))}
-
+         
         
-        {!(role === "admin" || role === "student") && (
-          <th
+       {role=="landlord" || role=="student"? <th
             scope="col"
             className="px-3 py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-indigo-50 text-indigo-700"
           >
             Payment Schedule
-          </th>
-        )}
+          </th>:""}
       </tr>
     </thead>
   );

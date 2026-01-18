@@ -19,7 +19,7 @@ export default function UseGetAllAvaibleApartment(){
             })
             const data =await res.json();
             if(res.ok){
-              console.log(data);
+              
               apartmentDispatch({type:"getallAvaibleApartemnt",payload:data});
             }
             else{

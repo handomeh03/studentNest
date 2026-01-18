@@ -48,16 +48,20 @@ export default function RowOfTable({ lease }) {
       </td>
 
       
-      {user?.user?.role === "landlord" && (
-        <td className="whitespace-nowrap px-4 py-5 text-sm">
+      {user?.user?.role=="landlord" || user?.user?.role=="student"?  <td className="whitespace-nowrap px-4 py-5 text-sm">
           <button
-            onClick={() => navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`)}
+            onClick={() => {
+              if(user?.user?.role=="landlord"){
+                navigate(`/landlordDashboard/lease/${lease.leaseId}/paymentschudle`);
+              }else{
+                navigate(`/studentDashboard/lease/${lease.leaseId}/paymentschudle`)
+              }
+            }}
             className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-sm hover:bg-indigo-700 hover:shadow-indigo-200 transition-all active:scale-95"
           >
             Payment Schedule
           </button>
-        </td>
-      )}
+        </td>:""}
     </tr>
   );
 }

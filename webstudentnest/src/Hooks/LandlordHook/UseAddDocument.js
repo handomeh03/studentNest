@@ -21,7 +21,7 @@ export function UseAddDocument() {
         const data=await res.json();
         if(res.ok){
             handlechangeAddDocumentFlag();
-            console.log(data);
+            
         }
         else{
             throw new Error(data.error || "Add document fail");
