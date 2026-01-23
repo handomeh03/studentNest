@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet, useNavigate } from "react-router-dom";
-import {BuildingOfficeIcon ,AcademicCapIcon ,HomeIcon,UsersIcon,BellIcon,ClipboardDocumentListIcon,ReceiptPercentIcon ,DocumentCheckIcon    } from '@heroicons/react/24/outline'
+import { UserGroupIcon,  DocumentMagnifyingGlassIcon,  BuildingOffice2Icon, AcademicCapIcon ,HomeIcon,BellIcon,ClipboardDocumentListIcon ,DocumentCheckIcon    } from '@heroicons/react/24/outline'
+
 import SideBar from "../Components/admindashboardComp/SideBar";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
 import Loader from "../Components/PublicComp/Loader";
@@ -12,18 +13,30 @@ export default function AdminDashboardLayout() {
   let{user}=useUserContext();
   let navigate=useNavigate();
  const [sidebarOpen, setSidebarOpen] = useState(false);
- const [navigation,setnavigation] = useState([
+const [navigation, setnavigation] = useState([
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
-  { name: 'Landlords', href: '/admindashborad', icon: UsersIcon, current: true },
-  { name: 'students', href: 'students', icon: AcademicCapIcon , current: false },
-  { name: 'leases', href: 'lease', icon: DocumentCheckIcon , current: false },
-  { name: 'request Lease', href: 'leaserequest', icon: DocumentCheckIcon , current: false },
-  { name: 'Notifications', href: 'Notification', icon: BellIcon , current: false },
-  { name: 'apartment Lisinting', href: 'apartmentListingadmin', icon: BuildingOfficeIcon  , current: false },
-  { name: 'auditLog', href: 'auditLog', icon: ClipboardDocumentListIcon , current: false },
   
-]
-)
+  
+  { name: 'Landlords', href: '/admindashborad', icon: UserGroupIcon, current: true },
+  
+  
+  { name: 'students', href: 'students', icon: AcademicCapIcon, current: false },
+  
+  
+  { name: 'leases', href: 'lease', icon: DocumentCheckIcon, current: false },
+  
+  
+  { name: 'request Lease', href: 'leaserequest', icon: DocumentMagnifyingGlassIcon, current: false },
+  
+  
+  { name: 'Notifications', href: 'Notification', icon: BellIcon, current: false },
+  
+  
+  { name: 'apartment Lisinting', href: 'apartmentListingadmin', icon: BuildingOffice2Icon, current: false },
+  
+  
+  { name: 'auditLog', href: 'auditLog', icon: ClipboardDocumentListIcon, current: false },
+]);
 useEffect(()=>{
          if(user==null || !user){
              navigate("/userlogin", { replace: true });

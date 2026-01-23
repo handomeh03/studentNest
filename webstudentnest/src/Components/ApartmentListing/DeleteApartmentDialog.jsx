@@ -1,86 +1,114 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-
-import DialogTitle from '@mui/material/DialogTitle';
-import { UseDeleteApartment } from '../../Hooks/AdminHooks/UseDeleteApartment';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Typography,
+  Box,
+  Fade,
+} from '@mui/material';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'; 
 import ErrorComp from '../PublicComp/ErrorComp';
+import { UseDeleteApartment } from '../../Hooks/AdminHooks/UseDeleteApartment';
 
-export default function DeleteApartmentDialog({handleChangeDeleteDialogFlag,deleteDialogFlag,apartmentId}) {
-  const mainColor = "#3f51b5"; 
-  const hoverColor = "#5c6bc0";
-  const cancelColor = "#000"; 
+export default function DeleteApartmentDialog({ handleChangeDeleteDialogFlag, deleteDialogFlag, apartmentId }) {
+  const mainColor = "#d32f2f";
+  const hoverColor = "#c62828";
+  const cancelColor = "#546e7a"; 
 
-  let{DeleteApartment,loader,error}=UseDeleteApartment();
+  let { DeleteApartment, loader, error } = UseDeleteApartment();
 
   return (
     <React.Fragment>
       <Dialog
         open={deleteDialogFlag}
+        TransitionComponent={Fade}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
         sx={{
           "& .MuiPaper-root": {
-            borderRadius: "12px",
-            padding: "8px",
+            borderRadius: "16px",
+            padding: "10px",
+            maxWidth: "400px"
           },
         }}
       >
-        <DialogTitle
-          id="alert-dialog-title"
-          sx={{
-            color: cancelColor,
-            fontWeight: "bold",
-            fontSize: "1.1rem",
-          }}
-        >
-          {"Are you sure you want to delete this apartment?"}
+        <DialogTitle id="alert-dialog-title" sx={{ textAlign: 'center' }}>
+          <Box
+            sx={{
+              backgroundColor: 'rgba(211, 47, 47, 0.1)',
+              width: '60px',
+              height: '60px',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 10px',
+            }}
+          >
+            <DeleteOutlineIcon sx={{ color: mainColor, fontSize: '35px' }} />
+          </Box>
+          <Typography variant="h6" fontWeight="bold">
+            Confirm Deletion
+          </Typography>
         </DialogTitle>
 
-        <DialogContent></DialogContent>
-        {error?<ErrorComp error={error || "no apartment found"}/>:""}
+        <DialogContent sx={{ textAlign: 'center', py: 1 }}>
+          <Typography variant="body1" color="textSecondary">
+            Are you sure you want to delete this apartment? This action cannot be undone.
+          </Typography>
+        </DialogContent>
 
-        <DialogActions sx={{ justifyContent: "space-between", px: 3, pb: 2 }}>
+        {error ? <Box px={3}><ErrorComp error={error || "no apartment found"} /></Box> : ""}
+
+        <DialogActions sx={{ justifyContent: "center", gap: 2, px: 3, pb: 3, pt: 2 }}>
           <Button
-             onClick={handleChangeDeleteDialogFlag}
+            onClick={handleChangeDeleteDialogFlag}
             sx={{
               color: cancelColor,
-              border: "1px solid #ccc",
+              fontWeight: 'bold',
               textTransform: "none",
-              "&:hover": {
-                backgroundColor: "#f5f5f5",
-              },
+              border: "1px solid #e0e0e0",
+              borderRadius: "8px",
+              px: 3,
+              "&:hover": { backgroundColor: "#f5f5f5" },
             }}
           >
             Cancel
           </Button>
-         {loader?<Button
-                              loading={true}
-                              variant="outlined"
-                              disabled
-                            >
-                              Disabled
-                            </Button>:<Button
-            autoFocus
-            onClick={(e)=>{
+
+          {loader ? (
+            <Button 
+              variant="outlined" 
+              disabled 
+              sx={{ borderRadius: "8px", px: 3, textTransform: "none" }}
+            >
+              Deleting...
+            </Button>
+          ) : (
+            <Button
+              autoFocus
+              onClick={(e) => {
                 e.preventDefault();
                 handleChangeDeleteDialogFlag();
-                DeleteApartment(apartmentId)
-            }}
-            sx={{
-              backgroundColor: mainColor,
-              color: "white",
-              textTransform: "none",
-              "&:hover": {
-                backgroundColor: hoverColor,
-              },
-            }}
-          >
-            Confirm
-          </Button>}
-          
+                DeleteApartment(apartmentId);
+              }}
+              sx={{
+                backgroundColor: mainColor,
+                color: "white",
+                fontWeight: 'bold',
+                textTransform: "none",
+                borderRadius: "8px",
+                px: 3,
+                "&:hover": {
+                  backgroundColor: hoverColor,
+                },
+              }}
+            >
+              Confirm
+            </Button>
+          )}
         </DialogActions>
       </Dialog>
     </React.Fragment>

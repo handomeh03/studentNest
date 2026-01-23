@@ -7,7 +7,7 @@ export function UseAddApartment(){
     let [error,setError]=useState("");
     let{token}=useAuth();
     let{apartmentDispatch}=UseApatment();
-    async function addapartment(title,description,price,address,numberOfBed,numberOfRoom,propertyStatus,isJoin,googleMap,apartmentPhoto,handlechangeAddApartemntFlag){ 
+    async function addapartment(title,description,price,address,numberOfBed,numberOfRoom,propertyStatus,isJoin,googleMap,apartmentPhoto,handlechangeAddApartemntFlag,houseRules, includeUtilities){ 
                             
         const formdata=new FormData();
         formdata.append("title",String(title));
@@ -20,6 +20,8 @@ export function UseAddApartment(){
         formdata.append("isJoin",isJoin);
         formdata.append("googleMapLocationLat",String(googleMap[0]));
         formdata.append("googleMapLocationLong",String(googleMap[1]));
+        formdata.append("houseRule",String(houseRules));
+        formdata.append("includeUtilities",String(includeUtilities));
         apartmentPhoto.forEach((photo)=>{
             formdata.append("apartmentPhoto",photo);
         });

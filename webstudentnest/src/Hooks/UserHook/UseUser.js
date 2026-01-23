@@ -21,7 +21,7 @@ export function useUser() {
                 if(res.ok){
                     userDispatch({type:"SET_USER",payload:data});
                     sessionStorage.setItem("user",JSON.stringify(data));
-                    console.log(data)
+                    
                     
                 }
                 else{
