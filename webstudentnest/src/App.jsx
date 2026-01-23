@@ -36,6 +36,7 @@ import ApartmentLeasesContainer from './Containers/ApartmentLeasesContainer'
 import MyRequestLeaseContainer from './Containers/MyRequestLeaseContainer'
 import MyLeasesContainer from './Containers/MyLeasesLandlordContainer'
 import RoomateProfile from './Pages/RoomateProfile'
+import SuggestionsStudentContainer from './Containers/SuggestionsStudentContainer'
 
 function App() {     
   return (
@@ -79,12 +80,12 @@ function App() {
         </Route>
 
      {/* student */}
-        <Route path='/studentDashboard' element={<StudentDashboardLayout/>}>
-          
+        <Route path='/studentDashboard' element={<StudentDashboardLayout/>}>    
           <Route index element={<MyRequestLeaseContainer/>}/>
           <Route path='myleasse' element={<MyLeasesContainer/>}/>
           <Route path='lease/:leaseId/paymentschudle' element={<PaymentScheduleContainer/>}/>
           <Route path='RoomateProfile'  element={<RoomateProfile/>}/>
+          <Route path='suggestionsStudent' element={<SuggestionsStudentContainer/>}/>
           <Route path='notification' element={<NotificationTableContainer/>}/>
           <Route path='setting' element={<StudentSetting/>}/> 
          

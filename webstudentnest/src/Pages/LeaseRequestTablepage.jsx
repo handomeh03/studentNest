@@ -5,15 +5,22 @@ import RowOfTable from "../Components/LeaseRequestTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 import ChangeStatusDialog from "../Components/LeaseRequestTableComp/ChangeStatusDialog";
 import { useState } from "react";
+import CreateLeaseDialog from "../Components/LeaseRequestTableComp/CreateLeaseDialog";
+import { UseCreateLease } from "../Hooks/StudentHooks/UseCreateLease";
 
 export default function LeaseRequestTablepage({LeaseRequest,error,searchUrl}){
   let [leaseId,setLeaseId]=useState("");
   let [dialogOpen,setDialogOpen]=useState(false);
+  let[createLeaseFlag,setcreateLeaseFlag]=useState(false);
+  
   function handleChangeLeaseId(id){
     setLeaseId(id);
   }
   function handleChangeEditdialogflag(){
     setDialogOpen(!dialogOpen);
+  }
+  function handleChangeCreateLeaseFlag(){
+    setcreateLeaseFlag(!createLeaseFlag);
   }
     return(
         <div>
@@ -27,7 +34,7 @@ export default function LeaseRequestTablepage({LeaseRequest,error,searchUrl}){
         
                       <tbody className="divide-y divide-gray-200   ">
                         {LeaseRequest.map((leaserequest,index) => (
-                          <RowOfTable key={index} leaserequest={leaserequest} handleChangeLeaseId={handleChangeLeaseId} handleChangeEditdialogflag={handleChangeEditdialogflag}/>
+                          <RowOfTable key={index} leaserequest={leaserequest} handleChangeLeaseId={handleChangeLeaseId} handleChangeEditdialogflag={handleChangeEditdialogflag} handleChangeCreateLeaseFlag={handleChangeCreateLeaseFlag}/>
                         ))}
                       </tbody>
                     </table>}
@@ -37,7 +44,10 @@ export default function LeaseRequestTablepage({LeaseRequest,error,searchUrl}){
               </div>
         
             </div>}
-            <ChangeStatusDialog leaseId={leaseId} dialogOpen={dialogOpen} handleChangeEditdialogflag={handleChangeEditdialogflag} />
+            {dialogOpen? <ChangeStatusDialog leaseId={leaseId} dialogOpen={dialogOpen} handleChangeEditdialogflag={handleChangeEditdialogflag} />:""}
+            {createLeaseFlag?<CreateLeaseDialog  leaseReqId={leaseId} createLeaseFlag={createLeaseFlag} handleChangeCreateLeaseFlag={handleChangeCreateLeaseFlag}/>:""}
+             
+            
         </div>
     );
 }

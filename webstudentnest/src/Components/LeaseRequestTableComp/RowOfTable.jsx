@@ -4,11 +4,13 @@ export default function RowOfTable({
   leaserequest,
   handleChangeLeaseId,
   handleChangeEditdialogflag,
+  handleChangeCreateLeaseFlag
 }) {
   let { user } = useUserContext();
+  
 
   function rentTerfomat(rentTerm) {
-    const [day, month, years] = rentTerm.split(",");
+    const [day, month, years] = rentTerm.split("-");
     let format = "";
     if (day && month && years) {
       if (years != "00") {
@@ -113,12 +115,10 @@ export default function RowOfTable({
         <td className="whitespace-nowrap px-4 py-5 text-sm">
           {leaserequest.requestStatus === "Accept" ? (
             <button
-              className="px-4 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-sm active:scale-95"
+              className="cursor-pointer px-4 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-sm active:scale-95"
               onClick={() => {
-                console.log(
-                  "Create lease for ID:",
-                  leaserequest.requestLeaseId,
-                );
+                handleChangeLeaseId(leaserequest?.requestLeaseId);
+                handleChangeCreateLeaseFlag();
               }}
             >
               Create Lease

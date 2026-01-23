@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import Loader from "../Components/PublicComp/Loader";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
-import {AcademicCapIcon ,HomeIcon,UsersIcon    } from '@heroicons/react/24/outline'
+import { 
+  HomeIcon, 
+  DocumentTextIcon, 
+  ClipboardDocumentCheckIcon, 
+  UserCircleIcon, 
+  UserGroupIcon, 
+  BellIcon 
+} from '@heroicons/react/24/outline';
 import SideBar from "../Components/admindashboardComp/SideBar";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -12,18 +19,14 @@ export default function StudentDashboardLayout(){
     const [sidebarOpen, setSidebarOpen] = useState(false);
     let{user}=useUserContext();
     let navigate=useNavigate();
-     const [navigation,setnavigation] = useState([
-      { name: 'Home', href: '/', icon: HomeIcon, current: false },
-      {name:'my request Lease',href:'/studentDashboard',icon: HomeIcon,current:true},
-    //   { name: 'My Apartment', href: '/landlordDashboard', icon: UsersIcon, current: true },
-      { name: 'My Leases', href: 'myleasse', icon: AcademicCapIcon , current: false },
-      { name: 'Make Roomate Profile', href: 'RoomateProfile', icon: UsersIcon, current: false },
-    //   { name: 'My booked apartments', href: 'mybookedapartments', icon: AcademicCapIcon , current: false },
-      { name: 'Notification', href: 'notification', icon: AcademicCapIcon , current: false },
-      
-      
-    ]
-    )
+    const [navigation, setnavigation] = useState([
+  { name: 'Home', href: '/', icon: HomeIcon, current: false },
+  { name: 'my request Lease', href: '/studentDashboard', icon: DocumentTextIcon, current: true },
+  { name: 'My Leases', href: 'myleasse', icon: ClipboardDocumentCheckIcon, current: false },
+  { name: 'Roomate Profile', href: 'RoomateProfile', icon: UserCircleIcon, current: false },
+  { name: 'suggestions Student', href: 'suggestionsStudent', icon: UserGroupIcon, current: false },
+  { name: 'Notification', href: 'notification', icon: BellIcon, current: false },
+]);
 
     useEffect(()=>{
          if(user==null || !user){

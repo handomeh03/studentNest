@@ -9,8 +9,10 @@ export function UseDeleteStudent(){
     let{studentforadminDispatch}=UseStudentForAdmin();
     async function  deleteLandlord(id,handleChangeDeleteStudentDialog) {
         setloader(true);
+
         
         try {
+            console.log(id);
             
             const res= await fetch(`${import.meta.env.VITE_API_URL}/api/v1/admin/users/${id}`,{
                 method:"DELETE",

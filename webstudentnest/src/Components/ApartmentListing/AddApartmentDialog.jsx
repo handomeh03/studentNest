@@ -12,7 +12,7 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { UseAddApartment } from "../../Hooks/LandlordHook/AddApartmentHook";
 import ErrorComp from "../PublicComp/ErrorComp";
 
-// Fix Leaflet marker icon issue
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
@@ -23,7 +23,6 @@ L.Icon.Default.mergeOptions({
 export default function AddApartmentDialog({ addApartmentflag, handlechangeAddApartemntFlag }) {
   const primaryColor = "#3f51b5";
 
-  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState(""); 
   const [address, setAddress] = useState("");
@@ -31,12 +30,15 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
   const [bedrooms, setBedrooms] = useState("");
   const [beds, setBeds] = useState("");
   const [isJoined, setIsJoined] = useState(false);
+  
+  const [houseRules, setHouseRules] = useState("");
+  const [includeUtilities, setIncludeUtilities] = useState("");
+  
   const [images, setImages] = useState([]);
   const [position, setPosition] = useState([31.9454, 35.9284]);
 
-  
   const [inputError, setInputError] = useState(""); 
-  const { addapartment, loader, error,setError } = UseAddApartment();
+  const { addapartment, loader, error, setError } = UseAddApartment();
 
   const textFieldStyle = {
     mb: 2,
@@ -62,11 +64,10 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
     return <Marker position={position}></Marker>;
   }
 
-  
   function handleSubmit(e) {
     e.preventDefault();
     setInputError(""); 
-      setError("");
+    setError("");
 
     if (title.length < 10) {
       setInputError("Apartment title must be at least 10 characters long");
@@ -74,6 +75,15 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
     }
     if (description.length < 20) {
       setInputError("Description must be at least 20 characters long");
+      return;
+    }
+    // Validation للحقول الجديدة
+    if (houseRules.trim().length === 0) {
+      setInputError("Please specify the house rules");
+      return;
+    }
+    if (includeUtilities.trim().length === 0) {
+      setInputError("Please specify what utilities are included");
       return;
     }
     if (address.length < 3) {
@@ -96,7 +106,8 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
       setInputError("Please upload between 1 and 6 images");
       return;
     }
-    addapartment(title, description, monthlyPrice, address, beds, bedrooms, true, isJoined, position, images,handlechangeAddApartemntFlag);
+
+    addapartment(title, description, monthlyPrice, address, beds, bedrooms, true, isJoined, position, images, handlechangeAddApartemntFlag, houseRules, includeUtilities);
   }
 
   return (
@@ -113,7 +124,6 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
       <DialogContent dividers>
         <Box component="form" id="apartment-form" sx={{ mt: 1 }}>
           
-
           <TextField
             label="Apartment Title"
             fullWidth
@@ -131,6 +141,24 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
             variant="outlined"
             value={description}
             onChange={(e) => { setDescription(e.target.value); setInputError(""); setError(""); }}
+            sx={textFieldStyle}
+          />
+
+          <TextField
+            label="House Rules"
+            fullWidth
+            variant="outlined"
+            value={houseRules}
+            onChange={(e) => { setHouseRules(e.target.value); setInputError(""); setError(""); }}
+            sx={textFieldStyle}
+          />
+
+          <TextField
+            label="Included Utilities (e.g. Water, Electricity, Wifi)"
+            fullWidth
+            variant="outlined"
+            value={includeUtilities}
+            onChange={(e) => { setIncludeUtilities(e.target.value); setInputError(""); setError(""); }}
             sx={textFieldStyle}
           />
 
@@ -193,8 +221,8 @@ export default function AddApartmentDialog({ addApartmentflag, handlechangeAddAp
              Upload Images
             <input hidden accept="image/*" type="file" multiple onChange={(e)=>{
               handleChangeImages(e);
-           setInputError("");
-           setError("");
+              setInputError("");
+              setError("");
             }} />
           </Button>
 

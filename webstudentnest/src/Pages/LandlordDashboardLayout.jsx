@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react";
 import Loader from "../Components/PublicComp/Loader";
 import { UseLoader } from "../Hooks/publicHook/useLoader";
-import {AcademicCapIcon ,HomeIcon,UsersIcon    } from '@heroicons/react/24/outline'
+import { 
+  HomeIcon, 
+  BuildingOfficeIcon, 
+  InboxArrowDownIcon, 
+  DocumentDuplicateIcon, 
+  KeyIcon, 
+  BellIcon 
+} from '@heroicons/react/24/outline';
 import SideBar from "../Components/admindashboardComp/SideBar";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -12,17 +19,24 @@ export default function LandlordDashboardLayout(){
     const [sidebarOpen, setSidebarOpen] = useState(false);
     let{user}=useUserContext();
     let navigate=useNavigate();
-     const [navigation,setnavigation] = useState([
-      { name: 'Home', href: '/', icon: HomeIcon, current: false },
-      { name: 'My Apartment', href: '/landlordDashboard', icon: UsersIcon, current: true },
-      { name: 'Request leases', href: 'requestlease', icon: UsersIcon, current: false },
-      { name: 'My Leases', href: 'myleasse', icon: AcademicCapIcon , current: false },
-      { name: 'My booked apartments', href: 'mybookedapartments', icon: AcademicCapIcon , current: false },
-      { name: 'Notification', href: 'notification', icon: AcademicCapIcon , current: false },
-      
-      
-    ]
-    )
+     const [navigation, setnavigation] = useState([
+  { name: 'Home', href: '/', icon: HomeIcon, current: false },
+
+  
+  { name: 'My Apartment', href: '/landlordDashboard', icon: BuildingOfficeIcon, current: true },
+
+  
+  { name: 'Request leases', href: 'requestlease', icon: InboxArrowDownIcon, current: false },
+
+  
+  { name: 'My Leases', href: 'myleasse', icon: DocumentDuplicateIcon, current: false },
+
+  
+  { name: 'My booked apartments', href: 'mybookedapartments', icon: KeyIcon, current: false },
+
+  
+  { name: 'Notification', href: 'notification', icon: BellIcon, current: false },
+]);
 
     useEffect(()=>{
          if(user==null || !user){
