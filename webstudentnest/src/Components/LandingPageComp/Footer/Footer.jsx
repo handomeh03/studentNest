@@ -66,24 +66,7 @@ export default function Footer() {
             © {new Date().getFullYear()} <span className="font-semibold text-white">StudentNest</span>. All rights reserved.
           </p>
           
-          
-          {/* <div className="flex gap-4">
-            {[
-              { name: 'FB', icon: 'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3V2z' },
-              { name: 'TW', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z' },
-              { name: 'IG', icon: 'M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm10.5 4a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z' }
-            ].map((soc) => (
-              <a 
-                key={soc.name}
-                href="#" 
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white hover:text-[#3f51b5] transition-all duration-300"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d={soc.icon} />
-                </svg>
-              </a>
-            ))}
-          </div> */}
+      
         </div>
       </div>
     </footer>

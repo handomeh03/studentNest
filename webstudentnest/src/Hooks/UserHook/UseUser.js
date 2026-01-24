@@ -5,6 +5,7 @@ import { useUserContext } from "../../Context/UserContext/UserContext";
 export function useUser() {
     let {token}=useAuth();
     let[loader,setLoader]=useState(false);
+    let[error,setError]=useState("");
     let{userDispatch}=useUserContext();    
     
         async function fetchUser() {
@@ -28,7 +29,7 @@ export function useUser() {
                     throw new Error(data.error || "Failed to fetch user data");
                 }
             } catch (error) {
-                console.log(error.message);
+                setError(error.message);
             }finally{
                 setLoader(false);
             }

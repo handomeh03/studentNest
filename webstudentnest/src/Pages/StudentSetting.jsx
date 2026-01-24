@@ -25,8 +25,9 @@ export default function StudentSetting() {
   const [major, setMajor] = useState(user?.major || "");
   const [graduateYear, setGraduateYear] = useState(user?.gradateYear || "");
   const [studentCardId, setStudentCardId] = useState(user?.studentCardId || "");
+  
 
-  const { editInfo, error, loader } = UseEditInfo();
+  const { editInfo, error, loader,success } = UseEditInfo();
   const { fetchUser } = useUser();
   const [inputError, setInputError] = useState("");
 
@@ -324,6 +325,9 @@ export default function StudentSetting() {
           <ErrorComp error={error || inputError} />
         </div>
       )}
+    <div className="m-4">
+        {success && <div className="p-4 bg-green-50 text-green-600 rounded-2xl border border-green-100 text-sm font-medium">Profile updated successfully</div>}
+    </div>
 
       <div className="flex items-center justify-end gap-x-4 bg-gray-50/50 px-6 py-6 border-t border-gray-100">
         <button

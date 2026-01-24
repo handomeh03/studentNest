@@ -46,7 +46,7 @@ export default function ApartmentListingAdmin({
     Apartments || []
   );
 
-  //tab for togole
+  //tab for togol
   const { tabs, setTabs } = UseTab();
 
   //filter apartments

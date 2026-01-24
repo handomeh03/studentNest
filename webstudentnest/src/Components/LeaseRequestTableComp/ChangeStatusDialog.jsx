@@ -29,7 +29,7 @@ export default function ChangeStatusDialog({leaseId,dialogOpen,handleChangeEditd
       onClose={handleChangeEditdialogflag}
       fullWidth 
       maxWidth="xs"
-      // Added a custom zIndex for the dialog and ensured the Menu appears on top
+      
       sx={{ 
         zIndex: "12345675",
         "& .MuiPaper-root": { 
@@ -65,7 +65,7 @@ export default function ChangeStatusDialog({leaseId,dialogOpen,handleChangeEditd
             variant="outlined"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            // FIX: This ensures the dropdown menu appears ABOVE the dialog
+            
             SelectProps={{
               MenuProps: {
                 sx: { zIndex: "12345676" } 

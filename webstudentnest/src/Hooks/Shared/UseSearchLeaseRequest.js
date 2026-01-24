@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { UseLeaseRequest } from "../../Context/LeaseRequestContext/LeaseRequestAdmin";
 
 export default function UseSearchLeaseRequest(id,searchUrl) {
   const { token } = useAuth();
   const{leaseRequestDipattch}=UseLeaseRequest();
+  let[error,setError]=useState("");
 
   
 
@@ -47,7 +48,7 @@ export default function UseSearchLeaseRequest(id,searchUrl) {
           }
         } catch (error) {
           if (error.name !== "AbortError") {
-            console.log(error.message);
+           setError(error.message);
           }
         } 
       };

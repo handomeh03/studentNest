@@ -64,13 +64,13 @@ export default function RoommateProfile() {
   }
 
   return (
-    <div className="w-full bg-gray-50 md: min-h-screen">
+    <div className="w-full  md: min-h-screen">
       <div className="max-w-4xl mx-auto space-y-6">
         
         
       <MyCurrentPreferences errorProfile={errorProfile} loaderProfile={loaderProfile} profileRoomate={RoomateProfile}/>
 
-        {/* --- Main Form Section --- */}
+        
         <div className="w-full bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
           <div className="bg-[#3f51b5] p-6 md:p-10 text-white text-center md:text-left">
             <h2 className="text-2xl md:text-4xl font-bold">Find Your Perfect Roommate</h2>
@@ -78,10 +78,9 @@ export default function RoommateProfile() {
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 md:p-10 space-y-8">
-            {error && <div className="p-4 bg-red-50 text-red-600 rounded-2xl border border-red-100 text-sm font-medium animate-pulse">{error}</div>}
-            {success && <div className="p-4 bg-green-50 text-green-600 rounded-2xl border border-green-100 text-sm font-medium">Profile updated successfully!</div>}
+           
 
-            {/* Basic Info */}
+        
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label className="text-xs font-bold text-gray-500 uppercase ml-1">Preferred Language</label>
@@ -108,7 +107,7 @@ export default function RoommateProfile() {
 
             <div className="h-px bg-gray-100 w-full" />
 
-            {/* Lifestyle Grid */}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
                 { label: 'Sleep Schedule', name: 'UserSleepSchedule', options: ['Early', 'Late', 'Flexible'] },
@@ -131,7 +130,7 @@ export default function RoommateProfile() {
 
             <div className="h-px bg-gray-100 w-full" />
 
-            {/* Policies Grid */}
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                {[
                 { label: 'Guest Policy', name: 'guestPolicyType', options: [['no_guests', 'No Guests'], ['weekends_only', 'Weekends Only'], ['frequent_guests', 'Frequent'], ['study_partners', 'Study Partners Only']] },
@@ -151,6 +150,9 @@ export default function RoommateProfile() {
                 </div>
               ))}
             </div>
+
+             {error && <div className="p-4 bg-red-50 text-red-600 rounded-2xl border border-red-100 text-sm font-medium animate-pulse">{error}</div>}
+            {success && <div className="p-4 bg-green-50 text-green-600 rounded-2xl border border-green-100 text-sm font-medium">Profile updated successfully!</div>}
 
             <button 
               type="submit"

@@ -3,10 +3,10 @@ import { XCircleIcon } from '@heroicons/react/20/solid'
 export default function ErrorComp({ error }) {
   return (
     <div className="w-full px-4 sm:px-6 lg:px-8 my-6">
-      {/* Container with max-width for desktop but 100% width on mobile */}
+      
       <div className="mx-auto max-w-4xl rounded-lg border border-red-200 bg-red-50 p-4 shadow-sm transition-all">
         <div className="flex items-start">
-          {/* Icon stays fixed to the top left */}
+      
           <div className="shrink-0">
             <XCircleIcon aria-hidden="true" className="h-5 w-5 text-red-500" />
           </div>

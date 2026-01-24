@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/AuthContext/AuthContext";
 import {  UsePaymentSchudle } from "../../Context/PaymentSchudleContext/PaymentSchudleContext";
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 
 export function UseGetReciptForPayment(leaseId,paymentId){
@@ -8,9 +9,8 @@ export function UseGetReciptForPayment(leaseId,paymentId){
         let[error,seterror]=useState("");
         let[loader,setloader]=useState(false);
      let {paymentSchudleDispatch}=UsePaymentSchudle();
-
-     
-        
+      const { user } = useUserContext();
+       const userRole = user?.user?.role;     
    useEffect(()=>{
       const getPaymentReceipt=async()=>{
          try{
@@ -25,11 +25,16 @@ export function UseGetReciptForPayment(leaseId,paymentId){
             });
             const data=await res.json();
             if(res.ok){
-                
-                paymentSchudleDispatch({type:"getReceipt",payload:data});
+                if(userRole=="student"){
+                   paymentSchudleDispatch({type:"getReceipt",payload:data});
+                }
+               else{
+                 paymentSchudleDispatch({type:"getReceipt",payload:data[0]});
+               }
                
                 
             }else{
+                console.log(data)
                 throw new Error(data.errors);
             }
         }
@@ -40,6 +45,6 @@ export function UseGetReciptForPayment(leaseId,paymentId){
         }
       }
       getPaymentReceipt();
-   },[token,leaseId,paymentId]);
+   },[]);
     return {error,loader};
 }

@@ -4,6 +4,7 @@ export function UseEditInfo(){
     let {token}=useAuth();
     let [loader,setloader]=useState(false);
     let [error,setError]=useState("");
+    const [success,setsuccess]=useState("");
 
     async function editInfo(role,name,email,phoneNumber,dateOfBirth,address,photo,cliQAccount,fetchUser,universityName,major,graduateYear,studentCardId) {
         const formData=new FormData();
@@ -36,6 +37,7 @@ export function UseEditInfo(){
             )
             const data=await res.json();
             if(res.ok){
+                setsuccess("success update")
                 fetchUser();
             }else{
                 
@@ -51,5 +53,5 @@ export function UseEditInfo(){
             setloader(false);
         }
     }
-    return {editInfo,error,loader};
+    return {editInfo,error,loader,success,setsuccess};
 }

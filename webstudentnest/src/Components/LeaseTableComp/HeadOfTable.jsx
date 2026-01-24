@@ -18,7 +18,7 @@ export default function HeadOfTable() {
     { label: "Student Sign", align: "text-center" },
     { label: "Monthly Rent", align: "text-center" },
     { label: "House Rules", align: "text-center" },
-    { label: "Utilities", align: "text-center" },
+    // { label: "Utilities", align: "text-center" },
     { label: "Created At", align: "text-center" },
   ];
 

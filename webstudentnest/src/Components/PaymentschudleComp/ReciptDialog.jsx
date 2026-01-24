@@ -16,6 +16,8 @@ export default function ReciptDialog({
 }) {
   const mainColor = "#4f46e5"; 
   
+ 
+  
 
   return (
     <Dialog
@@ -32,7 +34,7 @@ export default function ReciptDialog({
         },
       }}
     >
-      {/* Header Section */}
+      
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", pr: 1, pt: 1 }}>
         <DialogTitle sx={{ fontWeight: "800", fontSize: "1.2rem", color: "#111827" }}>
           Payment Receipt
@@ -42,7 +44,7 @@ export default function ReciptDialog({
         </IconButton>
       </Box>
 
-      {/* Content Section */}
+      
       <Box sx={{ p: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
         {error ? (
           <ErrorComp error={error} />
@@ -64,7 +66,7 @@ export default function ReciptDialog({
               }}
             >
               <img
-                src={receipt?.ReceiptUrl || "https://www.shutterstock.com/shutterstock/photos/2271572825/display_1500/stock-vector-set-of-realistic-sales-receipts-cash-receipts-bummy-silent-store-receipt-with-a-barcode-account-2271572825.jpg"}
+                src={receipt?.ReceiptUrl}
                 alt="receipt-preview"
                 style={{
                   maxWidth: "100%",
@@ -77,7 +79,7 @@ export default function ReciptDialog({
         )}
       </Box>
 
-      {/* Footer Section */}
+      
       <DialogActions sx={{ p: 2, justifyContent: "center" }}>
         <Button
           onClick={handlechangesetReciptDialogflag}
