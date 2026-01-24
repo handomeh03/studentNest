@@ -12,7 +12,7 @@ export default function RowOfTable({ lease }) {
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">{lease?.studentName}</td>
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-700">{lease?.landlordName}</td>
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600 font-medium">{lease?.apartmentTitle}</td>
-      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600 text-center">{lease?.leaseTerm.split(",")[1]}</td>
+      <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600 text-center">{lease?.leaseTerm}</td>
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.leaseStartDate}</td>
       <td className="whitespace-nowrap px-4 py-5 text-sm text-gray-600">{lease?.leaseEndDate}</td>
 
