@@ -26,11 +26,8 @@ import NotificationTableContainer from './Containers/NotificationTableContainer'
 import ApartmentListingContainerForAdmin from './Containers/ApartmentLisningContainerforadmin'
 import AudlitLogContainer from './Containers/AudiltLogContainer'
 import PaymentScheduleContainer from './Containers/PaymentSchudleContainer'
-import MyLeasesLandlordContainer from './Containers/MyLeasesLandlordContainer'
 import MyApartmentsLandLordContainer from './Containers/MyApartmentsLandLordContainer'
 import MybookedApartmentsLandlordContainer from './Containers/MybookedApartmentsLandlordContainer'
-
-
 import ApartmentLeaseRequestcontainer from './Containers/ApartmentLeaseRequestcontainer'
 import ApartmentLeasesContainer from './Containers/ApartmentLeasesContainer'
 import MyRequestLeaseContainer from './Containers/MyRequestLeaseContainer'

@@ -62,7 +62,7 @@ export default function LoginForm({handleLogin,LoginLoader, email, password, han
         </FormControl>
       </form>
 
-      {/* <ErrorComp erorr={"log in error "} /> */}
+      
 
         <Link to={"/forgetPassword"} style={{ color: "var(--primarycolor)",width:"100%",marginLeft:"1rem" }}>
           Forget Passwoord ?

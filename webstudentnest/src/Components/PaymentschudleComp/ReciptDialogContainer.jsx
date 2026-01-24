@@ -7,6 +7,7 @@ export default function ReciptDialogConationer({handlechangesetReciptDialogflag,
     const {error,loader}=UseGetReciptForPayment(leaseId,paymentId);
     const {receipt}=UsePaymentSchudle();
     
+    
     if(loader){
         return <Loader/>;
     }

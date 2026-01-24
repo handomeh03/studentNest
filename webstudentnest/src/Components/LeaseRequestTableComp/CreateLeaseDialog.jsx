@@ -46,7 +46,7 @@ export default function CreateLeaseDialog({
         },
       }}
     >
-      {/* زر إغلاق علوي سريع */}
+      
       <IconButton
         onClick={handleChangeCreateLeaseFlag}
         sx={{ position: 'absolute', right: 16, top: 16, color: '#9e9e9e' }}
@@ -79,7 +79,7 @@ export default function CreateLeaseDialog({
           Are you sure you want to finalize the lease for this apartment?
         </Typography>
 
-        {/* صندوق تنبيه أنيق للملاحظة */}
+        
         <Alert 
           severity="info" 
           variant="outlined"
@@ -92,7 +92,7 @@ export default function CreateLeaseDialog({
           }}
         >
           <Typography variant="caption" sx={{ lineHeight: 1.6, color: '#455a64', fontWeight: 500 }}>
-            <strong>Note:</strong> Your lease status remains <b>'Inactive'</b> until the first payment. 
+            <strong>Note:</strong> Your lease status remains <b>'Pending'</b> until the first payment. 
             Late payments may result in losing your reservation.
           </Typography>
         </Alert>

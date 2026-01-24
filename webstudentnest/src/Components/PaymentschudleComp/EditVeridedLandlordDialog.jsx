@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import MenuItem from "@mui/material/MenuItem";
 import CircularProgress from "@mui/material/CircularProgress";
-import ErrorComp from "../PublicComp/ErrorComp"; // Using your shared error component
+import ErrorComp from "../PublicComp/ErrorComp"; 
 import { UseEditLandlordVerifedForPayment } from "../../Hooks/LandlordHook/UseEditLandolrdVerifedForPayment";
 
 export default function EditVeridedLandlordDialog({
@@ -16,13 +16,15 @@ export default function EditVeridedLandlordDialog({
   paymentId,
   leaseId
 }) {
-  const mainColor = "#4f46e5"; // Indigo 600
-  const hoverColor = "#4338ca"; // Indigo 700
+  const mainColor = "#4f46e5"; 
+  const hoverColor = "#4338ca";
 
   const [status, setStatus] = useState("Accept");
   const { EditLandlordVerifed, loader, error } = UseEditLandlordVerifedForPayment();
+  
 
   function handleSubmit() {
+    
     EditLandlordVerifed(leaseId,paymentId, status, handlechangeEditVeridedLandlordFlag);
   }
 
