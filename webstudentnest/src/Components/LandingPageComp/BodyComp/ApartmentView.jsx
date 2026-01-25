@@ -37,7 +37,7 @@ export default function ApartmentView() {
         </div>
 
         
-        <div className="flex justify-center" data-aos="zoom-in">
+        <div className="m-3 flex justify-center" data-aos="zoom-in">
           <button
             onClick={()=>{
               navigate("/apartments")

@@ -15,7 +15,7 @@ export default function HeroApartment() {
           alt="Modern Student Housing"
           className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
           loading="eager" 
-          fetchpriority="high" 
+          fetchPriority="high" 
         />
         
         <div className="absolute inset-0 bg-slate-900/60 shadow-inner"></div>

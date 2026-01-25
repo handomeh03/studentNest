@@ -12,7 +12,7 @@ export default function Hero() {
      
       <div className="absolute inset-0 z-0">
         <img 
-          fetchpriority="high"
+          fetchPriority="high"
           src={optimizedBg} 
           alt="Students studying together - Student Nest Housing"
           className="w-full h-full object-cover"
