@@ -14,7 +14,7 @@ export default function UseSearchLease(id,url) {
       
       const controller = new AbortController();
       const signal = controller.signal;
-      console.log(`${import.meta.env.VITE_API_URL}${url}${id}`)
+      
      
       const search = async () => {
         if(id==""){

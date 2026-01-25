@@ -8,6 +8,8 @@ import ErrorComp from '../PublicComp/ErrorComp';
 import { Box, Typography, Divider, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close'; 
 
+
+
 export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowDocumnetFlag, document, error }) {
   
   return (
@@ -36,9 +38,11 @@ export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowD
           position: 'relative'
         }}
       >
-        <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 1 }}>
+        {/* FIX: Changed component to "span" to avoid <h6> inside <h2> */}
+        <Typography variant="h6" component="span" sx={{ fontWeight: 700, letterSpacing: 1, display: 'block' }}>
           DOCUMENT 
         </Typography>
+        
         <IconButton
           onClick={handleChangeShowDocumnetFlag}
           sx={{ position: 'absolute', right: 8, top: 8, color: '#fff' }}
@@ -50,11 +54,10 @@ export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowD
       <DialogContent sx={{ p: 0 }}>
         {error ? (
           <Box sx={{ p: 4 }}>
-             <ErrorComp error={"No document found or failed to load."} />
+             <ErrorComp error={"No document found or failed to load"} />
           </Box>
         ) : (
           <Box>
-            
             <Box 
               sx={{ 
                 width: '100%', 
@@ -69,6 +72,8 @@ export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowD
                 component="img"
                 src={document?.documentUrl}
                 alt="Document"
+                // Added fetchPriority to resolve your previous warning too!
+                fetchPriority="high" 
                 sx={{
                   width: '90%',
                   height: 'auto',
@@ -83,14 +88,12 @@ export default function ShowDocumentDialog({ showDocumentFLag, handleChangeShowD
               />
             </Box>
 
-            
             <Box sx={{ p: 3 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                  <Typography variant="body2" color="text.secondary">Document Type</Typography>
                  <Typography variant="body2" fontWeight="700" color="primary">{document?.apartmentType || 'N/A'}</Typography>
               </Box>
               <Divider sx={{ my: 1, borderStyle: 'dashed' }} />
-            
             </Box>
           </Box>
         )}

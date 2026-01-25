@@ -36,9 +36,9 @@ export default function SuggestionsStudent({ students, error, loader }) {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {students.map((student) => (
+        {students.map((student,index) => (
           <div 
-            key={student.id} 
+            key={index} 
             className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-blue-50 transition-colors duration-300 border border-transparent hover:border-blue-100"
           >
             <div className="flex items-center gap-4 text-left">
