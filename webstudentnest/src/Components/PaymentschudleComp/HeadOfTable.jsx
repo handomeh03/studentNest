@@ -1,24 +1,48 @@
-import { useRole } from "../../Context/RoleContext";
+import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function HeadOfTable() {
-  let { role } = useRole();
+  const { user } = useUserContext();
+  const userRole = user?.user?.role;
+
   return (
-    <thead className="bg-gray-50 border-b border-gray-200">
+    <thead className=" border-b-2 border-gray-200">
       <tr>
-        {/* <th className="py-4 pl-4 pr-3 text-left text-xs font-bold uppercase tracking-wider text-gray-500 sm:pl-6">Payment ID</th> */}
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Status</th>
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Landlord Verified</th>
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Amount</th>
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">cliQ Account</th>
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Due date</th>
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">View Receipt</th>
-        
-        
-        {role === "student" && (
-          <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Upload</th>
-        )}
-        
-        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Actions</th>
+        {/* 1. Status */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          Payment Status
+        </th>
+
+        {/* 2. Landlord Verified */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          Verification
+        </th>
+
+        {/* 3. Amount */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          Amount
+        </th>
+
+        {/* 4. CliQ Account */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          CliQ Details
+        </th>
+
+        {/* 5. Due Date */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          Due Date
+        </th>
+
+        {/* 6. View Receipt */}
+        <th scope="col" className="px-4 py-4 text-left text-xs font-bold uppercase tracking-widest text-gray-600">
+          Receipt
+        </th>
+
+       
+
+        {/* 8. Actions (Edit for Landlord) */}
+        <th scope="col" className="px-4  py-4 text-center text-xs font-bold uppercase tracking-widest text-gray-600">
+          Actions
+        </th>
       </tr>
     </thead>
   );

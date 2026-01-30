@@ -11,6 +11,7 @@ export default function RowOfTable({
   const { user } = useUserContext();
   const userRole = user?.user?.role;
 
+  
   const getStatusStyles = (status) => {
     return status === "Paid" 
       ? "bg-emerald-100 text-emerald-700 ring-1 ring-inset ring-emerald-600/20" 
@@ -47,12 +48,10 @@ export default function RowOfTable({
         JOD {payment?.amount}
       </td>
 
-      {/* 4. CliQ Account  */}
+      {/* 4. CliQ Account */}
       <td className="whitespace-nowrap px-4 py-5 text-sm">
         <div className="flex flex-col gap-0.5">
-          
           <div className="flex items-center gap-1.5 text-gray-700">
-            
             <span className="font-mono font-semibold bg-gray-100 px-2 py-0.5 rounded border border-gray-200">
               {payment?.cliQAccount || "Not Set"}
             </span>
@@ -72,7 +71,7 @@ export default function RowOfTable({
         </div>
       </td>
 
-      {/* 6. View Receipt */}
+      {/* 6. View Receipt (Visibility logic) */}
       <td className="whitespace-nowrap px-4 py-5 text-sm">
         {payment?.paymentStatus === "Paid" ? (
           <button
@@ -99,7 +98,7 @@ export default function RowOfTable({
         )}
       </td>
 
-      {/* 7. Student Upload / Success */}
+      {/* 7. Student Upload Actions */}
       <td className="whitespace-nowrap px-4 py-5 text-sm">
         {userRole === "student" && (
           payment?.paymentStatus === "Paid" ? (
@@ -107,7 +106,7 @@ export default function RowOfTable({
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                 <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
               </svg>
-              uploaded
+              Uploaded
             </div>
           ) : (
             <button
@@ -127,24 +126,31 @@ export default function RowOfTable({
         )}
       </td>
       
-      {/* 8. Landlord Actions */}
+      
       <td className="whitespace-nowrap px-4 py-5 text-center">
         <div className="flex justify-center items-center">
           {userRole === "landlord" ? (
-            <button 
-              onClick={() => {
+            payment?.paymentStatus === "Paid" ? (
+              <button
+                onClick={() => {
                   handlechangePaymentId(payment.paymentId);
                   handlechangeEditVeridedLandlordFlag();
-              }} 
-              className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer"
-              title="Edit Verification"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
-              </svg>
-            </button>
+                }}
+                className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer"
+                title="Edit Verification"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                </svg>
+              </button>
+            ) : (
+              <span className="text-gray-400 text-[11px] italic font-medium px-2 py-1 bg-gray-50 rounded border border-gray-100">
+                Pending Payment
+              </span>
+            )
           ) : (
-             userRole !== "student" && <span className="text-gray-300">—</span>
+            
+            userRole !== "student" && <span className="text-gray-300">—</span>
           )}
         </div>
       </td>

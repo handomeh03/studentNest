@@ -14,6 +14,7 @@ export default function ApartmentView() {
 
   const {error}=UseGetRandomApartment();
   const {Apartments}=UseApatment();
+  
 
   return (
     <section className="bg-gray-50 py-24 px-6 overflow-hidden">

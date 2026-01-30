@@ -26,10 +26,10 @@ export default function RoommateProfile() {
     maxAge: "30",
     guestPolicyType: "no_guests",
     petType: "cat",
-    FoodPreferenceType: "Vegan",
+    FoodPreferenceType: "vegan",
     petPreferenceType: "has_pet",
     SharingLevelType: "strictly_private",
-    SmokoHabitType: "non_Smoker",
+    SmokoHabitType: "non_smoker",
   });
 
   const handleChange = (e) => {
