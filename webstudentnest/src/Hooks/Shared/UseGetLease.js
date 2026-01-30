@@ -36,6 +36,6 @@ export function UseGetLease(){
           }
           }
           fetchLease();
-    },[])
+    },[leaseDipattch])
     return {loader,error};
 }

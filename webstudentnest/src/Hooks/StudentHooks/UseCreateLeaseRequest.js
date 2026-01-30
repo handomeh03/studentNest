@@ -6,10 +6,10 @@ export function UseCreateLeaseRequest(){
     let[error,setError]=useState("");
     let[loader,setLoader]=useState(false);
     
-    async function createLeaseRequest(apartmentID,requestMessage,startDate,rentTerm,landlordId,handleChangeRequestLeaseDialog){
+    async function createLeaseRequest(apartmentID,requestMessage,startDate,rentTerm,handleChangeRequestLeaseDialog){
        let rentTermFormat=`00,${rentTerm},00`;
 
-       // to make date form like this dd-mm-yy
+       
        const formatDate = (dateString) => {
              if (!dateString) return "";
             const [year, month, day] = dateString.split("-");
@@ -21,7 +21,7 @@ export function UseCreateLeaseRequest(){
             const res=await fetch(`${import.meta.env.VITE_API_URL}/api/v1/student/lease-request/${apartmentID}`,
                 {
                     method:"POST",
-                    body:JSON.stringify({requestMessage,startDate:formatDate(startDate),rentTerm:rentTermFormat,landlordId}),
+                    body:JSON.stringify({requestMessage,startDate:formatDate(startDate),rentTerm:rentTermFormat}),
                     headers:{
                         'Content-Type': 'application/json',
                    "Authorization": `Bearer ${token}`, 

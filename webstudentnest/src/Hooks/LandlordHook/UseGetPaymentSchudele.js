@@ -37,6 +37,6 @@ export function UseGetPaymentSchudele(leaseId){
         }
       }
       getPaymentSchudle();
-   },[token,leaseId]);
+   },[leaseId]);
     return {error,loader};
 }

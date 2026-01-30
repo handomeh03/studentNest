@@ -9,6 +9,8 @@ export default function HeadOfTable() {
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Status</th>
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Landlord Verified</th>
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Amount</th>
+        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">cliQ Account</th>
+        <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">Due date</th>
         <th className="px-3 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-500">View Receipt</th>
         
         

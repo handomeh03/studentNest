@@ -59,7 +59,7 @@ export default function UseSearchLandlordForAdmin(email) {
 
     
     return () => clearTimeout(delayDebounceFn);
-  }, [email, token]);
+  }, [email]);
 
   
 }

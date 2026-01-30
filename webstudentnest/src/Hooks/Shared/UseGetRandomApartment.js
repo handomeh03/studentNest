@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { UseApatment } from "../../Context/ApartmentLisitingContext/ApartmentLisitingContext";
-import { useAuth } from "../../Context/AuthContext/AuthContext";
+
 
 export default function UseGetRandomApartment(){
     let {apartmentDispatch}=UseApatment();
     let [error,setError]=useState("");
     let [loader,setLoader]=useState(false);
-    let{token}=useAuth();
+    
 
      useEffect(()=>{
         const fetchRandomApartment=async()=>{
@@ -34,7 +34,7 @@ export default function UseGetRandomApartment(){
           }
         }
         fetchRandomApartment();
-       },[token,apartmentDispatch])
+       },[apartmentDispatch])
 
        return {error,loader};
       
