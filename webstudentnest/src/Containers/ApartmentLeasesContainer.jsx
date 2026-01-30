@@ -8,7 +8,7 @@ import LeaseTablePage from "../Pages/LeaseTablePage";
 export default function ApartmentLeasesContainer(){
     let {apartmentId}=useParams();
     const {error,loader}=UseGetLeaseByApartmentId(apartmentId);
-    const {Leases}=UseLease();
+    
     const url=`/api/v1/landlord/leases/${apartmentId}/search?q=`;
 
     if(loader){
@@ -17,7 +17,7 @@ export default function ApartmentLeasesContainer(){
     
     return(
         <div>
-            <LeaseTablePage Leases={Leases || []} error={error} url={url}/>
+            <LeaseTablePage error={error} url={url}/>
         </div>
     );
 }

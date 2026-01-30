@@ -7,8 +7,11 @@ import ChangeStatusDialog from "../Components/LeaseRequestTableComp/ChangeStatus
 import { useState } from "react";
 import CreateLeaseDialog from "../Components/LeaseRequestTableComp/CreateLeaseDialog";
 import { UseCreateLease } from "../Hooks/StudentHooks/UseCreateLease";
+import { UseLeaseRequest } from "../Context/LeaseRequestContext/LeaseRequestAdmin";
 
-export default function LeaseRequestTablepage({LeaseRequest,error,searchUrl}){
+export default function LeaseRequestTablepage({error,searchUrl}){
+  let {LeaseRequest}=UseLeaseRequest();
+  
   let [leaseId,setLeaseId]=useState("");
   let [dialogOpen,setDialogOpen]=useState(false);
   let[createLeaseFlag,setcreateLeaseFlag]=useState(false);

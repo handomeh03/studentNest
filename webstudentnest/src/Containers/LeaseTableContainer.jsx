@@ -6,14 +6,14 @@ import LeaseTablePage from "../Pages/LeaseTablePage";
 
 export default function LeaseTableContainer(){
    const {loader,error}= UseGetLease();
-   const {Leases}=UseLease();
+   
    const url="/api/v1/leases/search?q=";
    if(loader){
     return <Loader/>
    }
     return(
         <div>
-            <LeaseTablePage Leases={Leases || []} error={error} url={url} />
+            <LeaseTablePage  error={error} url={url} />
         </div>
     );
 }

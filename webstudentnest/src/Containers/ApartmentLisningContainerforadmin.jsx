@@ -6,14 +6,14 @@ import ApartmentListingAdmin from "../Pages/ApartmentListingAdmin";
 
 export default function ApartmentListingContainerForAdmin(){
     let {loader,error}=UseGetALlApartmentLisitningforAdmin("/api/v1/apartments");
-    let {Apartments}=UseApatment();
+    
     
     if(loader){
         return <Loader/>
     }
     return(
         <div>
-            <ApartmentListingAdmin Apartments={Apartments || []} error={error}/>
+            <ApartmentListingAdmin error={error}/>
         </div>
     );
 }

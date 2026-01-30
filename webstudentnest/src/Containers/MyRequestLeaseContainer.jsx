@@ -10,7 +10,7 @@ const SEARCH_URL = "/api/v1/leases-request/search?q=";
 
 export default function MyRequestLeaseContainer() {
     const { loader, error } = UseGetAllLeaseRequest("/api/v1/leases-request");
-    const { LeaseRequest } = UseLeaseRequest();
+    
     if (loader) {
         return <Loader />;
     }
@@ -22,7 +22,7 @@ export default function MyRequestLeaseContainer() {
     return (
         <div className="my-request-lease-container">
             <LeaseRequestTablepage 
-                LeaseRequest={LeaseRequest || []} 
+                
                 error={error} 
                 searchUrl={SEARCH_URL} 
             />

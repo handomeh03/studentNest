@@ -16,11 +16,12 @@ import EditlandlordDialog from "../Components/LandlordTablepageComp/EditLandlord
 import DeleteLandlordDialog from "../Components/LandlordTablepageComp/DeletelandlordDialog";
 
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import { useAdminForLandlord } from "../Context/landlordForadminContext/AdminforlandlordContext";
 
 
 
-export default function LandlordTablepage({Landlords,error}){
-
+export default function LandlordTablepage({error}){
+const {Landlords}=useAdminForLandlord();
 Useaos();
 let [email,setemail]=useState("");
 

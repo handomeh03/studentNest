@@ -7,14 +7,14 @@ import AuditLogTablePage from "../Pages/AuditLogTablePage";
 export default function AudlitLogContainer(){
 
     let {loader,error}=UseGetALLAuditLog();
-    let {AuditLog}=UseAuditLog();
+    
     if(loader){
         return <Loader/>
     }
     
     return(
         <div>
-            <AuditLogTablePage AuditLog={AuditLog || []} error={error}/>
+            <AuditLogTablePage  error={error}/>
         </div>
     );
 }
