@@ -12,7 +12,6 @@ export default function RequestLeaseDialog({
   requestLeaseFlagDialog, 
   handleChangeRequestLeaseDialog, 
   apartmentId ,
-  landlordId
 }) {
   const primaryColor = "#3f51b5";
   
@@ -62,7 +61,7 @@ export default function RequestLeaseDialog({
        }
 
     
-    createLeaseRequest(apartmentId, requestMessage, startDate, rentTerm,landlordId,handleChangeRequestLeaseDialog);
+    createLeaseRequest(apartmentId, requestMessage, startDate, rentTerm,handleChangeRequestLeaseDialog);
     
    
   };

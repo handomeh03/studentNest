@@ -32,7 +32,7 @@ export function UseGetLandlord(){
         }
       }
       fetchlandlord();
-    },[token]);
+    },[]);
 
     return {loader,error}
 }

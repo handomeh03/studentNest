@@ -9,6 +9,7 @@ export default function PaymentScheduleContainer(){
     let{leaseId}=useParams();
     const {error,loader}=UseGetPaymentSchudele(leaseId);
     const {payments}=UsePaymentSchudle();
+    console.log(payments)
     if(loader){
         return <Loader/>;
     }

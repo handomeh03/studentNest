@@ -32,6 +32,6 @@ export function UseGetLeaseByApartmentId(apartmentId){
         }
       }
       getleaseByApartmentId();
-   },[token,apartmentId]);
+   },[apartmentId]);
     return {error,loader};
 }

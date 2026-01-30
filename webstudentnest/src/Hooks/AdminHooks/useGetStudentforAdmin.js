@@ -31,7 +31,7 @@ export function UseGetStudentForAdmin(){
         }
       }
       fetchStudent();
-    },[token,studentforadminDispatch]);
+    },[studentforadminDispatch]);
 
     return {loader,error}
 }

@@ -62,7 +62,7 @@ export default function UseSearchLeaseRequest(id,searchUrl) {
 
     
     return () => clearTimeout(delayDebounceFn);
-  }, [id, token]);
+  }, [id]);
 
   
 }
