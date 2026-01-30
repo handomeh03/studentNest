@@ -3,10 +3,10 @@ import SearchuserComp from "../Components/LeaseTableComp/SearchuserComp";
 import HeadOfTable from "../Components/LeaseTableComp/HeadOfTable";
 import RowOfTable from "../Components/LeaseTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import { UseLease } from "../Context/LeaseForAdmin/LeaseForAdmin";
 
-export default function LeaseTablePage({Leases,error,url}){
-
-   
+export default function LeaseTablePage({error,url}){
+   const {Leases}=UseLease();
     return(
         <div>
           {error?<ErrorComp error={error}/>:<div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">

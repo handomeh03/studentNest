@@ -8,9 +8,10 @@ import EditVeridedLandlordDialog from "../Components/PaymentschudleComp/EditVeri
 import ErrorComp from "../Components/PublicComp/ErrorComp";
 import ReciptDialogConationer from "../Components/PaymentschudleComp/ReciptDialogContainer";
 import UploadReciptFlagDialog from "../Components/PaymentschudleComp/UploadReciptDialog";
+import { UsePaymentSchudle } from "../Context/PaymentSchudleContext/PaymentSchudleContext";
 
-export default function PaymentSchudlepage({leaseId,error,payments}){
-    
+export default function PaymentSchudlepage({leaseId,error}){
+    const {payments}=UsePaymentSchudle();
     let[paymentId,setPaymentId]=useState("");
     let[ReciptDialogFlag,setReciptDialogflag]=useState(false);
     let[EditVeridedLandlordFlag,setEditVeridedLandlordFlag]=useState(false);

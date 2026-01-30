@@ -6,9 +6,11 @@ import RowOfTable from "../Components/studentTableComp/RowOfTable";
 import EditStudentDialog from "../Components/studentTableComp/EditStudentDialog";
 import DeleteStudentDialog from "../Components/studentTableComp/DeleteStudentDialog";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import { UseStudentForAdmin } from "../Context/studentForAdmin/StudentForadmin";
 
 
-export default function StudentTablePage({students,error}){
+export default function StudentTablePage({error}){
+  const {students}=UseStudentForAdmin();
     Useaos();
     let[studentId,setstudentId]=useState("");
     let[editStudentFlag,setEditStudentFLag]=useState(false);

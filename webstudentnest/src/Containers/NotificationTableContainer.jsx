@@ -6,13 +6,13 @@ import NotifivationTablePage from "../Pages/NotificationTablePage";
 
 export default function NotificationTableContainer(){
     let{loader,error}=UseGetALLNotifiction();
-    let{notification}=UseNotification();
+    
     if(loader){
         return <Loader/>
     }
     return(
         <div>
-            <NotifivationTablePage notification={notification || []} error={error}/>
+            <NotifivationTablePage  error={error}/>
         </div>
     );
 }

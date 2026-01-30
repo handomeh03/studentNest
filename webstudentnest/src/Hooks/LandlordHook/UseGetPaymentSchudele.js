@@ -27,7 +27,8 @@ export function UseGetPaymentSchudele(leaseId){
                 
                 
             }else{
-                throw new Error(data.errors);
+                console.log(data);
+                throw new Error(data.error);
             }
         }
         catch(error){

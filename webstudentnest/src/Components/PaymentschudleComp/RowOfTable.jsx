@@ -99,7 +99,8 @@ export default function RowOfTable({
       </td>
 
       {/* 7. Student Upload Actions */}
-      <td className="whitespace-nowrap px-4 py-5 text-sm">
+     <div>
+       <td className="whitespace-nowrap px-4 py-5 text-sm">
         {userRole === "student" && (
           payment?.paymentStatus === "Paid" ? (
             <div className="flex items-center gap-1.5 text-emerald-600 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg w-fit border border-emerald-100">
@@ -154,6 +155,7 @@ export default function RowOfTable({
           )}
         </div>
       </td>
+     </div>
     </tr>
   );
 }

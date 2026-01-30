@@ -2,9 +2,10 @@ import SearchuserComp from "../Components/AuditLogTableComp/SearchuserComp";
 import HeadOfTable from "../Components/AuditLogTableComp/HeadOfTable";
 import RowOfTable from "../Components/AuditLogTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import { UseAuditLog } from "../Context/AuditLogContext/AuditLogContext";
 
-export default function AuditLogTablePage({AuditLog, error}){
-   
+export default function AuditLogTablePage({ error}){
+   let {AuditLog}=UseAuditLog();
     return(
         <div>
           {error?<ErrorComp error={error}/>:<div data-aos="fade-in" className="px-4 p-3.5 sm:px-6 lg:px-8">

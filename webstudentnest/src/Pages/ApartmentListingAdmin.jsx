@@ -19,15 +19,16 @@ import ErrorComp from "../Components/PublicComp/ErrorComp";
 import ShowDocumentContainer from "../Components/ApartmentListing/ShowdocumentContainer";
 import ShowdetailsContainer from "../Components/ApartmentListing/ShowdetailsContainer";
 import RequestLeaseDialog from "../Components/ApartmentListing/RequestLeaseDialog";
+import { UseApatment } from "../Context/ApartmentLisitingContext/ApartmentLisitingContext";
 
 export default function ApartmentListingAdmin({
   randomApartment,
   bookedApartment,
   forall,
-  Apartments,
   error,
 }) {
   // ال booked apartment يعني ال apremtnet ال محجوزة للlandlord وهي بس كفلاج
+  let {Apartments}=UseApatment();
   Useaos();
   let { user } = useUserContext();
 

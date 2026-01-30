@@ -2,10 +2,13 @@
 import HeadOfTable from "../Components/NotifivationTableComp/HeadOfTable";
 import RowOfTable from "../Components/NotifivationTableComp/RowOfTable";
 import ErrorComp from "../Components/PublicComp/ErrorComp";
+import { UseNotification } from "../Context/NotificationContext/NotificationContext";
 import { UseDeleteAllNotification } from "../Hooks/Shared/UseDeleteAllnotification";
 
 
-export default function NotifivationTablePage({notification,error}){
+export default function NotifivationTablePage({error}){
+  let{notification}=UseNotification();
+
   let {DeleteAllNotification}=UseDeleteAllNotification();
   
     return(
