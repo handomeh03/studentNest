@@ -1,20 +1,24 @@
-
+import ErrorComp from "../Components/PublicComp/ErrorComp";
 import Loader from "../Components/PublicComp/Loader";
 import { UseLease } from "../Context/LeaseForAdmin/LeaseForAdmin";
 import { UseGetLease } from "../Hooks/Shared/UseGetLease";
 import LeaseTablePage from "../Pages/LeaseTablePage";
 
-export default function MyLeasesContainer(){ 
-    const {loader,error}= UseGetLease();
-       const {Leases}=UseLease();
-        const url="/api/v1/leases/search?q=";
-       if(loader){
-        return <Loader/>
-       }
+
+const url = "/api/v1/leases/search?q=";
+export default function MyLeasesContainer() { 
+    const { loader, error } = UseGetLease();
+    const { Leases } = UseLease();
+    if (loader) return <Loader />;
+    if (error) return <ErrorComp error={error} />;
     
-    return(
+    return (
         <div>
-            <LeaseTablePage Leases={Leases} error={error} url={url} />       
+            <LeaseTablePage 
+                Leases={Leases || []} 
+                error={error} 
+                url={url} 
+            />       
         </div>
     );
 }

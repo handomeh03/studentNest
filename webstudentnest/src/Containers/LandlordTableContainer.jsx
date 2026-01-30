@@ -13,7 +13,7 @@ if(loader){
 }
     return(
         <div>
-            <LandlordTablepage Landlords={Landlords} loader={loader} error={error}/>
+            <LandlordTablepage Landlords={Landlords || []} loader={loader} error={error}/>
         </div>
     );
 }

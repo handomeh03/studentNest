@@ -24,7 +24,7 @@ export default function MyApartmentsLandLordContainer(){
             }}  className="flex-1 px-3 py-2 mb-4 text-sm font-medium text-white bg-[#3f51b5] rounded-lg shadow hover:bg-[#6573c3] hover:cursor-pointer hover:shadow-lg transition">
                 add apartemnt
            </button>
-            <ApartmentListingAdmin Apartments={Apartments} error={error}/>
+            <ApartmentListingAdmin Apartments={Apartments || []} error={error}/>
             <AddApartmentDialog addApartmentflag={addApartmentflag} handlechangeAddApartemntFlag={handlechangeAddApartemntFlag}/>
         </div>
     );

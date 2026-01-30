@@ -1,9 +1,5 @@
-import { useUserContext } from "../../Context/UserContext/UserContext";
 
 export default function HeadOfTable() {
-  const { user } = useUserContext();
-  const userRole = user?.user?.role;
-
   return (
     <thead className=" border-b-2 border-gray-200">
       <tr>

@@ -3,10 +3,12 @@ import { useAuth } from "../../Context/AuthContext/AuthContext";
 import { UseNotification } from "../../Context/NotificationContext/NotificationContext";
 
 export function UseGetALLNotifiction(){
-     let {token}=useAuth();
+      
+      let {token}=useAuth();
       let [loader,setLoader]=useState(false);
       let[error,setError]=useState("");
       let {NotificationDispatch}=UseNotification();
+
     
         useEffect(()=>{
               const fetchNotification=async()=>{

@@ -13,7 +13,7 @@ export default function ApartmentListingContainerForAdmin(){
     }
     return(
         <div>
-            <ApartmentListingAdmin Apartments={Apartments} error={error}/>
+            <ApartmentListingAdmin Apartments={Apartments || []} error={error}/>
         </div>
     );
 }

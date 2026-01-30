@@ -13,7 +13,7 @@ export default function LeaseRequestContainer(){
     }
     return(
         <div>
-            <LeaseRequestTablepage searchUrl={searchUrl} LeaseRequest={LeaseRequest} error={error}/>
+            <LeaseRequestTablepage searchUrl={searchUrl} LeaseRequest={LeaseRequest || []} error={error}/>
         </div>
     );
 }

@@ -13,7 +13,7 @@ export default function MybookedApartmentsLandlordContainer(){
         }
     return(
         <div>
-          <ApartmentListingAdmin bookedApartment={bookedApartment} Apartments={Apartments} error={error}/>
+          <ApartmentListingAdmin bookedApartment={bookedApartment} Apartments={Apartments || []} error={error}/>
         </div>
     );
 }
