@@ -12,7 +12,7 @@ export default function NotificationTableContainer(){
     }
     return(
         <div>
-            <NotifivationTablePage notification={notification} error={error}/>
+            <NotifivationTablePage notification={notification || []} error={error}/>
         </div>
     );
 }

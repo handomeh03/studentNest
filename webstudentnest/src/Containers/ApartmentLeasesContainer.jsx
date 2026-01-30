@@ -17,7 +17,7 @@ export default function ApartmentLeasesContainer(){
     
     return(
         <div>
-            <LeaseTablePage Leases={Leases} error={error} url={url}/>
+            <LeaseTablePage Leases={Leases || []} error={error} url={url}/>
         </div>
     );
 }

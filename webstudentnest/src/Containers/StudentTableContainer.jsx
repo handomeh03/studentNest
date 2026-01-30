@@ -12,7 +12,7 @@ export default function StudentTableContainer(){
     }
     return(
         <div>
-            <StudentTablePage students={students} loader={loader} error={error}/>
+            <StudentTablePage students={students || []} loader={loader} error={error}/>
         </div>
     );
 }

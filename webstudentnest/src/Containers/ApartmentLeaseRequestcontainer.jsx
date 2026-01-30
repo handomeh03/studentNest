@@ -14,7 +14,7 @@ export default function ApartmentLeaseRequestcontainer(){
             }
     return(
         <div>
-            <LeaseRequestTablepage  LeaseRequest={LeaseRequest} error={error} searchUrl={searchUrl} />
+            <LeaseRequestTablepage  LeaseRequest={LeaseRequest || []} error={error} searchUrl={searchUrl} />
         </div>
     );
 }

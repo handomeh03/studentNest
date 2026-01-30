@@ -14,7 +14,7 @@ export default function AudlitLogContainer(){
     
     return(
         <div>
-            <AuditLogTablePage AuditLog={AuditLog} error={error}/>
+            <AuditLogTablePage AuditLog={AuditLog || []} error={error}/>
         </div>
     );
 }
