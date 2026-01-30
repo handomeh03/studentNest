@@ -39,6 +39,7 @@ export function UseAddApartment(){
                 apartmentDispatch({type:"addApartment",payload:data.result});
                 handlechangeAddApartemntFlag();
             } else {
+                console.log(data);
                 throw new Error(data.error||data.errors.message || 'Failed to add apartment');
             }
         } catch (error) {

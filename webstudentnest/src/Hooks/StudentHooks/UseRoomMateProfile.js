@@ -25,7 +25,19 @@ export function UseRoomMateProfile() {
     getRoomateProfile
   ) {
     try {
-      setLoader(true);
+      console.log(  Language,
+          bio,
+          UserAcceptNoiseTolerance,
+          UserSleepSchedule,
+          minAge,
+          maxAge,
+          guestPolicyType,
+          petType,
+          petPreferenceType,
+          FoodPreferenceType,
+          SharingLevelType,
+          SmokoHabitType)
+     
       const res = await fetch(`${import.meta.env.VITE_API_URL}${url}`, {
         method: `${type}`,
         body: JSON.stringify({
@@ -62,7 +74,7 @@ export function UseRoomMateProfile() {
           setSuccess("update roomate profile success");
         }
       } else {
-        
+        console.log(data);
         throw new Error(
           data.error || "cant make this operation please try again",
         );
