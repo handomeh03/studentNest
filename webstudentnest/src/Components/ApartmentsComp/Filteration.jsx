@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Range } from 'react-range';
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-
 export default function Filteration() {
+
+  
   const [ageRange, setAgeRange] = useState([18, 50]);
-  const [locationRange, setLocationRange] = useState([6, 15]);
   const [priceRange, setPriceRange] = useState([350, 1400]);
   const [university, setUniversity] = useState('');
   const [isJoined, setIsJoined] = useState(false);
@@ -44,23 +44,7 @@ export default function Filteration() {
       </div>
 
       
-      <div className="flex-1 mb-4 lg:mb-0">
-        <label className="block text-[10px] font-bold text-gray-500 uppercase mb-1">
-          Dist: {locationRange[0]} - {locationRange[1]} km
-        </label>
-        <Range
-          step={1} min={1} max={20} values={locationRange}
-          onChange={(values) => setLocationRange(values)}
-          renderTrack={({ props, children }) => (
-            <div {...props} style={{ ...props.style, height: '4px', background: '#e5e7eb', borderRadius: '4px', width: '100%' }}>
-              {children}
-            </div>
-          )}
-          renderThumb={({ props }) => (
-            <div {...props} style={{ ...props.style, height: '16px', width: '16px', borderRadius: '50%', background: '#4F46E5', border: '2px solid white', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }} />
-          )}
-        />
-      </div>
+     
 
       
       <div className="flex-1 mb-4 lg:mb-0">

@@ -33,7 +33,7 @@ export default function StudentDashboardLayout(){
              navigate("/userlogin",{replace:true});
              return;
          }
-    },[navigation])
+    },[])
     
     
     function handleChangeNavigation(id){
@@ -48,12 +48,7 @@ export default function StudentDashboardLayout(){
     }
     
     
-    let{loaderFalg}=UseLoader();
-    
-    
-    if(loaderFalg){
-        return <Loader/>
-    }
+  
     return(
         <div>
              <SideBar  sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} navigation={navigation} handleChangeNavigation={handleChangeNavigation} />
