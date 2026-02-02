@@ -62,13 +62,7 @@ export default function LandlordDashboardLayout(){
       }))
     }
     
-    
-    let{loaderFalg}=UseLoader();
-    
-    
-    if(loaderFalg){
-        return <Loader/>
-    }
+   
     return(
         <div>
              <SideBar  sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} navigation={navigation} handleChangeNavigation={handleChangeNavigation} />

@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import HeaderOfdashboard from "../Components/admindashboardComp/HEaderOfdashboard";
 import { Outlet, useNavigate } from "react-router-dom";
 import { UserGroupIcon,  DocumentMagnifyingGlassIcon,  BuildingOffice2Icon, AcademicCapIcon ,HomeIcon,BellIcon,ClipboardDocumentListIcon ,DocumentCheckIcon    } from '@heroicons/react/24/outline'
-
 import SideBar from "../Components/admindashboardComp/SideBar";
-import { UseLoader } from "../Hooks/publicHook/useLoader";
-import Loader from "../Components/PublicComp/Loader";
 import { useUserContext } from "../Context/UserContext/UserContext";
 
 
@@ -55,13 +52,6 @@ function handleChangeNavigation(id){
   }))
 }
 
-
-let{loaderFalg}=UseLoader();
-
-
-if(loaderFalg){
-    return <Loader/>
-}
   return (
       <div >
        <SideBar  sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} navigation={navigation} handleChangeNavigation={handleChangeNavigation} />
